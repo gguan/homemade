@@ -44,9 +44,15 @@
 		4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */; };
 		4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */; };
 		4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36516F4666800C38D39 /* HMMainViewController.m */; };
-		4645D36916F466A400C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36816F466A400C38D39 /* HMMenuViewController.m */; };
 		4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */; };
 		4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D36D16F494AC00C38D39 /* QuartzCore.framework */; };
+		4645D37116F517EF00C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D37016F517EE00C38D39 /* HMMenuViewController.m */; };
+		4645D37816F5288900C38D39 /* icon_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37216F5288900C38D39 /* icon_cloud.png */; };
+		4645D37916F5288900C38D39 /* icon_date.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37316F5288900C38D39 /* icon_date.png */; };
+		4645D37A16F5288900C38D39 /* icon_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37416F5288900C38D39 /* icon_heart.png */; };
+		4645D37B16F5288900C38D39 /* icon_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37516F5288900C38D39 /* icon_search.png */; };
+		4645D37C16F5288900C38D39 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37616F5288900C38D39 /* icon_setting.png */; };
+		4645D37F16F52FE100C38D39 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37E16F52FE100C38D39 /* icon_menu.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,11 +117,17 @@
 		4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		4645D36416F4666800C38D39 /* HMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMainViewController.h; path = UILayer/MainUI/HMMainViewController.h; sourceTree = "<group>"; };
 		4645D36516F4666800C38D39 /* HMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMainViewController.m; path = UILayer/MainUI/HMMainViewController.m; sourceTree = "<group>"; };
-		4645D36716F466A400C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MainUI/HMMenuViewController.h; sourceTree = "<group>"; };
-		4645D36816F466A400C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MainUI/HMMenuViewController.m; sourceTree = "<group>"; };
 		4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewController.h; path = UILayer/MainUI/HMFeedStreamViewController.h; sourceTree = "<group>"; };
 		4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewController.m; path = UILayer/MainUI/HMFeedStreamViewController.m; sourceTree = "<group>"; };
 		4645D36D16F494AC00C38D39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4645D36F16F517EE00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MainUI/HMMenuViewController.h; sourceTree = "<group>"; };
+		4645D37016F517EE00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MainUI/HMMenuViewController.m; sourceTree = "<group>"; };
+		4645D37216F5288900C38D39 /* icon_cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_cloud.png; path = Resources/icon_cloud.png; sourceTree = "<group>"; };
+		4645D37316F5288900C38D39 /* icon_date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_date.png; path = Resources/icon_date.png; sourceTree = "<group>"; };
+		4645D37416F5288900C38D39 /* icon_heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_heart.png; path = Resources/icon_heart.png; sourceTree = "<group>"; };
+		4645D37516F5288900C38D39 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_search.png; path = Resources/icon_search.png; sourceTree = "<group>"; };
+		4645D37616F5288900C38D39 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_setting.png; path = Resources/icon_setting.png; sourceTree = "<group>"; };
+		4645D37E16F52FE100C38D39 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_menu.png; path = Resources/icon_menu.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +155,6 @@
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
-				4645D36D16F494AC00C38D39 /* QuartzCore.framework */,
 				4645D36216F4660800C38D39 /* UILayer */,
 				4645D32216F44E2400C38D39 /* Resources */,
 				4645D31516F44D3F00C38D39 /* Vendor */,
@@ -164,6 +175,7 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4645D36D16F494AC00C38D39 /* QuartzCore.framework */,
 				4645D32016F44DDB00C38D39 /* FacebookSDK.framework */,
 				4645D31616F44DC200C38D39 /* Accounts.framework */,
 				4645D31716F44DC200C38D39 /* AdSupport.framework */,
@@ -219,6 +231,12 @@
 		4645D32216F44E2400C38D39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4645D37E16F52FE100C38D39 /* icon_menu.png */,
+				4645D37216F5288900C38D39 /* icon_cloud.png */,
+				4645D37316F5288900C38D39 /* icon_date.png */,
+				4645D37416F5288900C38D39 /* icon_heart.png */,
+				4645D37516F5288900C38D39 /* icon_search.png */,
+				4645D37616F5288900C38D39 /* icon_setting.png */,
 				4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */,
 			);
 			name = Resources;
@@ -312,6 +330,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				4645D38016F532C000C38D39 /* SettingUI */,
 				4645D36316F4661100C38D39 /* MainUI */,
 			);
 			name = UILayer;
@@ -322,12 +341,19 @@
 			children = (
 				4645D36416F4666800C38D39 /* HMMainViewController.h */,
 				4645D36516F4666800C38D39 /* HMMainViewController.m */,
-				4645D36716F466A400C38D39 /* HMMenuViewController.h */,
-				4645D36816F466A400C38D39 /* HMMenuViewController.m */,
 				4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */,
 				4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */,
+				4645D36F16F517EE00C38D39 /* HMMenuViewController.h */,
+				4645D37016F517EE00C38D39 /* HMMenuViewController.m */,
 			);
 			name = MainUI;
+			sourceTree = "<group>";
+		};
+		4645D38016F532C000C38D39 /* SettingUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SettingUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +414,12 @@
 				4645D30C16F44D1900C38D39 /* Default-568h@2x.png in Resources */,
 				4645D32416F44E3B00C38D39 /* FacebookSDKResources.bundle in Resources */,
 				4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */,
+				4645D37816F5288900C38D39 /* icon_cloud.png in Resources */,
+				4645D37916F5288900C38D39 /* icon_date.png in Resources */,
+				4645D37A16F5288900C38D39 /* icon_heart.png in Resources */,
+				4645D37B16F5288900C38D39 /* icon_search.png in Resources */,
+				4645D37C16F5288900C38D39 /* icon_setting.png in Resources */,
+				4645D37F16F52FE100C38D39 /* icon_menu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,8 +451,8 @@
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */,
-				4645D36916F466A400C38D39 /* HMMenuViewController.m in Sources */,
 				4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */,
+				4645D37116F517EF00C38D39 /* HMMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

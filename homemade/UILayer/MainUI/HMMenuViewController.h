@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMMenuViewController : UIViewController
+@interface HMMenuViewController : UITableViewController
+
+@property (strong, nonatomic) NSArray *controllers;
 
 @end

@@ -21,7 +21,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+//        UINavigationController *navigation = //        UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithImage:<#(UIImage *)#> style:<#(UIBarButtonItemStyle)#> target:<#(id)#> action:<#(SEL)#>]
+//        [self leftButtonForCenterPanel]
         self.centerPanel = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
+        
         self.leftPanel = [[HMMenuViewController alloc] init];
     }
     return self;
