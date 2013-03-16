@@ -43,6 +43,10 @@
 		4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35716F4514800C38D39 /* SVProgressHUD.m */; };
 		4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */; };
 		4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */; };
+		4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36516F4666800C38D39 /* HMMainViewController.m */; };
+		4645D36916F466A400C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36816F466A400C38D39 /* HMMenuViewController.m */; };
+		4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */; };
+		4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D36D16F494AC00C38D39 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +109,13 @@
 		4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		4645D35E16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		4645D36416F4666800C38D39 /* HMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMainViewController.h; path = UILayer/MainUI/HMMainViewController.h; sourceTree = "<group>"; };
+		4645D36516F4666800C38D39 /* HMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMainViewController.m; path = UILayer/MainUI/HMMainViewController.m; sourceTree = "<group>"; };
+		4645D36716F466A400C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MainUI/HMMenuViewController.h; sourceTree = "<group>"; };
+		4645D36816F466A400C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MainUI/HMMenuViewController.m; sourceTree = "<group>"; };
+		4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewController.h; path = UILayer/MainUI/HMFeedStreamViewController.h; sourceTree = "<group>"; };
+		4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewController.m; path = UILayer/MainUI/HMFeedStreamViewController.m; sourceTree = "<group>"; };
+		4645D36D16F494AC00C38D39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */,
 				4645D31B16F44DC200C38D39 /* Accounts.framework in Frameworks */,
 				4645D31C16F44DC200C38D39 /* AdSupport.framework in Frameworks */,
 				4645D31D16F44DC200C38D39 /* Security.framework in Frameworks */,
@@ -131,6 +143,8 @@
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
+				4645D36D16F494AC00C38D39 /* QuartzCore.framework */,
+				4645D36216F4660800C38D39 /* UILayer */,
 				4645D32216F44E2400C38D39 /* Resources */,
 				4645D31516F44D3F00C38D39 /* Vendor */,
 				4645D2FB16F44D1900C38D39 /* homemade */,
@@ -295,6 +309,27 @@
 			path = Vendor/SVPullToRefresh;
 			sourceTree = "<group>";
 		};
+		4645D36216F4660800C38D39 /* UILayer */ = {
+			isa = PBXGroup;
+			children = (
+				4645D36316F4661100C38D39 /* MainUI */,
+			);
+			name = UILayer;
+			sourceTree = "<group>";
+		};
+		4645D36316F4661100C38D39 /* MainUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D36416F4666800C38D39 /* HMMainViewController.h */,
+				4645D36516F4666800C38D39 /* HMMainViewController.m */,
+				4645D36716F466A400C38D39 /* HMMenuViewController.h */,
+				4645D36816F466A400C38D39 /* HMMenuViewController.m */,
+				4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */,
+				4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */,
+			);
+			name = MainUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -383,6 +418,9 @@
 				4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
+				4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */,
+				4645D36916F466A400C38D39 /* HMMenuViewController.m in Sources */,
+				4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
