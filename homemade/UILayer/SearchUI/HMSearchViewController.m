@@ -1,20 +1,18 @@
 //
-//  HMFeedStreamViewController.m
+//  HMSearchViewController.m
 //  homemade
 //
-//  Created by Guan Guan on 3/16/13.
+//  Created by Guan Guan on 3/17/13.
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "HMFeedStreamViewController.h"
+#import "HMSearchViewController.h"
 
-@interface HMFeedStreamViewController ()
-
-@property (strong, nonatomic) NSMutableArray *feeds;
+@interface HMSearchViewController ()
 
 @end
 
-@implementation HMFeedStreamViewController
+@implementation HMSearchViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,14 +29,9 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
+ 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)reload:(id)sender {
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,14 +44,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_feeds count];
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

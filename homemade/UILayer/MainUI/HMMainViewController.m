@@ -9,6 +9,7 @@
 #import "HMMainViewController.h"
 #import "HMFeedStreamViewController.h"
 #import "HMMenuViewController.h"
+#import "HMSearchViewController.h"
 
 @interface HMMainViewController ()
 
@@ -16,16 +17,23 @@
 
 @implementation HMMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
-//        UINavigationController *navigation = //        UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithImage:<#(UIImage *)#> style:<#(UIBarButtonItemStyle)#> target:<#(id)#> action:<#(SEL)#>]
-//        [self leftButtonForCenterPanel]
-        self.centerPanel = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
+        UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
+        UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
+        UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
+        if (!buttonController.navigationItem.rightBarButtonItem) {
+            buttonController.navigationItem.rightBarButtonItem = rightBarButton;
+        }
         
-        self.leftPanel = [[HMMenuViewController alloc] init];
+        self.centerPanel = centerNavController;
+        
+        HMMenuViewController *menuController = [[HMMenuViewController alloc] init];
+        menuController.centerNavController = centerNavController;
+        self.leftPanel = menuController;
+        self.rightPanel = [[HMSearchViewController alloc] init];
     }
     return self;
 }

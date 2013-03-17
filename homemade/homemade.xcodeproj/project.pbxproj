@@ -53,6 +53,8 @@
 		4645D37B16F5288900C38D39 /* icon_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37516F5288900C38D39 /* icon_search.png */; };
 		4645D37C16F5288900C38D39 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37616F5288900C38D39 /* icon_setting.png */; };
 		4645D37F16F52FE100C38D39 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37E16F52FE100C38D39 /* icon_menu.png */; };
+		4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */; };
+		4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39116F5F1BB00C38D39 /* HMFeedItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,10 @@
 		4645D37516F5288900C38D39 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_search.png; path = Resources/icon_search.png; sourceTree = "<group>"; };
 		4645D37616F5288900C38D39 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_setting.png; path = Resources/icon_setting.png; sourceTree = "<group>"; };
 		4645D37E16F52FE100C38D39 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_menu.png; path = Resources/icon_menu.png; sourceTree = "<group>"; };
+		4645D38216F5E8ED00C38D39 /* HMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
+		4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchViewController.m; path = UILayer/SearchUI/HMSearchViewController.m; sourceTree = "<group>"; };
+		4645D39016F5F1BB00C38D39 /* HMFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItem.h; path = BaseLayer/DataModel/HMFeedItem.h; sourceTree = "<group>"; };
+		4645D39116F5F1BB00C38D39 /* HMFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItem.m; path = BaseLayer/DataModel/HMFeedItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,7 @@
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
+				4645D38516F5ED9300C38D39 /* BaseLayer */,
 				4645D36216F4660800C38D39 /* UILayer */,
 				4645D32216F44E2400C38D39 /* Resources */,
 				4645D31516F44D3F00C38D39 /* Vendor */,
@@ -330,6 +337,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				4645D38116F5E8C900C38D39 /* SearchUI */,
 				4645D38016F532C000C38D39 /* SettingUI */,
 				4645D36316F4661100C38D39 /* MainUI */,
 			);
@@ -354,6 +362,56 @@
 			children = (
 			);
 			name = SettingUI;
+			sourceTree = "<group>";
+		};
+		4645D38116F5E8C900C38D39 /* SearchUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D38216F5E8ED00C38D39 /* HMSearchViewController.h */,
+				4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */,
+			);
+			name = SearchUI;
+			sourceTree = "<group>";
+		};
+		4645D38516F5ED9300C38D39 /* BaseLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4645D38916F5EDFE00C38D39 /* Account */,
+				4645D38816F5EDF100C38D39 /* Network */,
+				4645D38716F5EDE100C38D39 /* CoreData */,
+				4645D38616F5EDD100C38D39 /* DataModel */,
+			);
+			name = BaseLayer;
+			sourceTree = "<group>";
+		};
+		4645D38616F5EDD100C38D39 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				4645D39016F5F1BB00C38D39 /* HMFeedItem.h */,
+				4645D39116F5F1BB00C38D39 /* HMFeedItem.m */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		4645D38716F5EDE100C38D39 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		4645D38816F5EDF100C38D39 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		4645D38916F5EDFE00C38D39 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +511,8 @@
 				4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */,
 				4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */,
 				4645D37116F517EF00C38D39 /* HMMenuViewController.m in Sources */,
+				4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */,
+				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,6 @@
 
 @interface HMMenuViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *controllers;
+@property (strong, nonatomic) UINavigationController *centerNavController;
 
 @end
