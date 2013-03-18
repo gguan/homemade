@@ -46,7 +46,6 @@
 		4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36516F4666800C38D39 /* HMMainViewController.m */; };
 		4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */; };
 		4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D36D16F494AC00C38D39 /* QuartzCore.framework */; };
-		4645D37116F517EF00C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D37016F517EE00C38D39 /* HMMenuViewController.m */; };
 		4645D37816F5288900C38D39 /* icon_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37216F5288900C38D39 /* icon_cloud.png */; };
 		4645D37916F5288900C38D39 /* icon_date.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37316F5288900C38D39 /* icon_date.png */; };
 		4645D37A16F5288900C38D39 /* icon_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37416F5288900C38D39 /* icon_heart.png */; };
@@ -55,6 +54,8 @@
 		4645D37F16F52FE100C38D39 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37E16F52FE100C38D39 /* icon_menu.png */; };
 		4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */; };
 		4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39116F5F1BB00C38D39 /* HMFeedItem.m */; };
+		4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39616F68F3100C38D39 /* HMDoneViewController.m */; };
+		4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39916F68F4C00C38D39 /* HMSaveViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,8 +123,6 @@
 		4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewController.h; path = UILayer/MainUI/HMFeedStreamViewController.h; sourceTree = "<group>"; };
 		4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewController.m; path = UILayer/MainUI/HMFeedStreamViewController.m; sourceTree = "<group>"; };
 		4645D36D16F494AC00C38D39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4645D36F16F517EE00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MainUI/HMMenuViewController.h; sourceTree = "<group>"; };
-		4645D37016F517EE00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MainUI/HMMenuViewController.m; sourceTree = "<group>"; };
 		4645D37216F5288900C38D39 /* icon_cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_cloud.png; path = Resources/icon_cloud.png; sourceTree = "<group>"; };
 		4645D37316F5288900C38D39 /* icon_date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_date.png; path = Resources/icon_date.png; sourceTree = "<group>"; };
 		4645D37416F5288900C38D39 /* icon_heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_heart.png; path = Resources/icon_heart.png; sourceTree = "<group>"; };
@@ -134,6 +133,12 @@
 		4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchViewController.m; path = UILayer/SearchUI/HMSearchViewController.m; sourceTree = "<group>"; };
 		4645D39016F5F1BB00C38D39 /* HMFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItem.h; path = BaseLayer/DataModel/HMFeedItem.h; sourceTree = "<group>"; };
 		4645D39116F5F1BB00C38D39 /* HMFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItem.m; path = BaseLayer/DataModel/HMFeedItem.m; sourceTree = "<group>"; };
+		4645D39516F68F3100C38D39 /* HMDoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMDoneViewController.h; path = UILayer/DoneUI/HMDoneViewController.h; sourceTree = "<group>"; };
+		4645D39616F68F3100C38D39 /* HMDoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMDoneViewController.m; path = UILayer/DoneUI/HMDoneViewController.m; sourceTree = "<group>"; };
+		4645D39816F68F4C00C38D39 /* HMSaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSaveViewController.h; path = UILayer/SaveUI/HMSaveViewController.h; sourceTree = "<group>"; };
+		4645D39916F68F4C00C38D39 /* HMSaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSaveViewController.m; path = UILayer/SaveUI/HMSaveViewController.m; sourceTree = "<group>"; };
+		4645D39C16F6902B00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MenuUI/HMMenuViewController.h; sourceTree = "<group>"; };
+		4645D39D16F6902B00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MenuUI/HMMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +342,9 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				4645D39B16F68FE600C38D39 /* MenuUI */,
+				4645D39416F68EF600C38D39 /* DoneUI */,
+				4645D39316F68EEB00C38D39 /* SaveUI */,
 				4645D38116F5E8C900C38D39 /* SearchUI */,
 				4645D38016F532C000C38D39 /* SettingUI */,
 				4645D36316F4661100C38D39 /* MainUI */,
@@ -351,8 +359,6 @@
 				4645D36516F4666800C38D39 /* HMMainViewController.m */,
 				4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */,
 				4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */,
-				4645D36F16F517EE00C38D39 /* HMMenuViewController.h */,
-				4645D37016F517EE00C38D39 /* HMMenuViewController.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -412,6 +418,33 @@
 			children = (
 			);
 			name = Account;
+			sourceTree = "<group>";
+		};
+		4645D39316F68EEB00C38D39 /* SaveUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D39816F68F4C00C38D39 /* HMSaveViewController.h */,
+				4645D39916F68F4C00C38D39 /* HMSaveViewController.m */,
+			);
+			name = SaveUI;
+			sourceTree = "<group>";
+		};
+		4645D39416F68EF600C38D39 /* DoneUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D39516F68F3100C38D39 /* HMDoneViewController.h */,
+				4645D39616F68F3100C38D39 /* HMDoneViewController.m */,
+			);
+			name = DoneUI;
+			sourceTree = "<group>";
+		};
+		4645D39B16F68FE600C38D39 /* MenuUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D39C16F6902B00C38D39 /* HMMenuViewController.h */,
+				4645D39D16F6902B00C38D39 /* HMMenuViewController.m */,
+			);
+			name = MenuUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,9 +543,10 @@
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */,
 				4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */,
-				4645D37116F517EF00C38D39 /* HMMenuViewController.m in Sources */,
 				4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */,
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
+				4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */,
+				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
