@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface HMMenuViewController : UITableViewController
+
+@property (nonatomic, strong) UINavigationController *feedStreamViewController;
+@property (nonatomic, strong) UINavigationController *saveViewController;
+@property (nonatomic, strong) UINavigationController *accountViewController;
+@property (nonatomic, strong) UINavigationController *settingViewController;
 
 @end

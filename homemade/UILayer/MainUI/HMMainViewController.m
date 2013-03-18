@@ -35,6 +35,8 @@
         HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
 
         
+        HMMenuViewController *menuController = [[HMMenuViewController alloc] init];
+        menuController.feedStreamViewController = centerNavController;
         menuController.sidePanelController.centerPanel = centerNavController;
         self.leftPanel = menuController;
         self.rightPanel = [[HMSearchViewController alloc] init];
