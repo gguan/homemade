@@ -7,6 +7,7 @@
 //
 
 #import "HMMenuViewController.h"
+#import "LeftPanelCell.h"
 
 @interface HMMenuViewController ()
 
@@ -20,6 +21,14 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        //Add background color to bounce area
+        UIView *topview = [[UIView alloc] initWithFrame:CGRectMake(0,-480,320,480)];
+        topview.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
+        [self.tableView addSubview:topview];
+        //self.tableView.bounces = NO; //Disable bounce
+        
+        [self.tableView setSeparatorColor:[UIColor blackColor]];
+
     }
     return self;
 }
@@ -46,7 +55,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -66,11 +75,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MenuCellItem";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    LeftPanelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[LeftPanelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     switch ([indexPath section]) {
@@ -94,9 +103,7 @@
             cell.imageView.image = [UIImage imageNamed:@"icon_setting.png"];
             cell.textLabel.text = @"Setting";
             break;
-        case 2:
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            break;
+        
     } 
     
     return cell;
@@ -104,7 +111,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 2)
+            return 45;
+
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if(section == 2)
     {
         if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
             return 280+88;
@@ -112,10 +126,9 @@
             return 280;
     }
     else
-    {
-        return 45;
-    }
+        return 0;
 }
+
 
 /*
 // Override to support conditional editing of the table view.

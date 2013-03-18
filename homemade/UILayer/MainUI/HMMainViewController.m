@@ -31,7 +31,9 @@
         
         self.centerPanel = centerNavController;
         
-        HMMenuViewController *menuController = [[HMMenuViewController alloc] init];
+//        HMMenuViewController *menuController = [[HMMenuViewController alloc] init];
+        HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
+
         
         menuController.sidePanelController.centerPanel = centerNavController;
         self.leftPanel = menuController;
