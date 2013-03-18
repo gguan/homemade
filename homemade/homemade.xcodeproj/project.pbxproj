@@ -58,6 +58,8 @@
 		4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39916F68F4C00C38D39 /* HMSaveViewController.m */; };
 		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
 		4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A116F6929C00C38D39 /* HMMenuViewController.m */; };
+		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
+		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +144,10 @@
 		4645D39E16F6917400C38D39 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4645D3A016F6929C00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MenuUI/HMMenuViewController.h; sourceTree = "<group>"; };
 		4645D3A116F6929C00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MenuUI/HMMenuViewController.m; sourceTree = "<group>"; };
+		4645D3A316F718DD00C38D39 /* HMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSettingViewController.h; path = UILayer/SettingUI/HMSettingViewController.h; sourceTree = "<group>"; };
+		4645D3A416F718DD00C38D39 /* HMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSettingViewController.m; path = UILayer/SettingUI/HMSettingViewController.m; sourceTree = "<group>"; };
+		4645D3A716F727A300C38D39 /* HMAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMAccountViewController.h; path = UILayer/AccountUI/HMAccountViewController.h; sourceTree = "<group>"; };
+		4645D3A816F727A300C38D39 /* HMAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/AccountUI/HMAccountViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +353,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				4645D3A616F7278600C38D39 /* AccountUI */,
 				4645D39B16F68FE600C38D39 /* MenuUI */,
 				4645D39416F68EF600C38D39 /* DoneUI */,
 				4645D39316F68EEB00C38D39 /* SaveUI */,
@@ -371,6 +378,8 @@
 		4645D38016F532C000C38D39 /* SettingUI */ = {
 			isa = PBXGroup;
 			children = (
+				4645D3A316F718DD00C38D39 /* HMSettingViewController.h */,
+				4645D3A416F718DD00C38D39 /* HMSettingViewController.m */,
 			);
 			name = SettingUI;
 			sourceTree = "<group>";
@@ -450,6 +459,15 @@
 				4645D3A116F6929C00C38D39 /* HMMenuViewController.m */,
 			);
 			name = MenuUI;
+			sourceTree = "<group>";
+		};
+		4645D3A616F7278600C38D39 /* AccountUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D3A716F727A300C38D39 /* HMAccountViewController.h */,
+				4645D3A816F727A300C38D39 /* HMAccountViewController.m */,
+			);
+			name = AccountUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -553,6 +571,8 @@
 				4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
 				4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */,
+				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,
+				4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

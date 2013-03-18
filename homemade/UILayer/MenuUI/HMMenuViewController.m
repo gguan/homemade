@@ -7,6 +7,12 @@
 //
 
 #import "HMMenuViewController.h"
+#import "UIViewController+JASidePanel.h"
+#import "JASidePanelController.h"
+#import "HMFeedStreamViewController.h"
+#import "HMSaveViewController.h"
+#import "HMAccountViewController.h"
+#import "HMSettingViewController.h"
 
 @interface HMMenuViewController ()
 
@@ -27,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,21 +52,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    switch (section) {
-        case 0:
-            return 3;
-            break;
-            
-        default:
-            return 1;
-            break;
-    } 
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,69 +71,27 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    switch ([indexPath section]) {
+
+    switch ([indexPath row]) {
         case 0:
-            switch ([indexPath row]) {
-                case 0:
-                    cell.imageView.image = [UIImage imageNamed:@"icon_cloud.png"];
-                    cell.textLabel.text = @"Today";
-                    break;
-                case 1:
-                    cell.imageView.image = [UIImage imageNamed:@"icon_heart.png"];
-                    cell.textLabel.text = @"Save";
-                    break;
-                case 2:
-                    cell.imageView.image = [UIImage imageNamed:@"icon_date.png"];
-                    cell.textLabel.text = @"Done";
-                    break;
-            }
+            cell.imageView.image = [UIImage imageNamed:@"icon_cloud.png"];
+            cell.textLabel.text = @"Today";
             break;
         case 1:
+            cell.imageView.image = [UIImage imageNamed:@"icon_heart.png"];
+            cell.textLabel.text = @"Save";
+            break;
+        case 2:
+            cell.imageView.image = [UIImage imageNamed:@"icon_date.png"];
+            cell.textLabel.text = @"Done";
+            break;
+        case 3:
             cell.imageView.image = [UIImage imageNamed:@"icon_setting.png"];
             cell.textLabel.text = @"Setting";
     } 
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -148,6 +104,75 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    switch ([indexPath row]) {
+        case 0:
+            if (self.sidePanelController.centerPanel == self.feedStreamViewController) {
+                [self.sidePanelController showCenterPanelAnimated:YES];
+                return;
+            }
+            if (self.feedStreamViewController == nil) {
+                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
+                UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
+                UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
+                if (!buttonController.navigationItem.rightBarButtonItem) {
+                    buttonController.navigationItem.rightBarButtonItem = rightBarButton;
+                }
+                self.feedStreamViewController = centerNavController;
+                self.sidePanelController.centerPanel = centerNavController;
+            } else {
+                self.sidePanelController.centerPanel = self.feedStreamViewController;
+            }
+            break;
+        case 1:
+            if (self.sidePanelController.centerPanel == self.saveViewController) {
+                [self.sidePanelController showCenterPanelAnimated:YES];
+                return;
+            }
+            if (self.saveViewController == nil) {
+                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMSaveViewController alloc] init]];
+                UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
+                UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
+                if (!buttonController.navigationItem.rightBarButtonItem) {
+                    buttonController.navigationItem.rightBarButtonItem = rightBarButton;
+                }
+                self.saveViewController = centerNavController;
+                self.sidePanelController.centerPanel = centerNavController;
+            } else {
+                self.sidePanelController.centerPanel = self.saveViewController;
+            }
+            break;
+        case 2:
+            if (self.sidePanelController.centerPanel == self.accountViewController) {
+                [self.sidePanelController showCenterPanelAnimated:YES];
+                return;
+            }
+            if (self.accountViewController == nil) {
+                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMAccountViewController alloc] init]];
+                self.accountViewController = centerNavController;
+                self.sidePanelController.centerPanel = centerNavController;
+            } else {
+                self.sidePanelController.centerPanel = self.accountViewController;
+            }
+            break;
+        case 3:
+            if (self.sidePanelController.centerPanel == self.settingViewController) {
+                [self.sidePanelController showCenterPanelAnimated:YES];
+                return;
+            }
+            if (self.settingViewController == nil) {
+                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMSettingViewController alloc] init]];
+                self.settingViewController = centerNavController;
+                self.sidePanelController.centerPanel = centerNavController;
+            } else {
+                self.sidePanelController.centerPanel = self.settingViewController;
+            }
+            break;
+        default:
+            break;
+    }
 }
+
+
 
 @end

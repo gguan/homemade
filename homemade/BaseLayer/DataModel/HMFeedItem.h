@@ -18,14 +18,14 @@ typedef enum {
 
 @interface HMFeedItem : NSObject
 
-@property NSString *sid;
-@property NSString *author_id;
-@property NSString *photo_url;
-@property NSDate   *date;
-@property NSString *title;
-@property NSString *description;
-@property NSNumber * like_count;
-@property NSNumber *difficulty;
-@property NSNumber *done_count;
+@property (nonatomic, copy) NSString *sid;
+@property (nonatomic, copy) NSString *author_id;
+@property (nonatomic, copy) NSString *photo_url;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, strong) NSDate   *date;
+@property (nonatomic, strong) NSNumber *like_count;
+@property (nonatomic, strong) NSNumber *difficulty;
+@property (nonatomic, strong) NSNumber *done_count;
 
 @end
