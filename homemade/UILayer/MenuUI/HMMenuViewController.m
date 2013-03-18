@@ -46,7 +46,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -93,9 +93,28 @@
         case 1:
             cell.imageView.image = [UIImage imageNamed:@"icon_setting.png"];
             cell.textLabel.text = @"Setting";
+            break;
+        case 2:
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            break;
     } 
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 2)
+    {
+        if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
+            return 280+88;
+        else //3.5 inch screen
+            return 280;
+    }
+    else
+    {
+        return 45;
+    }
 }
 
 /*
