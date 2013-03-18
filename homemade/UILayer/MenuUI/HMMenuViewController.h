@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMMenuViewController : UIViewController
+@interface HMMenuViewController : UITableViewController
 
 @end

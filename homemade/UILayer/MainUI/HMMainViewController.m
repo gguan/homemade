@@ -10,6 +10,7 @@
 #import "HMFeedStreamViewController.h"
 #import "HMMenuViewController.h"
 #import "HMSearchViewController.h"
+#import "UIViewController+JASidePanel.h"
 
 @interface HMMainViewController ()
 
@@ -31,7 +32,8 @@
         self.centerPanel = centerNavController;
         
         HMMenuViewController *menuController = [[HMMenuViewController alloc] init];
-//        menuController..centerNavController = centerNavController;
+        
+        menuController.sidePanelController.centerPanel = centerNavController;
         self.leftPanel = menuController;
         self.rightPanel = [[HMSearchViewController alloc] init];
     }
