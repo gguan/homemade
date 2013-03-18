@@ -56,6 +56,8 @@
 		4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39116F5F1BB00C38D39 /* HMFeedItem.m */; };
 		4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39616F68F3100C38D39 /* HMDoneViewController.m */; };
 		4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39916F68F4C00C38D39 /* HMSaveViewController.m */; };
+		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
+		4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A116F6929C00C38D39 /* HMMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,8 +139,9 @@
 		4645D39616F68F3100C38D39 /* HMDoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMDoneViewController.m; path = UILayer/DoneUI/HMDoneViewController.m; sourceTree = "<group>"; };
 		4645D39816F68F4C00C38D39 /* HMSaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSaveViewController.h; path = UILayer/SaveUI/HMSaveViewController.h; sourceTree = "<group>"; };
 		4645D39916F68F4C00C38D39 /* HMSaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSaveViewController.m; path = UILayer/SaveUI/HMSaveViewController.m; sourceTree = "<group>"; };
-		4645D39C16F6902B00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MenuUI/HMMenuViewController.h; sourceTree = "<group>"; };
-		4645D39D16F6902B00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MenuUI/HMMenuViewController.m; sourceTree = "<group>"; };
+		4645D39E16F6917400C38D39 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4645D3A016F6929C00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MenuUI/HMMenuViewController.h; sourceTree = "<group>"; };
+		4645D3A116F6929C00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MenuUI/HMMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */,
 				4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */,
 				4645D31B16F44DC200C38D39 /* Accounts.framework in Frameworks */,
 				4645D31C16F44DC200C38D39 /* AdSupport.framework in Frameworks */,
@@ -187,6 +191,7 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4645D39E16F6917400C38D39 /* MobileCoreServices.framework */,
 				4645D36D16F494AC00C38D39 /* QuartzCore.framework */,
 				4645D32016F44DDB00C38D39 /* FacebookSDK.framework */,
 				4645D31616F44DC200C38D39 /* Accounts.framework */,
@@ -441,8 +446,8 @@
 		4645D39B16F68FE600C38D39 /* MenuUI */ = {
 			isa = PBXGroup;
 			children = (
-				4645D39C16F6902B00C38D39 /* HMMenuViewController.h */,
-				4645D39D16F6902B00C38D39 /* HMMenuViewController.m */,
+				4645D3A016F6929C00C38D39 /* HMMenuViewController.h */,
+				4645D3A116F6929C00C38D39 /* HMMenuViewController.m */,
 			);
 			name = MenuUI;
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 				4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
+				4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +683,7 @@
 				4645D31416F44D1900C38D39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

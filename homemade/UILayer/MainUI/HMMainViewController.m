@@ -31,7 +31,7 @@
         self.centerPanel = centerNavController;
         
         HMMenuViewController *menuController = [[HMMenuViewController alloc] init];
-        menuController.centerNavController = centerNavController;
+//        menuController..centerNavController = centerNavController;
         self.leftPanel = menuController;
         self.rightPanel = [[HMSearchViewController alloc] init];
     }

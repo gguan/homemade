@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMMenuViewController : UITableViewController
-
-@property (strong, nonatomic) UINavigationController *centerNavController;
+@interface HMMenuViewController : UIViewController
 
 @end
