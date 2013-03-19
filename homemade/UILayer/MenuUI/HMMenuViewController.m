@@ -27,14 +27,9 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        //Add background color to bounce area
-        UIView *topview = [[UIView alloc] initWithFrame:CGRectMake(0,-480,320,480)];
-        topview.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
-        [self.tableView addSubview:topview];
-//        self.tableView.bounces = NO; //Disable bounce
-        
-        [self.tableView setSeparatorColor:[UIColor blackColor]];
-
+        [self.tableView setSeparatorColor:[UIColor colorWithRed:39.0/255.0 green:37.0/255.0 blue:39.0/255.0 alpha:1.0]];
+        self.tableView.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
+//        self.tableView.bounces = NO;
     }
     return self;
 }
@@ -67,7 +62,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,9 +93,10 @@
             cell.imageView.image = [UIImage imageNamed:@"icon_setting.png"];
             cell.textLabel.text = @"Setting";
             break;
-//        case 4:
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            break;
+        case 4:
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [[cell.subviews objectAtIndex:0] removeFromSuperview]; //remove the arrow view
+            break;
     }
     
     return cell;
@@ -108,17 +104,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-            return 45;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-//        if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
-//            return 280+88;
-//        else //3.5 inch screen
-//            return 280;
-    if(section == 0)
+    if(indexPath.row == 4)
     {
         if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
             return 280+88;
@@ -126,29 +112,9 @@
             return 280;
     }
     else
-        return 0;
+        return 45;
 }
 
--(UIView *) tableView:(UITableView *)tableView
-viewForFooterInSection:(NSInteger)section
-{
-    int height;
-    if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
-        height = 280+88;
-    else //3.5 inch screen
-        height = 280;
-    
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(200, 0, 320, height)];
-    footerView.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
-    
-    UIView *bottomview = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,200 + 2* height)];
-    bottomview.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
-    [footerView addSubview:bottomview];
-
-    
-    self.tableView.tableFooterView = footerView;
-    return footerView;
-}
 
 /*
 // Override to support conditional editing of the table view.
