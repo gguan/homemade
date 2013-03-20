@@ -16,5 +16,16 @@
          landmarkName = "-toggleRightPanel:"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UILayer/MenuUI/HMMenuViewController.m"
+         timestampString = "385457528.384357"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "297"
+         endingLineNumber = "297">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

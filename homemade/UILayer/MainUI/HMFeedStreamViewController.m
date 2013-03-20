@@ -33,7 +33,15 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+
     NSLog(@"MomentFeedView Load");
+
+    //Add refreshControl
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor lightGrayColor];
+    [refreshControl addTarget:self action:@selector(updateTableView) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -124,5 +132,23 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+#pragma mark View Optimization
+
+-(void)updateTableView
+{
+    //Do something
+    
+    
+    //Add some delay to optimize user experience
+    [self performSelector:@selector(stopRefresh) withObject:self afterDelay:0.2];
+}
+
+-(void)stopRefresh
+{
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"loading"];//Optional. Only supported in iOS6
+    [self.refreshControl endRefreshing];
+}
+
 
 @end
