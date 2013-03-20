@@ -9,6 +9,7 @@
 #import "HMAppDelegate.h"
 #import "JASidePanelController.h"
 #import "HMMainViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation HMAppDelegate
 
@@ -22,6 +23,7 @@
     self.mainPanelController.shouldDelegateAutorotateToVisiblePanel = NO;
     
     self.window.rootViewController = self.mainPanelController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
