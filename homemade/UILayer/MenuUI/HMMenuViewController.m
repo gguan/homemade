@@ -27,7 +27,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [self.tableView setSeparatorColor:[UIColor colorWithRed:39.0/255.0 green:37.0/255.0 blue:39.0/255.0 alpha:1.0]];
+//        [self.tableView setSeparatorColor:[UIColor colorWithRed:39.0/255.0 green:37.0/255.0 blue:39.0/255.0 alpha:1.0]];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
 //        self.tableView.bounces = NO;
     }
@@ -67,7 +68,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MenuCellItem";
+    static NSString *CellIdentifier = @"LeftPanelCellItem";
     LeftPanelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
@@ -75,6 +76,43 @@
         cell = [[LeftPanelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    if (indexPath.row == 0)
+    {
+        UIView *blendViewTopDark = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 320, 2)];
+        blendViewTopDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
+        [cell.contentView addSubview:blendViewTopDark];
+        UIView *blendViewBottomDark = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
+        blendViewBottomDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
+        [cell.contentView addSubview:blendViewBottomDark];
+        
+        UIView *blendViewBottomDark1 = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 2)];
+        blendViewBottomDark1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
+        [cell.contentView addSubview:blendViewBottomDark1];
+    }
+    else if(indexPath.row == 3)
+    {
+        UIView *blendViewTopDark1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
+        blendViewTopDark1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
+        [cell.contentView addSubview:blendViewTopDark1];
+        
+        UIView *blendViewTopDark = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 2)];
+        blendViewTopDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
+        [cell.contentView addSubview:blendViewTopDark];
+        UIView *blendViewBottomDark = [[UIView alloc] initWithFrame:CGRectMake(0, 41, 320, 2)];
+        blendViewBottomDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
+        [cell.contentView addSubview:blendViewBottomDark];
+
+    }
+    else
+    {
+        UIView *blendViewTopDark = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
+        blendViewTopDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
+        [cell.contentView addSubview:blendViewTopDark];
+        UIView *blendViewBottomDark = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 2)];
+        blendViewBottomDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
+        [cell.contentView addSubview:blendViewBottomDark];
+
+    }
 
     switch ([indexPath row]) {
         case 0:
@@ -104,14 +142,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 4)
-    {
-        if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
-            return 280+88;
-        else //3.5 inch screen
-            return 280;
-    }
-    else
+//    if(indexPath.row == 4)
+//    {
+//        if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
+//            return 280+88;
+//        else //3.5 inch screen
+//            return 280;
+//    }
+//    else
         return 45;
 }
 
