@@ -9,7 +9,6 @@
 #import "HMAppDelegate.h"
 #import "JASidePanelController.h"
 #import "HMMainViewController.h"
-#import <QuartzCore/QuartzCore.h>
 
 @implementation HMAppDelegate
 

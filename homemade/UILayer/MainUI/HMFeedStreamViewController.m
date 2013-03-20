@@ -33,6 +33,8 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    NSLog(@"MomentFeedView Load");
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }

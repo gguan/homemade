@@ -28,4 +28,6 @@ typedef enum {
 @property (nonatomic, strong) NSNumber *difficulty;
 @property (nonatomic, strong) NSNumber *done_count;
 
+- (id)initForTest;
+
 @end
