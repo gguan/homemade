@@ -62,6 +62,9 @@
 		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
 		4645D3C016F9859C00C38D39 /* HM_app_icon 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */; };
 		4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */; };
+		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
+		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
+		EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */; };
 		EAB6D50616F7246B00A3616F /* LeftPanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB6D50516F7246B00A3616F /* LeftPanelCell.m */; };
 		EAB6D50816F72A1600A3616F /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB6D50716F72A1600A3616F /* arrow_right.png */; };
 		EAB6D50A16F856FC00A3616F /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB6D50916F856FC00A3616F /* arrow_right@2x.png */; };
@@ -160,6 +163,11 @@
 		4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HM_app_icon 2.png"; sourceTree = "<group>"; };
 		4645D3F016F9AA4E00C38D39 /* HMFeedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedAPIClient.h; path = BaseLayer/Network/HMFeedAPIClient.h; sourceTree = "<group>"; };
 		4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedAPIClient.m; path = BaseLayer/Network/HMFeedAPIClient.m; sourceTree = "<group>"; };
+		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
+		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
+		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
+		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
+		EAA530F116FAEE3D00916972 /* Homemade.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homemade.xcdatamodel; sourceTree = "<group>"; };
 		EAB6D50416F7246B00A3616F /* LeftPanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftPanelCell.h; path = UILayer/MenuUI/LeftPanelCell.h; sourceTree = "<group>"; };
 		EAB6D50516F7246B00A3616F /* LeftPanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftPanelCell.m; path = UILayer/MenuUI/LeftPanelCell.m; sourceTree = "<group>"; };
 		EAB6D50716F72A1600A3616F /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
@@ -436,6 +444,11 @@
 			children = (
 				4645D39016F5F1BB00C38D39 /* HMFeedItem.h */,
 				4645D39116F5F1BB00C38D39 /* HMFeedItem.m */,
+				EAA530E816FADF2100916972 /* HMFeedItemJAO.h */,
+				EAA530E916FADF2100916972 /* HMFeedItemJAO.m */,
+				EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */,
+				EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */,
+				EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -613,6 +626,9 @@
 				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,
 				4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */,
 				4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */,
+				EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */,
+				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
+				EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +720,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "homemade/homemade-Prefix.pch";
 				INFOPLIST_FILE = "homemade/homemade-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -719,6 +739,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "homemade/homemade-Prefix.pch";
 				INFOPLIST_FILE = "homemade/homemade-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -755,6 +779,17 @@
 			);
 			currentVersion = 4645D30E16F44D1900C38D39 /* homemade.xcdatamodel */;
 			path = homemade.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EAA530F116FAEE3D00916972 /* Homemade.xcdatamodel */,
+			);
+			currentVersion = EAA530F116FAEE3D00916972 /* Homemade.xcdatamodel */;
+			name = Homemade.xcdatamodeld;
+			path = BaseLayer/DataModel/Homemade.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

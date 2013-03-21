@@ -10,8 +10,12 @@
 
 @implementation HMFeedItem
 
+@synthesize sid,author_id,photo_url,title,desc,date,like_count,difficulty,done_count;
+
 - (id)init {
-    self = [super init]; if (self) {
+    self = [super init];
+    if (self)
+    {
         // Initialization code here.
     }
     return self;
@@ -27,8 +31,8 @@
     self.author_id = [NSString stringWithFormat:@"%d", arc4random() % 10];
     self.photo_url = @"http://25.media.tumblr.com/a1c7a3d16d09748af8a7a8873e7fc5af/tumblr_miujy2tGxj1rz8t4lo1_500.jpg";
     self.title = @"Work hard, play hard";
-    _description = @"Do what you like and fuch the rest";
-    _date = [NSDate date];
+    self.desc = @"Do what you like and fuch the rest";
+    self.date = [NSDate date];
     self.like_count = [NSNumber numberWithInt:arc4random() % 50];
     self.difficulty = [NSNumber numberWithInt:arc4random() % 5];
     self.done_count = [NSNumber numberWithInt:arc4random() % 20];

@@ -16,13 +16,15 @@ typedef enum {
 } RecipeType;
 
 
-@interface HMFeedItem : NSObject
+//@interface HMFeedItem : NSObject
+@interface HMFeedItem : NSManagedObject
 
 @property (nonatomic, copy) NSString *sid;
 @property (nonatomic, copy) NSString *author_id;
 @property (nonatomic, copy) NSString *photo_url;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *description;
+//can not use "description" in core data
+@property (nonatomic, copy) NSString *desc;
 @property (nonatomic, strong) NSDate   *date;
 @property (nonatomic, strong) NSNumber *like_count;
 @property (nonatomic, strong) NSNumber *difficulty;
