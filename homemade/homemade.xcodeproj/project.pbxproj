@@ -63,6 +63,7 @@
 		4645D3C016F9859C00C38D39 /* HM_app_icon 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */; };
 		4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */; };
 		4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */; };
+		4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F816FB539D00C38D39 /* HMNavigationBar.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
 		EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */; };
@@ -166,6 +167,8 @@
 		4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedAPIClient.m; path = BaseLayer/Network/HMFeedAPIClient.m; sourceTree = "<group>"; };
 		4645D3F316FB440F00C38D39 /* HMFeedStreamViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewCell.h; path = UILayer/MainUI/HMFeedStreamViewCell.h; sourceTree = "<group>"; };
 		4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewCell.m; path = UILayer/MainUI/HMFeedStreamViewCell.m; sourceTree = "<group>"; };
+		4645D3F716FB539D00C38D39 /* HMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMNavigationBar.h; path = UILayer/CommonUI/HMNavigationBar.h; sourceTree = "<group>"; };
+		4645D3F816FB539D00C38D39 /* HMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMNavigationBar.m; path = UILayer/CommonUI/HMNavigationBar.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
 		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				4645D3F616FB52BC00C38D39 /* CommonUI */,
 				4645D3A616F7278600C38D39 /* AccountUI */,
 				4645D39B16F68FE600C38D39 /* MenuUI */,
 				4645D39416F68EF600C38D39 /* DoneUI */,
@@ -519,6 +523,15 @@
 			name = AccountUI;
 			sourceTree = "<group>";
 		};
+		4645D3F616FB52BC00C38D39 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				4645D3F716FB539D00C38D39 /* HMNavigationBar.h */,
+				4645D3F816FB539D00C38D39 /* HMNavigationBar.m */,
+			);
+			name = CommonUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -635,6 +648,7 @@
 				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
 				EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */,
 				4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */,
+				4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
