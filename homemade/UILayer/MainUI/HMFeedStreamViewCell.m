@@ -20,6 +20,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         // Initialization code
         self.photo = [[UIImageView alloc] initWithFrame:CGRectMake(5.0, 5.0, 310.0, 310.0)];
         self.photo.tag = PHOTO_TAG;
