@@ -28,8 +28,6 @@
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.layer.cornerRadius = 5.0f;
         
-        
-        
         self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 320.0, 200.0, 20.0)];
         self.dateLabel.tag = DATE_TAG;
         self.dateLabel.font = [UIFont systemFontOfSize:12.0f];
@@ -56,15 +54,15 @@
         [self.contentView addSubview:self.dateLabel];
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.descLabel];
-
     }
+    
     return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

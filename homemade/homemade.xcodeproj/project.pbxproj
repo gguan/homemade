@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
+		462A771016FC292B00C3CBF7 /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770F16FC292B00C3CBF7 /* HMRecipeViewController.m */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
 		4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F716F44D1900C38D39 /* CoreGraphics.framework */; };
@@ -77,6 +79,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
+		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
+		462A770E16FC292B00C3CBF7 /* HMRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeViewController.h; path = UILayer/RecipeUI/HMRecipeViewController.h; sourceTree = "<group>"; };
+		462A770F16FC292B00C3CBF7 /* HMRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeViewController.m; path = UILayer/RecipeUI/HMRecipeViewController.m; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4645D2F516F44D1900C38D39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -207,6 +213,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		462A770C16FC28B800C3CBF7 /* RecipeUI */ = {
+			isa = PBXGroup;
+			children = (
+				462A770E16FC292B00C3CBF7 /* HMRecipeViewController.h */,
+				462A770F16FC292B00C3CBF7 /* HMRecipeViewController.m */,
+			);
+			name = RecipeUI;
+			sourceTree = "<group>";
+		};
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +409,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				462A770C16FC28B800C3CBF7 /* RecipeUI */,
 				4645D3F616FB52BC00C38D39 /* CommonUI */,
 				4645D3A616F7278600C38D39 /* AccountUI */,
 				4645D39B16F68FE600C38D39 /* MenuUI */,
@@ -458,6 +474,8 @@
 				EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */,
 				EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */,
 				EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */,
+				462A770616FC1B2400C3CBF7 /* HMRecipe.h */,
+				462A770716FC1B2400C3CBF7 /* HMRecipe.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -649,6 +667,8 @@
 				EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */,
 				4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */,
 				4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */,
+				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,
+				462A771016FC292B00C3CBF7 /* HMRecipeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
