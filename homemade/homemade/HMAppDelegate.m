@@ -18,6 +18,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
+    //Disable status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     self.mainPanelController = [[HMMainViewController alloc] init];
     self.mainPanelController.shouldDelegateAutorotateToVisiblePanel = NO;
     

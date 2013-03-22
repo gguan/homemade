@@ -11,6 +11,7 @@
 #import "HMFeedStreamViewCell.h"
 #import "HMFeedItem.h"
 #import "UIImageView+AFNetworking.h"
+#import "SVPullToRefresh.h"
 
 @interface HMFeedStreamViewController ()
 
@@ -40,13 +41,59 @@
 
     NSLog(@"MomentFeedView Load");
 
+//    [self reload:nil];
+    
+    
+    //SVPullToRefresh
+    // insert either the first or last feed for testing, change later
+    
+    __weak HMFeedStreamViewController *weakSelf = self;
+    
+    // setup pull-to-refresh
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        
+        int64_t delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf.tableView beginUpdates];
+            [weakSelf.feeds insertObject:[weakSelf.feeds objectAtIndex:0] atIndex:0];
+            [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+
+            [weakSelf.tableView endUpdates];
+            
+            [weakSelf.tableView.pullToRefreshView stopAnimating];
+        });
+    }];
+    
+    [self.tableView.pullToRefreshView setTitle:@"" forState:SVPullToRefreshStateAll];
+    
+    // setup infinite scrolling
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        
+        int64_t delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf.tableView beginUpdates];
+            [weakSelf.feeds addObject:weakSelf.feeds.lastObject];
+            [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.feeds.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+            [weakSelf.tableView endUpdates];
+            
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        });
+    }];
+    
+    // trigger the refresh manually at the end of viewDidLoad
+    [self.tableView triggerPullToRefresh];
+
     [self reload:nil];
+
+    
     
     //Add refreshControl
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [UIColor lightGrayColor];
-    [refreshControl addTarget:self action:@selector(updateTableView) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
+//    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+//    refreshControl.tintColor = [UIColor lightGrayColor];
+//    [refreshControl addTarget:self action:@selector(updateTableView) forControlEvents:UIControlEventValueChanged];
+//    self.refreshControl = refreshControl;
 
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -163,23 +210,23 @@
      */
 }
 
-#pragma mark View Optimization
-
--(void)updateTableView
-{
-    //Do something
-    
-    
-    //Add some delay to optimize user experience
-    [self performSelector:@selector(stopRefresh) withObject:self afterDelay:0.2];
-}
-
--(void)stopRefresh
-{
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"loading"];//Optional. Only supported in iOS6
-    [self.refreshControl endRefreshing];
-}
-
+//#pragma mark - View Optimization
+//
+//-(void)updateTableView
+//{
+//    //Do something
+//    
+//    
+//    //Add some delay to optimize user experience
+//    [self performSelector:@selector(stopRefresh) withObject:self afterDelay:0.2];
+//}
+//
+//-(void)stopRefresh
+//{
+//    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"loading"];//Optional. Only supported in iOS6
+//    [self.refreshControl endRefreshing];
+//}
+//
 
 #pragma mark - Controller methods
 
