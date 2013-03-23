@@ -66,6 +66,7 @@
 		4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */; };
 		4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */; };
 		4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F816FB539D00C38D39 /* HMNavigationBar.m */; };
+		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
 		EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */; };
@@ -175,6 +176,8 @@
 		4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewCell.m; path = UILayer/MainUI/HMFeedStreamViewCell.m; sourceTree = "<group>"; };
 		4645D3F716FB539D00C38D39 /* HMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMNavigationBar.h; path = UILayer/CommonUI/HMNavigationBar.h; sourceTree = "<group>"; };
 		4645D3F816FB539D00C38D39 /* HMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMNavigationBar.m; path = UILayer/CommonUI/HMNavigationBar.m; sourceTree = "<group>"; };
+		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
 		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
@@ -290,6 +293,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				46A7D8D816FDB5B7001C822D /* FXLabel */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
 				4645D35416F4514800C38D39 /* SVProgressHUD */,
 				4645D35016F4514200C38D39 /* SSKeychain */,
@@ -550,6 +554,16 @@
 			name = CommonUI;
 			sourceTree = "<group>";
 		};
+		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
+			isa = PBXGroup;
+			children = (
+				46A7D8D916FDB5B7001C822D /* FXLabel.h */,
+				46A7D8DA16FDB5B7001C822D /* FXLabel.m */,
+			);
+			name = FXLabel;
+			path = Vendor/FXLabel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -669,6 +683,7 @@
 				4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */,
 				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,
 				462A771016FC292B00C3CBF7 /* HMRecipeViewController.m in Sources */,
+				46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

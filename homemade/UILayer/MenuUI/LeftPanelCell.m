@@ -16,10 +16,12 @@
     if (self)
     {
 //        self.selectionStyle=UITableViewCellSelectionStyleNone;
-//        [self.textLabel setFrame:CGRectMake(0, 0, 200, 300)];
+        self.textLabel.textColor = [UIColor whiteColor];
+        self.textLabel.shadowColor = [UIColor whiteColor];
+        self.textLabel.shadowOffset = CGSizeMake(0.0, 1.0);
         [self.textLabel setBackgroundColor:[UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0]];
+        
         [self.contentView setBackgroundColor:[UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0]];
-        [self.textLabel setTextColor:[UIColor whiteColor]];
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         
         UIView *arrowView = [[UIView alloc] initWithFrame:CGRectMake(230, 10 , 24, 23)];
