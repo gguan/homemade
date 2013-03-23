@@ -23,11 +23,13 @@
     self = [super init];
     if (self) {
         UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
+        centerNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
         UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
         UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
         if (!buttonController.navigationItem.rightBarButtonItem) {
             buttonController.navigationItem.rightBarButtonItem = rightBarButton;
         }
+        buttonController.title = @"Homemade";
         
         self.centerPanel = centerNavController;
         

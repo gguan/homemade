@@ -20,6 +20,12 @@
 @end
 
 @implementation HMFeedStreamViewController
+{
+    CGFloat startContentOffset;
+    CGFloat lastContentOffset;
+    BOOL hidden;
+
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,6 +42,8 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    // Navbar is not hidden
+    hidden = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
 
@@ -227,6 +235,47 @@
 //    [self.refreshControl endRefreshing];
 //}
 //
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    startContentOffset = lastContentOffset = scrollView.contentOffset.y;
+//    //NSLog(@"scrollViewWillBeginDragging: %f", scrollView.contentOffset.y);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{    
+    CGFloat currentOffset = scrollView.contentOffset.y;
+    CGFloat differenceFromStart = startContentOffset - currentOffset;
+    CGFloat differenceFromLast = lastContentOffset - currentOffset;
+    lastContentOffset = currentOffset;
+
+    if(differenceFromStart < 0) {
+        // scroll up
+        if(scrollView.isTracking && (abs(differenceFromLast)>1)) {
+            if(hidden)
+                return;
+            
+            hidden = YES;
+            
+            [self.navigationController setNavigationBarHidden:YES
+                                                     animated:YES];
+        }
+            
+    } else {
+        if(scrollView.isTracking && (abs(differenceFromLast)>1)) {
+            if(!hidden)
+                return;
+            
+            hidden = NO;
+            
+            [self.navigationController setNavigationBarHidden:NO
+                                                     animated:YES];
+        }
+    }
+}
+
 
 #pragma mark - Controller methods
 

@@ -27,10 +27,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-//        [self.tableView setSeparatorColor:[UIColor colorWithRed:39.0/255.0 green:37.0/255.0 blue:39.0/255.0 alpha:1.0]];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
-//        self.tableView.bounces = NO;
     }
     return self;
 }
