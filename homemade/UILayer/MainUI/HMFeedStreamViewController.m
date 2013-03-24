@@ -70,6 +70,8 @@
             [weakSelf.tableView endUpdates];
             
             [weakSelf.tableView.pullToRefreshView stopAnimating];
+            
+            [weakSelf contract];
         });
     }];
     
@@ -87,6 +89,8 @@
             [weakSelf.tableView endUpdates];
             
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
+            
+            [weakSelf contract];
         });
     }];
     
@@ -238,10 +242,21 @@
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
+
+// After pullToRefresh, need to set the offset to top
+-(void)contract
+{
+    hidden = NO;
+    [self.navigationController setNavigationBarHidden:NO
+                                             animated:YES];
+    [self.tableView setContentOffset:CGPointZero];
+}
+
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     startContentOffset = lastContentOffset = scrollView.contentOffset.y;
-//    //NSLog(@"scrollViewWillBeginDragging: %f", scrollView.contentOffset.y);
+    NSLog(@"scrollViewWillBeginDragging: %f", scrollView.contentOffset.y);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
