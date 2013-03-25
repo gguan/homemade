@@ -7,6 +7,7 @@
 //
 
 #import "HMAppDelegate.h"
+#import "AFNetworking.h"
 #import "JASidePanelController.h"
 #import "HMMainViewController.h"
 
@@ -15,15 +16,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // AFNetworking initialization
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
+    // Initialize panel controller
     self.mainPanelController = [[HMMainViewController alloc] init];
     self.mainPanelController.shouldDelegateAutorotateToVisiblePanel = NO;
     
     self.window.rootViewController = self.mainPanelController;
-    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
