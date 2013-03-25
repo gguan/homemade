@@ -22,6 +22,10 @@
 {
     self = [super init];
     if (self) {
+        self.leftGapPercentage = 0.85f;
+        self.rightGapPercentage = 0.93f;
+        
+        
         UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
         centerNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
         UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
