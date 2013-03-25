@@ -89,8 +89,6 @@
             [weakSelf.tableView endUpdates];
             
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
-            
-            [weakSelf contract];
         });
     }];
     
