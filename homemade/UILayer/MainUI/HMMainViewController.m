@@ -10,6 +10,7 @@
 #import "HMFeedStreamViewController.h"
 #import "HMMenuViewController.h"
 #import "HMSearchViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "UIViewController+JASidePanel.h"
 
 @interface HMMainViewController ()
@@ -57,6 +58,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)stylePanel:(UIView *)panel {
+    panel.layer.cornerRadius = 3.0f;
+    panel.clipsToBounds = YES;
 }
 
 @end
