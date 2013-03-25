@@ -246,47 +246,40 @@
 // After pullToRefresh, need to set the offset to top
 -(void)contract
 {
+    startContentOffset = 0.0f;
     hidden = NO;
-    [self.navigationController setNavigationBarHidden:NO
-                                             animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.tableView setContentOffset:CGPointZero];
 }
 
-
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    startContentOffset = lastContentOffset = scrollView.contentOffset.y;
-    NSLog(@"scrollViewWillBeginDragging: %f", scrollView.contentOffset.y);
+    
+    startContentOffset = scrollView.contentOffset.y;
+//    NSLog(@"scrollViewWillBeginDragging: %f", scrollView.contentOffset.y);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {    
     CGFloat currentOffset = scrollView.contentOffset.y;
     CGFloat differenceFromStart = startContentOffset - currentOffset;
-    CGFloat differenceFromLast = lastContentOffset - currentOffset;
-    lastContentOffset = currentOffset;
-
+    
     if(differenceFromStart < 0) {
         // scroll up
-        if(scrollView.isTracking && (abs(differenceFromLast)>1)) {
-            if(hidden)
-                return;
+        if(scrollView.isTracking) {
+            if(hidden) return;
             
             hidden = YES;
             
-            [self.navigationController setNavigationBarHidden:YES
-                                                     animated:YES];
+            [self.navigationController setNavigationBarHidden:YES animated:YES]; 
         }
-            
     } else {
-        if(scrollView.isTracking && (abs(differenceFromLast)>1)) {
-            if(!hidden)
-                return;
+        if(scrollView.isTracking) {
+            if(!hidden) return;
             
             hidden = NO;
             
-            [self.navigationController setNavigationBarHidden:NO
-                                                     animated:YES];
+            [self.navigationController setNavigationBarHidden:NO animated:YES];
         }
     }
 }
