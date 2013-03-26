@@ -14,6 +14,8 @@
 #import "HMSaveViewController.h"
 #import "HMAccountViewController.h"
 #import "HMSettingViewController.h"
+#import "EDColor.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface HMMenuViewController ()
 
@@ -28,7 +30,7 @@
     if (self) {
         // Custom initialization
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:57.0/255.0 blue:59.0/255.0 alpha:1.0];
+        self.tableView.backgroundColor = [UIColor colorWithHex:0xEDEBDD];
     }
     return self;
 }
@@ -72,62 +74,25 @@
     // Configure the cell...
     if (cell == nil) {
         cell = [[LeftPanelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor blueColor];
     }
     
-    if (indexPath.row == 0)
-    {
-        UIView *blendViewTopDark = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 320, 2)];
-        blendViewTopDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
-        [cell.contentView addSubview:blendViewTopDark];
-        UIView *blendViewBottomDark = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
-        blendViewBottomDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
-        [cell.contentView addSubview:blendViewBottomDark];
-        
-        UIView *blendViewBottomDark1 = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 2)];
-        blendViewBottomDark1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
-        [cell.contentView addSubview:blendViewBottomDark1];
-    }
-    else if(indexPath.row == 3)
-    {
-        UIView *blendViewTopDark1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
-        blendViewTopDark1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
-        [cell.contentView addSubview:blendViewTopDark1];
-        
-        UIView *blendViewTopDark = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 2)];
-        blendViewTopDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
-        [cell.contentView addSubview:blendViewTopDark];
-        UIView *blendViewBottomDark = [[UIView alloc] initWithFrame:CGRectMake(0, 41, 320, 2)];
-        blendViewBottomDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
-        [cell.contentView addSubview:blendViewBottomDark];
-
-    }
-    else
-    {
-        UIView *blendViewTopDark = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 2)];
-        blendViewTopDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_bottom.png"]];
-        [cell.contentView addSubview:blendViewTopDark];
-        UIView *blendViewBottomDark = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 2)];
-        blendViewBottomDark.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blend_top.png"]];
-        [cell.contentView addSubview:blendViewBottomDark];
-
-    }
-
     switch ([indexPath row]) {
         case 0:
-            cell.imageView.image = [UIImage imageNamed:@"icon_cloud.png"];
-            cell.textLabel.text = @"Today";
+            [cell.icon setImage:[UIImage imageNamed:@"icons_1.png"]];
+            cell.contentView.backgroundColor = [UIColor colorWithHex:0x3CDDC9];
             break;
         case 1:
-            cell.imageView.image = [UIImage imageNamed:@"icon_heart.png"];
-            cell.textLabel.text = @"Save";
+            [cell.icon setImage:[UIImage imageNamed:@"icons_2.png"]];
+            cell.contentView.backgroundColor = [UIColor colorWithHex:0xFB5755];
             break;
         case 2:
-            cell.imageView.image = [UIImage imageNamed:@"icon_date.png"];
-            cell.textLabel.text = @"Done";
+            [cell.icon setImage:[UIImage imageNamed:@"icons_3.png"]];
+            cell.contentView.backgroundColor = [UIColor colorWithHex:0x7F4E75];
             break;
         case 3:
-            cell.imageView.image = [UIImage imageNamed:@"icon_setting.png"];
-            cell.textLabel.text = @"Setting";
+            [cell.icon setImage:[UIImage imageNamed:@"icons_4.png"]];
+            cell.contentView.backgroundColor = [UIColor colorWithHex:0xCCD5C0];
             break;
         case 4:
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -140,15 +105,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if(indexPath.row == 4)
-//    {
-//        if ([[UIScreen mainScreen] bounds].size.height == 568) //4 inch screen
-//            return 280+88;
-//        else //3.5 inch screen
-//            return 280;
-//    }
-//    else
-        return 45;
+        return 60;
 }
 
 

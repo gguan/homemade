@@ -10,4 +10,6 @@
 
 @interface LeftPanelCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *icon;
+
 @end

@@ -67,6 +67,15 @@
 		4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F816FB539D00C38D39 /* HMNavigationBar.m */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
 		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
+		466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */; };
+		466F4F851701A61B0076AB3D /* UIColor+Crayola.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7D1701A61B0076AB3D /* UIColor+Crayola.m */; };
+		466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */; };
+		466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F811701A61B0076AB3D /* UIColor+HSB.m */; };
+		466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F831701A61B0076AB3D /* UIColor+HSL.m */; };
+		466F4F8A1701AD5B0076AB3D /* icons_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4F891701AD5B0076AB3D /* icons_1.png */; };
+		466F4F8C1701B5850076AB3D /* icons_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4F8B1701B5850076AB3D /* icons_2.png */; };
+		466F4F8E1701B76E0076AB3D /* icons_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4F8D1701B76E0076AB3D /* icons_3.png */; };
+		466F4F901701B77B0076AB3D /* icons_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4F8F1701B77B0076AB3D /* icons_4.png */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
@@ -179,6 +188,22 @@
 		466F4F72170154860076AB3D /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		466F4F73170154860076AB3D /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		466F4F74170154860076AB3D /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		466F4F781701A61B0076AB3D /* Crayola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crayola.h; sourceTree = "<group>"; };
+		466F4F791701A61B0076AB3D /* EDColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDColor.h; sourceTree = "<group>"; };
+		466F4F7A1701A61B0076AB3D /* UIColor+CIELAB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CIELAB.h"; sourceTree = "<group>"; };
+		466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIELAB.m"; sourceTree = "<group>"; };
+		466F4F7C1701A61B0076AB3D /* UIColor+Crayola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Crayola.h"; sourceTree = "<group>"; };
+		466F4F7D1701A61B0076AB3D /* UIColor+Crayola.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Crayola.m"; sourceTree = "<group>"; };
+		466F4F7E1701A61B0076AB3D /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		466F4F801701A61B0076AB3D /* UIColor+HSB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HSB.h"; sourceTree = "<group>"; };
+		466F4F811701A61B0076AB3D /* UIColor+HSB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HSB.m"; sourceTree = "<group>"; };
+		466F4F821701A61B0076AB3D /* UIColor+HSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HSL.h"; sourceTree = "<group>"; };
+		466F4F831701A61B0076AB3D /* UIColor+HSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HSL.m"; sourceTree = "<group>"; };
+		466F4F891701AD5B0076AB3D /* icons_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons_1.png; path = Resources/icons_1.png; sourceTree = "<group>"; };
+		466F4F8B1701B5850076AB3D /* icons_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons_2.png; path = Resources/icons_2.png; sourceTree = "<group>"; };
+		466F4F8D1701B76E0076AB3D /* icons_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons_3.png; path = Resources/icons_3.png; sourceTree = "<group>"; };
+		466F4F8F1701B77B0076AB3D /* icons_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons_4.png; path = Resources/icons_4.png; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
@@ -296,6 +321,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				466F4F771701A61B0076AB3D /* EDColor */,
 				46A7D8D816FDB5B7001C822D /* FXLabel */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
 				4645D35416F4514800C38D39 /* SVProgressHUD */,
@@ -310,6 +336,10 @@
 		4645D32216F44E2400C38D39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				466F4F8F1701B77B0076AB3D /* icons_4.png */,
+				466F4F8D1701B76E0076AB3D /* icons_3.png */,
+				466F4F8B1701B5850076AB3D /* icons_2.png */,
+				466F4F891701AD5B0076AB3D /* icons_1.png */,
 				4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */,
 				EAB6D50716F72A1600A3616F /* arrow_right.png */,
 				EAB6D50916F856FC00A3616F /* arrow_right@2x.png */,
@@ -559,6 +589,26 @@
 			name = CommonUI;
 			sourceTree = "<group>";
 		};
+		466F4F771701A61B0076AB3D /* EDColor */ = {
+			isa = PBXGroup;
+			children = (
+				466F4F781701A61B0076AB3D /* Crayola.h */,
+				466F4F791701A61B0076AB3D /* EDColor.h */,
+				466F4F7A1701A61B0076AB3D /* UIColor+CIELAB.h */,
+				466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */,
+				466F4F7C1701A61B0076AB3D /* UIColor+Crayola.h */,
+				466F4F7D1701A61B0076AB3D /* UIColor+Crayola.m */,
+				466F4F7E1701A61B0076AB3D /* UIColor+Hex.h */,
+				466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */,
+				466F4F801701A61B0076AB3D /* UIColor+HSB.h */,
+				466F4F811701A61B0076AB3D /* UIColor+HSB.m */,
+				466F4F821701A61B0076AB3D /* UIColor+HSL.h */,
+				466F4F831701A61B0076AB3D /* UIColor+HSL.m */,
+			);
+			name = EDColor;
+			path = Vendor/EDColor;
+			sourceTree = "<group>";
+		};
 		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +690,10 @@
 				EAB6D51116F857F700A3616F /* blend_top.png in Resources */,
 				EAB6D51216F857F700A3616F /* blend_top@2x.png in Resources */,
 				4645D3C016F9859C00C38D39 /* HM_app_icon 2.png in Resources */,
+				466F4F8A1701AD5B0076AB3D /* icons_1.png in Resources */,
+				466F4F8C1701B5850076AB3D /* icons_2.png in Resources */,
+				466F4F8E1701B76E0076AB3D /* icons_3.png in Resources */,
+				466F4F901701B77B0076AB3D /* icons_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +744,11 @@
 				46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */,
 				466F4F75170154860076AB3D /* SSKeychain.m in Sources */,
 				466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */,
+				466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */,
+				466F4F851701A61B0076AB3D /* UIColor+Crayola.m in Sources */,
+				466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */,
+				466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */,
+				466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
