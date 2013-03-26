@@ -92,7 +92,7 @@
             break;
         case 3:
             [cell.icon setImage:[UIImage imageNamed:@"icons_4.png"]];
-            cell.contentView.backgroundColor = [UIColor colorWithHex:0xCCD5C0];
+            cell.contentView.backgroundColor = [UIColor colorWithHex:0xD9D3BC];
             break;
         case 4:
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
