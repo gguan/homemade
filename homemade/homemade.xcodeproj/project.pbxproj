@@ -40,7 +40,6 @@
 		4645D34816F4513600C38D39 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34616F4513600C38D39 /* UIImage+FX.m */; };
 		4645D34E16F4513C00C38D39 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34B16F4513C00C38D39 /* JASidePanelController.m */; };
 		4645D34F16F4513C00C38D39 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34D16F4513C00C38D39 /* UIViewController+JASidePanel.m */; };
-		4645D35316F4514200C38D39 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35216F4514200C38D39 /* SSKeychain.m */; };
 		4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4645D35516F4514800C38D39 /* SVProgressHUD.bundle */; };
 		4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35716F4514800C38D39 /* SVProgressHUD.m */; };
 		4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */; };
@@ -66,6 +65,8 @@
 		4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */; };
 		4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */; };
 		4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F816FB539D00C38D39 /* HMNavigationBar.m */; };
+		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
+		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
@@ -133,8 +134,6 @@
 		4645D34B16F4513C00C38D39 /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
 		4645D34C16F4513C00C38D39 /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
 		4645D34D16F4513C00C38D39 /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
-		4645D35116F4514200C38D39 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		4645D35216F4514200C38D39 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		4645D35516F4514800C38D39 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		4645D35616F4514800C38D39 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		4645D35716F4514800C38D39 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -176,6 +175,10 @@
 		4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewCell.m; path = UILayer/MainUI/HMFeedStreamViewCell.m; sourceTree = "<group>"; };
 		4645D3F716FB539D00C38D39 /* HMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMNavigationBar.h; path = UILayer/CommonUI/HMNavigationBar.h; sourceTree = "<group>"; };
 		4645D3F816FB539D00C38D39 /* HMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMNavigationBar.m; path = UILayer/CommonUI/HMNavigationBar.m; sourceTree = "<group>"; };
+		466F4F71170154860076AB3D /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		466F4F72170154860076AB3D /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		466F4F73170154860076AB3D /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		466F4F74170154860076AB3D /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
@@ -379,8 +382,10 @@
 		4645D35016F4514200C38D39 /* SSKeychain */ = {
 			isa = PBXGroup;
 			children = (
-				4645D35116F4514200C38D39 /* SSKeychain.h */,
-				4645D35216F4514200C38D39 /* SSKeychain.m */,
+				466F4F71170154860076AB3D /* SSKeychain.h */,
+				466F4F72170154860076AB3D /* SSKeychain.m */,
+				466F4F73170154860076AB3D /* SSKeychainQuery.h */,
+				466F4F74170154860076AB3D /* SSKeychainQuery.m */,
 			);
 			name = SSKeychain;
 			path = Vendor/SSKeychain;
@@ -661,7 +666,6 @@
 				4645D34816F4513600C38D39 /* UIImage+FX.m in Sources */,
 				4645D34E16F4513C00C38D39 /* JASidePanelController.m in Sources */,
 				4645D34F16F4513C00C38D39 /* UIViewController+JASidePanel.m in Sources */,
-				4645D35316F4514200C38D39 /* SSKeychain.m in Sources */,
 				4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
@@ -684,6 +688,8 @@
 				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,
 				462A771016FC292B00C3CBF7 /* HMRecipeViewController.m in Sources */,
 				46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */,
+				466F4F75170154860076AB3D /* SSKeychain.m in Sources */,
+				466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
