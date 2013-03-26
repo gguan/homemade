@@ -10,6 +10,7 @@
 #import "HMFeedStreamViewController.h"
 #import "HMMenuViewController.h"
 #import "HMSearchViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "UIViewController+JASidePanel.h"
 
 @interface HMMainViewController ()
@@ -22,6 +23,10 @@
 {
     self = [super init];
     if (self) {
+        self.leftGapPercentage = 0.85f;
+        self.rightGapPercentage = 0.93f;
+        
+        
         UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
         centerNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
         UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
@@ -53,6 +58,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)stylePanel:(UIView *)panel {
+    panel.layer.cornerRadius = 3.0f;
+    panel.clipsToBounds = YES;
 }
 
 @end
