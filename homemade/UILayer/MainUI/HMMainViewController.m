@@ -25,7 +25,7 @@
     if (self) {
         self.leftFixedWidth = 70.0f;
         self.rightGapPercentage = 0.93f;
-        
+        self.bounceDuration = 0.4f;
         
         UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
         centerNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
