@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMRecipeViewController : UIViewController
+@interface HMRecipeViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate>
+
 
 @property (strong, nonatomic) IBOutlet UIImageView  *photo;
 @property (strong, nonatomic) IBOutlet UILabel      *titleLabel;
@@ -20,5 +21,7 @@
 
 @property (strong, nonatomic) NSMutableArray *ingredients;
 @property (strong, nonatomic) NSMutableArray *steps;
+
+@property (strong, nonatomic) UITableView *recipeDetailView;
 
 @end

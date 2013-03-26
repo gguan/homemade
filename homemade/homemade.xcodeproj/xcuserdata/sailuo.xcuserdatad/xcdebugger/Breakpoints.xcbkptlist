@@ -32,12 +32,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UILayer/MainUI/HMFeedStreamViewController.m"
-         timestampString = "385630252.217339"
+         timestampString = "385974667.460075"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
          landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "UILayer/RecipeUI/HMRecipeViewController.m"
+         timestampString = "385978415.57223"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

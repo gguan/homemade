@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+//Used for parsing JSON downloaded from server
+
 #import <Foundation/Foundation.h>
 #import "HMFeedItem.h"
 

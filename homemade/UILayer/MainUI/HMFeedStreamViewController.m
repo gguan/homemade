@@ -12,6 +12,7 @@
 #import "HMFeedItem.h"
 #import "UIImageView+AFNetworking.h"
 #import "SVPullToRefresh.h"
+#import "HMRecipeViewController.h"
 
 @interface HMFeedStreamViewController ()
 
@@ -211,13 +212,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //For testing, point to the same HMRecipeViewController,add properties later
+    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
+    [[self navigationController] pushViewController:recipeViewController animated:YES];
+    
 }
 
 //#pragma mark - View Optimization
