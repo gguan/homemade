@@ -168,11 +168,6 @@
             }
             if (self.feedStreamViewController == nil) {
                 UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
-                UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
-                UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
-                if (!buttonController.navigationItem.rightBarButtonItem) {
-                    buttonController.navigationItem.rightBarButtonItem = rightBarButton;
-                }
                 self.feedStreamViewController = centerNavController;
                 self.sidePanelController.centerPanel = centerNavController;
             } else {
@@ -186,11 +181,6 @@
             }
             if (self.saveViewController == nil) {
                 UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMSaveViewController alloc] init]];
-                UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
-                UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
-                if (!buttonController.navigationItem.rightBarButtonItem) {
-                    buttonController.navigationItem.rightBarButtonItem = rightBarButton;
-                }
                 self.saveViewController = centerNavController;
                 self.sidePanelController.centerPanel = centerNavController;
             } else {

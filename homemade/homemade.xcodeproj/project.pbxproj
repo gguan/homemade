@@ -81,6 +81,7 @@
 		466F4FA817030A000076AB3D /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA01703093B0076AB3D /* HMIngredientCell.m */; };
 		466F4FA917030A030076AB3D /* HMRecipeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA21703093B0076AB3D /* HMRecipeStepCell.m */; };
 		466F4FAA17030A050076AB3D /* HMRecipeTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA41703093B0076AB3D /* HMRecipeTipCell.m */; };
+		466F4FAC1703144E0076AB3D /* icons_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4FAB1703144E0076AB3D /* icons_menu.png */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
@@ -217,6 +218,7 @@
 		466F4FA41703093B0076AB3D /* HMRecipeTipCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeTipCell.m; path = UILayer/RecipeUI/HMRecipeTipCell.m; sourceTree = "<group>"; };
 		466F4FA51703093B0076AB3D /* HMRecipeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeViewController.h; path = UILayer/RecipeUI/HMRecipeViewController.h; sourceTree = "<group>"; };
 		466F4FA61703093B0076AB3D /* HMRecipeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeViewController.m; path = UILayer/RecipeUI/HMRecipeViewController.m; sourceTree = "<group>"; };
+		466F4FAB1703144E0076AB3D /* icons_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons_menu.png; path = Resources/icons_menu.png; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		4645D32216F44E2400C38D39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				466F4FAB1703144E0076AB3D /* icons_menu.png */,
 				466F4F951703046F0076AB3D /* icons_search.png */,
 				466F4F931702FDAB0076AB3D /* nav-bar@2x.png */,
 				466F4F8F1701B77B0076AB3D /* icons_4.png */,
@@ -717,6 +720,7 @@
 				466F4F901701B77B0076AB3D /* icons_4.png in Resources */,
 				466F4F941702FDAB0076AB3D /* nav-bar@2x.png in Resources */,
 				466F4F961703046F0076AB3D /* icons_search.png in Resources */,
+				466F4FAC1703144E0076AB3D /* icons_menu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

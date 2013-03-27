@@ -15,6 +15,7 @@
 #import "HMRecipeViewController.h"
 #import "UIViewController+JASidePanel.h"
 #import "JASidePanelController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface HMFeedStreamViewController ()
 
@@ -49,7 +50,19 @@
     hidden = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
+    UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];
+    [btnImage setImage:[UIImage imageNamed:@"icons_search.png"]];
+    btnImage.alpha = 0.6f;
+    btnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+    btnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+    btnImage.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(0.0f, 12.0f, 32.0f, 20.0f);
+    [rightButton addSubview:btnImage];
+    [rightButton addTarget:self action:@selector(toggleRightPanel:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     self.title = @"Homemade";
@@ -273,7 +286,7 @@
     
     if(differenceFromStart < 0) {
         // scroll up
-        if(scrollView.isTracking) {
+        if(scrollView.isTracking && abs(differenceFromStart) > 1.0) {
             if(hidden) return;
             
             hidden = YES;
@@ -281,7 +294,7 @@
             [self.navigationController setNavigationBarHidden:YES animated:YES]; 
         }
     } else {
-        if(scrollView.isTracking) {
+        if(scrollView.isTracking && abs(differenceFromStart) > 1.0) {
             if(!hidden) return;
             
             hidden = NO;
