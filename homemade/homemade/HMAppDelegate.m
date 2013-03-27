@@ -30,6 +30,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
+    [self customizeAppearance];
+    
     // Initialize panel controller
     self.mainPanelController = [[HMMainViewController alloc] init];
     self.mainPanelController.shouldDelegateAutorotateToVisiblePanel = NO;
@@ -141,6 +143,11 @@
     return _persistentStoreCoordinator;
 }
 
+#pragma mark - Customize Style
+- (void)customizeAppearance {
+    UIImage *navBarImage = [UIImage imageNamed:@"nav-bar"];
+    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 
+}
 
 @end

@@ -13,6 +13,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "SVPullToRefresh.h"
 #import "HMRecipeViewController.h"
+#import "UIViewController+JASidePanel.h"
+#import "JASidePanelController.h"
 
 @interface HMFeedStreamViewController ()
 
@@ -46,9 +48,14 @@
     // Navbar is not hidden
     hidden = NO;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
+    [self.navigationItem setRightBarButtonItem:rightBarButton];
+    
+    self.title = @"Homemade";
 
 
-    NSLog(@"MomentFeedView Load");
+    NSLog(@"FeedView Load");
 
 //    [self reload:nil];
     
@@ -122,6 +129,10 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (void)toggleRightPanel:(id)sender {
+    [self.sidePanelController toggleRightPanel:nil];
 }
 
 

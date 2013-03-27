@@ -12,6 +12,7 @@
 #import "HMSearchViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIViewController+JASidePanel.h"
+#import "HMNavigationBar.h"
 
 @interface HMMainViewController ()
 
@@ -25,23 +26,13 @@
     if (self) {
         self.leftFixedWidth = 70.0f;
         self.rightGapPercentage = 0.93f;
-        self.bounceDuration = 0.4f;
         
         UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
-        centerNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleRightPanel:)];
-        UIViewController *buttonController = [centerNavController.viewControllers objectAtIndex:0];
-        if (!buttonController.navigationItem.rightBarButtonItem) {
-            buttonController.navigationItem.rightBarButtonItem = rightBarButton;
-        }
-        buttonController.title = @"Homemade";
-        
-        self.centerPanel = centerNavController;
-        
         HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
-
         menuController.feedStreamViewController = centerNavController;
         menuController.sidePanelController.centerPanel = centerNavController;
+        
+        self.centerPanel = centerNavController;
         self.leftPanel = menuController;
         self.rightPanel = [[HMSearchViewController alloc] init];
     }
@@ -53,6 +44,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -66,15 +58,7 @@
 }
 
 - (void)styleContainer:(UIView *)container animate:(BOOL)animate duration:(NSTimeInterval)duration {
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRoundedRect:container.bounds cornerRadius:0.0f];
-    if (animate) {
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"shadowPath"];
-        animation.fromValue = (id)container.layer.shadowPath;
-        animation.toValue = (id)shadowPath.CGPath;
-        animation.duration = duration;
-        [container.layer addAnimation:animation forKey:@"shadowPath"];
-    }
-    container.layer.shadowPath = shadowPath.CGPath;
+    [super styleContainer:container animate:animate duration:duration];
     container.layer.shadowColor = [UIColor blackColor].CGColor;
     container.layer.shadowRadius = 5.0f;
     container.layer.shadowOpacity = 0.75f;
