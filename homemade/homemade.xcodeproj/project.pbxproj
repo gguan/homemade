@@ -77,6 +77,10 @@
 		466F4F8E1701B76E0076AB3D /* icons_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4F8D1701B76E0076AB3D /* icons_3.png */; };
 		466F4F901701B77B0076AB3D /* icons_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 466F4F8F1701B77B0076AB3D /* icons_4.png */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
+		EAA167FF1702D36B00A7D473 /* recipeTestImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAA167FE1702D36B00A7D473 /* recipeTestImage.jpg */; };
+		EAA168021702E25300A7D473 /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA168011702E25300A7D473 /* HMIngredientCell.m */; };
+		EAA168051702E28F00A7D473 /* HMRecipeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA168041702E28F00A7D473 /* HMRecipeStepCell.m */; };
+		EAA168081702EBCC00A7D473 /* HMRecipeTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA168071702EBCC00A7D473 /* HMRecipeTipCell.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
 		EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */; };
@@ -206,6 +210,13 @@
 		466F4F8F1701B77B0076AB3D /* icons_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons_4.png; path = Resources/icons_4.png; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		EAA167FE1702D36B00A7D473 /* recipeTestImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = recipeTestImage.jpg; path = Resources/recipeTestImage.jpg; sourceTree = "<group>"; };
+		EAA168001702E25300A7D473 /* HMIngredientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMIngredientCell.h; path = UILayer/RecipeUI/HMIngredientCell.h; sourceTree = "<group>"; };
+		EAA168011702E25300A7D473 /* HMIngredientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIngredientCell.m; path = UILayer/RecipeUI/HMIngredientCell.m; sourceTree = "<group>"; };
+		EAA168031702E28F00A7D473 /* HMRecipeStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeStepCell.h; path = UILayer/RecipeUI/HMRecipeStepCell.h; sourceTree = "<group>"; };
+		EAA168041702E28F00A7D473 /* HMRecipeStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeStepCell.m; path = UILayer/RecipeUI/HMRecipeStepCell.m; sourceTree = "<group>"; };
+		EAA168061702EBCC00A7D473 /* HMRecipeTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeTipCell.h; path = UILayer/RecipeUI/HMRecipeTipCell.h; sourceTree = "<group>"; };
+		EAA168071702EBCC00A7D473 /* HMRecipeTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeTipCell.m; path = UILayer/RecipeUI/HMRecipeTipCell.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
 		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
@@ -249,6 +260,12 @@
 			children = (
 				462A770E16FC292B00C3CBF7 /* HMRecipeViewController.h */,
 				462A770F16FC292B00C3CBF7 /* HMRecipeViewController.m */,
+				EAA168001702E25300A7D473 /* HMIngredientCell.h */,
+				EAA168011702E25300A7D473 /* HMIngredientCell.m */,
+				EAA168031702E28F00A7D473 /* HMRecipeStepCell.h */,
+				EAA168041702E28F00A7D473 /* HMRecipeStepCell.m */,
+				EAA168061702EBCC00A7D473 /* HMRecipeTipCell.h */,
+				EAA168071702EBCC00A7D473 /* HMRecipeTipCell.m */,
 			);
 			name = RecipeUI;
 			sourceTree = "<group>";
@@ -353,6 +370,7 @@
 				4645D37416F5288900C38D39 /* icon_heart.png */,
 				4645D37516F5288900C38D39 /* icon_search.png */,
 				4645D37616F5288900C38D39 /* icon_setting.png */,
+				EAA167FE1702D36B00A7D473 /* recipeTestImage.jpg */,
 				4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */,
 			);
 			name = Resources;
@@ -694,6 +712,7 @@
 				466F4F8C1701B5850076AB3D /* icons_2.png in Resources */,
 				466F4F8E1701B76E0076AB3D /* icons_3.png in Resources */,
 				466F4F901701B77B0076AB3D /* icons_4.png in Resources */,
+				EAA167FF1702D36B00A7D473 /* recipeTestImage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +768,9 @@
 				466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */,
 				466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */,
 				466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */,
+				EAA168021702E25300A7D473 /* HMIngredientCell.m in Sources */,
+				EAA168051702E28F00A7D473 /* HMRecipeStepCell.m in Sources */,
+				EAA168081702EBCC00A7D473 /* HMRecipeTipCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,9 @@
 //
 
 #import "HMRecipeViewController.h"
+#import "HMIngredientCell.h"
+#import "HMRecipeStepCell.h"
+#import "HMRecipeTipCell.h"
 
 @interface HMRecipeViewController ()
 
@@ -14,7 +17,7 @@
 
 @implementation HMRecipeViewController
 
-@synthesize photo,titleLabel,descLabel,saveButton,ingredientsView,stepsView,ingredients,steps,recipeDetailView;
+@synthesize photo,titleLabel,descLabel,saveButton,ingredientsView,stepsView,ingredients,steps,recipeDetailView,tips;
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 //{
@@ -51,31 +54,66 @@
     
         
         //Add descripiton view
-        NSString *desc = @"First Paragraph: This is for testing testing testing!!!This is for testing testing testing!!!This is for testing testing testing!!!  \n\nSecond Paragraph: This is for testing testing testing!!! This is for testing testing testing!!!  This is for testing testing testing!!!  \n\nThird Paragraph: This is for testing testing testing!!!  This is for testing testing testing!!! This is for testing testing testing!!! ";
-        UIFont *descLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:11];
-        int descHeight = [self calculateContentHeight:desc withFont:descLabelFont];
+        //Right now hardcode for text. Later all those values are from feedItem.
+        self.titleLabel = @"Title";
+        self.descLabel =  @"First Paragraph: This is for testing testing testing!!!This is for testing testing testing!!!This is for testing testing testing!!!  \n\nSecond Paragraph: This is for testing testing testing!!! This is for testing testing testing!!!  This is for testing testing testing!!!  \n\nThird Paragraph: This is for testing testing testing!!!  This is for testing testing testing!!! This is for testing testing testing!!! ";
+
+        UIFont *titleLabelFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+        int titleHeight = [self calculateContentHeight:self.titleLabel withFont:titleLabelFont];
+
         
-        int imageHeight = 0;
-        int descViewHeight =  descHeight+imageHeight;
-        UIView *descriptionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, descViewHeight)];
-        UILabel *dLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageHeight, 320, descHeight)];
+        UIFont *descLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
+        int descHeight = [self calculateContentHeight:self.descLabel withFont:descLabelFont];
+        
+        int imageHeight = 260; //Image height is 240, 20 bottom margin in ImageView
+        UIImageView *recipeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"recipeTestImage.jpg"]];
+    
+        int marginUnderDes = 20;
+        int descViewHeight =  imageHeight + titleHeight + descHeight + marginUnderDes;
+        UIView *descriptionView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, 280, descViewHeight)];
+        
+        UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageHeight, 280, titleHeight)];
+        tLabel.numberOfLines = 0;
+        tLabel.text = self.titleLabel;
+        tLabel.textColor = [UIColor blackColor];
+        tLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+        tLabel.font = titleLabelFont;
+        [descriptionView addSubview:tLabel];
+
+        UILabel *dLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageHeight + titleHeight, 280, descHeight)];
         dLabel.numberOfLines = 0;
-        dLabel.text = desc;
+        dLabel.text = self.descLabel;
         dLabel.textColor = [UIColor blackColor];
-        dLabel.backgroundColor = [UIColor blueColor];
+        dLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+        dLabel.font = descLabelFont;
+        [descriptionView addSubview:recipeImageView];
         [descriptionView addSubview:dLabel];
         
         self.recipeDetailView.tableHeaderView = descriptionView;
-        self.recipeDetailView.tableHeaderView.backgroundColor = [UIColor blueColor];
+        self.recipeDetailView.tableHeaderView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
         
         
         //For testing
         self.steps = [[NSMutableArray alloc] init];
         for (int i = 0; i<10;i++)
         {
-            NSString *testStepString = [NSString stringWithFormat:@"Step %d",i];
-            [self.steps addObject:testStepString];
+            NSString *testString = [NSString stringWithFormat:@"Step %d",i];
+            [self.steps addObject:testString];
         }
+        self.ingredients = [[NSMutableArray alloc] init];
+        for (int i = 0; i<10;i++)
+        {
+            NSString *testString = [NSString stringWithFormat:@"Ingredients %d",i];
+            [self.ingredients addObject:testString];
+        }
+        self.tips = [[NSMutableArray alloc] init];
+        for (int i = 0; i<5;i++)
+        {
+            NSString *testString = [NSString stringWithFormat:@"Tips %d",i];
+            [self.tips addObject:testString];
+        }
+
+
         
     }
     return self;
@@ -99,19 +137,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return [self.steps count];
+            return [self.ingredients count];
             break;
             
         case 1:
-            return 1;
+            return [self.steps count];;
             break;
+        case 2:
+            return [self.tips count];
+            break;
+            
         default:
             return 0;
             break;
@@ -121,29 +163,150 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"recipeViewCell"];
-    cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
-    cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+    switch (indexPath.section) {
+        case 0:
+        {
+            HMIngredientCell* cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMIngredientCell"];
+            cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            
+            [cell.textLabel setTextColor:[UIColor blackColor]];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            NSString *detailString = [self.ingredients objectAtIndex:indexPath.row];
+            [cell.textLabel setText:detailString];
+            return cell;
+            break;
+        }
+        case 1:
+        {
+            HMRecipeStepCell* cell = [[HMRecipeStepCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMRecipeStepCell"];
+            cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            
+            [cell.textLabel setTextColor:[UIColor blackColor]];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            NSString *detailString = [self.steps objectAtIndex:indexPath.row];
+            [cell.textLabel setText:detailString];
+            return cell;
+            break;
+        }
+        case 2:
+        {
+            HMRecipeTipCell* cell = [[HMRecipeTipCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMRecipeTipCell"];
+            cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            
+            [cell.textLabel setTextColor:[UIColor blackColor]];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            NSString *detailString = [self.tips objectAtIndex:indexPath.row];
+            [cell.textLabel setText:detailString];
+            return cell;
+            break;
+        }
 
-    [cell.textLabel setTextColor:[UIColor blackColor]];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-
-    if(indexPath.section == 0)
-    {
-        NSString *detailString = [self.steps objectAtIndex:indexPath.row];
-        [cell.textLabel setText:detailString];
+        default:
+            return nil;
+            break;
     }
-    else
-    {
-        [cell.textLabel setText:@"section 2"];
-    }
-    return cell;
+    
+//
+//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"recipeViewCell"];
+//    cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+//    cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+//
+//    [cell.textLabel setTextColor:[UIColor blackColor]];
+//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//
+//
+//    if(indexPath.section == 0)
+//    {
+//        NSString *detailString = [self.steps objectAtIndex:indexPath.row];
+//        [cell.textLabel setText:detailString];
+//    }
+//    else
+//    {
+//        [cell.textLabel setText:@"section 2"];
+//    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    //change to return dynamically
+    switch (indexPath.section) {
+        case 0:
+        {
+            return 20;
+        }
+        break;
+        
+        case 1:
+        {
+            return 50;
+        }
+        break;
+            
+        case 2:
+        {
+            return 50;
+        }
+            
+        default:
+            return 50;
+            break;
+    }
+}
+
+-(UIView *) tableView:(UITableView *)tableView
+viewForHeaderInSection:(NSInteger)section
+{
+    //need to customize the position of UILabel insdie headerView
+    CGRect frame = CGRectMake(20, 0, 280, 50);
+    UIView *headerView = [[UIView alloc] initWithFrame:frame];
+    switch (section)
+    {
+        case 0:
+        {
+            UILabel *ingredientTitleLabel = [[UILabel alloc] initWithFrame:frame];
+            ingredientTitleLabel.text = @"Ingredients";
+            ingredientTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+            ingredientTitleLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            [headerView addSubview:ingredientTitleLabel];
+            return headerView;
+            break;
+        }
+        case 1:
+        {
+            UILabel *stepsTitleLabel = [[UILabel alloc] initWithFrame:frame];
+            stepsTitleLabel.text = @"Steps";
+            stepsTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+            stepsTitleLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            [headerView addSubview:stepsTitleLabel];
+            return headerView;
+            break;
+        }
+        case 2:
+        {
+            UILabel *tipsTitleLabel = [[UILabel alloc] initWithFrame:frame];
+            tipsTitleLabel.text = @"Tips";
+            tipsTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+            tipsTitleLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            [headerView addSubview:tipsTitleLabel];
+            return headerView;
+            break;
+        }
+
+        default:
+            return  nil;
+            break;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
 }
 
 #pragma mark - Helper
@@ -151,8 +314,7 @@
 //calculate height based on content dynamically
 -(float)calculateContentHeight:(NSString *)inputString withFont:(UIFont *)font
 {
-    //100?
-    CGSize maximumLabelSize = CGSizeMake(100, MAXFLOAT);
+    CGSize maximumLabelSize = CGSizeMake(280, MAXFLOAT);
     //NSLineBreakByWordWrapping is deprecated in iOS6
     //    CGSize expectedLabelSize = [inputString sizeWithFont:font constrainedToSize:maximumLabelSize lineBreakMode:UILineBreakModeWordWrap];
     CGSize expectedLabelSize = [inputString sizeWithFont:font constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
