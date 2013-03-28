@@ -85,7 +85,7 @@
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [weakSelf.tableView beginUpdates];
-            [weakSelf.feeds insertObject:[weakSelf.feeds objectAtIndex:0] atIndex:0];
+            [weakSelf.feeds insertObject:[weakSelf.feeds objectAtIndex:rand()%10] atIndex:0];
             [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 
             [weakSelf.tableView endUpdates];
@@ -181,11 +181,17 @@
     
     HMFeedItem *feed = [self.feeds objectAtIndex:[indexPath row]];
     HMFeedStreamViewCell * feedCell = (HMFeedStreamViewCell *)cell;
+#ifdef DEBUG
+    NSString *img = [NSString stringWithFormat:@"pic_%d.jpg", indexPath.row % 10 + 1];
+    NSLog(@"%@", img);
+    [feedCell.photo setImage:[UIImage imageNamed:img]];
+#else
     [feedCell.photo setImageWithURL:[[NSURL alloc] initWithString:feed.photo_url]];
+#endif
     feedCell.nameLabel.text = feed.title;
     feedCell.dateLabel.text = [self daysDistanceFromDate:feed.date];
     feedCell.descLabel.text = feed.desc;
-    
+
     return cell;
 }
 
