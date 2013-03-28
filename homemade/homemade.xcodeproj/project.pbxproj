@@ -92,6 +92,8 @@
 		466F4FBF170408490076AB3D /* pic_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 466F4FB5170408490076AB3D /* pic_8.jpg */; };
 		466F4FC0170408490076AB3D /* pic_9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 466F4FB6170408490076AB3D /* pic_9.jpg */; };
 		466F4FC1170408490076AB3D /* pic_10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 466F4FB7170408490076AB3D /* pic_10.jpg */; };
+		466F4FC417042A880076AB3D /* HMPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC317042A880076AB3D /* HMPerson.m */; };
+		466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC61704392B0076AB3D /* HMIngredient.m */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
@@ -239,6 +241,10 @@
 		466F4FB5170408490076AB3D /* pic_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_8.jpg; path = Resources/temp/pic_8.jpg; sourceTree = "<group>"; };
 		466F4FB6170408490076AB3D /* pic_9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_9.jpg; path = Resources/temp/pic_9.jpg; sourceTree = "<group>"; };
 		466F4FB7170408490076AB3D /* pic_10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_10.jpg; path = Resources/temp/pic_10.jpg; sourceTree = "<group>"; };
+		466F4FC217042A880076AB3D /* HMPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMPerson.h; path = BaseLayer/DataModel/HMPerson.h; sourceTree = "<group>"; };
+		466F4FC317042A880076AB3D /* HMPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMPerson.m; path = BaseLayer/DataModel/HMPerson.m; sourceTree = "<group>"; };
+		466F4FC51704392B0076AB3D /* HMIngredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMIngredient.h; path = BaseLayer/DataModel/HMIngredient.h; sourceTree = "<group>"; };
+		466F4FC61704392B0076AB3D /* HMIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIngredient.m; path = BaseLayer/DataModel/HMIngredient.m; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
@@ -560,6 +566,10 @@
 				EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */,
 				462A770616FC1B2400C3CBF7 /* HMRecipe.h */,
 				462A770716FC1B2400C3CBF7 /* HMRecipe.m */,
+				466F4FC217042A880076AB3D /* HMPerson.h */,
+				466F4FC317042A880076AB3D /* HMPerson.m */,
+				466F4FC51704392B0076AB3D /* HMIngredient.h */,
+				466F4FC61704392B0076AB3D /* HMIngredient.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -827,6 +837,8 @@
 				466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */,
 				466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */,
 				466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */,
+				466F4FC417042A880076AB3D /* HMPerson.m in Sources */,
+				466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
