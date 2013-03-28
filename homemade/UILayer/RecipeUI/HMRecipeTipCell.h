@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface HMRecipeTipCell : UITableViewCell
+{
+    
+}
+
+@property (nonatomic) int labelHeight;
+@property (nonatomic,strong) UIView *numberView;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withLableHeight:(int)height;
 
 @end

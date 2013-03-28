@@ -9,6 +9,8 @@
 #import "HMIngredientCell.h"
 
 @implementation HMIngredientCell
+@synthesize nameView = _nameView;
+@synthesize quantityView = _quantityView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -16,6 +18,14 @@
     if (self) {
         // Initialization code
         self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
+        
+        self.nameView = [[UIView alloc] initWithFrame:CGRectMake(40, 10, 140, 20)];
+        self.nameView.backgroundColor = [UIColor yellowColor];
+        [self addSubview:self.nameView];
+        
+        self.quantityView = [[UIView alloc] initWithFrame:CGRectMake(180, 10, 120, 20)];
+        self.quantityView.backgroundColor = [UIColor blueColor];
+        [self addSubview:self.quantityView];
     }
     return self;
 }

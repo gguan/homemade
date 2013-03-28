@@ -31,4 +31,8 @@
 
 @property (strong, nonatomic) UITableView *recipeDetailView;
 
+@property (strong, nonatomic) NSMutableArray *ingredientsQuantity;
+@property (strong, nonatomic) NSMutableArray *stepsLabelHeight;
+@property (strong, nonatomic) NSMutableArray *tipsLabelHeight;
+
 @end
