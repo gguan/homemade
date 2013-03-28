@@ -27,7 +27,7 @@ typedef enum {
 @property (nonatomic, strong) NSString *photoUrl;
 @property (nonatomic, strong) NSDate   *date;
 @property (nonatomic, strong) NSNumber *difficulty;
-@property (nonatomic, strong) NSNumber *like_count;
+@property (nonatomic, strong) NSNumber *save_count;
 @property (nonatomic, strong) NSNumber *made_count;
 @property (nonatomic, strong) HMPerson *author;
 
