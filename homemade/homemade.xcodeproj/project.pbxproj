@@ -46,12 +46,6 @@
 		4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36516F4666800C38D39 /* HMMainViewController.m */; };
 		4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */; };
 		4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D36D16F494AC00C38D39 /* QuartzCore.framework */; };
-		4645D37816F5288900C38D39 /* icon_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37216F5288900C38D39 /* icon_cloud.png */; };
-		4645D37916F5288900C38D39 /* icon_date.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37316F5288900C38D39 /* icon_date.png */; };
-		4645D37A16F5288900C38D39 /* icon_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37416F5288900C38D39 /* icon_heart.png */; };
-		4645D37B16F5288900C38D39 /* icon_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37516F5288900C38D39 /* icon_search.png */; };
-		4645D37C16F5288900C38D39 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37616F5288900C38D39 /* icon_setting.png */; };
-		4645D37F16F52FE100C38D39 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D37E16F52FE100C38D39 /* icon_menu.png */; };
 		4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */; };
 		4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39116F5F1BB00C38D39 /* HMFeedItem.m */; };
 		4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39616F68F3100C38D39 /* HMDoneViewController.m */; };
@@ -173,12 +167,6 @@
 		4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewController.h; path = UILayer/MainUI/HMFeedStreamViewController.h; sourceTree = "<group>"; };
 		4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewController.m; path = UILayer/MainUI/HMFeedStreamViewController.m; sourceTree = "<group>"; };
 		4645D36D16F494AC00C38D39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4645D37216F5288900C38D39 /* icon_cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_cloud.png; path = Resources/icon_cloud.png; sourceTree = "<group>"; };
-		4645D37316F5288900C38D39 /* icon_date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_date.png; path = Resources/icon_date.png; sourceTree = "<group>"; };
-		4645D37416F5288900C38D39 /* icon_heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_heart.png; path = Resources/icon_heart.png; sourceTree = "<group>"; };
-		4645D37516F5288900C38D39 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_search.png; path = Resources/icon_search.png; sourceTree = "<group>"; };
-		4645D37616F5288900C38D39 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_setting.png; path = Resources/icon_setting.png; sourceTree = "<group>"; };
-		4645D37E16F52FE100C38D39 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_menu.png; path = Resources/icon_menu.png; sourceTree = "<group>"; };
 		4645D38216F5E8ED00C38D39 /* HMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
 		4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchViewController.m; path = UILayer/SearchUI/HMSearchViewController.m; sourceTree = "<group>"; };
 		4645D39016F5F1BB00C38D39 /* HMFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItem.h; path = BaseLayer/DataModel/HMFeedItem.h; sourceTree = "<group>"; };
@@ -393,12 +381,6 @@
 				EAB6D50C16F857F700A3616F /* blend_bottom@2x.png */,
 				EAB6D50D16F857F700A3616F /* blend_top.png */,
 				EAB6D50E16F857F700A3616F /* blend_top@2x.png */,
-				4645D37E16F52FE100C38D39 /* icon_menu.png */,
-				4645D37216F5288900C38D39 /* icon_cloud.png */,
-				4645D37316F5288900C38D39 /* icon_date.png */,
-				4645D37416F5288900C38D39 /* icon_heart.png */,
-				4645D37516F5288900C38D39 /* icon_search.png */,
-				4645D37616F5288900C38D39 /* icon_setting.png */,
 				4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */,
 			);
 			name = Resources;
@@ -754,12 +736,6 @@
 				4645D30C16F44D1900C38D39 /* Default-568h@2x.png in Resources */,
 				4645D32416F44E3B00C38D39 /* FacebookSDKResources.bundle in Resources */,
 				4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */,
-				4645D37816F5288900C38D39 /* icon_cloud.png in Resources */,
-				4645D37916F5288900C38D39 /* icon_date.png in Resources */,
-				4645D37A16F5288900C38D39 /* icon_heart.png in Resources */,
-				4645D37B16F5288900C38D39 /* icon_search.png in Resources */,
-				4645D37C16F5288900C38D39 /* icon_setting.png in Resources */,
-				4645D37F16F52FE100C38D39 /* icon_menu.png in Resources */,
 				EAB6D50816F72A1600A3616F /* arrow_right.png in Resources */,
 				EAB6D50A16F856FC00A3616F /* arrow_right@2x.png in Resources */,
 				EAB6D50F16F857F700A3616F /* blend_bottom.png in Resources */,
