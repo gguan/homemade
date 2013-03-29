@@ -3,9 +3,24 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-@main("Add a new recipe") {
+@ingredientGroup(field: Field, className: String = "ingredient") = {
+    <div class="@className">
 
-    @helper.form(action = routes.AdminController.createRecipe) {
+    @inputText(
+        field("name"),
+        '_label -> "Name"
+    )
+    @inputText(
+        field("amount"),
+        '_label -> "Amount"
+    )
+    <a class="removeIngredient btn btn-danger">Remove this Ingredient</a>
+    </div>
+}
+
+@main("Add new recipe") {
+
+    @helper.form(action = routes.AdminController.createRecipe, 'class -> "form-horizontal") {
     <fieldset>
         <legend>Recipe</legend>
 
@@ -26,11 +41,80 @@
             '_label -> "Difficulty"
         )
 
+        <div id="ingredients" class="well">
+
+            @repeat(recipeForm("ingredients")) { ingredient =>
+                @ingredientGroup(ingredient)
+            }
+
+            @ingredientGroup(
+                recipeForm("informations[x]"),
+                className = "ingredient_template"
+            )
+
+            <div class="manage">
+                <a class="addIngredient btn btn-success">Add another ingredient</a>
+            </div>
+
+        </div>
 
         <div class="actions">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </fieldset>
     }
+
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+    $(".removeIngredient").click(function() {
+        $(this).parents('.ingredient').remove()
+        renumber()
+    })
+
+//
+//    $('.removeInstruction').live('click', function(e) {
+//        var instructions = $(this).parents('.instructions')
+//        $(this).parents('.instruction').remove()
+//        renumber(instruction)
+//    })
+//
+//    $('.addIngredient').live('click', function() {
+//        var ingredients = $(this).parents('.ingredients')
+//        var template = $('.ingredient_template', ingredients)
+//        template.before('<div class="clearfix phone">' + template.html() + '</div>')
+//        renumber(phones)
+//    })
+//
+//    $('.addProfile').live('click', function(e) {
+//        var template = $('.profile_template')
+//        template.before('<div class="twipsies well profile">' + template.html() + '</div>')
+//        renumber()
+//    })
+
+    // -- renumber fields
+
+    // Rename fields to have a coherent payload like:
+    //
+    // informations[0].label
+    // informations[0].email
+    // informations[0].phones[0]
+    // informations[0].phones[1]
+    // ...
+    //
+    // This is probably not the easiest way to do it. A jQuery plugin would help.
+
+    var renumber = function(phones) {
+        $('.profile').each(function(i) {
+            $('input', this).each(function() {
+                $(this).attr('name', $(this).attr('name').replace(/informations\[.+?\]/g, 'informations[' + i + ']'))
+            })
+            $('.phone input', this).each(function(i) {
+                $(this).attr('name', $(this).attr('name').replace(/phones\[.+\]/g, 'phones[' + i + ']'))
+            })
+        })
+    }
+});
+</script>
 
 }
