@@ -13,6 +13,8 @@ object ApplicationBuild extends Build {
     "jp.t2v" %% "play2.auth" % "0.9",
     "securesocial" %% "securesocial" % "master",
     "org.scala-tools.time" % "time_2.8.0" % "0.2"
+//    "nl.rhinofly" %% "api-s3" % "2.6.1"
+
   )
 
 

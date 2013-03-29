@@ -1,0 +1,36 @@
+@(recipeForm: Form[Recipe])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Add a new recipe") {
+
+    @helper.form(action = routes.AdminController.createRecipe) {
+    <fieldset>
+        <legend>Recipe</legend>
+
+        @inputText(
+            recipeForm("title"),
+            '_label -> "Title",
+            '_error -> recipeForm.globalError
+        )
+
+        @textarea(
+            recipeForm("overview"),
+            '_label -> "Overview", 'cols -> 50, 'rows -> 7
+        )
+
+        @select(
+            recipeForm("difficulty"),
+            options(("1", "1"),("2","2"),("3","3"),("4","4"),("5","5")),
+            '_label -> "Difficulty"
+        )
+
+
+        <div class="actions">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </fieldset>
+    }
+
+}

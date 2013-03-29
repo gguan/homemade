@@ -30,7 +30,7 @@ case class Recipe(
   difficulty: Int = 0,
   saves: List[ObjectId] = List(),
   mades: List[ObjectId] = List(),
-	ingredients: Set[ObjectId] = Set(),
+	ingredients: Set[Ingredient] = Set(),
   instructions: List[Step] = List(),
   tips: List[String] = List(),
   views: Int = 0,
