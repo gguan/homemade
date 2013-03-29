@@ -296,8 +296,7 @@
             if(hidden) return;
             
             hidden = YES;
-            
-            [self.navigationController setNavigationBarHidden:YES animated:YES]; 
+            [self.navigationController setNavigationBarHidden:YES animated:YES];
         }
     } else {
         if(scrollView.isTracking && abs(differenceFromStart) > 1.0) {
@@ -305,9 +304,39 @@
             
             hidden = NO;
             
-            [self.navigationController setNavigationBarHidden:NO animated:YES];
+            if(currentOffset>10)
+                [self.navigationController setNavigationBarHidden:NO animated:YES];
+            else
+            {
+//                [self adjustNavBarOrigin];
+//                [self performSelector:@selector(showNavigationController) withObject:nil afterDelay:0.0];
+                [self adjustNavBarOrigin];
+            }
         }
     }
+}
+
+-(void)showNavigationController
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+-(void)adjustNavBarOrigin
+{
+    CGRect r = self.navigationController.navigationBar.frame;
+    r.origin = CGPointMake(0, 0);  // 20 is the height of the status bar
+    self.navigationController.navigationBar.frame = r;
+    
+//    [self performSelector:@selector(showNavigationController) withObject:nil afterDelay:0.0];
+
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
