@@ -8,7 +8,7 @@
 
 #define titleLabelWidth 280
 #define descLabelWidth 280
-#define stepLabelWidth 250
+#define stepLabelWidth 135
 #define tipLabelWidth 280
 
 #import "HMRecipeViewController.h"
@@ -83,7 +83,7 @@
         UILabel *tLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageHeight, 280, titleHeight)];
         tLabel.numberOfLines = 0;
         tLabel.text = self.titleLabel;
-        tLabel.textColor = [UIColor blackColor];
+        tLabel.textColor = [UIColor orangeColor];
         tLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
         tLabel.font = titleLabelFont;
         [descriptionView addSubview:tLabel];
@@ -106,7 +106,7 @@
         //For testing
         //Ingredients
         self.ingredients = [[NSMutableArray alloc] init];
-        for (int i = 0; i<10;i++)
+        for (int i = 0; i<5;i++)
         {
             //Hardcode for testing
             NSString *testString = [NSString stringWithFormat:@"Name"];
@@ -122,7 +122,9 @@
         self.steps = [[NSMutableArray alloc] init];
         for (int i = 0; i<10;i++)
         {
-            NSString *testString = [NSString stringWithFormat:@"%d: This is the steps descrpiton for each steps, testing testing testing testing testing!This is the steps descrpiton for each steps, testing testing testing testing testing! ",i];
+            NSString *testString = @"This is the steps descrpiton! ";
+            if(i==0)
+                testString = @"This is the steps descrpiton! This is the steps descrpiton! ";
             [self.steps addObject:testString];
             
             UIFont *stepLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
@@ -187,7 +189,10 @@
             break;
             
         case 1:
-            return [self.steps count];;
+            if([self.steps count]%2 == 0)
+                return [self.steps count]/2;
+            else
+                return [self.steps count]/2 + 1;
             break;
         case 2:
             return [self.tips count];
@@ -235,30 +240,54 @@
 //            NSString *detailString = [self.steps objectAtIndex:indexPath.row];
 //            UIFont *descLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
 //            int height = [self calculateContentHeight:detailString withFont:descLabelFont];
-            int height = [[self.stepsLabelHeight objectAtIndex:indexPath.row] intValue];
+            int leftHeight = [[self.stepsLabelHeight objectAtIndex:2*indexPath.row] intValue];
+            int rightHeight = [[self.stepsLabelHeight objectAtIndex:(2*indexPath.row+1)] intValue];
 
-
-            HMRecipeStepCell* cell = [[HMRecipeStepCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMRecipeStepCell" withLabelHeight:height];
-            cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
-            cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            HMRecipeStepCell* cell = [[HMRecipeStepCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMRecipeStepCell" withLabelHeight:leftHeight>rightHeight?leftHeight:rightHeight];
+//            cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+//            cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
             
-            [cell.textLabel setTextColor:[UIColor blackColor]];
+//            [cell.textLabel setTextColor:[UIColor blackColor]];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            UILabel *indexLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-            indexLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
-            indexLabel.text = [NSString stringWithFormat:@"%d",(indexPath.row+1)];
-            indexLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-            indexLabel.textAlignment = NSTextAlignmentCenter;
-            [cell.numberView addSubview:indexLabel];
-            [cell.imageView setImage:[UIImage imageNamed:@"icon_cloud.png"]];
+            UILabel *leftIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+            leftIndexLabel.backgroundColor = [UIColor clearColor];
+            leftIndexLabel.text = [NSString stringWithFormat:@"%d",(indexPath.row*2)];
+            leftIndexLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:30];
+            leftIndexLabel.textAlignment = NSTextAlignmentCenter;
+            leftIndexLabel.textColor = [UIColor lightGrayColor];
+            [cell.leftNumberView addSubview:leftIndexLabel];
+            [cell.leftImageView setImage:[UIImage imageNamed:@"icon_cloud.png"]];
+//            [cell.imageView addSubview:cell.leftImageView];
             
-            NSString *detailString = [self.steps objectAtIndex:indexPath.row];
-            [cell.textLabel setText:detailString];
-            cell.textLabel.numberOfLines = 0;
+            UILabel *rightIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+            rightIndexLabel.backgroundColor = [UIColor clearColor];
+            rightIndexLabel.text = [NSString stringWithFormat:@"%d",(indexPath.row*2 + 1)];
+            rightIndexLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:30];
+            rightIndexLabel.textAlignment = NSTextAlignmentCenter;
+            rightIndexLabel.textColor = [UIColor lightGrayColor];
+            [cell.rightNumberView addSubview:rightIndexLabel];
+            [cell.rightImageView setImage:[UIImage imageNamed:@"icon_cloud.png"]];
+            
             UIFont *descLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
-            cell.textLabel.font = descLabelFont;
+
+            //Right now set to 16 according to font
+            int leftNumberOfLines = leftHeight%16==0?leftHeight/16:(leftHeight/16 + 1);
+            int rightNumberOfLines = rightHeight%16==0?rightHeight/16:(rightHeight/16 + 1);
+            int numberOfLines = leftNumberOfLines>rightNumberOfLines?leftNumberOfLines:rightNumberOfLines;
             
+            NSString *leftDetailString = [self.steps objectAtIndex:2*indexPath.row];
+            [cell.leftLabel setText:leftDetailString];
+            cell.leftLabel.numberOfLines = numberOfLines;
+            cell.leftLabel.textAlignment = NSTextAlignmentLeft;
+            cell.leftLabel.font = descLabelFont;
+
+            NSString *rightDetailString = [self.steps objectAtIndex:(2*indexPath.row + 1)];
+            [cell.rightLabel setText:rightDetailString];
+            cell.rightLabel.numberOfLines = numberOfLines;
+            cell.rightLabel.textAlignment = NSTextAlignmentLeft;
+            cell.rightLabel.font = descLabelFont;
+                        
             //Dynamically change the UILabel height
 //            CGRect labelFrame = cell.textLabel.frame;
 //            int height = [self calculateContentHeight:detailString withFont:descLabelFont];
@@ -374,6 +403,7 @@ viewForHeaderInSection:(NSInteger)section
         {
             UILabel *ingredientTitleLabel = [[UILabel alloc] initWithFrame:frame];
             ingredientTitleLabel.text = @"Ingredients";
+            ingredientTitleLabel.textColor = [UIColor orangeColor];
             ingredientTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
             ingredientTitleLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
             [headerView addSubview:ingredientTitleLabel];
@@ -384,6 +414,7 @@ viewForHeaderInSection:(NSInteger)section
         {
             UILabel *stepsTitleLabel = [[UILabel alloc] initWithFrame:frame];
             stepsTitleLabel.text = @"Steps";
+            stepsTitleLabel.textColor = [UIColor orangeColor];
             stepsTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
             stepsTitleLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
             [headerView addSubview:stepsTitleLabel];
@@ -394,6 +425,7 @@ viewForHeaderInSection:(NSInteger)section
         {
             UILabel *tipsTitleLabel = [[UILabel alloc] initWithFrame:frame];
             tipsTitleLabel.text = @"Tips";
+            tipsTitleLabel.textColor = [UIColor orangeColor];
             tipsTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
             tipsTitleLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
             [headerView addSubview:tipsTitleLabel];

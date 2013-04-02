@@ -13,7 +13,12 @@
 
 }
 @property (nonatomic) int labelHeight;
-@property (nonatomic,strong) UIView *numberView;
+@property (nonatomic,strong) UIView *leftNumberView;
+@property (nonatomic,strong) UIView *rightNumberView;
+@property (nonatomic,strong) UIImageView *leftImageView;
+@property (nonatomic,strong) UIImageView *rightImageView;
+@property (nonatomic,strong) UILabel *leftLabel;
+@property (nonatomic,strong) UILabel *rightLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withLabelHeight:(int)height;
 
