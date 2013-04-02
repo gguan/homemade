@@ -19,7 +19,7 @@ object AdminController extends Controller {
     mapping(
       "title" -> text(minLength = 3),
       "overview" -> optional(text),
-      "difficulty" -> number(min = 1, max = 5),
+      "difficulty" -> text,
 
       "ingredients" -> seq(
         mapping(
@@ -32,15 +32,17 @@ object AdminController extends Controller {
         mapping(
           "content" -> nonEmptyText
         )(Step(_, None))( step => Some(step.content))
-      )
+      ),
+
+      "tips" -> list(nonEmptyText)
     )
 
     {
-      (title, overview, difficulty, ingredients, instructions) =>
-        Recipe(title = title, overview = overview, difficulty = difficulty, ingredients = ingredients.toSet, instructions = instructions, authorId = new ObjectId, photo = "")
+      (title, overview, difficulty, ingredients, instructions, tips) =>
+        Recipe(title = title, overview = overview, difficulty = difficulty.toInt, ingredients = ingredients.toSet, instructions = instructions, tips = tips, authorId = new ObjectId, photo = "")
     }
     {
-      recipe => Some(recipe.title, recipe.overview, recipe.difficulty, recipe.ingredients.toSeq, recipe.instructions)
+      recipe => Some(recipe.title, recipe.overview, recipe.difficulty.toString, recipe.ingredients.toSeq, recipe.instructions, recipe.tips)
     }
   )
 
@@ -48,7 +50,16 @@ object AdminController extends Controller {
     Ok(views.html.recipeForm(addRecipeForm))
   }
 
-  def createRecipe = Action {
-    Ok
+  def createRecipe = Action { implicit request =>
+    addRecipeForm.bindFromRequest.fold(
+      errors => {
+        Logger.error(errors.toString)
+        BadRequest(views.html.recipeForm(errors))
+      },
+      recipe => {
+        println(recipe)
+        Ok
+      }
+    )
   }
 }

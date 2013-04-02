@@ -24,4 +24,8 @@ object Ingredient extends ModelCompanion[Ingredient, ObjectId] {
 	val dao = new SalatDAO[Ingredient, ObjectId](collection = collection) {}
 
   def findById(id: ObjectId): Option[Ingredient] = Ingredient.findOneById(id)
+
+//  def findOrCreate : Ingredient = {
+//
+//  }
 }

@@ -5,24 +5,26 @@
 
 @ingredientGroup(field: Field, className: String = "ingredient") = {
     <div class="@className">
+        @inputText( field("name"), '_label -> "Name" )
+        @inputText( field("amount"), '_label -> "Amount" )
+        <a class="removeIngredient btn btn-danger">Remove this ingredient</a>
+    </div>
+}
+@stepGroup(field: Field, className: String = "step") = {
+    <div class="@className">
+        @textarea(field("content"), '_label -> "")
+        <input type="file" name="instructions[0].img" class="btn" style="vertical-align: top;">
+        <a class="removeStep btn btn-danger">Remove this step</a>
 
-    @inputText(
-        field("name"),
-        '_label -> "Name"
-    )
-    @inputText(
-        field("amount"),
-        '_label -> "Amount"
-    )
-    <a class="removeIngredient btn btn-danger">Remove this Ingredient</a>
+
     </div>
 }
 
 @main("Add new recipe") {
 
     @helper.form(action = routes.AdminController.createRecipe, 'class -> "form-horizontal") {
-    <fieldset>
-        <legend>Recipe</legend>
+    <fieldset style="margin: 50px;">
+        <legend>New Recipe</legend>
 
         @inputText(
             recipeForm("title"),
@@ -30,9 +32,20 @@
             '_error -> recipeForm.globalError
         )
 
+        <img id="uploadPreview" style="width: 400px; height: auto;" />
+
+        <div style="position:relative;margin-bottom: 30px;">
+            <a class='btn btn-primary btn-large' href='javascript:;'>
+                Choose a photo for recipe cover
+                <input  id="uploadImage" type="file" name="myPhoto" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+            </a>
+            &nbsp;
+            <span class='label label-info' id="upload-file-info"></span>
+        </div>
+
         @textarea(
             recipeForm("overview"),
-            '_label -> "Overview", 'cols -> 50, 'rows -> 7
+            '_label -> "Overview", 'cols -> 50, 'rows -> 5
         )
 
         @select(
@@ -42,20 +55,56 @@
         )
 
         <div id="ingredients" class="well">
-
+            <h5>Ingredients</h5>
             @repeat(recipeForm("ingredients")) { ingredient =>
                 @ingredientGroup(ingredient)
             }
-
             @ingredientGroup(
-                recipeForm("informations[x]"),
+                recipeForm("ingredients[x]"),
                 className = "ingredient_template"
             )
-
             <div class="manage">
                 <a class="addIngredient btn btn-success">Add another ingredient</a>
             </div>
+        </div>
 
+        <div id="instructions" class="well">
+            <h5>Steps</h5>
+            @repeat(recipeForm("instructions")) { step =>
+                @stepGroup(step)
+            }
+            @stepGroup(
+                recipeForm("instructions[x]"),
+                className = "step_template"
+            )
+            <div class="manage">
+                <a class="addStep btn btn-success">Add another step</a>
+            </div>
+        </div>
+
+        <div id="tips" class="well">
+            <h5>Tips</h5>
+            @repeat(recipeForm("tips")) { tip =>
+                <div class="tip">
+                    @inputText(tip, '_label -> "")
+                    <a class="removeTip btn btn-danger">Remove this tip</a>
+                </div>
+            }
+            <div class="tip_template">
+                <div class="clearfix  " id="tips_field">
+                    <label for="tips"></label>
+                    <div class="input">
+                        <input type="text" name="tips[x]" value="">
+                        <span class="help-inline"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <a class="removeTip btn btn-danger">Remove this tip</a>
+            </div>
+
+            <div class="manage">
+                <a class="addTip btn btn-success">Add another tip</a>
+            </div>
         </div>
 
         <div class="actions">
@@ -67,30 +116,35 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function(){
-    $(".removeIngredient").click(function() {
-        $(this).parents('.ingredient').remove()
-        renumber()
-    })
+    $(document).on('click', '.removeIngredient', function() {
+        $(this).parents('.ingredient').remove();
+        renumberIngredient();
+    });
+    $(document).on('click', '.addIngredient', function() {
+        var template = $('.ingredient_template');
+        template.before('<div class="ingredient">' + template.html() + '</div>');
+        renumberIngredient();
+    });
 
-//
-//    $('.removeInstruction').live('click', function(e) {
-//        var instructions = $(this).parents('.instructions')
-//        $(this).parents('.instruction').remove()
-//        renumber(instruction)
-//    })
-//
-//    $('.addIngredient').live('click', function() {
-//        var ingredients = $(this).parents('.ingredients')
-//        var template = $('.ingredient_template', ingredients)
-//        template.before('<div class="clearfix phone">' + template.html() + '</div>')
-//        renumber(phones)
-//    })
-//
-//    $('.addProfile').live('click', function(e) {
-//        var template = $('.profile_template')
-//        template.before('<div class="twipsies well profile">' + template.html() + '</div>')
-//        renumber()
-//    })
+    $(document).on('click', '.removeStep', function() {
+        $(this).parents('.step').remove();
+        renumberStep();
+    });
+    $(document).on('click', '.addStep', function() {
+        var template = $('.step_template');
+        template.before('<div class="step">' + template.html() + '</div>');
+        renumberStep();
+    });
+
+    $(document).on('click', '.removeTip', function() {
+        $(this).parents('.tip').remove();
+        renumberTip();
+    });
+    $(document).on('click', '.addTip', function() {
+        var template = $('.tip_template');
+        template.before('<div class="tip">' + template.html() + '</div>');
+        renumberTip();
+    });
 
     // -- renumber fields
 
@@ -104,16 +158,47 @@ $(function(){
     //
     // This is probably not the easiest way to do it. A jQuery plugin would help.
 
-    var renumber = function(phones) {
-        $('.profile').each(function(i) {
+    var renumberIngredient = function() {
+        $('.ingredient').each(function(i) {
             $('input', this).each(function() {
-                $(this).attr('name', $(this).attr('name').replace(/informations\[.+?\]/g, 'informations[' + i + ']'))
-            })
-            $('.phone input', this).each(function(i) {
-                $(this).attr('name', $(this).attr('name').replace(/phones\[.+\]/g, 'phones[' + i + ']'))
-            })
+                $(this).attr('name', $(this).attr('name').replace(/ingredients\[.+?\]/g, 'ingredients[' + i + ']'));
+                console.log('ingredients[' + i + ']');
+            });
         })
-    }
+    };
+
+    var renumberStep = function() {
+        $('.step').each(function(i) {
+            $('textarea', this).each(function() {
+                $(this).attr('name', $(this).attr('name').replace(/instructions\[.+?\]/g, 'instructions[' + i + ']'));
+                console.log('instructions[' + i + ']');
+            });
+            $('input', this).each(function() {
+                $(this).attr('name', $(this).attr('name').replace(/instructions\[.+?\]/g, 'instructions[' + i + ']'));
+            });
+        })
+    };
+
+    var renumberTip = function() {
+        $('.tip').each(function(i) {
+            $('input', this).each(function() {
+                $(this).attr('name', $(this).attr('name').replace(/tips\[.+?\]/g, 'tips[' + i + ']'));
+                console.log('tips[' + i + ']');
+            });
+        })
+    };
+
+    $(document).on('change', '#uploadImage', function() {
+        previewImage();
+    });
+    var previewImage = function() {
+        oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
 });
 </script>
 
