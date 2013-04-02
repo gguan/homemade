@@ -2,6 +2,7 @@
 
 @import helper._
 @import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
 
 @ingredientGroup(field: Field, className: String = "ingredient") = {
     <div class="@className">
@@ -15,8 +16,6 @@
         @textarea(field("content"), '_label -> "")
         <input type="file" name="instructions[0].img" class="btn" style="vertical-align: top;">
         <a class="removeStep btn btn-danger">Remove this step</a>
-
-
     </div>
 }
 
@@ -32,15 +31,19 @@
             '_error -> recipeForm.globalError
         )
 
-        <img id="uploadPreview" style="width: 400px; height: auto;" />
 
-        <div style="position:relative;margin-bottom: 30px;">
-            <a class='btn btn-primary btn-large' href='javascript:;'>
-                Choose a photo for recipe cover
-                <input  id="uploadImage" type="file" name="myPhoto" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
-            </a>
-            &nbsp;
-            <span class='label label-info' id="upload-file-info"></span>
+        <div style="position:relative;" class="control-group">
+            <div class="controls">
+                <img id="uploadPreview" style="max-width: 400px; max-height: 400px; margin-bottom: 10px;" />
+
+                <a class='btn btn-primary btn-large' href='javascript:;'>
+                    Choose a photo for recipe cover
+                    <input  id="uploadImage" type="file" name="myPhoto" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                </a>
+                <br/>
+                &nbsp;
+                <span class='label label-info' id="upload-file-info"></span>
+            </div>
         </div>
 
         @textarea(
