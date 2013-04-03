@@ -72,8 +72,8 @@ object AdminController extends Controller {
 
         val fileName = new ObjectId().toString
         // read and upload original image to S3
-        val in = new java.io.FileInputStream(file)
-        val imgBytes = new Array[Byte](file.length.toInt)
+//        val in = new java.io.FileInputStream(file)
+//        val imgBytes = new Array[Byte](file.length.toInt)
 //        in.read(imgBytes)
 //        in.close()
 //        val result = bucket + BucketFile(fileName, filePart.contentType.get, imgBytes)
@@ -83,17 +83,19 @@ object AdminController extends Controller {
 //        }
         // read and upload resized image to S3
         val bufferedImg: BufferedImage = ImageIO.read(file)
+//        val resizedImg = ImageResizer.resize(file, 400, 400)
         val resizedImg = ImageResizer.resize(file, 400, 400)
-        val in2 = new java.io.FileInputStream(file)
-        val bytes2 = new Array[Byte](resizedImg.length.toInt)
-        in2.read(bytes2)
-        in2.close()
-
-        val result2 = bucket + BucketFile(fileName+"-small", filePart.contentType.get, bytes2)
-        result2.map {
-          case Left(error) => throw new Exception("Error: " + error)
-          case Right(success) => Logger.info("Saved the file" + resizedImg.getName)
-        }
+        play.api.libs.Files.copyFile(resizedImg, new File("/Users/gguan/Desktop/aaa"), true)
+//        val in2 = new java.io.FileInputStream(file)
+//        val bytes2 = new Array[Byte](resizedImg.length.toInt)
+//        in2.read(bytes2)
+//        in2.close()
+//
+//        val result2 = bucket + BucketFile(fileName+"-small", filePart.contentType.get, bytes2)
+//        result2.map {
+//          case Left(error) => throw new Exception("Error: " + error)
+//          case Right(success) => Logger.info("Saved the file" + resizedImg.getName)
+//        }
       }
 
     }
