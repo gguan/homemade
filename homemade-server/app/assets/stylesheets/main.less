@@ -1,8 +1,16 @@
 form {
+
+  .help-inline {
+    color: red;
+  }
+
   .ingredient_template, .step_template, .tip_template {
     display: none;
   }
 
+  textarea {
+    width: 400px;
+  }
   #ingredients, #instructions, #tips {
     .clearfix {
       display: inline-block;
@@ -17,9 +25,11 @@ form {
       display: inline-block;
     }
     .removeIngredient, .removeStep, .removeTip {
-      vertical-align: top;
+      position: relative;
+      top: -6px;
     }
   }
+
 
   #instructions, #tips {
     .input {

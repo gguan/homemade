@@ -2,26 +2,25 @@
 
 @import helper._
 @import helper.twitterBootstrap._
-@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
 
 @ingredientGroup(field: Field, className: String = "ingredient") = {
     <div class="@className">
         @inputText( field("name"), '_label -> "Name" )
         @inputText( field("amount"), '_label -> "Amount" )
-        <a class="removeIngredient btn btn-danger">Remove this ingredient</a>
+        <div class="clearfix"><div class="input"><a class="removeIngredient btn btn-danger">Remove this ingredient</a></div></div>
     </div>
 }
 @stepGroup(field: Field, className: String = "step") = {
     <div class="@className">
-        @textarea(field("content"), '_label -> "")
-        <input type="file" name="instructions[0].img" class="btn" style="vertical-align: top;">
+        @textarea(field("content"), '_label -> "", 'cols -> 70)
+        <input type="file" name="instructions[0].img" class="btn">
         <a class="removeStep btn btn-danger">Remove this step</a>
     </div>
 }
 
 @main("Add new recipe") {
 
-    @helper.form(action = routes.AdminController.createRecipe, 'class -> "form-horizontal") {
+    @helper.form(action = routes.AdminController.createRecipe, 'enctype -> "multipart/form-data") {
     <fieldset style="margin: 50px;">
         <legend>New Recipe</legend>
 
@@ -31,14 +30,13 @@
             '_error -> recipeForm.globalError
         )
 
-
         <div style="position:relative;" class="control-group">
             <div class="controls">
                 <img id="uploadPreview" style="max-width: 400px; max-height: 400px; margin-bottom: 10px;" />
 
                 <a class='btn btn-primary btn-large' href='javascript:;'>
                     Choose a photo for recipe cover
-                    <input  id="uploadImage" type="file" name="myPhoto" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                    <input  id="uploadImage" type="file" name="recipePhoto" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
                 </a>
                 <br/>
                 &nbsp;
@@ -48,7 +46,7 @@
 
         @textarea(
             recipeForm("overview"),
-            '_label -> "Overview", 'cols -> 50, 'rows -> 5
+            '_label -> "Overview", 'cols -> 70, 'rows -> 5
         )
 
         @select(

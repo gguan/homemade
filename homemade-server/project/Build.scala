@@ -13,7 +13,9 @@ object ApplicationBuild extends Build {
     "jp.t2v" %% "play2.auth" % "0.9",
     "securesocial" %% "securesocial" % "master",
     "org.scala-tools.time" % "time_2.8.0" % "0.2",
-    "nl.rhinofly" %% "api-s3" % "2.6.1"
+    "nl.rhinofly" %% "api-s3" % "2.6.1",
+    "se.digiplant" %% "play-scalr" % "1.0",
+    "org.imgscalr" % "imgscalr-lib" % "4.2"
   )
 
 
@@ -23,6 +25,7 @@ object ApplicationBuild extends Build {
     routesImport += "se.radley.plugin.salat.Binders._",
     templatesImport += "org.bson.types.ObjectId",
     resolvers ++= Seq(
+      "OSS Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       "Rhinofly Internal Repository" at "http://maven-repository.rhinofly.net:8081/artifactory/libs-release-local",
       "Local Play Repository" at "file://usr/local/Cellar/play/2.1.0/libexec/repository/local",
       "sonatype-snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
