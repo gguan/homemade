@@ -17,7 +17,7 @@ case class Comment (
 
 case class Step(
   content: String,
-  photo: Option[Photo]
+  photo: Option[String]
 )
 
 case class Recipe(

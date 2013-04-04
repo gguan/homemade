@@ -14,8 +14,7 @@ object ApplicationBuild extends Build {
     "securesocial" %% "securesocial" % "master",
     "org.scala-tools.time" % "time_2.8.0" % "0.2",
     "nl.rhinofly" %% "api-s3" % "2.6.1",
-    "se.digiplant" %% "play-scalr" % "1.0",
-    "org.imgscalr" % "imgscalr-lib" % "4.1"
+    "se.digiplant" %% "play-scalr" % "1.0"
   )
 
 
