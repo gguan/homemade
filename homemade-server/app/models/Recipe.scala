@@ -34,7 +34,8 @@ case class Recipe(
   instructions: List[Step] = List(),
   tips: List[String] = List(),
   views: Int = 0,
-	comments: List[Comment] = List()
+	comments: List[Comment] = List(),
+  isReviewed: Boolean = false
 )
 
 

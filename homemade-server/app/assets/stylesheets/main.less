@@ -1,5 +1,17 @@
 form {
-  #ingredients {
+
+  .help-inline {
+    color: red;
+  }
+
+  .ingredient_template, .step_template, .tip_template {
+    display: none;
+  }
+
+  textarea {
+    width: 400px;
+  }
+  #ingredients, #instructions, #tips {
     .clearfix {
       display: inline-block;
       margin-right: 20px;
@@ -7,16 +19,25 @@ form {
     label {
       vertical-align: top;
       padding-top: 6px;
+      font-weight: normal;
     }
     .input {
       display: inline-block;
     }
-    .removeIngredient {
-      vertical-align: top;
-    }
-
-    .ingredient_template {
-      display: none;
+    .removeIngredient, .removeStep, .removeTip {
+      position: relative;
+      top: -6px;
     }
   }
+
+
+  #instructions, #tips {
+    .input {
+      min-width: 450px;
+    }
+  }
+}
+
+.custom-upload {
+
 }
