@@ -25,4 +25,7 @@
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
+
+- (void)loadJson;
+
 @end

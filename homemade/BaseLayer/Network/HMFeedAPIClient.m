@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#define UserDefaultsFeedsKey @"UserDefaultsFeedsKey" //move to constant.h later
+
+
 #import "HMFeedAPIClient.h"
 #import "HMFeedItem.h"
 #import "AFJSONRequestOperation.h"
@@ -44,6 +47,12 @@
     NSMutableArray *feeds = [NSMutableArray arrayWithCapacity:10];
     for (int i=0; i<10; i++) {
         HMFeedItem *feed = [[HMFeedItem alloc] initForTest];
+        
+        //implement all feeds from core data
+//        NSArray *allFeeds = [[NSArray alloc] init];
+//        allFeeds = [[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultsFeedsKey];
+//        HMFeedItem *feed = [allFeeds objectAtIndex:0];
+
         [feeds addObject:feed];
     }
     if (block) {

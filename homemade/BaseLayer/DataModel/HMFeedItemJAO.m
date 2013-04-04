@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#define UserDefaultsFeedsKey @"UserDefaultsFeedsKey" //move to constant.h later
+
 #import "HMFeedItemJAO.h"
 #import "HMMD5Hash.h"
 
 #define UserDefaultsJSONHashDictionaryKey @"UserDefaultsJSONHashDictionaryKey" // move to constant.h later
-
 
 @implementation HMFeedItemJAO
 
@@ -49,6 +50,9 @@
         }
         
     }
+    //need doublecheck the toRet format
+    [[NSUserDefaults standardUserDefaults] setObject:toRet forKey:UserDefaultsFeedsKey];
+
     
     return toRet;
 }
@@ -56,7 +60,12 @@
 
 - (HMFeedItem*) getFeedFromJSONDictionary:(NSDictionary*)jsonDict
 {
-    NSNumber *theFeedId = [jsonDict objectForKey:@"FeedId"];
+    NSString *theFeedId = [jsonDict objectForKey:@"feedId"];
+    
+    //convert NSString to NSNumber
+//    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+//    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+//    NSNumber * feedIdNumber = [f numberFromString:theFeedId];
     
     HMFeedItem *toRet = [self getFeedByFeedId:theFeedId];
     
@@ -67,38 +76,44 @@
     
     if(jsonDict)
     {
-        toRet.sid = [jsonDict objectForKey:@"FeedId"];
-        toRet.author_id = [jsonDict objectForKey:@"AuthorId"];
-        toRet.photo_url = [jsonDict objectForKey:@"PhotoUrl"];
-        toRet.title = [jsonDict objectForKey:@"Title"];
-        toRet.desc = [jsonDict objectForKey:@"Desc"];
-        toRet.date = [jsonDict objectForKey:@"Date"];
-        toRet.like_count = [jsonDict objectForKey:@"LikeCount"];
-        toRet.difficulty = [jsonDict objectForKey:@"Difficulty"];
-        toRet.done_count = [jsonDict objectForKey:@"DoneCount"];
+        toRet.sid = [jsonDict objectForKey:@"feedId"];
+        toRet.author_id = [jsonDict objectForKey:@"authorId"];
+        toRet.photo_url = [jsonDict objectForKey:@"photoUrl"];
+        toRet.title = [jsonDict objectForKey:@"title"];
+        toRet.desc = [jsonDict objectForKey:@"desc"];
+        
+//        toRet.date = [jsonDict objectForKey:@"date"];
+        
+        NSString *dateString = @"01-02-2010";
+        dateString = [jsonDict objectForKey:@"date"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:dateString];
+        toRet.date = dateFromString;
+        
+        toRet.like_count = [jsonDict objectForKey:@"likeCount"];
+        toRet.difficulty = [jsonDict objectForKey:@"difficulty"];
+        toRet.done_count = [jsonDict objectForKey:@"doneCount"];
     }
     return toRet;
 }
 
 
 
-- (HMFeedItem*)getFeedByFeedId:(NSNumber*)feedId {
+- (HMFeedItem*)getFeedByFeedId:(NSString*)feedId {
     NSArray *feedIds = [NSArray arrayWithObject:feedId];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
     // need testing here, whether add core data manually working
-    [fetchRequest setEntity:
-     [NSEntityDescription entityForName:@"Feed" inManagedObjectContext:self.managedObjectContext]];
-    [fetchRequest setPredicate: [NSPredicate predicateWithFormat: @"(feedId IN %@)", feedIds]];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Feed" inManagedObjectContext:self.managedObjectContext]];
+    [fetchRequest setPredicate: [NSPredicate predicateWithFormat: @"(sid IN %@)", feedIds]];
     
     // make sure the results are sorted as well
-    [fetchRequest setSortDescriptors: [NSArray arrayWithObject:
-                                       [[NSSortDescriptor alloc] initWithKey: @"feedId"
-                                                                   ascending:YES]]];
+//    [fetchRequest setSortDescriptors: [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey: @"feedId" ascending:YES]]];
     
     NSError *error = nil;
-    NSArray *feedsMatchingIds = [self.managedObjectContext
-                                  executeFetchRequest:fetchRequest error:&error];
+    NSArray *feedsMatchingIds = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
     if (!feedsMatchingIds) {
         return nil;

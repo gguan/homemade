@@ -73,9 +73,12 @@
         UIFont *descLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
         int descHeight = [self calculateContentHeight:self.descLabel withFont:descLabelFont withLabelWidth:descLabelWidth];
         
+        //Here need to find a image scaleToFit; or set images size correctly which is 320*240
         int imageHeight = 260; //Image height is 240, 20 bottom margin in ImageView
-        UIImageView *recipeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"recipeTestImage.jpg"]];
-    
+        UIImage *img = [UIImage imageNamed:@"icons_1.png"];;
+        UIImageView *recipeImageView = [[UIImageView alloc] initWithImage:img];
+        recipeImageView.contentMode = UIViewContentModeScaleAspectFit;
+
         int marginUnderDes = 20;
         int descViewHeight =  imageHeight + titleHeight + descHeight + marginUnderDes;
         UIView *descriptionView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, 280, descViewHeight)];
@@ -257,7 +260,7 @@
             leftIndexLabel.textAlignment = NSTextAlignmentCenter;
             leftIndexLabel.textColor = [UIColor lightGrayColor];
             [cell.leftNumberView addSubview:leftIndexLabel];
-            [cell.leftImageView setImage:[UIImage imageNamed:@"icon_cloud.png"]];
+            [cell.leftImageView setImage:[UIImage imageNamed:@"icons_1.png"]];
 //            [cell.imageView addSubview:cell.leftImageView];
             
             UILabel *rightIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -267,7 +270,7 @@
             rightIndexLabel.textAlignment = NSTextAlignmentCenter;
             rightIndexLabel.textColor = [UIColor lightGrayColor];
             [cell.rightNumberView addSubview:rightIndexLabel];
-            [cell.rightImageView setImage:[UIImage imageNamed:@"icon_cloud.png"]];
+            [cell.rightImageView setImage:[UIImage imageNamed:@"icons_2.png"]];
             
             UIFont *descLabelFont = [UIFont fontWithName:@"HelveticaNeue" size:12];
 

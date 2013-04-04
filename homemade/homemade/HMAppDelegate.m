@@ -6,6 +6,12 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#import "HMFeedItem.h"
+#import "HMFeedItemJAO.h"
+
+#define JSON_URL @"http://staging.tacpoint.net:8080/sluo/feedItem.json" //move to constant later
+#define INIT_PAGE_DELAY 0.1
+
 #import "HMAppDelegate.h"
 #import "AFNetworking.h"
 #import "JASidePanelController.h"
@@ -38,6 +44,10 @@
     
     self.window.rootViewController = self.mainPanelController;
     [self.window makeKeyAndVisible];
+    
+    
+    [self performSelector:@selector(startApp) withObject:nil afterDelay:INIT_PAGE_DELAY];
+
     
     return YES;
 }
@@ -95,7 +105,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Homemade" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"homemade" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -148,6 +158,41 @@
     UIImage *navBarImage = [UIImage imageNamed:@"nav-bar"];
     [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 
+}
+
+#pragma mark - Json Method
+
+- (void)loadJson
+{
+    @autoreleasepool {
+        NSString *jsonUrl = [NSString stringWithFormat:JSON_URL];
+        HMFeedItemJAO *fj = [HMFeedItemJAO new];
+        fj.managedObjectContext = self.managedObjectContext;
+        [fj getFeedsFromJSONURL:jsonUrl];
+        [self saveContext];
+    }
+}
+
+- (void)saveContext
+{
+    
+    NSError *error = nil;
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    if (moc != nil) {
+        if ([moc hasChanges] && ![moc save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    
+    
+}
+
+-(void)startApp
+{
+    [self loadJson];//need to check network status later
 }
 
 @end

@@ -90,9 +90,9 @@
 		466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC61704392B0076AB3D /* HMIngredient.m */; };
 		466F4FCA170448F00076AB3D /* HMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC9170448F00076AB3D /* HMStep.m */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
+		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
-		EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */; };
 		EAB6D50616F7246B00A3616F /* LeftPanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB6D50516F7246B00A3616F /* LeftPanelCell.m */; };
 		EAB6D50816F72A1600A3616F /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB6D50716F72A1600A3616F /* arrow_right.png */; };
 		EAB6D50A16F856FC00A3616F /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB6D50916F856FC00A3616F /* arrow_right@2x.png */; };
@@ -238,11 +238,11 @@
 		466F4FC9170448F00076AB3D /* HMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMStep.m; path = BaseLayer/DataModel/HMStep.m; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
 		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
-		EAA530F116FAEE3D00916972 /* Homemade.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homemade.xcdatamodel; sourceTree = "<group>"; };
 		EAB6D50416F7246B00A3616F /* LeftPanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftPanelCell.h; path = UILayer/MenuUI/LeftPanelCell.h; sourceTree = "<group>"; };
 		EAB6D50516F7246B00A3616F /* LeftPanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftPanelCell.m; path = UILayer/MenuUI/LeftPanelCell.m; sourceTree = "<group>"; };
 		EAB6D50716F72A1600A3616F /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
@@ -258,6 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */,
 				4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */,
 				4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */,
 				4645D31B16F44DC200C38D39 /* Accounts.framework in Frameworks */,
@@ -307,6 +308,7 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */,
 				4645D39E16F6917400C38D39 /* MobileCoreServices.framework */,
 				4645D36D16F494AC00C38D39 /* QuartzCore.framework */,
 				4645D32016F44DDB00C38D39 /* FacebookSDK.framework */,
@@ -548,7 +550,6 @@
 				EAA530E916FADF2100916972 /* HMFeedItemJAO.m */,
 				EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */,
 				EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */,
-				EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */,
 				462A770616FC1B2400C3CBF7 /* HMRecipe.h */,
 				462A770716FC1B2400C3CBF7 /* HMRecipe.m */,
 				466F4FC217042A880076AB3D /* HMPerson.h */,
@@ -802,7 +803,6 @@
 				4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */,
 				EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */,
 				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
-				EAA530F216FAEE3D00916972 /* Homemade.xcdatamodeld in Sources */,
 				4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */,
 				466F4FA817030A000076AB3D /* HMIngredientCell.m in Sources */,
 				4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */,
@@ -971,17 +971,6 @@
 			);
 			currentVersion = 4645D30E16F44D1900C38D39 /* homemade.xcdatamodel */;
 			path = homemade.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		EAA530F016FAEE3D00916972 /* Homemade.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EAA530F116FAEE3D00916972 /* Homemade.xcdatamodel */,
-			);
-			currentVersion = EAA530F116FAEE3D00916972 /* Homemade.xcdatamodel */;
-			name = Homemade.xcdatamodeld;
-			path = BaseLayer/DataModel/Homemade.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
