@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#define UserDefaultsFeedsKey @"UserDefaultsFeedsKey" //move to constant.h later
-
 
 #import "HMFeedAPIClient.h"
 #import "HMFeedItem.h"
 #import "AFJSONRequestOperation.h"
+#import "HMAppDelegate.h"
 
 #define BASE_URL @"http://guans-macbook-pro.local:9000"
 #define MOMENT_PATH @"/moment"
@@ -46,6 +45,7 @@
     // create moments manually for testing
     NSMutableArray *feeds = [NSMutableArray arrayWithCapacity:10];
     for (int i=0; i<10; i++) {
+        
         HMFeedItem *feed = [[HMFeedItem alloc] initForTest];
         
         //implement all feeds from core data
@@ -53,6 +53,23 @@
 //        allFeeds = [[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultsFeedsKey];
 //        HMFeedItem *feed = [allFeeds objectAtIndex:0];
 
+        /**********/
+        /*
+        NSManagedObjectContext *context = [(HMAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        // need testing here, whether add core data manually working
+        [fetchRequest setEntity:[NSEntityDescription entityForName:@"Feed" inManagedObjectContext:context]];
+        [fetchRequest setPredicate: [NSPredicate predicateWithFormat: @"sid == 1"]];
+        
+        // make sure the results are sorted as well
+        //    [fetchRequest setSortDescriptors: [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey: @"feedId" ascending:YES]]];
+        
+        NSError *error = nil;
+        NSArray *feedsMatchingIds = [context executeFetchRequest:fetchRequest error:&error];
+  
+        HMFeedItem *feed = [feedsMatchingIds objectAtIndex:0];
+         */
+        /*******/
         [feeds addObject:feed];
     }
     if (block) {

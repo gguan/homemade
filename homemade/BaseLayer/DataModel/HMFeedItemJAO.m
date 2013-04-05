@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#define UserDefaultsFeedsKey @"UserDefaultsFeedsKey" //move to constant.h later
 
 #import "HMFeedItemJAO.h"
 #import "HMMD5Hash.h"
@@ -50,9 +49,6 @@
         }
         
     }
-    //need doublecheck the toRet format
-    [[NSUserDefaults standardUserDefaults] setObject:toRet forKey:UserDefaultsFeedsKey];
-
     
     return toRet;
 }

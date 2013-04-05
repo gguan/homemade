@@ -45,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UILayer/RecipeUI/HMRecipeViewController.m"
-         timestampString = "386760806.89145"
+         timestampString = "386761027.913697"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -58,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UILayer/RecipeUI/HMRecipeViewController.m"
-         timestampString = "386760806.89145"
+         timestampString = "386761027.913697"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UILayer/RecipeUI/HMRecipeViewController.m"
-         timestampString = "386760806.89145"
+         timestampString = "386761027.913697"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "122"
-         endingLineNumber = "122"
+         startingLineNumber = "123"
+         endingLineNumber = "123"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -162,11 +162,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "UILayer/RecipeUI/HMRecipeViewController.m"
-         timestampString = "386760806.89145"
+         timestampString = "386761027.913697"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "283"
-         endingLineNumber = "283"
+         startingLineNumber = "284"
+         endingLineNumber = "284"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "21"
-         endingLineNumber = "21"
+         startingLineNumber = "20"
+         endingLineNumber = "20"
          landmarkName = "-getFeedsFromJSONURL:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-getFeedsFromJSONURL:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -201,11 +201,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "-getFeedFromJSONDictionary:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -214,11 +214,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "-getFeedByFeedId:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -227,11 +227,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
          landmarkName = "-getFeedByFeedId:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -240,11 +240,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
          landmarkName = "-getFeedFromJSONDictionary:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -253,11 +253,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-getFeedFromJSONDictionary:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -266,20 +266,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759381.81157"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
-         landmarkName = "-getFeedsFromJSONURL:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
-         timestampString = "386759371.722882"
+         timestampString = "386841423.724498"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "53"
@@ -292,12 +279,64 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BaseLayer/Network/HMFeedAPIClient.m"
-         timestampString = "386759869.866977"
+         timestampString = "386842214.197214"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "56"
-         endingLineNumber = "56"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
          landmarkName = "-latestFeedsWithBlock:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "BaseLayer/DataModel/HMFeedItemJAO.m"
+         timestampString = "386841423.724498"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
+         landmarkName = "-getFeedFromJSONDictionary:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "BaseLayer/Network/HMFeedAPIClient.m"
+         timestampString = "386841319.271634"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
+         landmarkName = "-latestFeedsWithBlock:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "BaseLayer/Network/HMFeedAPIClient.m"
+         timestampString = "386841925.041227"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-latestFeedsWithBlock:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "homemade/HMAppDelegate.m"
+         timestampString = "386842078.581985"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
+         landmarkName = "-managedObjectContext"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
