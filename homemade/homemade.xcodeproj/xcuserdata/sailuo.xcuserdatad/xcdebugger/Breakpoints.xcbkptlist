@@ -317,19 +317,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "BaseLayer/Network/HMFeedAPIClient.m"
-         timestampString = "386841925.041227"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "-latestFeedsWithBlock:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "homemade/HMAppDelegate.m"
          timestampString = "386842078.581985"
          startingColumnNumber = "9223372036854775807"
@@ -337,6 +324,19 @@
          startingLineNumber = "98"
          endingLineNumber = "98"
          landmarkName = "-managedObjectContext"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "BaseLayer/Network/HMFeedAPIClient.m"
+         timestampString = "387174058.74954"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-latestFeedsWithBlock:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -59,7 +59,7 @@
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // need testing here, whether add core data manually working
         [fetchRequest setEntity:[NSEntityDescription entityForName:@"Feed" inManagedObjectContext:context]];
-        [fetchRequest setPredicate: [NSPredicate predicateWithFormat: @"sid == 1"]];
+        [fetchRequest setPredicate: [NSPredicate predicateWithFormat: @"(sid = 1)"]];
         
         // make sure the results are sorted as well
         //    [fetchRequest setSortDescriptors: [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey: @"feedId" ascending:YES]]];
