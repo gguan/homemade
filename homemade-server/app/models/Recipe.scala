@@ -8,7 +8,7 @@ import com.novus.salat.annotations._
 import com.mongodb.casbah.Imports._
 import se.radley.plugin.salat._
 import models.salatctx._
-import org.joda.time.format.DateTimeFormatter
+import org.joda.time.format.{ISODateTimeFormat, DateTimeFormatter}
 
 case class Comment (
   author: ObjectId,
@@ -77,10 +77,9 @@ object Recipe extends ModelCompanion[Recipe, ObjectId] {
 	}
 
   def latestRecipes(page: Int = 0, pageSize: Int = 5, date: String): List[Recipe] = {
-    val formatter: DateTimeFormatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss")
+    val formatter: DateTimeFormatter = ISODateTimeFormat.dateTime()
     val dt: DateTime = formatter.parseDateTime(date)
     val where = MongoDBObject("createdAt" -> MongoDBObject("$gt" -> dt))
-    val totalRows = count(where)
     val offset = pageSize * page
     val recipes = Recipe.find(where).sort(MongoDBObject("createdAt" -> 1)).limit(pageSize).skip(offset)
     recipes.toList
