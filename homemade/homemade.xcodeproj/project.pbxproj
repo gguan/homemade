@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4606A4D21716C039009FDFFB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4D11716C039009FDFFB /* Reachability.m */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -37,13 +38,10 @@
 		4645D34116F4512C00C38D39 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D33816F4512C00C38D39 /* UIImageView+AFNetworking.m */; };
 		4645D34716F4513600C38D39 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34416F4513600C38D39 /* FXImageView.m */; };
 		4645D34816F4513600C38D39 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34616F4513600C38D39 /* UIImage+FX.m */; };
-		4645D34E16F4513C00C38D39 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34B16F4513C00C38D39 /* JASidePanelController.m */; };
-		4645D34F16F4513C00C38D39 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34D16F4513C00C38D39 /* UIViewController+JASidePanel.m */; };
 		4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4645D35516F4514800C38D39 /* SVProgressHUD.bundle */; };
 		4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35716F4514800C38D39 /* SVProgressHUD.m */; };
 		4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */; };
 		4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */; };
-		4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36516F4666800C38D39 /* HMMainViewController.m */; };
 		4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */; };
 		4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D36D16F494AC00C38D39 /* QuartzCore.framework */; };
 		4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */; };
@@ -110,6 +108,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4606A4D01716C039009FDFFB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4606A4D11716C039009FDFFB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,10 +157,6 @@
 		4645D34416F4513600C38D39 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
 		4645D34516F4513600C38D39 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
 		4645D34616F4513600C38D39 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
-		4645D34A16F4513C00C38D39 /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
-		4645D34B16F4513C00C38D39 /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
-		4645D34C16F4513C00C38D39 /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
-		4645D34D16F4513C00C38D39 /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
 		4645D35516F4514800C38D39 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		4645D35616F4514800C38D39 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		4645D35716F4514800C38D39 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -169,8 +165,6 @@
 		4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		4645D35E16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
-		4645D36416F4666800C38D39 /* HMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMainViewController.h; path = UILayer/MainUI/HMMainViewController.h; sourceTree = "<group>"; };
-		4645D36516F4666800C38D39 /* HMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMainViewController.m; path = UILayer/MainUI/HMMainViewController.m; sourceTree = "<group>"; };
 		4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewController.h; path = UILayer/MainUI/HMFeedStreamViewController.h; sourceTree = "<group>"; };
 		4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewController.m; path = UILayer/MainUI/HMFeedStreamViewController.m; sourceTree = "<group>"; };
 		4645D36D16F494AC00C38D39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -298,6 +292,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4606A4CF1716C039009FDFFB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				4606A4D01716C039009FDFFB /* Reachability.h */,
+				4606A4D11716C039009FDFFB /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Vendor/Reachability;
+			sourceTree = "<group>";
+		};
 		462A770C16FC28B800C3CBF7 /* RecipeUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,11 +312,11 @@
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
+				4645D2FB16F44D1900C38D39 /* homemade */,
 				4645D38516F5ED9300C38D39 /* BaseLayer */,
 				4645D36216F4660800C38D39 /* UILayer */,
 				4645D32216F44E2400C38D39 /* Resources */,
 				4645D31516F44D3F00C38D39 /* Vendor */,
-				4645D2FB16F44D1900C38D39 /* homemade */,
 				4645D2F216F44D1900C38D39 /* Frameworks */,
 				4645D2F116F44D1900C38D39 /* Products */,
 			);
@@ -380,13 +384,13 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				4606A4CF1716C039009FDFFB /* Reachability */,
 				469FBD8E1716B53B00D8BC84 /* SWRevealViewController */,
 				466F4F771701A61B0076AB3D /* EDColor */,
 				46A7D8D816FDB5B7001C822D /* FXLabel */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
 				4645D35416F4514800C38D39 /* SVProgressHUD */,
 				4645D35016F4514200C38D39 /* SSKeychain */,
-				4645D34916F4513C00C38D39 /* JASidePanels */,
 				4645D34216F4513600C38D39 /* FXImageView */,
 				4645D32516F4512C00C38D39 /* AFNetworking */,
 			);
@@ -455,18 +459,6 @@
 			path = Vendor/FXImageView;
 			sourceTree = "<group>";
 		};
-		4645D34916F4513C00C38D39 /* JASidePanels */ = {
-			isa = PBXGroup;
-			children = (
-				4645D34A16F4513C00C38D39 /* JASidePanelController.h */,
-				4645D34B16F4513C00C38D39 /* JASidePanelController.m */,
-				4645D34C16F4513C00C38D39 /* UIViewController+JASidePanel.h */,
-				4645D34D16F4513C00C38D39 /* UIViewController+JASidePanel.m */,
-			);
-			name = JASidePanels;
-			path = Vendor/JASidePanels;
-			sourceTree = "<group>";
-		};
 		4645D35016F4514200C38D39 /* SSKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,8 +522,6 @@
 		4645D36316F4661100C38D39 /* MainUI */ = {
 			isa = PBXGroup;
 			children = (
-				4645D36416F4666800C38D39 /* HMMainViewController.h */,
-				4645D36516F4666800C38D39 /* HMMainViewController.m */,
 				4645D36A16F4940E00C38D39 /* HMFeedStreamViewController.h */,
 				4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */,
 				4645D3F316FB440F00C38D39 /* HMFeedStreamViewCell.h */,
@@ -823,12 +813,9 @@
 				4645D34116F4512C00C38D39 /* UIImageView+AFNetworking.m in Sources */,
 				4645D34716F4513600C38D39 /* FXImageView.m in Sources */,
 				4645D34816F4513600C38D39 /* UIImage+FX.m in Sources */,
-				4645D34E16F4513C00C38D39 /* JASidePanelController.m in Sources */,
-				4645D34F16F4513C00C38D39 /* UIViewController+JASidePanel.m in Sources */,
 				4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
-				4645D36616F4666800C38D39 /* HMMainViewController.m in Sources */,
 				4645D36C16F4940E00C38D39 /* HMFeedStreamViewController.m in Sources */,
 				4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */,
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
@@ -860,6 +847,7 @@
 				466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */,
 				466F4FCA170448F00076AB3D /* HMStep.m in Sources */,
 				469FBD911716B53B00D8BC84 /* SWRevealViewController.m in Sources */,
+				4606A4D21716C039009FDFFB /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

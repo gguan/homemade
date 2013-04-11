@@ -13,9 +13,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "SVPullToRefresh.h"
 #import "HMRecipeViewController.h"
-#import "UIViewController+JASidePanel.h"
-#import "JASidePanelController.h"
 #import <QuartzCore/QuartzCore.h>
+
+#import "SWRevealViewController.h"
 
 #import <Parse/Parse.h>
 
@@ -45,29 +45,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    // Navbar is not hidden
-    hidden = NO;
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    self.title = @"Homemade";
+    
+    SWRevealViewController *revealController = [self revealViewController];
+    
+    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
+        
+    // Left bar button
+    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
+    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
+    leftBtnImage.alpha = 0.6f;
+    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
+    [leftButton addSubview:leftBtnImage];
+    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
+    
+    // Right bar button
     UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];
     [btnImage setImage:[UIImage imageNamed:@"icons_search.png"]];
     btnImage.alpha = 0.6f;
     btnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
     btnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
     btnImage.contentMode = UIViewContentModeScaleAspectFit;
-    
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.frame = CGRectMake(0.0f, 12.0f, 32.0f, 20.0f);
     [rightButton addSubview:btnImage];
-    [rightButton addTarget:self action:@selector(toggleRightPanel:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    [rightButton addTarget:revealController action:@selector(rightRevealToggle:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
-    self.title = @"Homemade";
+    
+    
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
 
 
     NSLog(@"FeedView Load");
@@ -116,7 +135,7 @@
     }];
     
     // trigger the refresh manually at the end of viewDidLoad
-    [self.tableView triggerPullToRefresh];
+//    [self.tableView triggerPullToRefresh];
 
     [self reload:nil];
 
@@ -144,10 +163,6 @@
             [self.tableView reloadData];
         }
     }];
-}
-
-- (void)toggleRightPanel:(id)sender {
-    [self.sidePanelController toggleRightPanel:nil];
 }
 
 

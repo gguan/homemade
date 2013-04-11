@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class JASidePanelController;
+@class SWRevealViewController;
 
 @interface HMAppDelegate : UIResponder <UIApplicationDelegate>
 {
@@ -18,7 +18,7 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) JASidePanelController *mainPanelController;
+@property (strong, nonatomic) SWRevealViewController *mainController;
 
 @property (strong, nonatomic, readonly) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic, readonly) NSManagedObjectContext *managedObjectContext;

@@ -6,10 +6,9 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#import "SWRevealViewController.h"
 #import "HMMenuViewController.h"
 #import "LeftPanelCell.h"
-#import "UIViewController+JASidePanel.h"
-#import "JASidePanelController.h"
 #import "HMFeedStreamViewController.h"
 #import "HMSaveViewController.h"
 #import "HMAccountViewController.h"
@@ -159,58 +158,49 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    SWRevealViewController *revealController = self.revealViewController;
+    UINavigationController *frontNavigationController = (id)revealController.frontViewController;  // <-- we know it is a NavigationController
+
     
     switch ([indexPath row]) {
         case 0:
-            if (self.sidePanelController.centerPanel == self.feedStreamViewController) {
-                [self.sidePanelController showCenterPanelAnimated:YES];
-                return;
+            if ( ![frontNavigationController.topViewController isKindOfClass:[HMFeedStreamViewController class]] ) {
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMFeedStreamViewController alloc] init]];
+                [revealController setFrontViewController:navigationController animated:YES];
             }
-            if (self.feedStreamViewController == nil) {
-                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMFeedStreamViewController alloc] init]];
-                self.feedStreamViewController = centerNavController;
-                self.sidePanelController.centerPanel = centerNavController;
-            } else {
-                self.sidePanelController.centerPanel = self.feedStreamViewController;
+            // Seems the user attempts to 'switch' to exactly the same controller he came from!
+            else {
+                [revealController revealToggle:self];
             }
             break;
         case 1:
-            if (self.sidePanelController.centerPanel == self.saveViewController) {
-                [self.sidePanelController showCenterPanelAnimated:YES];
-                return;
+            if ( ![frontNavigationController.topViewController isKindOfClass:[HMSaveViewController class]] ) {
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSaveViewController alloc] init]];
+                [revealController setFrontViewController:navigationController animated:YES];
             }
-            if (self.saveViewController == nil) {
-                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMSaveViewController alloc] init]];
-                self.saveViewController = centerNavController;
-                self.sidePanelController.centerPanel = centerNavController;
-            } else {
-                self.sidePanelController.centerPanel = self.saveViewController;
-            }
+            // Seems the user attempts to 'switch' to exactly the same controller he came from!
+            else {
+                [revealController revealToggle:self];
+            }            
             break;
         case 2:
-            if (self.sidePanelController.centerPanel == self.accountViewController) {
-                [self.sidePanelController showCenterPanelAnimated:YES];
-                return;
+            if ( ![frontNavigationController.topViewController isKindOfClass:[HMAccountViewController class]] ) {
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMAccountViewController alloc] init]];
+                [revealController setFrontViewController:navigationController animated:YES];
             }
-            if (self.accountViewController == nil) {
-                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMAccountViewController alloc] init]];
-                self.accountViewController = centerNavController;
-                self.sidePanelController.centerPanel = centerNavController;
-            } else {
-                self.sidePanelController.centerPanel = self.accountViewController;
+            // Seems the user attempts to 'switch' to exactly the same controller he came from!
+            else {
+                [revealController revealToggle:self];
             }
             break;
         case 3:
-            if (self.sidePanelController.centerPanel == self.settingViewController) {
-                [self.sidePanelController showCenterPanelAnimated:YES];
-                return;
+            if ( ![frontNavigationController.topViewController isKindOfClass:[HMSettingViewController class]] ) {
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSettingViewController alloc] init]];
+                [revealController setFrontViewController:navigationController animated:YES];
             }
-            if (self.settingViewController == nil) {
-                UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController: [[HMSettingViewController alloc] init]];
-                self.settingViewController = centerNavController;
-                self.sidePanelController.centerPanel = centerNavController;
-            } else {
-                self.sidePanelController.centerPanel = self.settingViewController;
+            // Seems the user attempts to 'switch' to exactly the same controller he came from!
+            else {
+                [revealController revealToggle:self];
             }
             break;
         default:

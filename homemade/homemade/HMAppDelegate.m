@@ -6,18 +6,36 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+
+#import "HMAppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
+
+// Import view controllers
+#import "SWRevealViewController.h"
+#import "HMMenuViewController.h"
+#import "HMFeedStreamViewController.h"
+#import "HMSearchViewController.h"
+
+// Import parse 
+#import <Parse/Parse.h>
+
+// Other libraries
+#import "Reachability.h"
+
+// TODO: delete
+#import "AFNetworking.h"
 #import "HMFeedItem.h"
 #import "HMFeedItemJAO.h"
-
 #define JSON_URL @"http://staging.tacpoint.net:8080/sluo/feedItem.json" //move to constant later
 #define INIT_PAGE_DELAY 0.1
 
-#import "HMAppDelegate.h"
-#import "AFNetworking.h"
-#import "JASidePanelController.h"
-#import "HMMainViewController.h"
+@interface HMAppDelegate()<SWRevealViewControllerDelegate>
 
-#import <Parse/Parse.h>
+@property (nonatomic, strong) Reachability *hostReach;
+@property (nonatomic, strong) Reachability *internetReach;
+@property (nonatomic, strong) Reachability *wifiReach;
+@end
+
 
 @implementation HMAppDelegate
 
@@ -27,36 +45,52 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // AFNetworking initialization
-    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
-    [NSURLCache setSharedURLCache:URLCache];
-    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    
-    // Parse configuration
+    // ****************************************************************************
+    // Parse initialization
     [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
                   clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    // Make sure to update your URL scheme to match this facebook id. It should be "fbFACEBOOK_APP_ID" where FACEBOOK_APP_ID is your Facebook app's id.
+    // You may set one up at https://developers.facebook.com/apps
+    [PFFacebookUtils initializeFacebook];
+    // ****************************************************************************
     
-    [self customizeAppearance];
+    // Clear app icon badge
+    if (application.applicationIconBadgeNumber != 0) {
+        application.applicationIconBadgeNumber = 0;
+        [[PFInstallation currentInstallation] saveEventually];
+    }
+    
+    // Enable public read access by default, with any newly created PFObjects belonging to the current user
+    PFACL *defaultACL = [PFACL ACL];
+    [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    
+    // Set up our app's global UIAppearance
+    [self setupAppearance];
     
     // Initialize panel controller
-    self.mainPanelController = [[HMMainViewController alloc] init];
-    self.mainPanelController.shouldDelegateAutorotateToVisiblePanel = NO;
+	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMFeedStreamViewController alloc] init]];
+    HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
+	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:menuController frontViewController:centerNavController];
+    revealController.rightViewController = [[HMSearchViewController alloc] init];
     
-    self.window.rootViewController = self.mainPanelController;
+    revealController.delegate = self;
+    revealController.rearViewRevealWidth = 70.0f;
+    revealController.rightViewRevealWidth = 290.0f;
+    revealController.frontViewController.view.layer.cornerRadius = 3.0f;
+    revealController.frontViewController.view.clipsToBounds = YES;
+    self.mainController = revealController;
+    
+    self.window.rootViewController = self.mainController;
     [self.window makeKeyAndVisible];
-    
-    
-    [self performSelector:@selector(startApp) withObject:nil afterDelay:INIT_PAGE_DELAY];
-
     
     return YES;
 }
@@ -163,11 +197,27 @@
 }
 
 #pragma mark - Customize Style
-- (void)customizeAppearance {
+- (void)setupAppearance {
     UIImage *navBarImage = [UIImage imageNamed:@"nav-bar"];
     [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 
 }
+
+- (void)monitorReachability {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    self.hostReach = [Reachability reachabilityWithHostname: @"api.parse.com"];
+    [self.hostReach startNotifier];
+    
+    self.internetReach = [Reachability reachabilityForInternetConnection];
+    [self.internetReach startNotifier];
+    
+    self.wifiReach = [Reachability reachabilityForLocalWiFi];
+    [self.wifiReach startNotifier];
+}
+
+
+
 
 #pragma mark - Json Method
 
@@ -201,7 +251,7 @@
 
 -(void)startApp
 {
-//    [self loadJson];//need to check network status later
+    [self loadJson];//need to check network status later
 }
 
 @end
