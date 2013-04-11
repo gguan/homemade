@@ -95,6 +95,7 @@
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
 		469FBD8D1716B1EB00D8BC84 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */; };
+		469FBD911716B53B00D8BC84 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469FBD901716B53B00D8BC84 /* SWRevealViewController.m */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
@@ -248,6 +249,8 @@
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		469FBD8F1716B53B00D8BC84 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		469FBD901716B53B00D8BC84 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -377,6 +380,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				469FBD8E1716B53B00D8BC84 /* SWRevealViewController */,
 				466F4F771701A61B0076AB3D /* EDColor */,
 				46A7D8D816FDB5B7001C822D /* FXLabel */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
@@ -693,6 +697,16 @@
 			name = temp;
 			sourceTree = "<group>";
 		};
+		469FBD8E1716B53B00D8BC84 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				469FBD8F1716B53B00D8BC84 /* SWRevealViewController.h */,
+				469FBD901716B53B00D8BC84 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			path = Vendor/SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +859,7 @@
 				466F4FC417042A880076AB3D /* HMPerson.m in Sources */,
 				466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */,
 				466F4FCA170448F00076AB3D /* HMStep.m in Sources */,
+				469FBD911716B53B00D8BC84 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
