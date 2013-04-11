@@ -17,6 +17,8 @@
 #import "JASidePanelController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import <Parse/Parse.h>
+
 @interface HMFeedStreamViewController ()
 
 @property (strong, nonatomic) NSMutableArray *feeds;

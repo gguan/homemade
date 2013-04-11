@@ -17,6 +17,8 @@
 #import "JASidePanelController.h"
 #import "HMMainViewController.h"
 
+#import <Parse/Parse.h>
+
 @implementation HMAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -35,7 +37,14 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-
+    
+    
+    // Parse configuration
+    [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
+                  clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
     [self customizeAppearance];
     
     // Initialize panel controller
@@ -192,7 +201,7 @@
 
 -(void)startApp
 {
-    [self loadJson];//need to check network status later
+//    [self loadJson];//need to check network status later
 }
 
 @end

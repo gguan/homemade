@@ -89,6 +89,12 @@
 		466F4FC417042A880076AB3D /* HMPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC317042A880076AB3D /* HMPerson.m */; };
 		466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC61704392B0076AB3D /* HMIngredient.m */; };
 		466F4FCA170448F00076AB3D /* HMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC9170448F00076AB3D /* HMStep.m */; };
+		469FBD831716B16000D8BC84 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD821716B16000D8BC84 /* Parse.framework */; };
+		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
+		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
+		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
+		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
+		469FBD8D1716B1EB00D8BC84 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
@@ -236,6 +242,12 @@
 		466F4FC61704392B0076AB3D /* HMIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIngredient.m; path = BaseLayer/DataModel/HMIngredient.m; sourceTree = "<group>"; };
 		466F4FC8170448EF0076AB3D /* HMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMStep.h; path = BaseLayer/DataModel/HMStep.h; sourceTree = "<group>"; };
 		466F4FC9170448F00076AB3D /* HMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMStep.m; path = BaseLayer/DataModel/HMStep.m; sourceTree = "<group>"; };
+		469FBD821716B16000D8BC84 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
+		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -258,6 +270,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469FBD8D1716B1EB00D8BC84 /* StoreKit.framework in Frameworks */,
+				469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */,
+				469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */,
+				4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */,
+				469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */,
+				469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */,
 				EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */,
 				4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */,
 				4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */,
@@ -268,9 +286,9 @@
 				4645D31F16F44DC200C38D39 /* SystemConfiguration.framework in Frameworks */,
 				4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */,
 				4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */,
-				4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */,
 				4645D2FA16F44D1900C38D39 /* CoreData.framework in Frameworks */,
 				4645D32116F44DDB00C38D39 /* FacebookSDK.framework in Frameworks */,
+				469FBD831716B16000D8BC84 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +326,12 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */,
+				469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */,
+				469FBD881716B1C500D8BC84 /* CoreLocation.framework */,
+				469FBD861716B1A900D8BC84 /* CFNetwork.framework */,
+				469FBD841716B1A000D8BC84 /* AudioToolbox.framework */,
+				469FBD821716B16000D8BC84 /* Parse.framework */,
 				EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */,
 				4645D39E16F6917400C38D39 /* MobileCoreServices.framework */,
 				4645D36D16F494AC00C38D39 /* QuartzCore.framework */,
