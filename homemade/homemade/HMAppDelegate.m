@@ -71,9 +71,9 @@
     revealController.rightViewController = [[HMSearchViewController alloc] init];
     
     revealController.delegate = self;
-    revealController.rearViewRevealWidth = 70.0f;
-    revealController.rightViewRevealWidth = 290.0f;
-    revealController.rearViewRevealOverdraw = 100.0f;
+//    revealController.rearViewRevealWidth = 70.0f;
+//    revealController.rightViewRevealWidth = 290.0f;
+//    revealController.rearViewRevealOverdraw = 100.0f;
     revealController.frontViewController.view.layer.cornerRadius = 3.0f;
     revealController.frontViewController.view.clipsToBounds = YES;
     self.mainController = revealController;
