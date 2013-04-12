@@ -10,4 +10,9 @@
 
 @interface HMAccountViewController : UITableViewController
 
+@property (nonatomic, strong) PFUser *user;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+
+- (void)loginButtonTouchHandler:(id)sender;
+
 @end
