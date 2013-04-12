@@ -16,8 +16,7 @@ typedef enum {
 } RecipeType;
 
 
-//@interface HMFeedItem : NSObject
-@interface HMFeedItem : NSManagedObject
+@interface HMFeedItem : NSObject
 
 @property (nonatomic, copy) NSString *sid;
 @property (nonatomic, copy) NSString *author_id;

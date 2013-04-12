@@ -161,9 +161,8 @@
     SWRevealViewController *revealController = self.revealViewController;
     UINavigationController *frontNavigationController = (id)revealController.frontViewController;  // <-- we know it is a NavigationController
 
-    
-    switch ([indexPath row]) {
-        case 0:
+    NSInteger row = indexPath.row;
+    if (row == 0) {
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMFeedStreamViewController class]] ) {
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMFeedStreamViewController alloc] init]];
                 [revealController setFrontViewController:navigationController animated:YES];
@@ -172,8 +171,8 @@
             else {
                 [revealController revealToggle:self];
             }
-            break;
-        case 1:
+
+    } else if (row == 1) {
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMSaveViewController class]] ) {
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSaveViewController alloc] init]];
                 [revealController setFrontViewController:navigationController animated:YES];
@@ -182,8 +181,8 @@
             else {
                 [revealController revealToggle:self];
             }            
-            break;
-        case 2:
+    } else if (row == 2) {
+            NSLog(@"Click!");
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMAccountViewController class]] ) {
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMAccountViewController alloc] init]];
                 [revealController setFrontViewController:navigationController animated:YES];
@@ -192,8 +191,7 @@
             else {
                 [revealController revealToggle:self];
             }
-            break;
-        case 3:
+    } else if (row == 3) {
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMSettingViewController class]] ) {
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSettingViewController alloc] init]];
                 [revealController setFrontViewController:navigationController animated:YES];
@@ -202,9 +200,6 @@
             else {
                 [revealController revealToggle:self];
             }
-            break;
-        default:
-            break;
     }
 }
 

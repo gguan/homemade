@@ -83,10 +83,7 @@
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     
-    
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-
 
 
     NSLog(@"FeedView Load");
@@ -216,44 +213,6 @@
     return 390.0f;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -265,23 +224,6 @@
     
 }
 
-//#pragma mark - View Optimization
-//
-//-(void)updateTableView
-//{
-//    //Do something
-//    
-//    
-//    //Add some delay to optimize user experience
-//    [self performSelector:@selector(stopRefresh) withObject:self afterDelay:0.2];
-//}
-//
-//-(void)stopRefresh
-//{
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"loading"];//Optional. Only supported in iOS6
-//    [self.refreshControl endRefreshing];
-//}
-//
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
@@ -350,11 +292,11 @@
 }
 
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
+//-(void)viewWillDisappear:(BOOL)animated
+//{
+//    [super viewWillDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//}
 
 
 #pragma mark - Controller methods

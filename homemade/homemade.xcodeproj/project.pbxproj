@@ -19,7 +19,6 @@
 		4645D30816F44D1900C38D39 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D30716F44D1900C38D39 /* Default.png */; };
 		4645D30A16F44D1900C38D39 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D30916F44D1900C38D39 /* Default@2x.png */; };
 		4645D30C16F44D1900C38D39 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D30B16F44D1900C38D39 /* Default-568h@2x.png */; };
-		4645D30F16F44D1900C38D39 /* homemade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4645D30D16F44D1900C38D39 /* homemade.xcdatamodeld */; };
 		4645D31B16F44DC200C38D39 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D31616F44DC200C38D39 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4645D31C16F44DC200C38D39 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D31716F44DC200C38D39 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4645D31D16F44DC200C38D39 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D31816F44DC200C38D39 /* Security.framework */; };
@@ -126,7 +125,6 @@
 		4645D30716F44D1900C38D39 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4645D30916F44D1900C38D39 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4645D30B16F44D1900C38D39 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		4645D30E16F44D1900C38D39 /* homemade.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = homemade.xcdatamodel; sourceTree = "<group>"; };
 		4645D31616F44DC200C38D39 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4645D31716F44DC200C38D39 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4645D31816F44DC200C38D39 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -361,7 +359,6 @@
 			children = (
 				4645D30416F44D1900C38D39 /* HMAppDelegate.h */,
 				4645D30516F44D1900C38D39 /* HMAppDelegate.m */,
-				4645D30D16F44D1900C38D39 /* homemade.xcdatamodeld */,
 				4645D2FC16F44D1900C38D39 /* Supporting Files */,
 			);
 			path = homemade;
@@ -801,7 +798,6 @@
 			files = (
 				4645D30216F44D1900C38D39 /* main.m in Sources */,
 				4645D30616F44D1900C38D39 /* HMAppDelegate.m in Sources */,
-				4645D30F16F44D1900C38D39 /* homemade.xcdatamodeld in Sources */,
 				4645D33916F4512C00C38D39 /* AFHTTPClient.m in Sources */,
 				4645D33A16F4512C00C38D39 /* AFHTTPRequestOperation.m in Sources */,
 				4645D33B16F4512C00C38D39 /* AFImageRequestOperation.m in Sources */,
@@ -989,19 +985,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		4645D30D16F44D1900C38D39 /* homemade.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4645D30E16F44D1900C38D39 /* homemade.xcdatamodel */,
-			);
-			currentVersion = 4645D30E16F44D1900C38D39 /* homemade.xcdatamodel */;
-			path = homemade.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4645D2E816F44D1800C38D39 /* Project object */;
 }

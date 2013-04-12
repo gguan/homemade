@@ -48,28 +48,6 @@
         
         HMFeedItem *feed = [[HMFeedItem alloc] initForTest];
         
-        //implement all feeds from core data
-//        NSArray *allFeeds = [[NSArray alloc] init];
-//        allFeeds = [[NSUserDefaults standardUserDefaults] objectForKey:UserDefaultsFeedsKey];
-//        HMFeedItem *feed = [allFeeds objectAtIndex:0];
-
-        /**********/
-        /*
-        NSManagedObjectContext *context = [(HMAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        // need testing here, whether add core data manually working
-        [fetchRequest setEntity:[NSEntityDescription entityForName:@"Feed" inManagedObjectContext:context]];
-        [fetchRequest setPredicate: [NSPredicate predicateWithFormat: @"(sid = 1)"]];
-        
-        // make sure the results are sorted as well
-        //    [fetchRequest setSortDescriptors: [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey: @"feedId" ascending:YES]]];
-        
-        NSError *error = nil;
-        NSArray *feedsMatchingIds = [context executeFetchRequest:fetchRequest error:&error];
-  
-        HMFeedItem *feed = [feedsMatchingIds objectAtIndex:0];
-         */
-        /*******/
         [feeds addObject:feed];
     }
     if (block) {
