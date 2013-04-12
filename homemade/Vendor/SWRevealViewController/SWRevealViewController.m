@@ -222,7 +222,7 @@ typedef enum
 {
     CGRect bounds = self.bounds;
     
-    CGFloat rearWidth = _c.rearViewRevealWidth + _c.rearViewRevealOverdraw;
+    CGFloat rearWidth = _c.rearViewRevealWidth + _c.rearViewRevealOverdraw + 10;
     _rearView.frame = CGRectMake(0.0, 0.0, rearWidth, bounds.size.height);
     
     CGFloat rightWidth = _c.rightViewRevealWidth + _c.rightViewRevealOverdraw;
