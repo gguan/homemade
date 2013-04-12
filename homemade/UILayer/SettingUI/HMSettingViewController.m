@@ -7,6 +7,8 @@
 //
 
 #import "HMSettingViewController.h"
+#import "SWRevealViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface HMSettingViewController ()
 
@@ -30,8 +32,43 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    SWRevealViewController *revealController = [self revealViewController];
+    
+    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
+    
+    // Left bar button
+    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
+    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
+    leftBtnImage.alpha = 0.6f;
+    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
+    [leftButton addSubview:leftBtnImage];
+    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
+    
+    
+    // test parse
+//    NSString *title = @"test recipe";
+//    NSArray *arr = @[@"item1", @"item2", @"item3"];
+//    NSDictionary *dict = @{@"key1": @"value1", @"key2": @"value2"};
+//    PFObject *recipe = [PFObject objectWithClassName:@"RecipeTest"];
+//    [recipe setObject:[PFUser currentUser] forKey:@"user"];
+//    [recipe setObject:title forKey:@"title"];
+//    [recipe setObject:arr forKey:@"strarray"];
+//    [recipe setObject:dict forKey:@"dict"];
+//    
+//    // Photos are public, but may only be modified by the user who uploaded them
+//    PFACL *recipeACL = [PFACL ACLWithUser:[PFUser currentUser]];
+//    [recipeACL setPublicReadAccess:YES];
+//    recipe.ACL = recipeACL;
+//    
+//    [recipe save];
+
 }
 
 - (void)didReceiveMemoryWarning

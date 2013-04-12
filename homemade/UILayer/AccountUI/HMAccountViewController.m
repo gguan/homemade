@@ -32,7 +32,7 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    self.title = @"Homemade";
+    self.title = @"Account";
     
     SWRevealViewController *revealController = [self revealViewController];
     
