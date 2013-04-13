@@ -87,11 +87,9 @@
 
 
     NSLog(@"FeedView Load");
-
-//    [self reload:nil];
     
     
-    //SVPullToRefresh
+    // SVPullToRefresh
     // insert either the first or last feed for testing, change later
     
     __weak HMFeedStreamViewController *weakSelf = self;
@@ -130,23 +128,9 @@
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
         });
     }];
-    
-    // trigger the refresh manually at the end of viewDidLoad
-//    [self.tableView triggerPullToRefresh];
 
     [self reload:nil];
 
-    
-    
-    //Add refreshControl
-//    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-//    refreshControl.tintColor = [UIColor lightGrayColor];
-//    [refreshControl addTarget:self action:@selector(updateTableView) forControlEvents:UIControlEventValueChanged];
-//    self.refreshControl = refreshControl;
-
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)reload:(id)sender {
@@ -225,8 +209,7 @@
 }
 
 
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
+#pragma mark - UIScrollViewDelegate Methods
 
 // After pullToRefresh, need to set the offset to top
 -(void)contract
