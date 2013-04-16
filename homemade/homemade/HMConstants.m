@@ -8,6 +8,10 @@
 
 #import "HMConstants.h"
 
+
+NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey    = @"com.parse.Anypic.userDefaults.activityFeedViewController.lastRefresh";
+NSString *const kHMUserDefaultsCacheFacebookFriendsKey                     = @"com.parse.Anypic.userDefaults.cache.facebookFriends";
+
 #pragma mark - PFObject Recipe Class
 // Class key
 NSString *const kHMRecipeClassKey    = @"Recipe";
@@ -28,10 +32,10 @@ NSString *const kHMRecipeAttributesIsSavedByCurrentUserKey  = @"isSavedByCurrent
 NSString *const kHMRecipeAttributesSaveCountKey             = @"saveCount";
 NSString *const kHMRecipeAttributesSaversKey                = @"savers";
 NSString *const kHMRecipeAttributesIsMadeByCurrentUserKey   = @"isMadeByCurrentUser";
-NSString *const kHMRecipeAttributesMadeCountKey             = @"madeCount";
+NSString *const kHMRecipeAttributesMakeCountKey             = @"madeCount";
 NSString *const kHMRecipeAttributesMakersKey                = @"makers";
 NSString *const kHMRecipeAttributesCommentCountKey          = @"commentCount";
-NSString *const kHMRecipeAttributesCommenterKey             = @"commenters";
+NSString *const kHMRecipeAttributesCommentersKey             = @"commenters";
 
 #pragma mark - Cached User Attributes
 // keys

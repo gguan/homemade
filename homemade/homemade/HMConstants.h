@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+
+
+#pragma mark - NSUserDefaults
+extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;
+extern NSString *const kHMUserDefaultsCacheFacebookFriendsKey;
+
 #pragma mark - PFObject Recipe Class
 // Class key
 extern NSString *const kHMRecipeClassKey;
@@ -28,10 +34,10 @@ extern NSString *const kHMRecipeAttributesIsSavedByCurrentUserKey;
 extern NSString *const kHMRecipeAttributesSaveCountKey;
 extern NSString *const kHMRecipeAttributesSaversKey;
 extern NSString *const kHMRecipeAttributesIsMadeByCurrentUserKey;
-extern NSString *const kHMRecipeAttributesMadeCountKey;
+extern NSString *const kHMRecipeAttributesMakeCountKey;
 extern NSString *const kHMRecipeAttributesMakersKey;
 extern NSString *const kHMRecipeAttributesCommentCountKey;
-extern NSString *const kHMRecipeAttributesCommenterKey;
+extern NSString *const kHMRecipeAttributesCommentersKey;
 
 #pragma mark - Cached User Attributes
 // keys

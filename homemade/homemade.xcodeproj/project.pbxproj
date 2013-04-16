@@ -14,6 +14,7 @@
 		4606A4DA17194AA7009FDFFB /* s11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4D617194AA7009FDFFB /* s11.jpg */; };
 		4606A4DC17194F7C009FDFFB /* p1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4DB17194F7C009FDFFB /* p1.jpg */; };
 		4606A4DF17195750009FDFFB /* HMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4DE17195750009FDFFB /* HMConstants.m */; };
+		4606A4E2171AB992009FDFFB /* HMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E1171AB992009FDFFB /* HMCache.m */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -122,6 +123,8 @@
 		4606A4DB17194F7C009FDFFB /* p1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = p1.jpg; sourceTree = "<group>"; };
 		4606A4DD17195750009FDFFB /* HMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMConstants.h; sourceTree = "<group>"; };
 		4606A4DE17195750009FDFFB /* HMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMConstants.m; sourceTree = "<group>"; };
+		4606A4E0171AB991009FDFFB /* HMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCache.h; sourceTree = "<group>"; };
+		4606A4E1171AB992009FDFFB /* HMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCache.m; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,6 +378,8 @@
 				4645D30516F44D1900C38D39 /* HMAppDelegate.m */,
 				4606A4DD17195750009FDFFB /* HMConstants.h */,
 				4606A4DE17195750009FDFFB /* HMConstants.m */,
+				4606A4E0171AB991009FDFFB /* HMCache.h */,
+				4606A4E1171AB992009FDFFB /* HMCache.m */,
 			);
 			path = homemade;
 			sourceTree = "<group>";
@@ -870,6 +875,7 @@
 				469FBD911716B53B00D8BC84 /* SWRevealViewController.m in Sources */,
 				4606A4D21716C039009FDFFB /* Reachability.m in Sources */,
 				4606A4DF17195750009FDFFB /* HMConstants.m in Sources */,
+				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
