@@ -15,6 +15,8 @@
 		4606A4DC17194F7C009FDFFB /* p1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4DB17194F7C009FDFFB /* p1.jpg */; };
 		4606A4DF17195750009FDFFB /* HMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4DE17195750009FDFFB /* HMConstants.m */; };
 		4606A4E2171AB992009FDFFB /* HMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E1171AB992009FDFFB /* HMCache.m */; };
+		4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */; };
+		4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -125,6 +127,10 @@
 		4606A4DE17195750009FDFFB /* HMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMConstants.m; sourceTree = "<group>"; };
 		4606A4E0171AB991009FDFFB /* HMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCache.h; sourceTree = "<group>"; };
 		4606A4E1171AB992009FDFFB /* HMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCache.m; sourceTree = "<group>"; };
+		4606A4E3171EA3A8009FDFFB /* HMRecipeFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeFeedViewController.h; path = UILayer/MainUI/HMRecipeFeedViewController.h; sourceTree = "<group>"; };
+		4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeFeedViewController.m; path = UILayer/MainUI/HMRecipeFeedViewController.m; sourceTree = "<group>"; };
+		4606A4E6171EA3F0009FDFFB /* HMRecipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeCellView.h; path = UILayer/MainUI/HMRecipeCellView.h; sourceTree = "<group>"; };
+		4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeCellView.m; path = UILayer/MainUI/HMRecipeCellView.m; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -543,6 +549,10 @@
 				4645D36B16F4940E00C38D39 /* HMFeedStreamViewController.m */,
 				4645D3F316FB440F00C38D39 /* HMFeedStreamViewCell.h */,
 				4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */,
+				4606A4E3171EA3A8009FDFFB /* HMRecipeFeedViewController.h */,
+				4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */,
+				4606A4E6171EA3F0009FDFFB /* HMRecipeCellView.h */,
+				4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -876,6 +886,8 @@
 				4606A4D21716C039009FDFFB /* Reachability.m in Sources */,
 				4606A4DF17195750009FDFFB /* HMConstants.m in Sources */,
 				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,
+				4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */,
+				4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

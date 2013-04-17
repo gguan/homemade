@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMFeedStreamViewCell : UITableViewCell
+@interface HMFeedStreamViewCell :  PFTableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *photo;
+@property (strong, nonatomic) IBOutlet PFImageView *photo;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descLabel;

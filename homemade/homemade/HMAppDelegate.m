@@ -15,6 +15,7 @@
 #import "HMMenuViewController.h"
 #import "HMFeedStreamViewController.h"
 #import "HMSearchViewController.h"
+#import "HMRecipeFeedViewController.h"
 
 // Import parse 
 #import <Parse/Parse.h>
@@ -65,7 +66,7 @@
     [self setupAppearance];
     
     // Initialize panel controller
-	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMFeedStreamViewController alloc] init]];
+	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
     HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
 	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:menuController frontViewController:centerNavController];
     revealController.rightViewController = [[HMSearchViewController alloc] init];

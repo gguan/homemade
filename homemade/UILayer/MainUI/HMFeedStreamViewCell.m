@@ -22,11 +22,14 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        
         // Initialization code
-        self.photo = [[UIImageView alloc] initWithFrame:CGRectMake(5.0, 5.0, 310.0, 310.0)];
+        self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(5.0, 5.0, 310.0, 310.0)];
         self.photo.tag = PHOTO_TAG;
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.layer.cornerRadius = 5.0f;
+        self.photo.contentMode = UIViewContentModeScaleAspectFill;
+        self.photo.layer.masksToBounds = YES;
         
         self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 320.0, 200.0, 20.0)];
         self.dateLabel.tag = DATE_TAG;
