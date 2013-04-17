@@ -101,9 +101,9 @@
 
 - (void)uploadtestingdata {
     // test recipe data structure
-    NSString *title = @"Hurricane";
+    NSString *title = @"丰盈科斯塔Busty Crusta";
     NSString *overview = @"来自黄涛的大厨食谱：沾着金巴丽和砂糖的杯口，充满了甜蜜的味道，加上抹茶力娇酒和君度力娇酒的混合，更增加了甜味，朗姆酒的浓重的酒精油然而生，酸酸的柠檬汁又带来第三种美妙的口感。3款甜酒的搭配，各显风姿，甜中带苦。砂糖的装饰，犹如晶莹剔透的钻石，在光照下透着红光，清新的绿色像一袭晚礼服，光泽诱人。";
-    UIImage *photo = [UIImage imageNamed:@"1.jpg"];
+    UIImage *photo = [UIImage imageNamed:@"p1.jpg"];
     NSData *photoData = UIImageJPEGRepresentation(photo, 1.0f);
     PFFile *photoFile = [PFFile fileWithData:photoData];
     
@@ -133,6 +133,8 @@
     
     NSNumber *difficulty = [NSNumber numberWithInt:1];
     
+    NSNumber *type = [NSNumber numberWithInt:1];
+    
     NSArray *tips = @[@"杯口一定要蘸金巴丽这种甜味的酒，以增加粘度，否则砂糖沾不上去。", @"沾砂糖的时候，不宜过多，多了的话，可以倒过来拍掉一点，否则影响酒的口感。", @"品尝时，要先舔一口砂糖，再喝一口酒。"];
     
     PFObject *recipe = [PFObject objectWithClassName:@"Recipe"];
@@ -141,6 +143,7 @@
     [recipe setObject:overview forKey:@"overview"];
     [recipe setObject:photoFile forKey:@"photo"];
     [recipe setObject:difficulty forKey:@"difficulty"];
+    [recipe setObject:type forKey:@"type"];
     [recipe setObject:ingredients forKey:@"ingredients"];
     [recipe setObject:steps forKey:@"steps"];
     [recipe setObject:tips forKey:@"tips"];
