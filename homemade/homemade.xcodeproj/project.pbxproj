@@ -18,6 +18,12 @@
 		4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */; };
 		4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
+		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
+		46372469171FBBB4002357E0 /* app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372468171FBBB4002357E0 /* app-icon@2x.png */; };
+		4637246E171FE026002357E0 /* ButtonLike.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246A171FE026002357E0 /* ButtonLike.png */; };
+		4637246F171FE026002357E0 /* ButtonLike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246B171FE026002357E0 /* ButtonLike@2x.png */; };
+		46372470171FE026002357E0 /* ButtonLikeSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246C171FE026002357E0 /* ButtonLikeSelected.png */; };
+		46372471171FE026002357E0 /* ButtonLikeSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246D171FE026002357E0 /* ButtonLikeSelected@2x.png */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
 		4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F716F44D1900C38D39 /* CoreGraphics.framework */; };
@@ -60,7 +66,6 @@
 		4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A116F6929C00C38D39 /* HMMenuViewController.m */; };
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
-		4645D3C016F9859C00C38D39 /* HM_app_icon 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */; };
 		4645D3F216F9AA4E00C38D39 /* HMFeedAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */; };
 		4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */; };
 		4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F816FB539D00C38D39 /* HMNavigationBar.m */; };
@@ -133,6 +138,12 @@
 		4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeCellView.m; path = UILayer/MainUI/HMRecipeCellView.m; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
+		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
+		46372468171FBBB4002357E0 /* app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon@2x.png"; sourceTree = "<group>"; };
+		4637246A171FE026002357E0 /* ButtonLike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonLike.png; sourceTree = "<group>"; };
+		4637246B171FE026002357E0 /* ButtonLike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonLike@2x.png"; sourceTree = "<group>"; };
+		4637246C171FE026002357E0 /* ButtonLikeSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonLikeSelected.png; sourceTree = "<group>"; };
+		4637246D171FE026002357E0 /* ButtonLikeSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonLikeSelected@2x.png"; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4645D2F516F44D1900C38D39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -203,7 +214,6 @@
 		4645D3A416F718DD00C38D39 /* HMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSettingViewController.m; path = UILayer/SettingUI/HMSettingViewController.m; sourceTree = "<group>"; };
 		4645D3A716F727A300C38D39 /* HMAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMAccountViewController.h; path = UILayer/AccountUI/HMAccountViewController.h; sourceTree = "<group>"; };
 		4645D3A816F727A300C38D39 /* HMAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/AccountUI/HMAccountViewController.m; sourceTree = "<group>"; };
-		4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HM_app_icon 2.png"; sourceTree = "<group>"; };
 		4645D3F016F9AA4E00C38D39 /* HMFeedAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedAPIClient.h; path = BaseLayer/Network/HMFeedAPIClient.h; sourceTree = "<group>"; };
 		4645D3F116F9AA4E00C38D39 /* HMFeedAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedAPIClient.m; path = BaseLayer/Network/HMFeedAPIClient.m; sourceTree = "<group>"; };
 		4645D3F316FB440F00C38D39 /* HMFeedStreamViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewCell.h; path = UILayer/MainUI/HMFeedStreamViewCell.h; sourceTree = "<group>"; };
@@ -423,6 +433,12 @@
 		4645D32216F44E2400C38D39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4637246A171FE026002357E0 /* ButtonLike.png */,
+				4637246B171FE026002357E0 /* ButtonLike@2x.png */,
+				4637246C171FE026002357E0 /* ButtonLikeSelected.png */,
+				4637246D171FE026002357E0 /* ButtonLikeSelected@2x.png */,
+				46372468171FBBB4002357E0 /* app-icon@2x.png */,
+				46372466171FBBB1002357E0 /* app-icon.png */,
 				466F4FAD170408310076AB3D /* temp */,
 				466F4FAB1703144E0076AB3D /* icons_menu.png */,
 				466F4F951703046F0076AB3D /* icons_search.png */,
@@ -431,7 +447,6 @@
 				466F4F8D1701B76E0076AB3D /* icons_3.png */,
 				466F4F8B1701B5850076AB3D /* icons_2.png */,
 				466F4F891701AD5B0076AB3D /* icons_1.png */,
-				4645D3BF16F9859C00C38D39 /* HM_app_icon 2.png */,
 				EAB6D50716F72A1600A3616F /* arrow_right.png */,
 				EAB6D50916F856FC00A3616F /* arrow_right@2x.png */,
 				EAB6D50B16F857F700A3616F /* blend_bottom.png */,
@@ -803,7 +818,6 @@
 				EAB6D51016F857F700A3616F /* blend_bottom@2x.png in Resources */,
 				EAB6D51116F857F700A3616F /* blend_top.png in Resources */,
 				EAB6D51216F857F700A3616F /* blend_top@2x.png in Resources */,
-				4645D3C016F9859C00C38D39 /* HM_app_icon 2.png in Resources */,
 				466F4F8A1701AD5B0076AB3D /* icons_1.png in Resources */,
 				466F4F8C1701B5850076AB3D /* icons_2.png in Resources */,
 				466F4F8E1701B76E0076AB3D /* icons_3.png in Resources */,
@@ -826,6 +840,12 @@
 				4606A4D917194AA7009FDFFB /* s12.jpg in Resources */,
 				4606A4DA17194AA7009FDFFB /* s11.jpg in Resources */,
 				4606A4DC17194F7C009FDFFB /* p1.jpg in Resources */,
+				46372467171FBBB1002357E0 /* app-icon.png in Resources */,
+				46372469171FBBB4002357E0 /* app-icon@2x.png in Resources */,
+				4637246E171FE026002357E0 /* ButtonLike.png in Resources */,
+				4637246F171FE026002357E0 /* ButtonLike@2x.png in Resources */,
+				46372470171FE026002357E0 /* ButtonLikeSelected.png in Resources */,
+				46372471171FE026002357E0 /* ButtonLikeSelected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

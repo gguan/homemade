@@ -125,7 +125,8 @@
 - (void)setupAppearance {
     UIImage *navBarImage = [UIImage imageNamed:@"nav-bar"];
     [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-
+    
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"Symbol" size:17.0]];
 }
 
 

@@ -95,7 +95,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 390.0f;
+    return 320.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,15 +140,15 @@
     }
     
     // Configure the cell
-    cell.textLabel.text = [object objectForKey:@"title"];
-    cell.detailTextLabel.text = [object objectForKey:@"overview"];;
+    cell.nameLabel.text = [object objectForKey:@"title"];
+    cell.descLabel.text = [object objectForKey:@"overview"];;
     
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
         
         // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.
-        if ([cell.photo.file isDataAvailable]) {
+        if (cell.photo.file.isDataAvailable) {
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (error) {
                     NSLog(@"Error!");
