@@ -48,7 +48,7 @@
     SWRevealViewController *revealController = [self revealViewController];
     
     [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
-    
+    [self.tableView addGestureRecognizer:revealController.panGestureRecognizer];
     // Left bar button
     UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
     [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];

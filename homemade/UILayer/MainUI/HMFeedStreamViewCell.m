@@ -30,7 +30,7 @@
         // add shadow view
         UIView *dropshadowView = [[UIView alloc] init];
         dropshadowView.backgroundColor = [UIColor whiteColor];
-        dropshadowView.frame = CGRectMake( 6.0f, 6.0f, 308.0f, 248.0f);
+        dropshadowView.frame = CGRectMake( 5.0f, 5.0f, 310.0f, 310.0f);
         [self.contentView addSubview:dropshadowView];
         CALayer *layer = dropshadowView.layer;
         layer.masksToBounds = NO;
