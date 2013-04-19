@@ -7,6 +7,7 @@
 //
 
 #import "HMRecipeFeedViewController.h"
+#import "HMRecipeViewController.h"
 #import "HMFeedStreamViewCell.h"
 #import "SVPullToRefresh.h"
 #import "SWRevealViewController.h"
@@ -118,7 +119,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //For testing, point to the same HMRecipeViewController,add properties later
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
+    [[self navigationController] pushViewController:recipeViewController animated:YES];
     
 }
 
