@@ -8,6 +8,7 @@
 
 #import "HMRecipeFeedViewController.h"
 #import "HMFeedStreamViewCell.h"
+#import "SVPullToRefresh.h"
 #import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -16,6 +17,7 @@
 @end
 
 @implementation HMRecipeFeedViewController
+
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -78,6 +80,21 @@
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
+    
+    
+    
+    // setup infinite scrolling
+    __weak HMRecipeFeedViewController *weakSelf = self;
+    
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf loadNextPage];
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        });
+    }];
+
 
 }
 

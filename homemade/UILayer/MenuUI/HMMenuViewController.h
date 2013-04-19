@@ -11,7 +11,7 @@
 
 @interface HMMenuViewController : UITableViewController
 
-@property (nonatomic, strong) UINavigationController *feedStreamViewController;
+@property (nonatomic, strong) UINavigationController *recipeFeedViewController;
 @property (nonatomic, strong) UINavigationController *saveViewController;
 @property (nonatomic, strong) UINavigationController *accountViewController;
 @property (nonatomic, strong) UINavigationController *settingViewController;

@@ -9,7 +9,7 @@
 #import "SWRevealViewController.h"
 #import "HMMenuViewController.h"
 #import "LeftPanelCell.h"
-#import "HMFeedStreamViewController.h"
+#import "HMRecipeFeedViewController.h"
 #import "HMSaveViewController.h"
 #import "HMAccountViewController.h"
 #import "HMSettingViewController.h"
@@ -163,9 +163,14 @@
 
     NSInteger row = indexPath.row;
     if (row == 0) {
-            if ( ![frontNavigationController.topViewController isKindOfClass:[HMFeedStreamViewController class]] ) {
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMFeedStreamViewController alloc] init]];
-                [revealController setFrontViewController:navigationController animated:YES];
+            if ( ![frontNavigationController.topViewController isKindOfClass:[HMRecipeFeedViewController class]] ) {
+                if (self.recipeFeedViewController == nil) {
+                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
+                    [revealController setFrontViewController:navigationController animated:YES];
+                } else {
+                    [revealController setFrontViewController:self.recipeFeedViewController animated:YES];
+                }
+                
             }
             // Seems the user attempts to 'switch' to exactly the same controller he came from!
             else {
@@ -174,8 +179,12 @@
 
     } else if (row == 1) {
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMSaveViewController class]] ) {
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSaveViewController alloc] init]];
-                [revealController setFrontViewController:navigationController animated:YES];
+                if (self.saveViewController == nil) {
+                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSaveViewController alloc] init]];
+                    [revealController setFrontViewController:navigationController animated:YES];
+                } else {
+                    [revealController setFrontViewController:self.saveViewController animated:YES];
+                }
             }
             // Seems the user attempts to 'switch' to exactly the same controller he came from!
             else {
@@ -184,8 +193,12 @@
     } else if (row == 2) {
             NSLog(@"Click!");
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMAccountViewController class]] ) {
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMAccountViewController alloc] init]];
-                [revealController setFrontViewController:navigationController animated:YES];
+                if (self.accountViewController == nil) {
+                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMAccountViewController alloc] init]];
+                    [revealController setFrontViewController:navigationController animated:YES];
+                } else {
+                     [revealController setFrontViewController:self.accountViewController animated:YES];
+                }
             }
             // Seems the user attempts to 'switch' to exactly the same controller he came from!
             else {
@@ -193,8 +206,13 @@
             }
     } else if (row == 3) {
             if ( ![frontNavigationController.topViewController isKindOfClass:[HMSettingViewController class]] ) {
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSettingViewController alloc] init]];
-                [revealController setFrontViewController:navigationController animated:YES];
+                if (self.settingViewController) {
+                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[HMSettingViewController alloc] init]];
+                    [revealController setFrontViewController:navigationController animated:YES];
+                } else {
+                    [revealController setFrontViewController:self.settingViewController animated:YES];
+                }
+                
             }
             // Seems the user attempts to 'switch' to exactly the same controller he came from!
             else {

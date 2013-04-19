@@ -68,6 +68,7 @@
     // Initialize panel controller
 	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
     HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
+    menuController.recipeFeedViewController = centerNavController;
 	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:menuController frontViewController:centerNavController];
     revealController.rightViewController = [[HMSearchViewController alloc] init];
     
