@@ -46,7 +46,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.title = @"Homemade";
+    self.title = @"Zelda";
     
     SWRevealViewController *revealController = [self revealViewController];
     

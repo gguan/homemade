@@ -23,7 +23,7 @@
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.contentView.backgroundColor = [UIColor colorWithHexString:@"E3E3E3"];
+//        self.contentView.backgroundColor = [UIColor colorWithHexString:@"F3F3F3"];
         
         // Initialization code
         

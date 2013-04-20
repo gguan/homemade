@@ -125,9 +125,40 @@
 #pragma mark - Customize Style
 - (void)setupAppearance {
     UIImage *navBarImage = [UIImage imageNamed:@"nav-bar"];
-    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+    // draw a border on image
+	UIGraphicsBeginImageContext(navBarImage.size);
     
-    [[UILabel appearance] setFont:[UIFont fontWithName:@"Symbol" size:17.0]];
+	// draw original image into the context
+	[navBarImage drawAtPoint:CGPointZero];
+    
+	// get the context for CoreGraphics
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+	// set stroking color and draw circle
+	[[UIColor grayColor] setStroke];
+    
+    CGContextBeginPath (ctx);
+    CGContextMoveToPoint(ctx, 0, 44);
+    CGContextAddLineToPoint(ctx, 320, 44);
+    CGContextStrokePath(ctx);
+    
+	// make image out of bitmap context
+	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+	// free the context
+	UIGraphicsEndImageContext();
+    
+    // set navigation bar title attributtes
+    [[UINavigationBar appearance] setBackgroundImage:newImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+     [UIColor blackColor], UITextAttributeTextColor,
+     [UIColor whiteColor], UITextAttributeTextShadowColor,
+     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+     [UIFont fontWithName:@"Copperplate-Bold" size:22], UITextAttributeFont, nil]
+    ];
+    
 }
 
 
