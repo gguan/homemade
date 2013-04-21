@@ -24,6 +24,10 @@
 		4637246F171FE026002357E0 /* ButtonLike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246B171FE026002357E0 /* ButtonLike@2x.png */; };
 		46372470171FE026002357E0 /* ButtonLikeSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246C171FE026002357E0 /* ButtonLikeSelected.png */; };
 		46372471171FE026002357E0 /* ButtonLikeSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637246D171FE026002357E0 /* ButtonLikeSelected@2x.png */; };
+		463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463725631724086A002357E0 /* MCSwipeTableViewCell.m */; };
+		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
+		4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372569172408A3002357E0 /* UIImage+ColorArt.m */; };
+		4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637256B172408A3002357E0 /* UIImage+Scale.m */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
 		4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F716F44D1900C38D39 /* CoreGraphics.framework */; };
@@ -144,6 +148,14 @@
 		4637246B171FE026002357E0 /* ButtonLike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonLike@2x.png"; sourceTree = "<group>"; };
 		4637246C171FE026002357E0 /* ButtonLikeSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonLikeSelected.png; sourceTree = "<group>"; };
 		4637246D171FE026002357E0 /* ButtonLikeSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonLikeSelected@2x.png"; sourceTree = "<group>"; };
+		463725621724086A002357E0 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
+		463725631724086A002357E0 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
+		46372566172408A3002357E0 /* SLColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLColorArt.h; sourceTree = "<group>"; };
+		46372567172408A3002357E0 /* SLColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLColorArt.m; sourceTree = "<group>"; };
+		46372568172408A3002357E0 /* UIImage+ColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorArt.h"; sourceTree = "<group>"; };
+		46372569172408A3002357E0 /* UIImage+ColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorArt.m"; sourceTree = "<group>"; };
+		4637256A172408A3002357E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		4637256B172408A3002357E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4645D2F516F44D1900C38D39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -339,6 +351,30 @@
 			name = RecipeUI;
 			sourceTree = "<group>";
 		};
+		463725611724086A002357E0 /* MCSwipeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				463725621724086A002357E0 /* MCSwipeTableViewCell.h */,
+				463725631724086A002357E0 /* MCSwipeTableViewCell.m */,
+			);
+			name = MCSwipeTableViewCell;
+			path = Vendor/MCSwipeTableViewCell;
+			sourceTree = "<group>";
+		};
+		46372565172408A3002357E0 /* ColorArt */ = {
+			isa = PBXGroup;
+			children = (
+				46372566172408A3002357E0 /* SLColorArt.h */,
+				46372567172408A3002357E0 /* SLColorArt.m */,
+				46372568172408A3002357E0 /* UIImage+ColorArt.h */,
+				46372569172408A3002357E0 /* UIImage+ColorArt.m */,
+				4637256A172408A3002357E0 /* UIImage+Scale.h */,
+				4637256B172408A3002357E0 /* UIImage+Scale.m */,
+			);
+			name = ColorArt;
+			path = Vendor/ColorArt;
+			sourceTree = "<group>";
+		};
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +453,8 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				46372565172408A3002357E0 /* ColorArt */,
+				463725611724086A002357E0 /* MCSwipeTableViewCell */,
 				4606A4CF1716C039009FDFFB /* Reachability */,
 				469FBD8E1716B53B00D8BC84 /* SWRevealViewController */,
 				466F4F771701A61B0076AB3D /* EDColor */,
@@ -908,6 +946,10 @@
 				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,
 				4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */,
 				4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */,
+				463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */,
+				4637256C172408A3002357E0 /* SLColorArt.m in Sources */,
+				4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */,
+				4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
