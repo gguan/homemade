@@ -13,7 +13,6 @@
 // Import view controllers
 #import "SWRevealViewController.h"
 #import "HMMenuViewController.h"
-#import "HMFeedStreamViewController.h"
 #import "HMSearchViewController.h"
 #import "HMRecipeFeedViewController.h"
 
