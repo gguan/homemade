@@ -8,6 +8,7 @@
 
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
+#import "HMRecipeDetailViewController.h"
 #import "HMFeedStreamViewCell.h"
 #import "SVPullToRefresh.h"
 #import "SWRevealViewController.h"
@@ -44,6 +45,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // add Path style menu
+    
+    
+    
+    
 	// Do any additional setup after loading the view.
     
     self.title = @"Zelda";
@@ -119,7 +126,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //For testing, point to the same HMRecipeViewController,add properties later
-    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
+    HMRecipeDetailViewController *recipeViewController = [[HMRecipeDetailViewController alloc] init];
+    recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
     [[self navigationController] pushViewController:recipeViewController animated:YES];
     
 }

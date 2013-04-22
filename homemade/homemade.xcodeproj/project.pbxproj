@@ -30,6 +30,21 @@
 		4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637256B172408A3002357E0 /* UIImage+Scale.m */; };
 		4637257417241C81002357E0 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257117241C81002357E0 /* AwesomeMenu.m */; };
 		4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257317241C81002357E0 /* AwesomeMenuItem.m */; };
+		4637259117254956002357E0 /* HMRecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637259017254956002357E0 /* HMRecipeDetailViewController.m */; };
+		4637259F17254DC5002357E0 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259217254DC5002357E0 /* account.png */; };
+		463725A017254DC5002357E0 /* addToFavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259317254DC5002357E0 /* addToFavorite.png */; };
+		463725A117254DC5002357E0 /* addToFavoriteActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259417254DC5002357E0 /* addToFavoriteActive.png */; };
+		463725A217254DC5002357E0 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259517254DC5002357E0 /* comment.png */; };
+		463725A317254DC5002357E0 /* commentActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259617254DC5002357E0 /* commentActive.png */; };
+		463725A417254DC5002357E0 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259717254DC5002357E0 /* like.png */; };
+		463725A517254DC5002357E0 /* likeActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259817254DC5002357E0 /* likeActive.png */; };
+		463725A617254DC5002357E0 /* mainNav.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259917254DC5002357E0 /* mainNav.png */; };
+		463725A717254DC5002357E0 /* myFavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259A17254DC5002357E0 /* myFavorite.png */; };
+		463725A817254DC5002357E0 /* notification.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259B17254DC5002357E0 /* notification.png */; };
+		463725A917254DC5002357E0 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259C17254DC5002357E0 /* share.png */; };
+		463725AA17254DC5002357E0 /* shareActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259D17254DC5002357E0 /* shareActive.png */; };
+		463725AB17254DC5002357E0 /* WhatIMade.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259E17254DC5002357E0 /* WhatIMade.png */; };
+		463725AD1725505B002357E0 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725AC1725505B002357E0 /* account@2x.png */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
 		4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F716F44D1900C38D39 /* CoreGraphics.framework */; };
@@ -151,6 +166,22 @@
 		4637257117241C81002357E0 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
 		4637257217241C81002357E0 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
 		4637257317241C81002357E0 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
+		4637258F17254956002357E0 /* HMRecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeDetailViewController.h; path = UILayer/RecipeUI/HMRecipeDetailViewController.h; sourceTree = "<group>"; };
+		4637259017254956002357E0 /* HMRecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeDetailViewController.m; path = UILayer/RecipeUI/HMRecipeDetailViewController.m; sourceTree = "<group>"; };
+		4637259217254DC5002357E0 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
+		4637259317254DC5002357E0 /* addToFavorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToFavorite.png; sourceTree = "<group>"; };
+		4637259417254DC5002357E0 /* addToFavoriteActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToFavoriteActive.png; sourceTree = "<group>"; };
+		4637259517254DC5002357E0 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		4637259617254DC5002357E0 /* commentActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentActive.png; sourceTree = "<group>"; };
+		4637259717254DC5002357E0 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		4637259817254DC5002357E0 /* likeActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeActive.png; sourceTree = "<group>"; };
+		4637259917254DC5002357E0 /* mainNav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainNav.png; sourceTree = "<group>"; };
+		4637259A17254DC5002357E0 /* myFavorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myFavorite.png; sourceTree = "<group>"; };
+		4637259B17254DC5002357E0 /* notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notification.png; sourceTree = "<group>"; };
+		4637259C17254DC5002357E0 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		4637259D17254DC5002357E0 /* shareActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareActive.png; sourceTree = "<group>"; };
+		4637259E17254DC5002357E0 /* WhatIMade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhatIMade.png; sourceTree = "<group>"; };
+		463725AC1725505B002357E0 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4645D2F516F44D1900C38D39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -319,6 +350,8 @@
 		462A770C16FC28B800C3CBF7 /* RecipeUI */ = {
 			isa = PBXGroup;
 			children = (
+				4637258F17254956002357E0 /* HMRecipeDetailViewController.h */,
+				4637259017254956002357E0 /* HMRecipeDetailViewController.m */,
 			);
 			name = RecipeUI;
 			sourceTree = "<group>";
@@ -459,6 +492,20 @@
 				4637246B171FE026002357E0 /* ButtonLike@2x.png */,
 				4637246C171FE026002357E0 /* ButtonLikeSelected.png */,
 				4637246D171FE026002357E0 /* ButtonLikeSelected@2x.png */,
+				4637259217254DC5002357E0 /* account.png */,
+				4637259317254DC5002357E0 /* addToFavorite.png */,
+				4637259417254DC5002357E0 /* addToFavoriteActive.png */,
+				4637259517254DC5002357E0 /* comment.png */,
+				4637259617254DC5002357E0 /* commentActive.png */,
+				4637259717254DC5002357E0 /* like.png */,
+				4637259817254DC5002357E0 /* likeActive.png */,
+				4637259917254DC5002357E0 /* mainNav.png */,
+				4637259A17254DC5002357E0 /* myFavorite.png */,
+				4637259B17254DC5002357E0 /* notification.png */,
+				4637259C17254DC5002357E0 /* share.png */,
+				463725AC1725505B002357E0 /* account@2x.png */,
+				4637259D17254DC5002357E0 /* shareActive.png */,
+				4637259E17254DC5002357E0 /* WhatIMade.png */,
 				46372468171FBBB4002357E0 /* app-icon@2x.png */,
 				46372466171FBBB1002357E0 /* app-icon.png */,
 				466F4FAD170408310076AB3D /* temp */,
@@ -837,6 +884,20 @@
 				4637246F171FE026002357E0 /* ButtonLike@2x.png in Resources */,
 				46372470171FE026002357E0 /* ButtonLikeSelected.png in Resources */,
 				46372471171FE026002357E0 /* ButtonLikeSelected@2x.png in Resources */,
+				4637259F17254DC5002357E0 /* account.png in Resources */,
+				463725A017254DC5002357E0 /* addToFavorite.png in Resources */,
+				463725A117254DC5002357E0 /* addToFavoriteActive.png in Resources */,
+				463725A217254DC5002357E0 /* comment.png in Resources */,
+				463725A317254DC5002357E0 /* commentActive.png in Resources */,
+				463725A417254DC5002357E0 /* like.png in Resources */,
+				463725A517254DC5002357E0 /* likeActive.png in Resources */,
+				463725A617254DC5002357E0 /* mainNav.png in Resources */,
+				463725A717254DC5002357E0 /* myFavorite.png in Resources */,
+				463725A817254DC5002357E0 /* notification.png in Resources */,
+				463725A917254DC5002357E0 /* share.png in Resources */,
+				463725AA17254DC5002357E0 /* shareActive.png in Resources */,
+				463725AB17254DC5002357E0 /* WhatIMade.png in Resources */,
+				463725AD1725505B002357E0 /* account@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +955,7 @@
 				4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */,
 				4637257417241C81002357E0 /* AwesomeMenu.m in Sources */,
 				4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */,
+				4637259117254956002357E0 /* HMRecipeDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
