@@ -3,6 +3,9 @@ homemade
 
 drink&amp;cake recipe
 
+![Design](https://www.dropbox.com/s/mqi0o49ez50xmcg/Recipe_UI.jpg)
+
+
 ##### Document
 [Google Doc](https://docs.google.com/document/d/13zHSvviVDmuL0skfJGzV8RgBpe7z9wmVC_UIxx7gOYk/edit)
 
