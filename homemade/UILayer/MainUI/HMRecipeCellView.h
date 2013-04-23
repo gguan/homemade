@@ -12,12 +12,12 @@
 @interface HMRecipeCellView : PFTableViewCell
 
 @property (strong, nonatomic) PFImageView   *photo;
-@property (strong, nonatomic) UILabel   *dateLabel;
 @property (strong, nonatomic) UILabel   *titleLabel;
 @property (strong, nonatomic) UIView    *colorLine;
 @property (strong, nonatomic) UIButton  *saveButton;
 @property (strong, nonatomic) UIButton  *commentButton;
-
+@property (strong, nonatomic) UILabel   *saveCount;
+@property (strong, nonatomic) UILabel   *commentCount;
 @property (strong, nonatomic) SLColorArt *colorArt;
 
 @end

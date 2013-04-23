@@ -29,8 +29,8 @@
         UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(0.0, 135.0, 320.0, 70.0)];
         banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
                 
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 10.0, 270.0, 30.0)];
-        self.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:19.0];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 7.0, 270.0, 30.0)];
+        self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:19.0];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -41,11 +41,11 @@
         
                 
 
-        //NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
+        NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
         
         // add save button
         self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.saveButton setFrame:CGRectMake(100.0f, 42.0f, 12.0f, 12.0f)];
+        [self.saveButton setFrame:CGRectMake(100.0f, 50.0f, 12.0f, 12.0f)];
         [self.saveButton setBackgroundColor:[UIColor clearColor]];
         [self.saveButton setAdjustsImageWhenHighlighted:NO];
         [self.saveButton setAdjustsImageWhenDisabled:NO];
@@ -53,9 +53,13 @@
         [self.saveButton setBackgroundImage:[UIImage imageNamed:@"likeActive.png"] forState:UIControlStateSelected];
         [self.saveButton setSelected:YES];
         
+        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(118.0f, 50.0f, 40.0f, 12.0f)];
+        [self.saveCount setBackgroundColor:[UIColor clearColor]];
+        self.saveCount.textColor = [UIColor whiteColor];
+        self.saveCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0];
         
         self.commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.commentButton setFrame:CGRectMake(40.0f, 42.0f, 12.0f, 12.0f)];
+        [self.commentButton setFrame:CGRectMake(40.0f, 50.0f, 12.0f, 12.0f)];
         [self.commentButton setBackgroundColor:[UIColor clearColor]];
         [self.commentButton setAdjustsImageWhenHighlighted:NO];
         [self.commentButton setAdjustsImageWhenDisabled:NO];
@@ -63,10 +67,18 @@
         [self.commentButton setBackgroundImage:[UIImage imageNamed:@"commentActive.png"] forState:UIControlStateSelected];
         [self.commentButton setSelected:YES];
         
+        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 50.0f, 40.0f, 12.0f)];
+        [self.commentCount setBackgroundColor:[UIColor clearColor]];
+        self.commentCount.textColor = [UIColor whiteColor];
+        self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0];
+
+        
         [banner addSubview:self.titleLabel];
         [banner addSubview:self.colorLine];
         [banner addSubview:self.saveButton];
         [banner addSubview:self.commentButton];
+        [banner addSubview:self.saveCount];
+        [banner addSubview:self.commentCount];
         [self.contentView addSubview:self.photo];
         [self.photo addSubview:banner];
 

@@ -165,6 +165,9 @@
     
     // Configure the cell
     cell.titleLabel.text = [object objectForKey:@"title"];
+    // TODO
+    cell.saveCount.text = @"100";
+    cell.commentCount.text = @"100";
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
@@ -176,6 +179,7 @@
                     SLColorArt *colorArt = [image colorArt];
                     cell.colorArt = colorArt;
                     [cell.colorLine setBackgroundColor:colorArt.primaryColor];
+                    cell.colorLine.alpha = 0.95;
                 }
                 if (error) {
                     NSLog(@"Error!");
