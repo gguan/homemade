@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImage+ColorArt.h"
 
 @interface HMRecipeCellView : PFTableViewCell
 
-@property (strong, nonatomic) IBOutlet PFImageView *photo;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) PFImageView   *photo;
+@property (strong, nonatomic) UILabel   *dateLabel;
+@property (strong, nonatomic) UILabel   *titleLabel;
+@property (strong, nonatomic) UIView    *colorLine;
+@property (strong, nonatomic) UIButton  *saveButton;
+@property (strong, nonatomic) UIButton  *commentButton;
 
+@property (strong, nonatomic) SLColorArt *colorArt;
 
 @end

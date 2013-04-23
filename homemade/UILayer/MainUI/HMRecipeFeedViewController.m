@@ -12,6 +12,7 @@
 #import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
+#include "UIImage+ColorArt.h"
 
 @interface HMRecipeFeedViewController ()
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
@@ -171,6 +172,11 @@
         // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.
         if (cell.photo.file.isDataAvailable) {
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
+                if (image) {
+                    SLColorArt *colorArt = [image colorArt];
+                    cell.colorArt = colorArt;
+                    [cell.colorLine setBackgroundColor:colorArt.primaryColor];
+                }
                 if (error) {
                     NSLog(@"Error!");
                 }

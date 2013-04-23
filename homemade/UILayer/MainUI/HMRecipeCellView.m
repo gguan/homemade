@@ -36,33 +36,40 @@
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
-        [banner addSubview:self.titleLabel];
-        [self.contentView addSubview:self.photo];
-        [self.photo addSubview:banner];
+        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(310.0, 0.0, 10.0, 70.0)];
+        [self.colorLine setBackgroundColor:[UIColor clearColor]];
         
+                
 
         //NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
         
         // add save button
-        UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [banner addSubview:saveButton];
-        [saveButton setFrame:CGRectMake(280.0f, 16.0f, 17.0f, 17.0f)];
-        [saveButton setBackgroundColor:[UIColor clearColor]];
-        [saveButton setTitle:@"5" forState:UIControlStateNormal];
-        [saveButton setTitleColor:[UIColor colorWithRed:0.369f green:0.271f blue:0.176f alpha:1.0f] forState:UIControlStateNormal];
-        [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [saveButton setTitleShadowColor:[UIColor colorWithWhite:1.0f alpha:0.750f] forState:UIControlStateNormal];
-        [saveButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.750f] forState:UIControlStateSelected];
-        [saveButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
-        [[saveButton titleLabel] setShadowOffset:CGSizeMake(0.0f, 1.0f)];
-        [[saveButton titleLabel] setFont:[UIFont systemFontOfSize:10.0f]];
-        [[saveButton titleLabel] setMinimumScaleFactor:11.0f];
-        [[saveButton titleLabel] setAdjustsFontSizeToFitWidth:YES];
-        [saveButton setAdjustsImageWhenHighlighted:NO];
-        [saveButton setAdjustsImageWhenDisabled:NO];
-        [saveButton setBackgroundImage:[UIImage imageNamed:@"ButtonLike.png"] forState:UIControlStateNormal];
-        [saveButton setBackgroundImage:[UIImage imageNamed:@"ButtonLikeSelected.png"] forState:UIControlStateSelected];
-        [saveButton setSelected:YES];
+        self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.saveButton setFrame:CGRectMake(100.0f, 42.0f, 12.0f, 12.0f)];
+        [self.saveButton setBackgroundColor:[UIColor clearColor]];
+        [self.saveButton setAdjustsImageWhenHighlighted:NO];
+        [self.saveButton setAdjustsImageWhenDisabled:NO];
+        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"likeActive.png"] forState:UIControlStateSelected];
+        [self.saveButton setSelected:YES];
+        
+        
+        self.commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.commentButton setFrame:CGRectMake(40.0f, 42.0f, 12.0f, 12.0f)];
+        [self.commentButton setBackgroundColor:[UIColor clearColor]];
+        [self.commentButton setAdjustsImageWhenHighlighted:NO];
+        [self.commentButton setAdjustsImageWhenDisabled:NO];
+        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
+        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"commentActive.png"] forState:UIControlStateSelected];
+        [self.commentButton setSelected:YES];
+        
+        [banner addSubview:self.titleLabel];
+        [banner addSubview:self.colorLine];
+        [banner addSubview:self.saveButton];
+        [banner addSubview:self.commentButton];
+        [self.contentView addSubview:self.photo];
+        [self.photo addSubview:banner];
+
         
     }
     
