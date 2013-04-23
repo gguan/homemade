@@ -7,7 +7,6 @@
 //
 
 #import "HMSaveViewController.h"
-#import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface HMSaveViewController ()
@@ -28,29 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    SWRevealViewController *revealController = [self revealViewController];
-    
-    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
-    
-    // Left bar button
-    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
-    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
-    leftBtnImage.alpha = 0.6f;
-    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
-    [leftButton addSubview:leftBtnImage];
-    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
-    
-
-    
+        
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];

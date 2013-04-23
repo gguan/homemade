@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMRecipeCellView : UIView
+@interface HMRecipeCellView : PFTableViewCell
+
+@property (strong, nonatomic) IBOutlet PFImageView *photo;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
 
 @end

@@ -11,7 +11,6 @@
 #import "HMRecipeDetailViewController.h"
 #import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
-#import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface HMRecipeFeedViewController ()
@@ -164,7 +163,7 @@
     }
     
     // Configure the cell
-    cell.nameLabel.text = [object objectForKey:@"title"];
+    cell.titleLabel.text = [object objectForKey:@"title"];
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];

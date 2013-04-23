@@ -7,7 +7,6 @@
 //
 
 #import "HMAccountViewController.h"
-#import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
 
@@ -33,26 +32,6 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     self.title = @"Account";
-    
-    SWRevealViewController *revealController = [self revealViewController];
-    
-    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
-    
-    // Left bar button
-    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
-    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
-    leftBtnImage.alpha = 0.6f;
-    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
-    [leftButton addSubview:leftBtnImage];
-    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
-    
     
     if ([PFUser currentUser]) {
         self.userProfile = [PFUser currentUser][@"profile"];

@@ -31,9 +31,6 @@
 		4637257417241C81002357E0 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257117241C81002357E0 /* AwesomeMenu.m */; };
 		4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257317241C81002357E0 /* AwesomeMenuItem.m */; };
 		4637259117254956002357E0 /* HMRecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637259017254956002357E0 /* HMRecipeDetailViewController.m */; };
-		4637259F17254DC5002357E0 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259217254DC5002357E0 /* account.png */; };
-		463725A017254DC5002357E0 /* addToFavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259317254DC5002357E0 /* addToFavorite.png */; };
-		463725A117254DC5002357E0 /* addToFavoriteActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259417254DC5002357E0 /* addToFavoriteActive.png */; };
 		463725A217254DC5002357E0 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259517254DC5002357E0 /* comment.png */; };
 		463725A317254DC5002357E0 /* commentActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259617254DC5002357E0 /* commentActive.png */; };
 		463725A417254DC5002357E0 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637259717254DC5002357E0 /* like.png */; };
@@ -48,9 +45,6 @@
 		463725BE17266C95002357E0 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725B217266C95002357E0 /* account.png */; };
 		463725BF17266C95002357E0 /* addToFavorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725B317266C95002357E0 /* addToFavorite.png */; };
 		463725C017266C95002357E0 /* addToFavoriteActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725B417266C95002357E0 /* addToFavoriteActive.png */; };
-		463725C117266C95002357E0 /* app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725B517266C95002357E0 /* app-icon@2x.png */; };
-		463725C217266C95002357E0 /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725B617266C95002357E0 /* arrow_right.png */; };
-		463725C317266C95002357E0 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725B717266C95002357E0 /* arrow_right@2x.png */; };
 		463725C717266C95002357E0 /* myFavorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725BB17266C95002357E0 /* myFavorite@2x.png */; };
 		463725C817266C95002357E0 /* notification@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725BC17266C95002357E0 /* notification@2x.png */; };
 		463725C917266C95002357E0 /* WhatIMade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725BD17266C95002357E0 /* WhatIMade@2x.png */; };
@@ -84,7 +78,6 @@
 		4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39616F68F3100C38D39 /* HMDoneViewController.m */; };
 		4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39916F68F4C00C38D39 /* HMSaveViewController.m */; };
 		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
-		4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A116F6929C00C38D39 /* HMMenuViewController.m */; };
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
 		4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */; };
@@ -126,12 +119,10 @@
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
 		469FBD8D1716B1EB00D8BC84 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */; };
-		469FBD911716B53B00D8BC84 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469FBD901716B53B00D8BC84 /* SWRevealViewController.m */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
-		EAB6D50616F7246B00A3616F /* LeftPanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB6D50516F7246B00A3616F /* LeftPanelCell.m */; };
 		EAB6D50816F72A1600A3616F /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB6D50716F72A1600A3616F /* arrow_right.png */; };
 		EAB6D50A16F856FC00A3616F /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAB6D50916F856FC00A3616F /* arrow_right@2x.png */; };
 /* End PBXBuildFile section */
@@ -241,8 +232,6 @@
 		4645D39816F68F4C00C38D39 /* HMSaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSaveViewController.h; path = UILayer/SaveUI/HMSaveViewController.h; sourceTree = "<group>"; };
 		4645D39916F68F4C00C38D39 /* HMSaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSaveViewController.m; path = UILayer/SaveUI/HMSaveViewController.m; sourceTree = "<group>"; };
 		4645D39E16F6917400C38D39 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		4645D3A016F6929C00C38D39 /* HMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMenuViewController.h; path = UILayer/MenuUI/HMMenuViewController.h; sourceTree = "<group>"; };
-		4645D3A116F6929C00C38D39 /* HMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMenuViewController.m; path = UILayer/MenuUI/HMMenuViewController.m; sourceTree = "<group>"; };
 		4645D3A316F718DD00C38D39 /* HMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSettingViewController.h; path = UILayer/SettingUI/HMSettingViewController.h; sourceTree = "<group>"; };
 		4645D3A416F718DD00C38D39 /* HMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSettingViewController.m; path = UILayer/SettingUI/HMSettingViewController.m; sourceTree = "<group>"; };
 		4645D3A716F727A300C38D39 /* HMAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMAccountViewController.h; path = UILayer/AccountUI/HMAccountViewController.h; sourceTree = "<group>"; };
@@ -304,8 +293,6 @@
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		469FBD8F1716B53B00D8BC84 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		469FBD901716B53B00D8BC84 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -313,8 +300,6 @@
 		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
-		EAB6D50416F7246B00A3616F /* LeftPanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftPanelCell.h; path = UILayer/MenuUI/LeftPanelCell.h; sourceTree = "<group>"; };
-		EAB6D50516F7246B00A3616F /* LeftPanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftPanelCell.m; path = UILayer/MenuUI/LeftPanelCell.m; sourceTree = "<group>"; };
 		EAB6D50716F72A1600A3616F /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
 		EAB6D50916F856FC00A3616F /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -486,7 +471,6 @@
 				46372565172408A3002357E0 /* ColorArt */,
 				463725611724086A002357E0 /* MCSwipeTableViewCell */,
 				4606A4CF1716C039009FDFFB /* Reachability */,
-				469FBD8E1716B53B00D8BC84 /* SWRevealViewController */,
 				466F4F771701A61B0076AB3D /* EDColor */,
 				46A7D8D816FDB5B7001C822D /* FXLabel */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
@@ -607,7 +591,6 @@
 				462A770C16FC28B800C3CBF7 /* RecipeUI */,
 				4645D3F616FB52BC00C38D39 /* CommonUI */,
 				4645D3A616F7278600C38D39 /* AccountUI */,
-				4645D39B16F68FE600C38D39 /* MenuUI */,
 				4645D39416F68EF600C38D39 /* DoneUI */,
 				4645D39316F68EEB00C38D39 /* SaveUI */,
 				4645D38116F5E8C900C38D39 /* SearchUI */,
@@ -719,17 +702,6 @@
 			name = DoneUI;
 			sourceTree = "<group>";
 		};
-		4645D39B16F68FE600C38D39 /* MenuUI */ = {
-			isa = PBXGroup;
-			children = (
-				4645D3A016F6929C00C38D39 /* HMMenuViewController.h */,
-				4645D3A116F6929C00C38D39 /* HMMenuViewController.m */,
-				EAB6D50416F7246B00A3616F /* LeftPanelCell.h */,
-				EAB6D50516F7246B00A3616F /* LeftPanelCell.m */,
-			);
-			name = MenuUI;
-			sourceTree = "<group>";
-		};
 		4645D3A616F7278600C38D39 /* AccountUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,16 +760,6 @@
 				466F4FB7170408490076AB3D /* pic_10.jpg */,
 			);
 			name = temp;
-			sourceTree = "<group>";
-		};
-		469FBD8E1716B53B00D8BC84 /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				469FBD8F1716B53B00D8BC84 /* SWRevealViewController.h */,
-				469FBD901716B53B00D8BC84 /* SWRevealViewController.m */,
-			);
-			name = SWRevealViewController;
-			path = Vendor/SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
@@ -898,9 +860,6 @@
 				4637246F171FE026002357E0 /* ButtonLike@2x.png in Resources */,
 				46372470171FE026002357E0 /* ButtonLikeSelected.png in Resources */,
 				46372471171FE026002357E0 /* ButtonLikeSelected@2x.png in Resources */,
-				4637259F17254DC5002357E0 /* account.png in Resources */,
-				463725A017254DC5002357E0 /* addToFavorite.png in Resources */,
-				463725A117254DC5002357E0 /* addToFavoriteActive.png in Resources */,
 				463725A217254DC5002357E0 /* comment.png in Resources */,
 				463725A317254DC5002357E0 /* commentActive.png in Resources */,
 				463725A417254DC5002357E0 /* like.png in Resources */,
@@ -915,9 +874,6 @@
 				463725BE17266C95002357E0 /* account.png in Resources */,
 				463725BF17266C95002357E0 /* addToFavorite.png in Resources */,
 				463725C017266C95002357E0 /* addToFavoriteActive.png in Resources */,
-				463725C117266C95002357E0 /* app-icon@2x.png in Resources */,
-				463725C217266C95002357E0 /* arrow_right.png in Resources */,
-				463725C317266C95002357E0 /* arrow_right@2x.png in Resources */,
 				463725C717266C95002357E0 /* myFavorite@2x.png in Resources */,
 				463725C817266C95002357E0 /* notification@2x.png in Resources */,
 				463725C917266C95002357E0 /* WhatIMade@2x.png in Resources */,
@@ -943,8 +899,6 @@
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 				4645D39716F68F3100C38D39 /* HMDoneViewController.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
-				4645D3A216F6929C00C38D39 /* HMMenuViewController.m in Sources */,
-				EAB6D50616F7246B00A3616F /* LeftPanelCell.m in Sources */,
 				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,
 				4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */,
 				EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */,
@@ -967,7 +921,6 @@
 				466F4FC417042A880076AB3D /* HMPerson.m in Sources */,
 				466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */,
 				466F4FCA170448F00076AB3D /* HMStep.m in Sources */,
-				469FBD911716B53B00D8BC84 /* SWRevealViewController.m in Sources */,
 				4606A4D21716C039009FDFFB /* Reachability.m in Sources */,
 				4606A4DF17195750009FDFFB /* HMConstants.m in Sources */,
 				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,

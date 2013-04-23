@@ -11,8 +11,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 // Import view controllers
-#import "SWRevealViewController.h"
-#import "HMMenuViewController.h"
 #import "HMSearchViewController.h"
 #import "HMRecipeFeedViewController.h"
 
@@ -22,7 +20,7 @@
 // Other libraries
 #import "Reachability.h"
 
-@interface HMAppDelegate()<SWRevealViewControllerDelegate>
+@interface HMAppDelegate()
 
 @property (nonatomic, strong) Reachability *hostReach;
 @property (nonatomic, strong) Reachability *internetReach;
