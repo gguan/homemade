@@ -46,49 +46,47 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:YES];
     // add Path style menu
-    
-    
-    
     
 	// Do any additional setup after loading the view.
     
-    self.title = @"Zelda";
+//    self.title = @"Zelda";
     
-    SWRevealViewController *revealController = [self revealViewController];
-    
-    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
-    [self.tableView addGestureRecognizer:revealController.panGestureRecognizer];
+//    SWRevealViewController *revealController = [self revealViewController];
+//    
+//    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
+//    [self.tableView addGestureRecognizer:revealController.panGestureRecognizer];
     // Left bar button
-    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
-    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
-    leftBtnImage.alpha = 0.6f;
-    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
-    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
-    [leftButton addSubview:leftBtnImage];
-    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
+//    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
+//    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
+//    leftBtnImage.alpha = 0.6f;
+//    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+//    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+//    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
+//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
+//    [leftButton addSubview:leftBtnImage];
+//    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+//    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
     
     // Right bar button
-    UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];
-    [btnImage setImage:[UIImage imageNamed:@"icons_search.png"]];
-    btnImage.alpha = 0.6f;
-    btnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-    btnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-    btnImage.contentMode = UIViewContentModeScaleAspectFit;
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.frame = CGRectMake(0.0f, 12.0f, 32.0f, 20.0f);
-    [rightButton addSubview:btnImage];
-    [rightButton addTarget:revealController action:@selector(rightRevealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
-    
+//    UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];
+//    [btnImage setImage:[UIImage imageNamed:@"icons_search.png"]];
+//    btnImage.alpha = 0.6f;
+//    btnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+//    btnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
+//    btnImage.contentMode = UIViewContentModeScaleAspectFit;
+//    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightButton.frame = CGRectMake(0.0f, 12.0f, 32.0f, 20.0f);
+//    [rightButton addSubview:btnImage];
+//    [rightButton addTarget:revealController action:@selector(rightRevealToggle:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+//    [self.navigationItem setRightBarButtonItem:rightBarButton];
+//    
     
     
     // setup infinite scrolling

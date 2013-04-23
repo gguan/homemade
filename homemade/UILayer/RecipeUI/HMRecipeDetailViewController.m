@@ -33,6 +33,7 @@
     [self.backButton setFrame:CGRectMake(30, 80, 34, 34)];
     [self.backButton setBackgroundColor:[UIColor clearColor]];
     [self.backButton setBackgroundImage:[UIImage imageNamed:@"account"] forState:UIControlStateNormal];
+    [self.backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     
     // init scroll view
@@ -58,6 +59,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)goBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

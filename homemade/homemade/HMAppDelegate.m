@@ -65,19 +65,20 @@
     [self setupAppearance];
     
     // Initialize panel controller
-	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
-    HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
-    menuController.recipeFeedViewController = centerNavController;
-	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:menuController frontViewController:centerNavController];
-    revealController.rightViewController = [[HMSearchViewController alloc] init];
-    
-    revealController.delegate = self;
+    // TODO: discard SWRevealController
+//	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
+//    HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
+//    menuController.recipeFeedViewController = centerNavController;
+//	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:menuController frontViewController:centerNavController];
+//    revealController.rightViewController = [[HMSearchViewController alloc] init];
+//    
+//    revealController.delegate = self;
 //    revealController.rearViewRevealWidth = 70.0f;
 //    revealController.rightViewRevealWidth = 290.0f;
 //    revealController.rearViewRevealOverdraw = 100.0f;
-    revealController.frontViewController.view.layer.cornerRadius = 3.0f;
-    revealController.frontViewController.view.clipsToBounds = YES;
-    self.mainController = revealController;
+//    revealController.frontViewController.view.layer.cornerRadius = 3.0f;
+//    revealController.frontViewController.view.clipsToBounds = YES;
+    self.mainController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
     
     self.window.rootViewController = self.mainController;
     [self.window makeKeyAndVisible];

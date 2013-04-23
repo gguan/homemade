@@ -13,7 +13,7 @@
 @interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) SWRevealViewController *mainController;
+@property (strong, nonatomic) UINavigationController *mainController;
 
 @property (nonatomic, readonly) int networkStatus;
 
