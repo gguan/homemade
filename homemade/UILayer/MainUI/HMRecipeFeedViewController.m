@@ -76,10 +76,10 @@
 	// customize menu
 	menu.rotateAngle = 0;
 	menu.menuWholeAngle = M_PI;
-	menu.timeOffset = 0.15f;
-	menu.farRadius = 50.0f;
+	menu.timeOffset = 0.1f;
+	menu.farRadius = 46.0f;
 	menu.endRadius = 45.0f;
-	menu.nearRadius = 35.0f;
+	menu.nearRadius = 43.0f;
     menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 10);
     menu.delegate = self;
     [self.view addSubview:menu];
