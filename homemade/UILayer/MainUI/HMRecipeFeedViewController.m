@@ -9,7 +9,7 @@
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
 #import "HMRecipeDetailViewController.h"
-#import "HMFeedStreamViewCell.h"
+#import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -18,7 +18,9 @@
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
 @end
 
-@implementation HMRecipeFeedViewController
+@implementation HMRecipeFeedViewController {
+    AwesomeMenu *menu;
+}
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -71,7 +73,7 @@
                                                                ContentImage:nil
                                                     highlightedContentImage:nil];
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) menus:menus];
+    menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) menus:menus];
     NSLog(@"%f", self.view.frame.size.width);
 	// customize menu
 	menu.rotateAngle = 0;
@@ -82,7 +84,7 @@
 	menu.nearRadius = 43.0f;
     menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 10);
     menu.delegate = self;
-    [self.view addSubview:menu];
+    [self. view addSubview:menu];
 
     
     
@@ -115,7 +117,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 320.0f;
+    return 220.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -156,15 +158,13 @@
     
     static NSString *CellIdentifier = @"RecipeCell";
     
-    HMFeedStreamViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HMRecipeCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[HMFeedStreamViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell
     cell.nameLabel.text = [object objectForKey:@"title"];
-    cell.descLabel.text = [object objectForKey:@"overview"];;
-    
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
@@ -199,5 +199,11 @@
     NSLog(@"Menu is open!");
 }
 
+#pragma mark - Scroll delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect fixedFrame = self.view.frame;
+    fixedFrame.origin.y = 0 + scrollView.contentOffset.y;
+    menu.frame = fixedFrame;
+}
 
 @end
