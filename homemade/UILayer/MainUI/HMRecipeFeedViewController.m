@@ -47,46 +47,43 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden:YES];
+    
     // add Path style menu
+    UIImage *itemImg1 = [UIImage imageNamed:@"myFavorite.png"];
+    UIImage *itemImg2 = [UIImage imageNamed:@"WhatIMade.png"];
+    UIImage *itemImg3 = [UIImage imageNamed:@"notification.png"];
+    UIImage *itemImg4 = [UIImage imageNamed:@"account.png"];
     
-	// Do any additional setup after loading the view.
-    
-//    self.title = @"Zelda";
-    
-//    SWRevealViewController *revealController = [self revealViewController];
-//    
-//    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
-//    [self.tableView addGestureRecognizer:revealController.panGestureRecognizer];
-    // Left bar button
-//    UIImageView *leftBtnImage = [[UIImageView alloc] initWithFrame:CGRectMake(12.0f, 0.0f, 20.0f, 20.0f)];
-//    [leftBtnImage setImage:[UIImage imageNamed:@"icons_menu.png"]];
-//    leftBtnImage.alpha = 0.6f;
-//    leftBtnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-//    leftBtnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-//    leftBtnImage.contentMode = UIViewContentModeScaleAspectFit;
-//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    leftButton.frame = CGRectMake(12.0f, 12.0f, 32.0f, 20.0f);
-//    [leftButton addSubview:leftBtnImage];
-//    [leftButton addTarget:revealController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-//    [self.navigationItem setLeftBarButtonItem:leftButtonItem];
-    
-    // Right bar button
-//    UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];
-//    [btnImage setImage:[UIImage imageNamed:@"icons_search.png"]];
-//    btnImage.alpha = 0.6f;
-//    btnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-//    btnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-//    btnImage.contentMode = UIViewContentModeScaleAspectFit;
-//    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    rightButton.frame = CGRectMake(0.0f, 12.0f, 32.0f, 20.0f);
-//    [rightButton addSubview:btnImage];
-//    [rightButton addTarget:revealController action:@selector(rightRevealToggle:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-//    [self.navigationItem setRightBarButtonItem:rightBarButton];
-//    
+    AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:itemImg1
+                                                           highlightedImage:itemImg1
+                                                               ContentImage:nil
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:itemImg2
+                                                           highlightedImage:itemImg2
+                                                               ContentImage:nil
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:itemImg3
+                                                           highlightedImage:itemImg3
+                                                               ContentImage:nil
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:itemImg4
+                                                           highlightedImage:itemImg4
+                                                               ContentImage:nil
+                                                    highlightedContentImage:nil];
+    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) menus:menus];
+    NSLog(@"%f", self.view.frame.size.width);
+	// customize menu
+	menu.rotateAngle = 0;
+	menu.menuWholeAngle = M_PI;
+	menu.timeOffset = 0.15f;
+	menu.farRadius = 50.0f;
+	menu.endRadius = 45.0f;
+	menu.nearRadius = 35.0f;
+    menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 10);
+    menu.delegate = self;
+    [self.view addSubview:menu];
+
     
     
     // setup infinite scrolling
@@ -187,6 +184,19 @@
     
     
     return cell;
+}
+
+
+#pragma mark - AwesomeMenu
+- (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+{
+    NSLog(@"Select the index : %d",idx);
+}
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
+    NSLog(@"Menu was closed!");
+}
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
+    NSLog(@"Menu is open!");
 }
 
 

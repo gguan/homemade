@@ -64,10 +64,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.menusArray = aMenusArray;
         
         // add the "Add" Button.
-        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"] 
-                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
-                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"mainNav.png"]
+                                       highlightedImage:[UIImage imageNamed:@"mainNav.png"] 
+                                           ContentImage:[UIImage imageNamed:nil]
+                                highlightedContentImage:[UIImage imageNamed:nil]];
         _addButton.delegate = self;
         _addButton.center = self.startPoint;
         [self addSubview:_addButton];
@@ -220,7 +220,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = startPoint;
-        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf(i * menuWholeAngle / count), startPoint.y - endRadius * cosf(i * menuWholeAngle / count));
+        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * -cosf(i * menuWholeAngle / (count - 1)), startPoint.y - endRadius * sinf(i * menuWholeAngle / (count - 1)));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
         CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(i * menuWholeAngle / count), startPoint.y - nearRadius * cosf(i * menuWholeAngle / count));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
@@ -245,10 +245,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = expanding;    
     
     // rotate add button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
-        _addButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
+//    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+//    [UIView animateWithDuration:0.2f animations:^{
+//        _addButton.transform = CGAffineTransformMakeRotation(angle);
+//    }];
     
     // expand or close animation
     if (!_timer) 

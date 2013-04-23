@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SWRevealViewController;
-
 @interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

@@ -7,7 +7,8 @@
 //
 
 #import <Parse/Parse.h>
+#import "AwesomeMenu.h"
 
-@interface HMRecipeFeedViewController : PFQueryTableViewController
+@interface HMRecipeFeedViewController : PFQueryTableViewController <AwesomeMenuDelegate>
 
 @end
