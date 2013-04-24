@@ -17,14 +17,14 @@
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;    
-        self.contentView.backgroundColor = [UIColor grayColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
         
         // Initialization code
         
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.contentMode = UIViewContentModeScaleAspectFill;
-        self.photo.layer.masksToBounds = YES;
+        self.photo.clipsToBounds = YES;
         
         UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(0.0, 135.0, 320.0, 70.0)];
         banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
@@ -36,12 +36,10 @@
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
-        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(310.0, 0.0, 10.0, 70.0)];
+        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(312.0, 0.0, 8.0, 70.0)];
         [self.colorLine setBackgroundColor:[UIColor clearColor]];
         
-                
-
-        NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
+//        NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
         
         // add save button
         self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -72,15 +70,27 @@
         self.commentCount.textColor = [UIColor whiteColor];
         self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0];
 
-        
         [banner addSubview:self.titleLabel];
         [banner addSubview:self.colorLine];
         [banner addSubview:self.saveButton];
         [banner addSubview:self.commentButton];
         [banner addSubview:self.saveCount];
         [banner addSubview:self.commentCount];
-        [self.contentView addSubview:self.photo];
         [self.photo addSubview:banner];
+        
+        // add shadow view
+        UIView *dropshadowView = [[UIView alloc] init];
+        dropshadowView.frame = CGRectMake(0.0, 0.0, 320.0, 205.0);
+        dropshadowView.layer.masksToBounds = NO;
+        dropshadowView.layer.shadowRadius = 2.0f;
+        dropshadowView.layer.shadowOpacity = 0.7f;
+        dropshadowView.layer.shadowOffset = CGSizeMake( 0.0f, 1.0f);
+        dropshadowView.layer.shadowPath =
+        [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
+        
+        [self.contentView addSubview:dropshadowView];
+        [self.contentView addSubview:self.photo];
+        
 
         
     }

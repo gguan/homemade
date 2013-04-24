@@ -65,7 +65,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         
         // add the "Add" Button.
         _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"mainNav.png"]
-                                       highlightedImage:[UIImage imageNamed:@"mainNav.png"] 
+                                       highlightedImage:[UIImage imageNamed:@"mainNavActive.png"] 
                                            ContentImage:[UIImage imageNamed:nil]
                                 highlightedContentImage:[UIImage imageNamed:nil]];
         _addButton.delegate = self;
@@ -223,26 +223,33 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         
         // set exact position of menu item
         if (i == 0) {
-            CGPoint endPoint = CGPointMake(startPoint.x - 54, startPoint.y - 8);
+            CGPoint endPoint = CGPointMake(startPoint.x - 60, startPoint.y - 26);
             item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
-            CGPoint nearPoint = CGPointMake(startPoint.x - 52, startPoint.y - 8);
+            CGPoint nearPoint = CGPointMake(startPoint.x - 58, startPoint.y - 26);
             item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
-            CGPoint farPoint = CGPointMake(startPoint.x - 55, startPoint.y - 8);
+            CGPoint farPoint = CGPointMake(startPoint.x - 62, startPoint.y - 24);
             item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle); 
 
         } else if (i == 3) {
-            CGPoint endPoint = CGPointMake(startPoint.x + 54, startPoint.y - 8);
+            CGPoint endPoint = CGPointMake(startPoint.x + 60, startPoint.y - 26);
             item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
-            CGPoint nearPoint = CGPointMake(startPoint.x + 52, startPoint.y - 8);
+            CGPoint nearPoint = CGPointMake(startPoint.x + 58, startPoint.y - 26);
             item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
-            CGPoint farPoint = CGPointMake(startPoint.x + 55, startPoint.y - 8);
+            CGPoint farPoint = CGPointMake(startPoint.x + 62, startPoint.y - 24);
+            item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);
+        } else if (i == 2) {
+            CGPoint endPoint = CGPointMake(startPoint.x + 24 , startPoint.y - 56);
+            item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
+            CGPoint nearPoint = CGPointMake(startPoint.x + 23, startPoint.y - 55);
+            item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
+            CGPoint farPoint = CGPointMake(startPoint.x + 25, startPoint.y - 58);
             item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);
         } else {
-            CGPoint endPoint = CGPointMake(startPoint.x + endRadius * -cosf(i * menuWholeAngle / (count - 1)), startPoint.y - endRadius * sinf(i * menuWholeAngle / (count - 1)));
+            CGPoint endPoint = CGPointMake(startPoint.x - 24 , startPoint.y - 56);
             item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
-            CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * -cosf(i * menuWholeAngle / (count - 1)), startPoint.y - nearRadius * sinf(i * menuWholeAngle / (count - 1)));
+            CGPoint nearPoint = CGPointMake(startPoint.x - 23 , startPoint.y - 55);
             item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
-            CGPoint farPoint = CGPointMake(startPoint.x + farRadius * -cosf(i * menuWholeAngle / (count - 1)), startPoint.y - farRadius * sinf(i * menuWholeAngle / (count - 1)));
+            CGPoint farPoint = CGPointMake(startPoint.x - 25, startPoint.y - 58);
             item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle); 
         }
         
@@ -373,13 +380,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
-
+    
     _flag --;
 }
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if([[anim valueForKey:@"id"] isEqual:@"lastAnimation"]) {
         if(self.delegate && [self.delegate respondsToSelector:@selector(AwesomeMenuDidFinishAnimationClose:)]){
             [self.delegate AwesomeMenuDidFinishAnimationClose:self];
+            _addButton.highlighted = NO;
         }
     }
     if([[anim valueForKey:@"id"] isEqual:@"firstAnimation"]) {

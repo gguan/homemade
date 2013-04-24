@@ -42,9 +42,12 @@
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(5.0, 5.0, 310.0, 310.0)];
         self.photo.tag = PHOTO_TAG;
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        self.photo.layer.cornerRadius = 2.0f;
-//        self.photo.layer.borderWidth = 2.0f;
-//        self.photo.layer.borderColor = [[UIColor whiteColor] CGColor];
+        self.photo.layer.shadowOffset = CGSizeMake(0, 1);
+        self.photo.layer.shadowOpacity = 1;
+        self.photo.layer.shadowRadius = 3.0;
+        self.photo.clipsToBounds = NO;
+
+
         self.photo.contentMode = UIViewContentModeScaleAspectFill;
         self.photo.layer.masksToBounds = YES;
         NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);

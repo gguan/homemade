@@ -40,6 +40,7 @@
         self.objectsPerPage = 10;
         
         self.shouldReloadOnAppear = NO;
+        
     }
     return self;
 }
@@ -49,6 +50,9 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden:YES];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     
     // add Path style menu
     UIImage *itemImg1 = [UIImage imageNamed:@"myFavorite.png"];
@@ -74,15 +78,15 @@
                                                     highlightedContentImage:nil];
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
     menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) menus:menus];
-    NSLog(@"%f", self.view.frame.size.width);
+
 	// customize menu
 	menu.rotateAngle = 0;
 	menu.menuWholeAngle = M_PI;
 	menu.timeOffset = 0.1f;
-	menu.farRadius = 46.0f;
-	menu.endRadius = 45.0f;
-	menu.nearRadius = 43.0f;
-    menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 10);
+	menu.farRadius = 61.0f;
+	menu.endRadius = 60.0f;
+	menu.nearRadius = 58.0f;
+    menu.startPoint = CGPointMake(160.0, self.view.frame.size.height);
     menu.delegate = self;
     [self. view addSubview:menu];
 
@@ -100,6 +104,7 @@
         });
     }];
 
+ 
 
 }
 

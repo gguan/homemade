@@ -63,19 +63,6 @@
     [self setupAppearance];
     
     // Initialize panel controller
-    // TODO: discard SWRevealController
-//	UINavigationController *centerNavController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
-//    HMMenuViewController *menuController = [[HMMenuViewController alloc] initWithStyle:UITableViewStylePlain];
-//    menuController.recipeFeedViewController = centerNavController;
-//	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:menuController frontViewController:centerNavController];
-//    revealController.rightViewController = [[HMSearchViewController alloc] init];
-//    
-//    revealController.delegate = self;
-//    revealController.rearViewRevealWidth = 70.0f;
-//    revealController.rightViewRevealWidth = 290.0f;
-//    revealController.rearViewRevealOverdraw = 100.0f;
-//    revealController.frontViewController.view.layer.cornerRadius = 3.0f;
-//    revealController.frontViewController.view.clipsToBounds = YES;
     self.mainController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
     
     self.window.rootViewController = self.mainController;
@@ -122,41 +109,6 @@
 
 #pragma mark - Customize Style
 - (void)setupAppearance {
-    UIImage *navBarImage = [UIImage imageNamed:@"nav-bar"];
-    // draw a border on image
-	UIGraphicsBeginImageContext(navBarImage.size);
-    
-	// draw original image into the context
-	[navBarImage drawAtPoint:CGPointZero];
-    
-	// get the context for CoreGraphics
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
-	// set stroking color and draw circle
-	[[UIColor grayColor] setStroke];
-    
-    CGContextBeginPath (ctx);
-    CGContextMoveToPoint(ctx, 0, 44);
-    CGContextAddLineToPoint(ctx, 320, 44);
-    CGContextStrokePath(ctx);
-    
-	// make image out of bitmap context
-	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-	// free the context
-	UIGraphicsEndImageContext();
-    
-    // set navigation bar title attributtes
-    [[UINavigationBar appearance] setBackgroundImage:newImage forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    [[UINavigationBar appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-     [UIColor blackColor], UITextAttributeTextColor,
-     [UIColor whiteColor], UITextAttributeTextShadowColor,
-     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
-     [UIFont fontWithName:@"Copperplate-Bold" size:22], UITextAttributeFont, nil]
-    ];
-    
 }
 
 
