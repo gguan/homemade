@@ -12,15 +12,14 @@ drink&amp;cake recipe
 
 ##### 3rd party library
 
-1. [JASidePanels](https://github.com/gotosleep/JASidePanels) - use this library for main navigation
-2. [AFNetworking](https://github.com/AFNetworking) - use this library for client/server communication
+
+1.  [ColorArt](https://github.com/fleitz/ColorArt) - iTune11 color algorithm
+2.  [MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell) - Swipe Table View Cell
 3. [Facebook SDK](http://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/3.2/) - following this tutorials to add and config facebook sdk for project
 4. [SSKeychain](https://github.com/soffes/sskeychain) - SSKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain
 5. [SVPullToRefresh + SVInfiniteScrolling](https://github.com/samvermette/SVPullToRefresh) - Give pull-to-refresh & infinite scrolling to any UIScrollView with 1 line of code
 6. [SVProgressHUD](https://github.com/samvermette/SVProgressHUD) - A clean and lightweight progress HUD for your iOS app
 7. [FXImageView](https://github.com/nicklockwood/FXImageView) - FXImageView is a class designed to simplify the application of common visual effects such as reflections and drop-shadows to images, and also to help the performance of image loading by handling it on a background thread
-8.  [ColorArt](https://github.com/fleitz/ColorArt) - iTune11 color algorithm
-9.  [MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell) - Swipe Table View Cell
 
 
 ##### Project folder specs
