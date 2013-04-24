@@ -45,11 +45,12 @@
     
     // init image view
     PFFile *imgFile = [self.recipeObject objectForKey:kHMRecipePhotoKey];
-    self.headerImage = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imgFile.getData]];
-    [self.headerImage setFrame:CGRectMake(0, 0, 320, 800.0)];
-    self.headerImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.scrollView addSubview:self.headerImage];
-    
+    [imgFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        self.headerImage = [[UIImageView alloc] initWithImage:[UIImage imageWithData:imgFile.getData]];
+        [self.headerImage setFrame:CGRectMake(0, 0, 320, 800.0)];
+        self.headerImage.contentMode = UIViewContentModeScaleAspectFill;
+        [self.scrollView addSubview:self.headerImage];
+    }];
     
     self.scrollView.contentSize = CGSizeMake(320, 800);
     [self.view bringSubviewToFront:self.backButton];

@@ -165,7 +165,7 @@
     
     HMRecipeCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell
@@ -179,9 +179,50 @@
         
         // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.
         if (cell.photo.file.isDataAvailable) {
+            // Manually download images from parse and set animation
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                NSData *data = [cell.photo.file getData];
+//                if(data) {
+//                    dispatch_async( dispatch_get_main_queue(), ^{
+//                        [UIView animateWithDuration:0.0
+//                                         animations:^{
+//                                             cell.photo.alpha = 0.0f;
+//                                         }
+//                                         completion:^(BOOL finished){
+//                                             UIImage *image = [UIImage imageWithData:data];
+//                                             // find color in center 100x100 area, still need to improve
+//                                             CGRect cropRect = CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50);
+//                                             CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+//                                             UIImage *subImage = [UIImage imageWithCGImage:imageRef];
+//                                             CGImageRelease(imageRef);
+//                                             SLColorArt *colorArt = [subImage colorArt];
+//                                             
+//                                             [UIView animateWithDuration:0.0
+//                                                              animations:^{
+//                                                                  cell.photo.image = image;
+//                                                                  cell.photo.alpha = 1.0f;
+//                                                                  cell.colorArt = colorArt;
+//                                                                  [cell.colorLine setBackgroundColor:colorArt.primaryColor];
+//                                                                  cell.colorLine.alpha = 0.95;
+//                                                              }
+//                                                              completion:^(BOOL finished) { }];
+//                                         }];//outside block
+//                    });
+//                } else {
+//                    NSLog(@"Error! Failed to download data from parse!");
+//                }                
+//                
+//            });
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (image) {
-                    SLColorArt *colorArt = [image colorArt];
+                    
+                    // find color in center 100x100 area, still need to improve
+                    CGRect cropRect = CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50);
+                    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+                    UIImage *subImage = [UIImage imageWithCGImage:imageRef];
+                    CGImageRelease(imageRef);
+                    
+                    SLColorArt *colorArt = [subImage colorArt];
                     cell.colorArt = colorArt;
                     [cell.colorLine setBackgroundColor:colorArt.primaryColor];
                     cell.colorLine.alpha = 0.95;
@@ -190,12 +231,9 @@
                     NSLog(@"Error!");
                 }
             }];
-        }
+        } // if isDataAvailable end
+        
     }
-    
-
-    [cell.contentView bringSubviewToFront:cell.imageView];
-    
     
     return cell;
 }

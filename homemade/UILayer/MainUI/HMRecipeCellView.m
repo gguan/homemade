@@ -76,7 +76,7 @@
         [banner addSubview:self.commentButton];
         [banner addSubview:self.saveCount];
         [banner addSubview:self.commentCount];
-        [self.photo addSubview:banner];
+        
         
         // add shadow view
         UIView *dropshadowView = [[UIView alloc] init];
@@ -90,6 +90,7 @@
         
         [self.contentView addSubview:dropshadowView];
         [self.contentView addSubview:self.photo];
+        [self.contentView addSubview:banner];
         
 
         

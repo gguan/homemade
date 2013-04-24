@@ -254,8 +254,6 @@
 		4645D3A416F718DD00C38D39 /* HMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSettingViewController.m; path = UILayer/SettingUI/HMSettingViewController.m; sourceTree = "<group>"; };
 		4645D3A716F727A300C38D39 /* HMAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMAccountViewController.h; path = UILayer/AccountUI/HMAccountViewController.h; sourceTree = "<group>"; };
 		4645D3A816F727A300C38D39 /* HMAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/AccountUI/HMAccountViewController.m; sourceTree = "<group>"; };
-		4645D3F316FB440F00C38D39 /* HMFeedStreamViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedStreamViewCell.h; path = UILayer/MainUI/HMFeedStreamViewCell.h; sourceTree = "<group>"; };
-		4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedStreamViewCell.m; path = UILayer/MainUI/HMFeedStreamViewCell.m; sourceTree = "<group>"; };
 		4645D3F716FB539D00C38D39 /* HMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMNavigationBar.h; path = UILayer/CommonUI/HMNavigationBar.h; sourceTree = "<group>"; };
 		4645D3F816FB539D00C38D39 /* HMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMNavigationBar.m; path = UILayer/CommonUI/HMNavigationBar.m; sourceTree = "<group>"; };
 		466F4F71170154860076AB3D /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
@@ -640,8 +638,6 @@
 		4645D36316F4661100C38D39 /* MainUI */ = {
 			isa = PBXGroup;
 			children = (
-				4645D3F316FB440F00C38D39 /* HMFeedStreamViewCell.h */,
-				4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */,
 				4606A4E3171EA3A8009FDFFB /* HMRecipeFeedViewController.h */,
 				4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */,
 				4606A4E6171EA3F0009FDFFB /* HMRecipeCellView.h */,
