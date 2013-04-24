@@ -97,7 +97,6 @@
 		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
-		4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F416FB440F00C38D39 /* HMFeedStreamViewCell.m */; };
 		4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3F816FB539D00C38D39 /* HMNavigationBar.m */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
 		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
@@ -949,7 +948,6 @@
 				4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */,
 				EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */,
 				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
-				4645D3F516FB441000C38D39 /* HMFeedStreamViewCell.m in Sources */,
 				466F4FA817030A000076AB3D /* HMIngredientCell.m in Sources */,
 				4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */,
 				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,
