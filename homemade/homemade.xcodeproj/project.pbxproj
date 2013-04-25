@@ -21,6 +21,11 @@
 		462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA11728AAEB00BDDEB8 /* TMCache.m */; };
 		462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */; };
 		462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */; };
+		462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */; };
+		462F0CAF1728F07400BDDEB8 /* BackgroundLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CAD1728F07300BDDEB8 /* BackgroundLogin@2x.png */; };
+		462F0CB01728F07400BDDEB8 /* divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CAE1728F07400BDDEB8 /* divider@2x.png */; };
+		462F0CB31728F08B00BDDEB8 /* BackgroundLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CB11728F08B00BDDEB8 /* BackgroundLogin.png */; };
+		462F0CB41728F08B00BDDEB8 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CB21728F08B00BDDEB8 /* divider.png */; };
 		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
 		463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463725631724086A002357E0 /* MCSwipeTableViewCell.m */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
@@ -161,6 +166,12 @@
 		462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDiskCache.m; sourceTree = "<group>"; };
 		462F0CA41728AAEB00BDDEB8 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMemoryCache.h; sourceTree = "<group>"; };
 		462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMemoryCache.m; sourceTree = "<group>"; };
+		462F0CAA1728EBF300BDDEB8 /* HMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMLoginViewController.h; path = UILayer/LoginUI/HMLoginViewController.h; sourceTree = "<group>"; };
+		462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMLoginViewController.m; path = UILayer/LoginUI/HMLoginViewController.m; sourceTree = "<group>"; };
+		462F0CAD1728F07300BDDEB8 /* BackgroundLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundLogin@2x.png"; sourceTree = "<group>"; };
+		462F0CAE1728F07400BDDEB8 /* divider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "divider@2x.png"; sourceTree = "<group>"; };
+		462F0CB11728F08B00BDDEB8 /* BackgroundLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundLogin.png; sourceTree = "<group>"; };
+		462F0CB21728F08B00BDDEB8 /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
 		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		463725621724086A002357E0 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		463725631724086A002357E0 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
@@ -383,6 +394,15 @@
 			path = Vendor/TMCache;
 			sourceTree = "<group>";
 		};
+		462F0CA91728EBB600BDDEB8 /* LoginUI */ = {
+			isa = PBXGroup;
+			children = (
+				462F0CAA1728EBF300BDDEB8 /* HMLoginViewController.h */,
+				462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */,
+			);
+			name = LoginUI;
+			sourceTree = "<group>";
+		};
 		463725611724086A002357E0 /* MCSwipeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +451,8 @@
 		463725E617279D44002357E0 /* @2x */ = {
 			isa = PBXGroup;
 			children = (
+				462F0CAD1728F07300BDDEB8 /* BackgroundLogin@2x.png */,
+				462F0CAE1728F07400BDDEB8 /* divider@2x.png */,
 				463726381727AB7B002357E0 /* background@2x.png */,
 				463725E717279D44002357E0 /* account@2x.png */,
 				463725E817279D44002357E0 /* addToFavorite@2x.png */,
@@ -459,6 +481,8 @@
 		463725FA17279D44002357E0 /* regular */ = {
 			isa = PBXGroup;
 			children = (
+				462F0CB11728F08B00BDDEB8 /* BackgroundLogin.png */,
+				462F0CB21728F08B00BDDEB8 /* divider.png */,
 				463726361727AB70002357E0 /* background.png */,
 				463725FB17279D44002357E0 /* account.png */,
 				463725FC17279D44002357E0 /* addToFavorite.png */,
@@ -639,6 +663,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				462F0CA91728EBB600BDDEB8 /* LoginUI */,
 				466F4F9F1703093B0076AB3D /* HMIngredientCell.h */,
 				466F4FA01703093B0076AB3D /* HMIngredientCell.m */,
 				466F4FA11703093B0076AB3D /* HMRecipeStepCell.h */,
@@ -943,6 +968,10 @@
 				4637263517279E07002357E0 /* mainNav@2x.png in Resources */,
 				463726371727AB70002357E0 /* background.png in Resources */,
 				463726391727AB7B002357E0 /* background@2x.png in Resources */,
+				462F0CAF1728F07400BDDEB8 /* BackgroundLogin@2x.png in Resources */,
+				462F0CB01728F07400BDDEB8 /* divider@2x.png in Resources */,
+				462F0CB31728F08B00BDDEB8 /* BackgroundLogin.png in Resources */,
+				462F0CB41728F08B00BDDEB8 /* divider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1000,6 +1029,7 @@
 				462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */,
 				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
+				462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

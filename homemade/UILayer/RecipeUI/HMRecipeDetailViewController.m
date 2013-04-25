@@ -30,9 +30,9 @@
     
     // Set Back button, it's not in scroll view
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.backButton setFrame:CGRectMake(30, 80, 34, 34)];
+    [self.backButton setFrame:CGRectMake(13, 15, 42, 42)];
     [self.backButton setBackgroundColor:[UIColor clearColor]];
-    [self.backButton setBackgroundImage:[UIImage imageNamed:@"account"] forState:UIControlStateNormal];
+    [self.backButton setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     

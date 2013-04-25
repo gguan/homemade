@@ -38,6 +38,7 @@
         
         self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(312.0, 0.0, 8.0, 70.0)];
         [self.colorLine setBackgroundColor:[UIColor clearColor]];
+        self.colorLine.alpha = 0.95;
         
 //        NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
         

@@ -238,7 +238,6 @@
                         NSLog(@"Find colorArt from cache %@", colorArt);
 //                        cell.colorArt = colorArt;
                         [cell.colorLine setBackgroundColor:colorArt];
-                        cell.colorLine.alpha = 0.95;
                     } else {
                         NSLog(@"Didn't find colorArt from cache, compute in background");
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -248,7 +247,6 @@
                             dispatch_async( dispatch_get_main_queue(), ^{
 //                                cell.colorArt = colorArt;
                                 [cell.colorLine setBackgroundColor:colorArt];
-                                 cell.colorLine.alpha = 0.95;
                             });
                         });
                     }
@@ -270,6 +268,9 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
+    if (idx == 3) { // account
+        
+    }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
     NSLog(@"Menu was closed!");
