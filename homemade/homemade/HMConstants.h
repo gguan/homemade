@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+#define kCellDragDist 60.0
 
 #pragma mark - NSUserDefaults
 extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;
@@ -49,3 +49,4 @@ extern NSString *const kHMUserAttributesIsFollowedByCurrentUserKey;
 
 #pragma mark - TMCache keys
 extern NSString *const kHMColorSuffixKey;
+

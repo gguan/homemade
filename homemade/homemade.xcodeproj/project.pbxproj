@@ -26,6 +26,7 @@
 		462F0CB01728F07400BDDEB8 /* divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CAE1728F07400BDDEB8 /* divider@2x.png */; };
 		462F0CB31728F08B00BDDEB8 /* BackgroundLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CB11728F08B00BDDEB8 /* BackgroundLogin.png */; };
 		462F0CB41728F08B00BDDEB8 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CB21728F08B00BDDEB8 /* divider.png */; };
+		462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */; };
 		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
 		463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463725631724086A002357E0 /* MCSwipeTableViewCell.m */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
@@ -172,6 +173,8 @@
 		462F0CAE1728F07400BDDEB8 /* divider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "divider@2x.png"; sourceTree = "<group>"; };
 		462F0CB11728F08B00BDDEB8 /* BackgroundLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundLogin.png; sourceTree = "<group>"; };
 		462F0CB21728F08B00BDDEB8 /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
+		462F0CB8172946AF00BDDEB8 /* HMCellLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCellLeftView.h; path = UILayer/MainUI/HMCellLeftView.h; sourceTree = "<group>"; };
+		462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCellLeftView.m; path = UILayer/MainUI/HMCellLeftView.m; sourceTree = "<group>"; };
 		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		463725621724086A002357E0 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		463725631724086A002357E0 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
@@ -691,6 +694,8 @@
 				4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */,
 				4606A4E6171EA3F0009FDFFB /* HMRecipeCellView.h */,
 				4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */,
+				462F0CB8172946AF00BDDEB8 /* HMCellLeftView.h */,
+				462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -1030,6 +1035,7 @@
 				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
 				462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */,
+				462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

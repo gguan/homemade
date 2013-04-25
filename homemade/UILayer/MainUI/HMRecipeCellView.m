@@ -9,6 +9,11 @@
 #import "HMRecipeCellView.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface HMRecipeCellView (PrivateMethods)
+-(void)springBack;
+-(void)toggleTableScrolling:(BOOL)canScroll;
+@end
+
 @implementation HMRecipeCellView
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -21,6 +26,11 @@
         
         // Initialization code
         
+        // Init cell swipe left view
+        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(0.0, 0.0, 120.0, 205.0)];
+        slideEnabled = YES;
+        
+        // 
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.contentMode = UIViewContentModeScaleAspectFill;
@@ -29,7 +39,7 @@
         UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(0.0, 135.0, 320.0, 70.0)];
         banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
                 
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 7.0, 270.0, 30.0)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(35.0, 7.0, 270.0, 30.0)];
         self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:19.0];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.backgroundColor = [UIColor clearColor];
@@ -40,6 +50,11 @@
         [self.colorLine setBackgroundColor:[UIColor clearColor]];
         self.colorLine.alpha = 0.95;
         
+        self.divider = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.divider setFrame:CGRectMake(5.0f, 23.0f, 11.0f, 24.0f)];
+        [self.divider setBackgroundImage:[UIImage imageNamed:@"divider.png"] forState:UIControlStateNormal];
+        [self.divider setBackgroundImage:[UIImage imageNamed:@"divider.png"] forState:UIControlStateSelected];
+
 //        NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
         
         // add save button
@@ -70,7 +85,8 @@
         [self.commentCount setBackgroundColor:[UIColor clearColor]];
         self.commentCount.textColor = [UIColor whiteColor];
         self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0];
-
+        
+        [banner addSubview:self.divider];
         [banner addSubview:self.titleLabel];
         [banner addSubview:self.colorLine];
         [banner addSubview:self.saveButton];
@@ -89,11 +105,13 @@
         dropshadowView.layer.shadowPath =
         [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
         
+        [self.contentView addSubview:self.cellLeft];
         [self.contentView addSubview:dropshadowView];
         [self.contentView addSubview:self.photo];
         [self.contentView addSubview:banner];
         
-
+        
+        
         
     }
     
