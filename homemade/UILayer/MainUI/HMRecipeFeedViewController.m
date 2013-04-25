@@ -13,6 +13,9 @@
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
 #include "UIImage+ColorArt.h"
+#import "UIImage+FX.h"
+#include "TMCache.h"
+
 
 @interface HMRecipeFeedViewController ()
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
@@ -216,16 +219,27 @@
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (image) {
                     
-                    // find color in center 100x100 area, still need to improve
-                    CGRect cropRect = CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50);
-                    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-                    UIImage *subImage = [UIImage imageWithCGImage:imageRef];
-                    CGImageRelease(imageRef);
+                    UIColor *colorArt = [[TMCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
                     
-                    SLColorArt *colorArt = [subImage colorArt];
-                    cell.colorArt = colorArt;
-                    [cell.colorLine setBackgroundColor:colorArt.primaryColor];
-                    cell.colorLine.alpha = 0.95;
+                    if (colorArt) {
+                        NSLog(@"Find colorArt from cache %@", colorArt);
+//                        cell.colorArt = colorArt;
+                        [cell.colorLine setBackgroundColor:colorArt];
+                        cell.colorLine.alpha = 0.95;
+                    } else {
+                        NSLog(@"Didn't find colorArt from cache, compute in background");
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                            UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
+                            UIColor *colorArt = [cropImage colorArt].primaryColor;
+                            [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                            dispatch_async( dispatch_get_main_queue(), ^{
+//                                cell.colorArt = colorArt;
+                                [cell.colorLine setBackgroundColor:colorArt];
+                                 cell.colorLine.alpha = 0.95;
+                            });
+                        });
+                    }
+                    
                 }
                 if (error) {
                     NSLog(@"Error!");

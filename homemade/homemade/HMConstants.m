@@ -43,3 +43,7 @@ NSString *const kHMUserAttributesRecipeCountKey      = @"userRecipeCount";
 NSString *const kHMUserAttributesMadeCountKey        = @"userMadeCount";
 NSString *const kHMUserAttributesSaveCountKey        = @"userSaveCount";
 NSString *const kHMUserAttributesIsFollowedByCurrentUserKey  = @"isFollowedByCurrentUser";
+
+
+#pragma mark - TMCache keys
+NSString *const kHMColorSuffixKey = @"colorArt";

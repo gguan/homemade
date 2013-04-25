@@ -45,3 +45,7 @@ extern NSString *const kHMUserAttributesRecipeCountKey;
 extern NSString *const kHMUserAttributesMadeCountKey;
 extern NSString *const kHMUserAttributesSaveCountKey;
 extern NSString *const kHMUserAttributesIsFollowedByCurrentUserKey;
+
+
+#pragma mark - TMCache keys
+extern NSString *const kHMColorSuffixKey;
