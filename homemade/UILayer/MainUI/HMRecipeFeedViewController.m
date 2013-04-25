@@ -12,9 +12,10 @@
 #import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
-#include "UIImage+ColorArt.h"
+#import "UIImage+ColorArt.h"
 #import "UIImage+FX.h"
-#include "TMCache.h"
+#import "TMCache.h"
+#import <Parse/Parse.h>
 
 
 @interface HMRecipeFeedViewController ()
@@ -54,8 +55,20 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
-//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+    
+    // Customize pullToRefresh view
+    [[self.view.subviews objectAtIndex:1] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+    UIView *pullToRefreshView = (UIView *)[self.view.subviews objectAtIndex:1];
+    for (UIView *view in pullToRefreshView.subviews) {
+        if ([view isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)view;
+            label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10.0];
+            label.textColor = [UIColor whiteColor];
+            label.backgroundColor = [UIColor clearColor];
+            label.shadowOffset = CGSizeMake(0, 0);
+        }
+    }
     
     // add Path style menu
     UIImage *itemImg1 = [UIImage imageNamed:@"myFavorite.png"];
