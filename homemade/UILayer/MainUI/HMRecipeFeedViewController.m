@@ -154,10 +154,10 @@
 #pragma mark - PFQueryTableViewController
 
 - (PFQuery *)queryForTable {
-    if (![PFUser currentUser]) {
-        [super objectsDidLoad:nil];
-        return nil;
-    }
+//    if (![PFUser currentUser]) {
+//        [super objectsDidLoad:nil];
+//        return nil;
+//    }
     
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
@@ -197,51 +197,16 @@
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
-        
-        // PFQTVC will take care of asynchronously downloading files, but will only load them when the tableview is not moving. If the data is there, let's load it right away.
+        NSLog(@"Data: %i", cell.photo.file.isDataAvailable);
+        // If photo is in memory, load it right away
         if (cell.photo.file.isDataAvailable) {
-            // Manually download images from parse and set animation
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                NSData *data = [cell.photo.file getData];
-//                if(data) {
-//                    dispatch_async( dispatch_get_main_queue(), ^{
-//                        [UIView animateWithDuration:0.0
-//                                         animations:^{
-//                                             cell.photo.alpha = 0.0f;
-//                                         }
-//                                         completion:^(BOOL finished){
-//                                             UIImage *image = [UIImage imageWithData:data];
-//                                             // find color in center 100x100 area, still need to improve
-//                                             CGRect cropRect = CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50);
-//                                             CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-//                                             UIImage *subImage = [UIImage imageWithCGImage:imageRef];
-//                                             CGImageRelease(imageRef);
-//                                             SLColorArt *colorArt = [subImage colorArt];
-//                                             
-//                                             [UIView animateWithDuration:0.0
-//                                                              animations:^{
-//                                                                  cell.photo.image = image;
-//                                                                  cell.photo.alpha = 1.0f;
-//                                                                  cell.colorArt = colorArt;
-//                                                                  [cell.colorLine setBackgroundColor:colorArt.primaryColor];
-//                                                                  cell.colorLine.alpha = 0.95;
-//                                                              }
-//                                                              completion:^(BOOL finished) { }];
-//                                         }];//outside block
-//                    });
-//                } else {
-//                    NSLog(@"Error! Failed to download data from parse!");
-//                }                
-//                
-//            });
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (image) {
-                    
                     UIColor *colorArt = [[TMCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
                     
                     if (colorArt) {
                         NSLog(@"Find colorArt from cache %@", colorArt);
-//                        cell.colorArt = colorArt;
+                        cell.colorArt = colorArt;
                         [cell.colorLine setBackgroundColor:colorArt];
                     } else {
                         NSLog(@"Didn't find colorArt from cache, compute in background");
@@ -250,7 +215,7 @@
                             UIColor *colorArt = [cropImage colorArt].primaryColor;
                             [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
                             dispatch_async( dispatch_get_main_queue(), ^{
-//                                cell.colorArt = colorArt;
+                                cell.colorArt = colorArt;
                                 [cell.colorLine setBackgroundColor:colorArt];
                             });
                         });
@@ -261,9 +226,41 @@
                     NSLog(@"Error!");
                 }
             }];
+        } else {
+            // Manually download images from parse and set animation
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *data = [cell.photo.file getData];
+                if(data) {
+                    dispatch_async( dispatch_get_main_queue(), ^{
+                        [UIView animateWithDuration:0.0
+                                         animations:^{
+                                             cell.photo.alpha = 0.0f;
+                                         }
+                                         completion:^(BOOL finished){
+                                             UIImage *image = [UIImage imageWithData:data];
+                                             // find color in center 100x100 area, still need to improve
+                                             UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
+                                             UIColor *colorArt = [cropImage colorArt].primaryColor;
+                                             [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                                             
+                                             [UIView animateWithDuration:0.3
+                                                              animations:^{
+                                                                  cell.photo.image = image;
+                                                                  cell.photo.alpha = 1.0f;
+                                                                  cell.colorArt = colorArt;
+                                                                  [cell.colorLine setBackgroundColor:colorArt];
+                                                              }
+                                                              completion:^(BOOL finished) { }];
+                                         }];//outside block
+                    });
+                } else {
+                    NSLog(@"Error! Failed to download data from parse!");
+                }
+                
+            });
         } // if isDataAvailable end
         
-    }
+    } // if object end
     
     return cell;
 }

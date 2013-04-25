@@ -24,7 +24,7 @@
 @property (strong, nonatomic) UIButton  *commentButton;
 @property (strong, nonatomic) UILabel   *saveCount;
 @property (strong, nonatomic) UILabel   *commentCount;
-@property (strong, nonatomic) SLColorArt *colorArt;
+@property (strong, nonatomic) UIColor   *colorArt;
 
 @property (strong, nonatomic) HMCellLeftView *cellLeft;
 
