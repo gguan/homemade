@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate>
+@interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, PFLogInViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *mainController;
@@ -16,5 +16,6 @@
 @property (nonatomic, readonly) int networkStatus;
 
 - (BOOL)isParseReachable;
+- (void)presentLoginViewControllerAnimated:(BOOL)animated;
 
 @end

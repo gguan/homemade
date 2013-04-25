@@ -154,6 +154,11 @@
 #pragma mark - PFQueryTableViewController
 
 - (PFQuery *)queryForTable {
+    if (![PFUser currentUser]) {
+        [super objectsDidLoad:nil];
+        return nil;
+    }
+    
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
     if ([self.objects count] == 0) {

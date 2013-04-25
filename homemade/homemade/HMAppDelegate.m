@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 // Import view controllers
-#import "HMSearchViewController.h"
+#import "HMLoginViewController.h"
 #import "HMRecipeFeedViewController.h"
 
 // Import parse 
@@ -68,6 +68,11 @@
     self.window.rootViewController = self.mainController;
     [self.window makeKeyAndVisible];
     
+    // Display login view
+    if (![PFUser currentUser]) {
+        [self presentLoginViewControllerAnimated:YES];
+    }
+
     return YES;
 }
 
@@ -129,6 +134,30 @@
 - (BOOL)isParseReachable {
     return self.networkStatus != NotReachable;
 }
+
+- (void)presentLoginViewControllerAnimated:(BOOL)animated {
+    HMLoginViewController *loginViewController = [[HMLoginViewController alloc] init];
+    [loginViewController setDelegate:self];
+    loginViewController.fields = PFLogInFieldsFacebook;
+    loginViewController.facebookPermissions = [NSArray arrayWithObjects:@"user_about_me", @"email", nil];
+    
+    [self.mainController presentViewController:loginViewController animated:animated completion:nil];
+}
+
+#pragma mark - LoginIn delegate
+
+/*! @name Responding to Actions */
+/// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    // TODO: retrieve user information from facebook, and store/update in local file system
+    [self.mainController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+/// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    NSLog(@"Login failed. Error: %@", error);
+}
+
 
 
 @end
