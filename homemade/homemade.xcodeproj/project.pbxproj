@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25A9436B1728E3C800DA959B /* TabBarGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943651728E3C800DA959B /* TabBarGradient.png */; };
+		25A9436C1728E3C800DA959B /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943661728E3C800DA959B /* globe.png */; };
+		25A9436D1728E3C800DA959B /* hotPics.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943671728E3C800DA959B /* hotPics.png */; };
+		25A9436E1728E3C800DA959B /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943681728E3C800DA959B /* chat.png */; };
+		25A9436F1728E3C800DA959B /* TabBarNipple.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943691728E3C800DA959B /* TabBarNipple.png */; };
+		25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */; };
+		25A943761728E3F600DA959B /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943731728E3F600DA959B /* CustomTabBar.m */; };
+		25A943771728E3F600DA959B /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943751728E3F600DA959B /* HMRecipeViewController.m */; };
 		4606A4D21716C039009FDFFB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4D11716C039009FDFFB /* Reachability.m */; };
 		4606A4D717194AA7009FDFFB /* s14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4D317194AA7009FDFFB /* s14.jpg */; };
 		4606A4D817194AA7009FDFFB /* s13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4D417194AA7009FDFFB /* s13.jpg */; };
@@ -114,7 +122,6 @@
 		466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */; };
 		466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F811701A61B0076AB3D /* UIColor+HSB.m */; };
 		466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F831701A61B0076AB3D /* UIColor+HSL.m */; };
-		466F4FA7170309E30076AB3D /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA61703093B0076AB3D /* HMRecipeViewController.m */; };
 		466F4FA817030A000076AB3D /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA01703093B0076AB3D /* HMIngredientCell.m */; };
 		466F4FA917030A030076AB3D /* HMRecipeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA21703093B0076AB3D /* HMRecipeStepCell.m */; };
 		466F4FAA17030A050076AB3D /* HMRecipeTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FA41703093B0076AB3D /* HMRecipeTipCell.m */; };
@@ -144,6 +151,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25A943651728E3C800DA959B /* TabBarGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarGradient.png; sourceTree = "<group>"; };
+		25A943661728E3C800DA959B /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe.png; sourceTree = "<group>"; };
+		25A943671728E3C800DA959B /* hotPics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotPics.png; sourceTree = "<group>"; };
+		25A943681728E3C800DA959B /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		25A943691728E3C800DA959B /* TabBarNipple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarNipple.png; sourceTree = "<group>"; };
+		25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarNipple@2x.png"; sourceTree = "<group>"; };
+		25A943721728E3F600DA959B /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
+		25A943731728E3F600DA959B /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
+		25A943741728E3F600DA959B /* HMRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRecipeViewController.h; sourceTree = "<group>"; };
+		25A943751728E3F600DA959B /* HMRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRecipeViewController.m; sourceTree = "<group>"; };
 		4606A4D01716C039009FDFFB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4606A4D11716C039009FDFFB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4606A4D317194AA7009FDFFB /* s14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = s14.jpg; sourceTree = "<group>"; };
@@ -301,8 +318,6 @@
 		466F4FA21703093B0076AB3D /* HMRecipeStepCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeStepCell.m; path = UILayer/RecipeUI/HMRecipeStepCell.m; sourceTree = "<group>"; };
 		466F4FA31703093B0076AB3D /* HMRecipeTipCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeTipCell.h; path = UILayer/RecipeUI/HMRecipeTipCell.h; sourceTree = "<group>"; };
 		466F4FA41703093B0076AB3D /* HMRecipeTipCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeTipCell.m; path = UILayer/RecipeUI/HMRecipeTipCell.m; sourceTree = "<group>"; };
-		466F4FA51703093B0076AB3D /* HMRecipeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeViewController.h; path = UILayer/RecipeUI/HMRecipeViewController.h; sourceTree = "<group>"; };
-		466F4FA61703093B0076AB3D /* HMRecipeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeViewController.m; path = UILayer/RecipeUI/HMRecipeViewController.m; sourceTree = "<group>"; };
 		466F4FAE170408490076AB3D /* pic_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_1.jpg; path = Resources/temp/pic_1.jpg; sourceTree = "<group>"; };
 		466F4FAF170408490076AB3D /* pic_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_2.jpg; path = Resources/temp/pic_2.jpg; sourceTree = "<group>"; };
 		466F4FB0170408490076AB3D /* pic_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_3.jpg; path = Resources/temp/pic_3.jpg; sourceTree = "<group>"; };
@@ -364,6 +379,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25A943711728E3CC00DA959B /* HMRecipeViewControllerImage */ = {
+			isa = PBXGroup;
+			children = (
+				25A943651728E3C800DA959B /* TabBarGradient.png */,
+				25A943661728E3C800DA959B /* globe.png */,
+				25A943671728E3C800DA959B /* hotPics.png */,
+				25A943681728E3C800DA959B /* chat.png */,
+				25A943691728E3C800DA959B /* TabBarNipple.png */,
+				25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */,
+			);
+			name = HMRecipeViewControllerImage;
+			sourceTree = "<group>";
+		};
 		4606A4CF1716C039009FDFFB /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +405,16 @@
 		462A770C16FC28B800C3CBF7 /* RecipeUI */ = {
 			isa = PBXGroup;
 			children = (
+				466F4F9F1703093B0076AB3D /* HMIngredientCell.h */,
+				466F4FA01703093B0076AB3D /* HMIngredientCell.m */,
+				466F4FA11703093B0076AB3D /* HMRecipeStepCell.h */,
+				466F4FA21703093B0076AB3D /* HMRecipeStepCell.m */,
+				466F4FA31703093B0076AB3D /* HMRecipeTipCell.h */,
+				466F4FA41703093B0076AB3D /* HMRecipeTipCell.m */,
+				25A943721728E3F600DA959B /* CustomTabBar.h */,
+				25A943731728E3F600DA959B /* CustomTabBar.m */,
+				25A943741728E3F600DA959B /* HMRecipeViewController.h */,
+				25A943751728E3F600DA959B /* HMRecipeViewController.m */,
 				4637258F17254956002357E0 /* HMRecipeDetailViewController.h */,
 				4637259017254956002357E0 /* HMRecipeDetailViewController.m */,
 			);
@@ -445,6 +483,7 @@
 		463725E517279D35002357E0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				25A943711728E3CC00DA959B /* HMRecipeViewControllerImage */,
 				463725E617279D44002357E0 /* @2x */,
 				463725FA17279D44002357E0 /* regular */,
 			);
@@ -977,6 +1016,12 @@
 				462F0CB01728F07400BDDEB8 /* divider@2x.png in Resources */,
 				462F0CB31728F08B00BDDEB8 /* BackgroundLogin.png in Resources */,
 				462F0CB41728F08B00BDDEB8 /* divider.png in Resources */,
+				25A9436B1728E3C800DA959B /* TabBarGradient.png in Resources */,
+				25A9436C1728E3C800DA959B /* globe.png in Resources */,
+				25A9436D1728E3C800DA959B /* hotPics.png in Resources */,
+				25A9436E1728E3C800DA959B /* chat.png in Resources */,
+				25A9436F1728E3C800DA959B /* TabBarNipple.png in Resources */,
+				25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,7 +1054,6 @@
 				466F4FA917030A030076AB3D /* HMRecipeStepCell.m in Sources */,
 				466F4FAA17030A050076AB3D /* HMRecipeTipCell.m in Sources */,
 				466F4F75170154860076AB3D /* SSKeychain.m in Sources */,
-				466F4FA7170309E30076AB3D /* HMRecipeViewController.m in Sources */,
 				466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */,
 				466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */,
 				466F4F851701A61B0076AB3D /* UIColor+Crayola.m in Sources */,
@@ -1036,6 +1080,8 @@
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
 				462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */,
 				462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */,
+				25A943761728E3F600DA959B /* CustomTabBar.m in Sources */,
+				25A943771728E3F600DA959B /* HMRecipeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,7 +1124,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
@@ -1106,7 +1152,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-lsqlite3.0",
