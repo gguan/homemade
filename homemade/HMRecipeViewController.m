@@ -117,9 +117,9 @@
         [self.ImadeitView setBackgroundColor:[UIColor blackColor]];
         
         _Items = [NSArray arrayWithObjects:
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"chat.png", @"image", self.stepView, @"view", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"hotPics.png", @"image", self.ingredientView, @"view", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"globe.png", @"image", self.ImadeitView, @"view", nil],nil];
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"step.png", @"image", self.stepView, @"view", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"ingredient.png", @"image", self.ingredientView, @"view", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"Imadit.png", @"image", self.ImadeitView, @"view", nil],nil];
     
         _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(self.view.frame.size.width/3, TABBARHEIGHT) tag:0 delegate:self];
         

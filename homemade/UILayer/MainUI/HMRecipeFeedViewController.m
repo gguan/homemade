@@ -144,7 +144,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //For testing, point to the same HMRecipeViewController,add properties later
-    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
+    HMRecipeDetailViewController *recipeViewController = [[HMRecipeDetailViewController alloc] init];
     recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
     [[self navigationController] pushViewController:recipeViewController animated:YES];
     
