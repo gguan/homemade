@@ -18,6 +18,9 @@
 		4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */; };
 		4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
+		462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA11728AAEB00BDDEB8 /* TMCache.m */; };
+		462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */; };
+		462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */; };
 		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
 		463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463725631724086A002357E0 /* MCSwipeTableViewCell.m */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
@@ -152,6 +155,12 @@
 		4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeCellView.m; path = UILayer/MainUI/HMRecipeCellView.m; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
+		462F0CA01728AAEB00BDDEB8 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
+		462F0CA11728AAEB00BDDEB8 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
+		462F0CA21728AAEB00BDDEB8 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
+		462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDiskCache.m; sourceTree = "<group>"; };
+		462F0CA41728AAEB00BDDEB8 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMMemoryCache.h; sourceTree = "<group>"; };
+		462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMMemoryCache.m; sourceTree = "<group>"; };
 		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		463725621724086A002357E0 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
 		463725631724086A002357E0 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
@@ -360,6 +369,20 @@
 			name = RecipeUI;
 			sourceTree = "<group>";
 		};
+		462F0C9F1728AAEB00BDDEB8 /* TMCache */ = {
+			isa = PBXGroup;
+			children = (
+				462F0CA01728AAEB00BDDEB8 /* TMCache.h */,
+				462F0CA11728AAEB00BDDEB8 /* TMCache.m */,
+				462F0CA21728AAEB00BDDEB8 /* TMDiskCache.h */,
+				462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */,
+				462F0CA41728AAEB00BDDEB8 /* TMMemoryCache.h */,
+				462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */,
+			);
+			name = TMCache;
+			path = Vendor/TMCache;
+			sourceTree = "<group>";
+		};
 		463725611724086A002357E0 /* MCSwipeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +562,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
 				4637256F17241C81002357E0 /* AwesomeMenu */,
 				46372565172408A3002357E0 /* ColorArt */,
 				463725611724086A002357E0 /* MCSwipeTableViewCell */,
@@ -973,6 +997,9 @@
 				4637257417241C81002357E0 /* AwesomeMenu.m in Sources */,
 				4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */,
 				4637259117254956002357E0 /* HMRecipeDetailViewController.m in Sources */,
+				462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */,
+				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
+				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
