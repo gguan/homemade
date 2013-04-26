@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define kCellDragDist 60.0
+#define kCellDragDist           60
+#define kMinimumGestureLength   40
+#define kMaximumGestureLength   100
 
 #pragma mark - NSUserDefaults
 extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;

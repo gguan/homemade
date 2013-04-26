@@ -189,9 +189,11 @@
         cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    [self resetCell:cell];
+    
+    // TODO
     // Configure the cell
     cell.titleLabel.text = [object objectForKey:@"title"];
-    // TODO
     cell.saveCount.text = @"100";
     cell.commentCount.text = @"100";
     
@@ -229,6 +231,7 @@
         } else {
             // Manually download images from parse and set animation
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSString *colorCacheKey = cell.photo.file.name;
                 NSData *data = [cell.photo.file getData];
                 if(data) {
                     dispatch_async( dispatch_get_main_queue(), ^{
@@ -241,7 +244,7 @@
                                              // find color in center 100x100 area, still need to improve
                                              UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
                                              UIColor *colorArt = [cropImage colorArt].primaryColor;
-                                             [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                                             [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
                                              
                                              [UIView animateWithDuration:0.3
                                                               animations:^{
@@ -282,10 +285,23 @@
 }
 
 #pragma mark - Scroll delegate
+// Need keep menu button fix position on the view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGRect fixedFrame = self.view.frame;
     fixedFrame.origin.y = 0 + scrollView.contentOffset.y;
     menu.frame = fixedFrame;
+}
+
+#pragma mark - ()
+- (void)resetCell:(HMRecipeCellView *)cell {
+    
+    // Placeholder image
+    [cell.photo setImage:nil];
+    // Move photo back to left
+    [cell bounceToLeft:0];
+    // Clear color line
+    [cell.colorLine setBackgroundColor:[UIColor clearColor]];
+    
 }
 
 @end

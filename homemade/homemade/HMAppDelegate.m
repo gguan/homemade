@@ -67,7 +67,7 @@
     
     self.window.rootViewController = self.mainController;
     [self.window makeKeyAndVisible];
-    
+
     // Display login view
     if (![PFUser currentUser]) {
         [self presentLoginViewControllerAnimated:YES];
@@ -139,7 +139,7 @@
     HMLoginViewController *loginViewController = [[HMLoginViewController alloc] init];
     [loginViewController setDelegate:self];
     loginViewController.fields = PFLogInFieldsFacebook;
-    loginViewController.facebookPermissions = [NSArray arrayWithObjects:@"user_about_me", @"email", nil];
+    loginViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email" ];
     
     [self.mainController presentViewController:loginViewController animated:animated completion:nil];
 }
@@ -149,6 +149,7 @@
 /*! @name Responding to Actions */
 /// Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+//    [user save];
     // TODO: retrieve user information from facebook, and store/update in local file system
     [self.mainController dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -157,7 +158,6 @@
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     NSLog(@"Login failed. Error: %@", error);
 }
-
 
 
 @end
