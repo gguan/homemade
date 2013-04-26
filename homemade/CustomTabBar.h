@@ -29,6 +29,7 @@
 @protocol CustomTabBarDelegate
 
 - (UIImage*) imageFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex;
+- (NSString*) titleFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex;
 - (UIImage*) selectedItemBackgroundImage;
 - (UIImage*) tabBarArrowImage;
 

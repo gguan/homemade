@@ -101,11 +101,19 @@
         
         //The back button
         UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backButton setFrame:CGRectMake(20, 20, 25, 25)];
-        [backButton setBackgroundImage:[UIImage imageNamed:@"arrow_right@2x.png"] forState:UIControlStateNormal];
+        [backButton setFrame:CGRectMake(12.5, 15, 30, 30)];
+        [backButton setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
         [backButton addTarget:self action:@selector(backButtonClicked) forControlEvents:UIControlEventAllTouchEvents];
         [self.view addSubview:backButton];
         
+        //The "Fuzzy Thing" label
+        
+        UILabel *fuzzyLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.5, 50, 130, 30)];
+        [fuzzyLabel setText:@"Fuzzy Thing"];
+        [fuzzyLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:21]];
+        [fuzzyLabel setTextColor:[UIColor whiteColor]];
+        [fuzzyLabel setBackgroundColor:[UIColor clearColor]];
+        [self.view addSubview:fuzzyLabel];
         
         
         //initialize the tabBar and three subViews
@@ -117,9 +125,9 @@
         [self.ImadeitView setBackgroundColor:[UIColor blackColor]];
         
         _Items = [NSArray arrayWithObjects:
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"step.png", @"image", self.stepView, @"view", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"ingredient.png", @"image", self.ingredientView, @"view", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Imadit.png", @"image", self.ImadeitView, @"view", nil],nil];
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"step.png", @"image", self.stepView, @"view", @"Steps",@"subTitle",nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"ingredient.png", @"image", self.ingredientView, @"view",@"ingredient",@"subTitle", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"Imadit.png", @"image", self.ImadeitView, @"view",@"I made it",@"subTitle", nil],nil];
     
         _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(self.view.frame.size.width/3, TABBARHEIGHT) tag:0 delegate:self];
         
@@ -128,6 +136,7 @@
         [self.view addSubview:self.tabBar];
         // Select the first tab
         [self.tabBar selectItemAtIndex:0];
+        [self.tabBar setBackgroundColor:[UIColor clearColor]];
         [self touchDownAtItemAtIndex:0];
         
         [self.view addSubview:self.tabBar];
@@ -438,11 +447,18 @@
     return [UIImage imageNamed:[data objectForKey:@"image"]];
 }
 
+- (NSString*) titleFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex{
+    
+    NSDictionary* data = [self.Items objectAtIndex:itemIndex];
+    // Return the image for this tab bar item
+    return [data objectForKey:@"subTitle"];
+}
+
 
 // This is the blue background shown for selected tab bar items
 - (UIImage*) selectedItemBackgroundImage
 {
-    return [UIImage imageNamed:@"TabBarGradient.png"];
+    return [UIImage imageNamed:@""];
 }
 
 

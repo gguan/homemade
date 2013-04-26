@@ -206,7 +206,13 @@
   UIImage* buttonImage = [self tabBarImage:rawButtonImage size:button.frame.size backgroundImage:nil];
   // And create the pressed state image by converting the image's background to the background image we get from the delegate
   UIImage* buttonPressedImage = [self tabBarImage:rawButtonImage size:button.frame.size backgroundImage:[delegate selectedItemBackgroundImage]];
-
+    
+    NSString* subTitle = [delegate titleFor:self atIndex:itemIndex];
+    [button setTitle:subTitle forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12.5f]];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal]; // SET the colour for your wishes
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; // SET the colour for your wishes
+ //   [button setTitleEdgeInsets:UIEdgeInsetsMake(0.f, 0.f, .f, -10.f)];
   // Set the gray & blue images as the button states
   [button setImage:buttonImage forState:UIControlStateNormal];
   [button setImage:buttonPressedImage forState:UIControlStateHighlighted];
