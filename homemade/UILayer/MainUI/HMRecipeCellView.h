@@ -12,10 +12,11 @@
 
 @interface HMRecipeCellView : PFTableViewCell {
     
-    CGPoint     firstTouch;
-    BOOL        slideEnabled;
+    CGPoint     gestureStartPoint;
+    BOOL        leftIsVisible;
 }
 
+@property (strong, nonatomic) UIView    *backCover;
 @property (strong, nonatomic) PFImageView   *photo;
 @property (strong, nonatomic) UIButton  *divider;
 @property (strong, nonatomic) UILabel   *titleLabel;
@@ -27,5 +28,8 @@
 @property (strong, nonatomic) UIColor   *colorArt;
 
 @property (strong, nonatomic) HMCellLeftView *cellLeft;
+
+- (void)bounceToLeft:(CGFloat)duration;
+- (void)bounceToRight:(CGFloat)duration;
 
 @end
