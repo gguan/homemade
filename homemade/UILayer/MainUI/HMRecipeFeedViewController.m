@@ -12,7 +12,8 @@
 #import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
-#import "UIImage+ColorArt.h"
+//#import "UIImage+ColorArt.h"
+#import "SLColorArt.h"
 #import "UIImage+FX.h"
 #import "TMCache.h"
 #import <Parse/Parse.h>
@@ -224,7 +225,7 @@
         if (cell.photo.file.isDataAvailable) {
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (image) {
-                    UIColor *colorArt = [[TMMemoryCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                    UIColor *colorArt = [[TMCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
                     
                     if (colorArt) {
                         NSLog(@"Find colorArt from cache %@", colorArt);
@@ -233,9 +234,10 @@
                     } else {
                         NSLog(@"Didn't find colorArt from cache, compute in background");
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                            UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
-                            UIColor *colorArt = [cropImage colorArt].primaryColor;
-                            [[TMMemoryCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                            NSString *colorCacheKey = cell.photo.file.name;
+                            UIColor *colorArt = [image colorArtInRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)].primaryColor;
+                            
+                            [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
                             dispatch_async( dispatch_get_main_queue(), ^{
                                 cell.colorArt = colorArt;
                                 [cell.colorLine setBackgroundColor:colorArt];
@@ -251,31 +253,35 @@
         } else {
             // Manually download images from parse and set animation
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSString *colorCacheKey = cell.photo.file.name;
+                
                 NSData *data = [cell.photo.file getData];
                 if(data) {
+                    NSString *colorCacheKey = cell.photo.file.name;
+                    UIImage *image = [UIImage imageWithData:data];
+                    UIColor *colorArt = [image colorArtInRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)].primaryColor;
+                    
+                    [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
                     dispatch_async( dispatch_get_main_queue(), ^{
+                                                
+                        // fade in fetched photo
                         [UIView animateWithDuration:0.0
                                          animations:^{
                                              cell.photo.alpha = 0.0f;
                                          }
-                                         completion:^(BOOL finished){
-                                             UIImage *image = [UIImage imageWithData:data];
-                                             // find color in center 100x100 area, still need to improve
-                                             UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
-                                             UIColor *colorArt = [cropImage colorArt].primaryColor;
-                                             [[TMMemoryCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
-                                             
+                                         completion:^(BOOL finished) {
                                              [UIView animateWithDuration:0.3
                                                               animations:^{
-                                                                  cell.photo.image = image;
+                                                                  [cell.photo setImage: image];
                                                                   cell.photo.alpha = 1.0f;
                                                                   cell.colorArt = colorArt;
                                                                   [cell.colorLine setBackgroundColor:colorArt];
                                                               }
                                                               completion:^(BOOL finished) { }];
-                                         }];//outside block
+                                         }];
+                        
                     });
+
+
                 } else {
                     NSLog(@"Error! Failed to download data from parse!");
                 }

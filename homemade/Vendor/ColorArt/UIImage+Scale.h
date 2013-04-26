@@ -10,4 +10,5 @@
 
 @interface UIImage (Scale)
 - (UIImage*) scaledToSize:(CGSize)newSize;
+- (UIImage*) croppedToRect:(CGRect)rect;
 @end

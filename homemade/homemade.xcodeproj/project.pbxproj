@@ -143,7 +143,6 @@
 		469FBD8D1716B1EB00D8BC84 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
-		EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530E916FADF2100916972 /* HMFeedItemJAO.m */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
 /* End PBXBuildFile section */
 
@@ -337,8 +336,6 @@
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		EAA530E816FADF2100916972 /* HMFeedItemJAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItemJAO.h; path = BaseLayer/DataModel/HMFeedItemJAO.h; sourceTree = "<group>"; };
-		EAA530E916FADF2100916972 /* HMFeedItemJAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItemJAO.m; path = BaseLayer/DataModel/HMFeedItemJAO.m; sourceTree = "<group>"; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -762,8 +759,6 @@
 			children = (
 				4645D39016F5F1BB00C38D39 /* HMFeedItem.h */,
 				4645D39116F5F1BB00C38D39 /* HMFeedItem.m */,
-				EAA530E816FADF2100916972 /* HMFeedItemJAO.h */,
-				EAA530E916FADF2100916972 /* HMFeedItemJAO.m */,
 				EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */,
 				EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */,
 				462A770616FC1B2400C3CBF7 /* HMRecipe.h */,
@@ -1031,7 +1026,6 @@
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
 				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,
 				4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */,
-				EAA530EA16FADF2100916972 /* HMFeedItemJAO.m in Sources */,
 				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
 				466F4FA817030A000076AB3D /* HMIngredientCell.m in Sources */,
 				4645D3F916FB539D00C38D39 /* HMNavigationBar.m in Sources */,
