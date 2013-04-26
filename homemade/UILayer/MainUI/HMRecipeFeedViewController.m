@@ -143,11 +143,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //For testing, point to the same HMRecipeViewController,add properties later
-    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
-    recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
-    [[self navigationController] pushViewController:recipeViewController animated:YES];
-    
+    HMRecipeCellView *cell = (HMRecipeCellView *)[tableView cellForRowAtIndexPath:indexPath];
+    if (cell.leftIsVisible == YES) {
+        [cell bounceToLeft:0.2];
+    } else {
+        //For testing, point to the same HMRecipeViewController,add properties later
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
+        recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
+        [[self navigationController] pushViewController:recipeViewController animated:YES];
+    }
 }
 
 
