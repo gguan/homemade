@@ -192,12 +192,12 @@
         if (_leftIsVisible == NO) {
             xPos = touchPoint.x - gestureStartPoint.x;
             if (xPos > kMinimumGestureLength) {
-                [self bounceToRight:0.2];
+                [self bounceToRight:0.3];
             } else {
-                [self bounceToLeft:0.2];
+                [self bounceToLeft:0.3];
             }
         } else {
-            [self bounceToLeft:0.2];
+            [self bounceToLeft:0.3];
         }
     }
 }

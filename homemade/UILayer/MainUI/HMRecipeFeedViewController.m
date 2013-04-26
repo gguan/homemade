@@ -12,9 +12,7 @@
 #import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
-//#import "UIImage+ColorArt.h"
 #import "SLColorArt.h"
-#import "UIImage+FX.h"
 #import "TMCache.h"
 #import <Parse/Parse.h>
 
@@ -58,10 +56,6 @@
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     
-    
-    for (UIView *view in self.view.subviews) {
-        NSLog(@"%@", [view class]);
-    }
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
     for (UIView *view in loadingView.subviews) {
@@ -220,7 +214,7 @@
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
-        NSLog(@"Data: %i", cell.photo.file.isDataAvailable);
+
         // If photo is in memory, load it right away
         if (cell.photo.file.isDataAvailable) {
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
@@ -318,7 +312,7 @@
     menu.frame = fixedFrame;
 }
 
-#pragma mark - ()
+#pragma mark - (when reuse table view cell, do some clean up and reset cell)
 - (void)resetCell:(HMRecipeCellView *)cell {
     
     // Placeholder image
