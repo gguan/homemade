@@ -57,9 +57,25 @@
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     
+    
+    for (UIView *view in self.view.subviews) {
+        NSLog(@"%@", [view class]);
+    }
+    // Customize loading view
+    UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
+    for (UIView *view in loadingView.subviews) {
+        if ([view isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)view;
+            label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
+            label.textColor = [UIColor whiteColor];
+            label.backgroundColor = [UIColor clearColor];
+            label.shadowOffset = CGSizeMake(0, 0);
+        }
+    }
+    
     // Customize pullToRefresh view
-    [[self.view.subviews objectAtIndex:1] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     UIView *pullToRefreshView = (UIView *)[self.view.subviews objectAtIndex:1];
+    [pullToRefreshView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     for (UIView *view in pullToRefreshView.subviews) {
         if ([view isKindOfClass:[UILabel class]]) {
             UILabel *label = (UILabel *)view;
@@ -208,7 +224,7 @@
         if (cell.photo.file.isDataAvailable) {
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (image) {
-                    UIColor *colorArt = [[TMCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                    UIColor *colorArt = [[TMMemoryCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
                     
                     if (colorArt) {
                         NSLog(@"Find colorArt from cache %@", colorArt);
@@ -219,7 +235,7 @@
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                             UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
                             UIColor *colorArt = [cropImage colorArt].primaryColor;
-                            [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                            [[TMMemoryCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
                             dispatch_async( dispatch_get_main_queue(), ^{
                                 cell.colorArt = colorArt;
                                 [cell.colorLine setBackgroundColor:colorArt];
@@ -248,7 +264,7 @@
                                              // find color in center 100x100 area, still need to improve
                                              UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
                                              UIColor *colorArt = [cropImage colorArt].primaryColor;
-                                             [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
+                                             [[TMMemoryCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
                                              
                                              [UIView animateWithDuration:0.3
                                                               animations:^{
