@@ -113,7 +113,7 @@
         [self.contentView addSubview:self.cellLeft];
         [self.contentView addSubview:self.backCover];
         [self.backCover addSubview:self.photo];
-        [self.photo addSubview:banner];
+        [self.backCover addSubview:banner];
         [self.contentView addSubview:self.colorLine];
         
         
