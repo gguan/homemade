@@ -13,5 +13,6 @@
 
 - (SLColorArt*) colorArt;
 - (SLColorArt*) colorArt:(CGSize)scale;
+- (SLColorArt*) colorArtInRect:(CGRect)rect;
 
 @end

@@ -12,8 +12,7 @@
 #import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
-#import "UIImage+ColorArt.h"
-#import "UIImage+FX.h"
+#import "SLColorArt.h"
 #import "TMCache.h"
 #import <Parse/Parse.h>
 
@@ -57,9 +56,21 @@
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     
+    // Customize loading view
+    UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
+    for (UIView *view in loadingView.subviews) {
+        if ([view isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)view;
+            label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
+            label.textColor = [UIColor whiteColor];
+            label.backgroundColor = [UIColor clearColor];
+            label.shadowOffset = CGSizeMake(0, 0);
+        }
+    }
+    
     // Customize pullToRefresh view
-    [[self.view.subviews objectAtIndex:1] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     UIView *pullToRefreshView = (UIView *)[self.view.subviews objectAtIndex:1];
+    [pullToRefreshView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     for (UIView *view in pullToRefreshView.subviews) {
         if ([view isKindOfClass:[UILabel class]]) {
             UILabel *label = (UILabel *)view;
@@ -143,11 +154,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //For testing, point to the same HMRecipeViewController,add properties later
-    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
-    recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
-    [[self navigationController] pushViewController:recipeViewController animated:YES];
-    
+    HMRecipeCellView *cell = (HMRecipeCellView *)[tableView cellForRowAtIndexPath:indexPath];
+    if (cell.leftIsVisible == YES) {
+        [cell bounceToLeft:0.2];
+    } else {
+        //For testing, point to the same HMRecipeViewController,add properties later
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
+        recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
+        [[self navigationController] pushViewController:recipeViewController animated:YES];
+    }
 }
 
 
@@ -199,7 +214,7 @@
     
     if (object) {
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
-        NSLog(@"Data: %i", cell.photo.file.isDataAvailable);
+
         // If photo is in memory, load it right away
         if (cell.photo.file.isDataAvailable) {
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
@@ -213,9 +228,10 @@
                     } else {
                         NSLog(@"Didn't find colorArt from cache, compute in background");
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                            UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
-                            UIColor *colorArt = [cropImage colorArt].primaryColor;
-                            [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];
+                            NSString *colorCacheKey = cell.photo.file.name;
+                            UIColor *colorArt = [image colorArtInRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)].primaryColor;
+                            
+                            [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
                             dispatch_async( dispatch_get_main_queue(), ^{
                                 cell.colorArt = colorArt;
                                 [cell.colorLine setBackgroundColor:colorArt];
@@ -231,31 +247,35 @@
         } else {
             // Manually download images from parse and set animation
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSString *colorCacheKey = cell.photo.file.name;
+                
                 NSData *data = [cell.photo.file getData];
                 if(data) {
+                    NSString *colorCacheKey = cell.photo.file.name;
+                    UIImage *image = [UIImage imageWithData:data];
+                    UIColor *colorArt = [image colorArtInRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)].primaryColor;
+                    
+                    [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
                     dispatch_async( dispatch_get_main_queue(), ^{
+                                                
+                        // fade in fetched photo
                         [UIView animateWithDuration:0.0
                                          animations:^{
                                              cell.photo.alpha = 0.0f;
                                          }
-                                         completion:^(BOOL finished){
-                                             UIImage *image = [UIImage imageWithData:data];
-                                             // find color in center 100x100 area, still need to improve
-                                             UIImage *cropImage = [image imageCroppedToRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)];
-                                             UIColor *colorArt = [cropImage colorArt].primaryColor;
-                                             [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
-                                             
+                                         completion:^(BOOL finished) {
                                              [UIView animateWithDuration:0.3
                                                               animations:^{
-                                                                  cell.photo.image = image;
+                                                                  [cell.photo setImage: image];
                                                                   cell.photo.alpha = 1.0f;
                                                                   cell.colorArt = colorArt;
                                                                   [cell.colorLine setBackgroundColor:colorArt];
                                                               }
                                                               completion:^(BOOL finished) { }];
-                                         }];//outside block
+                                         }];
+                        
                     });
+
+
                 } else {
                     NSLog(@"Error! Failed to download data from parse!");
                 }
@@ -292,7 +312,7 @@
     menu.frame = fixedFrame;
 }
 
-#pragma mark - ()
+#pragma mark - (when reuse table view cell, do some clean up and reset cell)
 - (void)resetCell:(HMRecipeCellView *)cell {
     
     // Placeholder image

@@ -113,7 +113,7 @@
         [self.contentView addSubview:self.cellLeft];
         [self.contentView addSubview:self.backCover];
         [self.backCover addSubview:self.photo];
-        [self.photo addSubview:banner];
+        [self.backCover addSubview:banner];
         [self.contentView addSubview:self.colorLine];
         
         
@@ -124,7 +124,7 @@
         _panGestureRecognizer.minimumNumberOfTouches = 1;
         [self addGestureRecognizer:_panGestureRecognizer];
         
-        leftIsVisible = NO;
+        _leftIsVisible = NO;
         
     }
     
@@ -164,7 +164,7 @@
         
     }  else if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged) {
         
-        if (leftIsVisible == NO) {
+        if (_leftIsVisible == NO) {
             xPos = touchPoint.x - gestureStartPoint.x;
             if (xPos > kMaximumGestureLength) {
                 xPos = kMaximumGestureLength;
@@ -189,15 +189,15 @@
     }
     else if (state == UIGestureRecognizerStateEnded || state == UIGestureRecognizerStateCancelled) {
         
-        if (leftIsVisible == NO) {
+        if (_leftIsVisible == NO) {
             xPos = touchPoint.x - gestureStartPoint.x;
             if (xPos > kMinimumGestureLength) {
-                [self bounceToRight:0.1];
+                [self bounceToRight:0.3];
             } else {
-                [self bounceToLeft:0.1];
+                [self bounceToLeft:0.3];
             }
         } else {
-            [self bounceToLeft:0.1];
+            [self bounceToLeft:0.3];
         }
     }
 }
@@ -214,7 +214,7 @@
                          self.backCover.frame = frame;
                      }
                      completion:^(BOOL finished){
-                         leftIsVisible = NO;
+                         _leftIsVisible = NO;
                      }];
 }
 
@@ -229,7 +229,7 @@
                          self.backCover.frame = frame;
                      }
                      completion:^(BOOL finished){
-                         leftIsVisible = YES;
+                         _leftIsVisible = YES;
                      }];
 }
 

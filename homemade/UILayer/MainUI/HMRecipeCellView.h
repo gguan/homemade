@@ -13,7 +13,7 @@
 @interface HMRecipeCellView : PFTableViewCell {
     
     CGPoint     gestureStartPoint;
-    BOOL        leftIsVisible;
+//    BOOL        leftIsVisible;
 }
 
 @property (strong, nonatomic) UIView    *backCover;
@@ -28,6 +28,8 @@
 @property (strong, nonatomic) UIColor   *colorArt;
 
 @property (strong, nonatomic) HMCellLeftView *cellLeft;
+
+@property (assign, nonatomic) BOOL leftIsVisible;
 
 - (void)bounceToLeft:(CGFloat)duration;
 - (void)bounceToRight:(CGFloat)duration;

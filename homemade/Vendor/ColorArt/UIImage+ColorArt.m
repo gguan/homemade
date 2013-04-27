@@ -10,8 +10,12 @@
 #import "UIImage+Scale.h"
 @implementation UIImage (ColorArt)
 
-- (SLColorArt *)colorArt:(CGSize)scale{
+- (SLColorArt *)colorArt:(CGSize)scale {
     return [[SLColorArt alloc] initWithImage:[self scaledToSize: scale]];
+}
+
+- (SLColorArt *)colorArtInRect:(CGRect)rect {
+    return [[SLColorArt alloc] initWithImage:[self croppedToRect: rect]];
 }
 
 - (SLColorArt *)colorArt{

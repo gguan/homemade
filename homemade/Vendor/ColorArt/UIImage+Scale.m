@@ -16,4 +16,17 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
+
+- (UIImage *)croppedToRect:(CGRect)rect
+{
+    //create drawing context
+	UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
+    //draw
+    [self drawAtPoint:CGPointMake(-rect.origin.x, -rect.origin.y)];
+    //capture resultant image
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	//return image
+	return image;
+}
 @end
