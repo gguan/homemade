@@ -71,7 +71,11 @@ NSString * const TMCacheSharedName = @"TMCacheShared";
 
         id object = [strongSelf->_memoryCache objectForKey:key];
 
-        if (!object) {
+        if (object) {
+            [strongSelf->_diskCache fileURLForKey:key block:^(TMDiskCache *cache, NSString *key, id <NSCoding> object, NSURL *fileURL) {
+                // no-op to update the access time on disk
+            }];
+        } else {
             object = [strongSelf->_diskCache objectForKey:key];
             [strongSelf->_memoryCache setObject:object forKey:key block:nil];
         }
@@ -235,6 +239,19 @@ NSString * const TMCacheSharedName = @"TMCacheShared";
         dispatch_release(group);
         #endif
     }
+}
+
+#pragma mark - Public Synchronous Accessors -
+
+- (NSUInteger)diskByteCount
+{
+    __block NSUInteger byteCount = 0;
+    
+    dispatch_sync([TMDiskCache sharedQueue], ^{
+        byteCount = self.diskCache.byteCount;
+    });
+    
+    return byteCount;
 }
 
 #pragma mark - Public Synchronous Methods -
