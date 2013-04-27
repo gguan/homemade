@@ -17,8 +17,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
         self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-        
+        self.textLabel.backgroundColor = self.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
         self.nameView = [[UIView alloc] initWithFrame:CGRectMake(40, 10, 140, 20)];
         self.nameView.backgroundColor = [UIColor yellowColor];
         [self addSubview:self.nameView];

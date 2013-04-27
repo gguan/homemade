@@ -32,6 +32,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
         self.labelHeight = height;
         
         self.leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 135, 100)]; // your positioning here

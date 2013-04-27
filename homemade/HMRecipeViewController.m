@@ -153,7 +153,7 @@
         //        grayView.backgroundColor = [UIColor redColor];
         //        [self.ingredientsTableView addSubview:grayView];
 
-        self.ingredientsTableView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+        self.ingredientsTableView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
         self.ingredientsTableView.dataSource = self;
         self.ingredientsTableView.delegate = self;
         self.ingredientsTableView.tag = ingredientsTableView_TAG;
@@ -169,11 +169,12 @@
         //        grayView.backgroundColor = [UIColor redColor];
         //        [self.ingredientsTableView addSubview:grayView];
         
-        self.stepsTableView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+        self.stepsTableView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
         self.stepsTableView.dataSource = self;
         self.stepsTableView.delegate = self;
         self.stepsTableView.tag = stepsTableView_TAG;
         [self.stepsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+       
         [self.stepView addSubview:self.stepsTableView];
 
         
@@ -294,21 +295,21 @@
             
             
             HMIngredientCell* cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMIngredientCell"];
-            cell.contentView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
-            cell.textLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            cell.contentView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
+            cell.textLabel.backgroundColor = [UIColor clearColor];
             
             [cell.textLabel setTextColor:[UIColor blackColor]];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                         
             UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 20)];
-            nameLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            nameLabel.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
             nameLabel.text = [NSString stringWithFormat:@"%@",[[self.ingredients objectAtIndex:indexPath.row] objectForKey:@"name"]];
             nameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
             nameLabel.textAlignment = NSTextAlignmentLeft;
             [cell.nameView addSubview:nameLabel];
 
             UILabel *quantityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 20)];
-            quantityLabel.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
+            quantityLabel.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
             quantityLabel.text = [NSString stringWithFormat:@"%dg",[[[self.ingredients objectAtIndex:indexPath.row] objectForKey:@"quantity"] intValue]];
             quantityLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
             quantityLabel.textAlignment = NSTextAlignmentLeft;
@@ -433,7 +434,22 @@
     return expectedLabelSize.height;
 }
 
-
+//change the image color to required color
+-(UIImage*)changeImage:(UIImage*)image toColor:(UIColor*)color{
+    
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClipToMask(context, rect, image.CGImage);
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return  [UIImage imageWithCGImage:img.CGImage
+            scale:1.0 orientation: UIImageOrientationDownMirrored];
+    
+}
 
 #pragma mark -
 #pragma mark CustomTabBarDelegate
@@ -466,7 +482,7 @@
 
 - (UIImage*) tabBarArrowImage
 {
-    return [UIImage imageNamed:@"TabBarNipple.png"];
+    return [self changeImage:[UIImage imageNamed:@"TabBarNipple.png"] toColor:[UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0]] ;
 }
 
 - (void) touchDownAtItemAtIndex:(NSUInteger)itemIndex
