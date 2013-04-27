@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25A9436B1728E3C800DA959B /* TabBarGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943651728E3C800DA959B /* TabBarGradient.png */; };
 		25A9436F1728E3C800DA959B /* TabBarNipple.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943691728E3C800DA959B /* TabBarNipple.png */; };
 		25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */; };
 		25A943761728E3F600DA959B /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943731728E3F600DA959B /* CustomTabBar.m */; };
@@ -148,9 +147,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		25A943651728E3C800DA959B /* TabBarGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarGradient.png; sourceTree = "<group>"; };
-		25A943691728E3C800DA959B /* TabBarNipple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarNipple.png; sourceTree = "<group>"; };
-		25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarNipple@2x.png"; sourceTree = "<group>"; };
+		25A943691728E3C800DA959B /* TabBarNipple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarNipple.png; path = ../../../TabBarNipple.png; sourceTree = "<group>"; };
+		25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TabBarNipple@2x.png"; path = "../../../TabBarNipple@2x.png"; sourceTree = "<group>"; };
 		25A943721728E3F600DA959B /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
 		25A943731728E3F600DA959B /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
 		25A943741728E3F600DA959B /* HMRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRecipeViewController.h; sourceTree = "<group>"; };
@@ -373,16 +371,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		25A943711728E3CC00DA959B /* HMRecipeViewControllerImage */ = {
-			isa = PBXGroup;
-			children = (
-				25A943651728E3C800DA959B /* TabBarGradient.png */,
-				25A943691728E3C800DA959B /* TabBarNipple.png */,
-				25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */,
-			);
-			name = HMRecipeViewControllerImage;
-			sourceTree = "<group>";
-		};
 		4606A4CF1716C039009FDFFB /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,7 +462,6 @@
 		463725E517279D35002357E0 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				25A943711728E3CC00DA959B /* HMRecipeViewControllerImage */,
 				463725E617279D44002357E0 /* @2x */,
 				463725FA17279D44002357E0 /* regular */,
 			);
@@ -484,6 +471,7 @@
 		463725E617279D44002357E0 /* @2x */ = {
 			isa = PBXGroup;
 			children = (
+				25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */,
 				462F0CAD1728F07300BDDEB8 /* BackgroundLogin@2x.png */,
 				462F0CAE1728F07400BDDEB8 /* divider@2x.png */,
 				463726381727AB7B002357E0 /* background@2x.png */,
@@ -514,6 +502,7 @@
 		463725FA17279D44002357E0 /* regular */ = {
 			isa = PBXGroup;
 			children = (
+				25A943691728E3C800DA959B /* TabBarNipple.png */,
 				462F0CB11728F08B00BDDEB8 /* BackgroundLogin.png */,
 				462F0CB21728F08B00BDDEB8 /* divider.png */,
 				463726361727AB70002357E0 /* background.png */,
@@ -1005,7 +994,6 @@
 				462F0CB01728F07400BDDEB8 /* divider@2x.png in Resources */,
 				462F0CB31728F08B00BDDEB8 /* BackgroundLogin.png in Resources */,
 				462F0CB41728F08B00BDDEB8 /* divider.png in Resources */,
-				25A9436B1728E3C800DA959B /* TabBarGradient.png in Resources */,
 				25A9436F1728E3C800DA959B /* TabBarNipple.png in Resources */,
 				25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */,
 			);

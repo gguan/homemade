@@ -53,7 +53,7 @@
     // Set the delegate
     delegate = customTabBarDelegate;
     
-
+     
     
     // Adjust our width based on the number of items & the width of each item
     self.frame = CGRectMake(0, 0, itemSize.width * itemCount, itemSize.height);
@@ -84,8 +84,8 @@
       // Set the button's x offset
       button.frame = CGRectMake(horizontalOffset, 0.0, button.frame.size.width, button.frame.size.height);
 
-
-      // Add the button as our subview
+        [button setBackgroundColor:   [UIColor colorWithWhite:0.0f alpha:0.8f]];
+           // Add the button as our subview
       [self addSubview:button];
       
       // Advance the horizontal offset
@@ -120,7 +120,7 @@
       }
       else
       {
-      //  [self addTabBarArrowAtIndex:selectedIndex];
+        [self addTabBarArrowAtIndex:selectedIndex];
       }
     }
     else
@@ -187,7 +187,7 @@
   UIImageView* tabBarArrow = [[UIImageView alloc] initWithImage:tabBarArrowImage];
   tabBarArrow.tag = TAB_ARROW_IMAGE_TAG;
   // To get the vertical location we go up by the height of arrow and then come back down 2 pixels so the arrow is slightly on top of the tab bar.
-  CGFloat verticalLocation = -tabBarArrowImage.size.height + 2;
+  CGFloat verticalLocation = 44-tabBarArrowImage.size.height;
   tabBarArrow.frame = CGRectMake([self horizontalLocationFor:itemIndex], verticalLocation, tabBarArrowImage.size.width, tabBarArrowImage.size.height);
 
   [self addSubview:tabBarArrow];
@@ -203,20 +203,16 @@
   // Ask the delegate for the button's image
   UIImage* rawButtonImage = [delegate imageFor:self atIndex:itemIndex];
   // Create the normal state image by converting the image's background to gray
-  UIImage* buttonImage = [self tabBarImage:rawButtonImage size:button.frame.size backgroundImage:nil];
-  // And create the pressed state image by converting the image's background to the background image we get from the delegate
-  UIImage* buttonPressedImage = [self tabBarImage:rawButtonImage size:button.frame.size backgroundImage:[delegate selectedItemBackgroundImage]];
-    
     NSString* subTitle = [delegate titleFor:self atIndex:itemIndex];
     [button setTitle:subTitle forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12.5f]];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal]; // SET the colour for your wishes
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; // SET the colour for your wishes
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal]; // SET the colour for your wishes
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted]; // SET the colour for your wishes
  //   [button setTitleEdgeInsets:UIEdgeInsetsMake(0.f, 0.f, .f, -10.f)];
   // Set the gray & blue images as the button states
-  [button setImage:buttonImage forState:UIControlStateNormal];
-  [button setImage:buttonPressedImage forState:UIControlStateHighlighted];
-  [button setImage:buttonPressedImage forState:UIControlStateSelected];
+  [button setImage:rawButtonImage forState:UIControlStateNormal];
+  [button setImage:rawButtonImage forState:UIControlStateHighlighted];
+  [button setImage:rawButtonImage forState:UIControlStateSelected];
 
   // Ask the delegate for the highlighted/selected state image & set it as the selected background state
   
@@ -225,44 +221,6 @@
   return button;
 }
 
-// Create a tab bar image
--(UIImage*) tabBarImage:(UIImage*)startImage size:(CGSize)targetSize backgroundImage:(UIImage*)backgroundImageSource
-{
-  // The background is either the passed in background image (for the blue selected state) or gray (for the non-selected state)
-  UIImage* backgroundImage = [self tabBarBackgroundImageWithSize:startImage.size backgroundImage:backgroundImageSource];
-  
-  // Convert the passed in image to a white backround image with a black fill
-  UIImage* bwImage = [self blackFilledImageWithWhiteBackgroundUsing:startImage];
-  
-  // Create an image mask
-  CGImageRef imageMask = CGImageMaskCreate(CGImageGetWidth(bwImage.CGImage),
-    CGImageGetHeight(bwImage.CGImage),
-    CGImageGetBitsPerComponent(bwImage.CGImage),
-    CGImageGetBitsPerPixel(bwImage.CGImage),
-    CGImageGetBytesPerRow(bwImage.CGImage),
-    CGImageGetDataProvider(bwImage.CGImage), NULL, YES);
-
-  // Using the mask create a new image
-  CGImageRef tabBarImageRef = CGImageCreateWithMask(backgroundImage.CGImage, imageMask);
-
-  UIImage* tabBarImage = [UIImage imageWithCGImage:tabBarImageRef scale:startImage.scale orientation:startImage.imageOrientation];
-
-  // Cleanup
-  CGImageRelease(imageMask);
-  CGImageRelease(tabBarImageRef);
-  
-  // Create a new context with the right size
-  UIGraphicsBeginImageContextWithOptions(targetSize, NO, 0.0);
-
-  // Draw the new tab bar image at the center
-  [tabBarImage drawInRect:CGRectMake((targetSize.width/2.0) - (startImage.size.width/2.0), (targetSize.height/2.0) - (startImage.size.height/2.0), startImage.size.width, startImage.size.height)];
-  
-  // Generate a new image
-  UIImage* resultImage = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  
-  return resultImage;
-}
 
 // Convert the image's fill color to black and background to white
 -(UIImage*) blackFilledImageWithWhiteBackgroundUsing:(UIImage*)startImage
@@ -294,26 +252,7 @@
   return newImage;
 }
 
--(UIImage*) tabBarBackgroundImageWithSize:(CGSize)targetSize backgroundImage:(UIImage*)backgroundImage
-{
-  // The background is either the passed in background image (for the blue selected state) or gray (for the non-selected state)
-  UIGraphicsBeginImageContextWithOptions(targetSize, NO, 0.0);
-  if (backgroundImage)
-  {
-    // Draw the background image centered
-    [backgroundImage drawInRect:CGRectMake((targetSize.width - CGImageGetWidth(backgroundImage.CGImage)) / 2, (targetSize.height - CGImageGetHeight(backgroundImage.CGImage)) / 2, CGImageGetWidth(backgroundImage.CGImage), CGImageGetHeight(backgroundImage.CGImage))];
-  }
-  else
-  {
-    [[UIColor lightGrayColor] set];
-    UIRectFill(CGRectMake(0, 0, targetSize.width, targetSize.height));
-  }
 
-  UIImage* finalBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  
-  return finalBackgroundImage;
-}
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {

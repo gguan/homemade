@@ -94,9 +94,9 @@
         
         //The top image view
         
-        UIImage *topImage = [UIImage imageNamed:@"nav-bar@2x.png"];
+        UIImage *topImage = [UIImage imageNamed:@"pic_4.jpg"];
         UIImageView *topImageView = [[UIImageView alloc] initWithImage:topImage];
-        [topImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, TopImageViewHeight)];
+        [topImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, TopImageViewHeight + TABBARHEIGHT)];
         [self.view addSubview:topImageView];
         
         //The back button
@@ -136,9 +136,9 @@
         [self.view addSubview:self.tabBar];
         // Select the first tab
         [self.tabBar selectItemAtIndex:0];
-        [self.tabBar setBackgroundColor:[UIColor clearColor]];
+        [self.tabBar setBackgroundColor:[UIColor blackColor]];
         [self touchDownAtItemAtIndex:0];
-        
+        [self.tabBar setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:self.tabBar];
         
         
