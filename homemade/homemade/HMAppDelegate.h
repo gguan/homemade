@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class HMRecipeFeedViewController;
+
 @interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, PFLogInViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UINavigationController *mainController;
+@property (strong, nonatomic) HMRecipeFeedViewController *mainController;
 
 @property (nonatomic, readonly) int networkStatus;
 

@@ -9,7 +9,6 @@
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
 #import "HMRecipeDetailViewController.h"
-#import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SLColorArt.h"
@@ -159,8 +158,7 @@
         [cell bounceToLeft:0.2];
     } else {
         //For testing, point to the same HMRecipeViewController,add properties later
-        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
-        recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
         [[self navigationController] pushViewController:recipeViewController animated:YES];
     }
 }
@@ -202,17 +200,19 @@
     HMRecipeCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.delegate = self;
     }
     
     [self resetCell:cell];
     
     // TODO
-    // Configure the cell
-    cell.titleLabel.text = [object objectForKey:@"title"];
-    cell.saveCount.text = @"100";
-    cell.commentCount.text = @"100";
-    
     if (object) {
+        // Configure the cell
+        cell.recipe = object;
+        cell.titleLabel.text = [object objectForKey:@"title"];
+        cell.saveCount.text = @"100";
+        cell.commentCount.text = @"100";
+        cell.saveButton.tag = indexPath.row;
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
 
         // If photo is in memory, load it right away
@@ -305,6 +305,7 @@
 }
 
 #pragma mark - Scroll delegate
+
 // Need keep menu button fix position on the view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGRect fixedFrame = self.view.frame;
@@ -312,7 +313,9 @@
     menu.frame = fixedFrame;
 }
 
-#pragma mark - (when reuse table view cell, do some clean up and reset cell)
+#pragma mark - ()
+
+// when reuse table view cell, do some clean up and reset cell
 - (void)resetCell:(HMRecipeCellView *)cell {
     
     // Placeholder image
@@ -323,5 +326,28 @@
     [cell.colorLine setBackgroundColor:[UIColor clearColor]];
     
 }
+
+#pragma mark - HMRecipeCellView delegate
+
+- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapSaveButton:(UIButton *)button recipe:(PFObject *)recipe {
+    NSLog(@"Tap save button! %@", recipe.objectId);
+    
+    // when user tap the button, we temperaly disable the button until server and cache are updated.
+    [recipeTableCellView shouldEnabledSaveButton:NO];
+    
+    BOOL saved = !button.selected;
+    [recipeTableCellView setSaveStatus:saved];
+    
+//    [recipeTableCellView shouldEnabledSaveButton:YES];
+}
+
+/*!
+ Sent to the delegate when the share button is tapped
+ @param photo the PFObject for the photo that will be commented on
+ */
+- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {
+    
+}
+
 
 @end
