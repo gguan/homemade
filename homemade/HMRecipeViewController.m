@@ -80,13 +80,13 @@
 @synthesize Items = _Items;
 @synthesize recipeObject = _recipeObject;
 
-- (id)init
+- (id)initWithRecipe:(PFObject *)object
 {
     self = [super init];
     if (self)
     {
       
-        
+        self.recipeObject = object;
         
         // Custom initialization
         self.view.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];

@@ -13,5 +13,6 @@
 
 @property(nonatomic,strong) PFObject* recipeObject;
 
+- (id)initWithRecipe:(PFObject *)object;
 
 @end
