@@ -8,7 +8,8 @@
 
 #import <Parse/Parse.h>
 #import "AwesomeMenu.h"
+#import "HMRecipeCellView.h"
 
-@interface HMRecipeFeedViewController : PFQueryTableViewController <AwesomeMenuDelegate>
+@interface HMRecipeFeedViewController : PFQueryTableViewController <AwesomeMenuDelegate, HMRecipeCellViewDelegate>
 
 @end

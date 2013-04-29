@@ -9,6 +9,7 @@
 #import "HMRecipeCellView.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface HMRecipeCellView()
 
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -43,14 +44,14 @@
         UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(0.0, 135.0, 320.0, 70.0)];
         banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
                 
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(35.0, 7.0, 270.0, 30.0)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 7.0, 270.0, 30.0)];
         self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:19.0];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
-        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(312.0, 135.0, 8.0, 70.0)];
+        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(312.0, 135.0, 12.0, 70.0)];
         [self.colorLine setBackgroundColor:[UIColor clearColor]];
         self.colorLine.alpha = 0.95;
         
@@ -63,7 +64,7 @@
         
         // add save button
         self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.saveButton setFrame:CGRectMake(100.0f, 50.0f, 12.0f, 12.0f)];
+        [self.saveButton setFrame:CGRectMake(92.0f, 50.0f, 12.0f, 12.0f)];
         [self.saveButton setBackgroundColor:[UIColor clearColor]];
         [self.saveButton setAdjustsImageWhenHighlighted:NO];
         [self.saveButton setAdjustsImageWhenDisabled:NO];
@@ -71,13 +72,13 @@
         [self.saveButton setBackgroundImage:[UIImage imageNamed:@"likeActive.png"] forState:UIControlStateSelected];
         [self.saveButton setSelected:YES];
         
-        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(118.0f, 50.0f, 40.0f, 12.0f)];
+        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(110.0f, 50.0f, 40.0f, 12.0f)];
         [self.saveCount setBackgroundColor:[UIColor clearColor]];
         self.saveCount.textColor = [UIColor whiteColor];
         self.saveCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0];
         
         self.commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.commentButton setFrame:CGRectMake(40.0f, 50.0f, 12.0f, 12.0f)];
+        [self.commentButton setFrame:CGRectMake(32.0f, 50.0f, 12.0f, 12.0f)];
         [self.commentButton setBackgroundColor:[UIColor clearColor]];
         [self.commentButton setAdjustsImageWhenHighlighted:NO];
         [self.commentButton setAdjustsImageWhenDisabled:NO];
@@ -85,7 +86,7 @@
         [self.commentButton setBackgroundImage:[UIImage imageNamed:@"commentActive.png"] forState:UIControlStateSelected];
         [self.commentButton setSelected:YES];
         
-        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 50.0f, 40.0f, 12.0f)];
+        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 50.0f, 40.0f, 12.0f)];
         [self.commentCount setBackgroundColor:[UIColor clearColor]];
         self.commentCount.textColor = [UIColor whiteColor];
         self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0];
@@ -126,9 +127,26 @@
         
         _leftIsVisible = NO;
         
+        
     }
     
     return self;
+}
+
+
+// Override set method
+- (void)setRecipe:(PFObject *)aRecipe {
+    _recipe = aRecipe;
+    
+    // user's stuff
+//    PFUser *user = [self.recipe objectForKey:kHMUserProfilePicSmallKey];
+    
+    // Add button listening selectors
+    [self.cellLeft.saveButton addTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cellLeft.shareButton addTarget:self action:@selector(didTapShareRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self setNeedsDisplay];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -192,12 +210,21 @@
         if (_leftIsVisible == NO) {
             xPos = touchPoint.x - gestureStartPoint.x;
             if (xPos > kMinimumGestureLength) {
-                [self bounceToRight:0.3];
+                if(xPos - kMinimumGestureLength < 20) {
+                    [self bounceToRight:0.1];
+                } else {
+                    [self bounceToRight:0.3];
+                }
+            } else {
+                [self bounceToLeft:0.2];
+            }
+        } else {
+            if (touchPoint.x < 20) {
+                [self bounceToLeft:0.1];
             } else {
                 [self bounceToLeft:0.3];
             }
-        } else {
-            [self bounceToLeft:0.3];
+        
         }
     }
 }
@@ -231,6 +258,38 @@
                      completion:^(BOOL finished){
                          _leftIsVisible = YES;
                      }];
+}
+
+// Configures save Button to match the give save status
+- (void)setSaveStatus:(BOOL)saved {
+    [self.cellLeft.saveButton setSelected:saved];
+}
+
+// Enable the save button to start receiving actions
+- (void)shouldEnableSaveButton:(BOOL)enable {
+    if (!enable) {
+        NSLog(@"Remove listener");
+        [self.cellLeft.saveButton removeTarget:self.cellLeft.saveButton action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+         NSLog(@"Add listener");
+        [self.cellLeft.saveButton addTarget:self.cellLeft.saveButton action:@selector(didTabSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+#pragma mark - ()
+
+- (void)didTapSaveRecipeButtonAction:(UIButton *)button {
+    if (_delegate && [_delegate respondsToSelector:@selector(recipeTableCellView:didTapSaveButton:recipe:)]) {
+        NSLog(@"Tap save button...");
+        [_delegate recipeTableCellView:self didTapSaveButton:button recipe:self.recipe];
+    }
+}
+
+- (void)didTapShareRecipeButtonAction:(UIButton *)button {
+    if (_delegate && [_delegate respondsToSelector:@selector(recipeTableCellView:didTapSaveButton:recipe:)]) {
+        NSLog(@"Tap share button...");
+        [_delegate recipeTableCellView:self didTapShareButton:button recipe:self.recipe];
+    }
 }
 
 

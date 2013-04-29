@@ -9,7 +9,6 @@
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
 #import "HMRecipeDetailViewController.h"
-#import "HMRecipeCellView.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SLColorArt.h"
@@ -159,8 +158,12 @@
         [cell bounceToLeft:0.2];
     } else {
         //For testing, point to the same HMRecipeViewController,add properties later
+<<<<<<< HEAD
         HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithPFObject:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
       
+=======
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
+>>>>>>> 91b1f20a9cd9ddc529fa4ce3a7ac4f20153e6d80
         [[self navigationController] pushViewController:recipeViewController animated:YES];
     }
 }
@@ -202,17 +205,20 @@
     HMRecipeCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.delegate = self;
     }
     
     [self resetCell:cell];
-    
+    cell.tag = indexPath.row;
     // TODO
-    // Configure the cell
-    cell.titleLabel.text = [object objectForKey:@"title"];
-    cell.saveCount.text = @"100";
-    cell.commentCount.text = @"100";
-    
     if (object) {
+        // Configure the cell
+        [cell setRecipe:object];
+        
+        cell.titleLabel.text = [object objectForKey:@"title"];
+        cell.saveCount.text = @"100";
+        cell.commentCount.text = @"100";
+        cell.saveButton.tag = indexPath.row;
         cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
 
         // If photo is in memory, load it right away
@@ -306,6 +312,7 @@
 }
 
 #pragma mark - Scroll delegate
+
 // Need keep menu button fix position on the view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGRect fixedFrame = self.view.frame;
@@ -313,7 +320,9 @@
     menu.frame = fixedFrame;
 }
 
-#pragma mark - (when reuse table view cell, do some clean up and reset cell)
+#pragma mark - ()
+
+// when reuse table view cell, do some clean up and reset cell
 - (void)resetCell:(HMRecipeCellView *)cell {
     
     // Placeholder image
@@ -324,5 +333,66 @@
     [cell.colorLine setBackgroundColor:[UIColor clearColor]];
     
 }
+
+#pragma mark - HMRecipeCellView delegate
+
+- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapSaveButton:(UIButton *)button recipe:(PFObject *)recipe {
+    NSLog(@"Tap save button! %@", recipe.objectId);
+    
+    // When user tap the button, we temperaly disable the button until server and cache are updated.
+    [recipeTableCellView shouldEnableSaveButton:NO];
+    
+    BOOL saved = !button.selected;
+    [recipeTableCellView setSaveStatus:saved];
+    
+    NSString *originalSaveCountTitle = recipeTableCellView.saveCount.text;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    NSNumber *saveCount = [numberFormatter numberFromString:originalSaveCountTitle];
+    
+    // Update cache
+    // TODO
+    if (saved) {
+        saveCount = [NSNumber numberWithInt:[saveCount intValue] + 1];
+        [[HMCache sharedCache] incrementSaverCountForRecipe:recipe];
+    } else {
+        if ([saveCount intValue] > 0) {
+            saveCount = [NSNumber numberWithInt:[saveCount intValue] - 1];
+        }
+        [[HMCache sharedCache] decrementSaverCountForRecipe:recipe];
+    }
+    [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:saved];
+    
+        
+    // update sever
+    if (saved) {
+        [HMUtility saveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
+            [recipeTableCellView shouldEnableSaveButton:YES];
+            [recipeTableCellView setSaveStatus:succeeded];
+            if (!succeeded) {
+                // Update label
+                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+            }
+        }];
+    } else {
+        [HMUtility unSaveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
+            [recipeTableCellView shouldEnableSaveButton:YES];
+            [recipeTableCellView setSaveStatus:!succeeded];
+            if (!succeeded) {
+                // Update label
+                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+            }
+        }];
+    }
+    
+}
+
+/*!
+ Sent to the delegate when the share button is tapped
+ @param photo the PFObject for the photo that will be commented on
+ */
+- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {
+    
+}
+
 
 @end

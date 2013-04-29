@@ -44,7 +44,15 @@ NSString *const kHMUserAttributesMadeCountKey        = @"userMadeCount";
 NSString *const kHMUserAttributesSaveCountKey        = @"userSaveCount";
 NSString *const kHMUserAttributesIsFollowedByCurrentUserKey  = @"isFollowedByCurrentUser";
 
+NSString *const kHMUserProfilePicSmallKey                      = @"profilePictureSmall";
 
 #pragma mark - TMCache keys
 NSString *const kHMColorSuffixKey = @"colorArt";
 
+
+#pragma mark - Save Class
+NSString *const kHMSaveClassKey = @"Save";
+// Field keys
+NSString *const kHMSaveFromUserKey  = @"fromUser";
+NSString *const kHMSaveToUserKey    = @"toUser";
+NSString *const kHMSaveRecipeKey    = @"recipe";

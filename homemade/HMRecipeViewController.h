@@ -14,5 +14,6 @@
 - (id)initWithPFObject:(PFObject*)recipeObject andUIColor:(UIColor*)color;
 
 
+- (id)initWithRecipe:(PFObject *)object;
 
 @end

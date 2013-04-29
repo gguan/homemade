@@ -12,6 +12,7 @@
 
 // Import view controllers
 #import "HMLoginViewController.h"
+#import "HMRecipeViewController.h"
 #import "HMRecipeFeedViewController.h"
 
 // Import parse 
@@ -63,9 +64,9 @@
     [self setupAppearance];
     
     // Initialize panel controller
-    self.mainController = [[UINavigationController alloc] initWithRootViewController:[[HMRecipeFeedViewController alloc] init]];
+    self.mainController = [[HMRecipeFeedViewController alloc] init];
     
-    self.window.rootViewController = self.mainController;
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.mainController];
     [self.window makeKeyAndVisible];
 
     // Display login view
@@ -79,6 +80,9 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     // TODO: handle fb login
+    if ([self handleActionURL:url]) {
+        return YES;
+    }
     return [PFFacebookUtils handleOpenURL:url];
 }
 
@@ -159,5 +163,37 @@
     NSLog(@"Login failed. Error: %@", error);
 }
 
+#pragma mark - ()
+- (BOOL)handleActionURL:(NSURL *)url {
+    
+    if ([[url fragment] rangeOfString:@"^pic/[A-Za-z0-9]{10}$" options:NSRegularExpressionSearch].location != NSNotFound) {
+        NSString *recipeObjectId = [[url fragment] substringWithRange:NSMakeRange(4, 10)];
+            if (recipeObjectId && recipeObjectId.length > 0) {
+                [self shouldNavigateToRecipe:[PFObject objectWithoutDataWithClassName:kHMRecipeClassKey objectId:recipeObjectId]];
+                return YES;
+            }
+    }
+    
+    return NO;
+}
+
+- (void)shouldNavigateToRecipe:(PFObject *)targetRecipe {
+    for (PFObject *recipe in self.mainController.objects) {
+        if ([recipe.objectId isEqualToString:targetRecipe.objectId]) {
+            targetRecipe = recipe;
+            break;
+        }
+    }
+    
+    // if we have a local copy of this photo, this won't result in a network fetch
+    [targetRecipe fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            UINavigationController *homeNavigationController = self.mainController.navigationController;
+            
+            HMRecipeViewController *detailViewController = [[HMRecipeViewController alloc] initWithRecipe:object];
+            [homeNavigationController pushViewController:detailViewController animated:YES];
+        }
+    }];
+}
 
 @end

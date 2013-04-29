@@ -16,4 +16,6 @@
     #import <MobileCoreServices/MobileCoreServices.h>
     #import <Parse/Parse.h>
     #import "HMConstants.h"
+    #import "HMCache.h"
+    #import "HMUtility.h"
 #endif
