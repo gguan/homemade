@@ -7,10 +7,11 @@
 //
 
 #import "HMCache.h"
+#import "TMCache.h"
 
 @interface HMCache()
 
-@property (nonatomic, strong) NSCache *cache;
+@property (nonatomic, strong) TMCache *cache;
 - (void)setAttributes:(NSDictionary *)attributes forRecipe:(PFObject *)recipe;
 @end
 
@@ -30,7 +31,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.cache = [[NSCache alloc] init];
+        self.cache = [TMCache sharedCache];
     }
     return self;
 }
@@ -55,18 +56,25 @@
                                        kHMRecipeAttributesIsMadeByCurrentUserKey,
                                        nil];
     [self setAttributes:attributes forRecipe:recipe];
-                                       
 }
 
 - (NSDictionary *)attributesForRecipe:(PFObject *)recipe {
     NSString *key = [self keyForRecipe:recipe];
-    return [self.cache objectForKey:key];
+    NSDictionary *attributes = [self.cache objectForKey:key];
+    if (attributes) {
+        return attributes;
+    } else {
+        // if no cache for this recipe, create one
+        [self.cache setObject:[NSDictionary dictionary] forKey:key];
+        return [self.cache objectForKey:key];
+    }
 }
 
 - (NSNumber *)saveCountForRecipe:(PFObject *)recipe {
     NSDictionary *attributes = [self attributesForRecipe:recipe];
-    if (attributes) {
-        return [attributes objectForKey:kHMRecipeAttributesSaveCountKey];
+    NSNumber *saveCount = [attributes objectForKey:kHMRecipeAttributesSaveCountKey];
+    if (saveCount) {
+        return saveCount;
     }
     return [NSNumber numberWithInt:0];
 }

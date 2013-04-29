@@ -81,6 +81,7 @@
 		4637263517279E07002357E0 /* mainNav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4637263417279E07002357E0 /* mainNav@2x.png */; };
 		463726371727AB70002357E0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 463726361727AB70002357E0 /* background.png */; };
 		463726391727AB7B002357E0 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463726381727AB7B002357E0 /* background@2x.png */; };
+		46383EFF172E26AD0033345F /* HMUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46383EFE172E26AD0033345F /* HMUtility.m */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
 		4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F716F44D1900C38D39 /* CoreGraphics.framework */; };
@@ -240,6 +241,8 @@
 		4637263417279E07002357E0 /* mainNav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainNav@2x.png"; sourceTree = "<group>"; };
 		463726361727AB70002357E0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		463726381727AB7B002357E0 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		46383EFD172E26AD0033345F /* HMUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUtility.h; sourceTree = "<group>"; };
+		46383EFE172E26AD0033345F /* HMUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUtility.m; sourceTree = "<group>"; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4645D2F516F44D1900C38D39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -580,6 +583,8 @@
 				4645D2FC16F44D1900C38D39 /* Supporting Files */,
 				4645D30416F44D1900C38D39 /* HMAppDelegate.h */,
 				4645D30516F44D1900C38D39 /* HMAppDelegate.m */,
+				46383EFD172E26AD0033345F /* HMUtility.h */,
+				46383EFE172E26AD0033345F /* HMUtility.m */,
 				4606A4DD17195750009FDFFB /* HMConstants.h */,
 				4606A4DE17195750009FDFFB /* HMConstants.m */,
 				4606A4E0171AB991009FDFFB /* HMCache.h */,
@@ -1050,6 +1055,7 @@
 				462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */,
 				25A943761728E3F600DA959B /* CustomTabBar.m in Sources */,
 				25A943771728E3F600DA959B /* HMRecipeViewController.m in Sources */,
+				46383EFF172E26AD0033345F /* HMUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

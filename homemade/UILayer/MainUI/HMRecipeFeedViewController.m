@@ -204,11 +204,12 @@
     }
     
     [self resetCell:cell];
-    
+    cell.tag = indexPath.row;
     // TODO
     if (object) {
         // Configure the cell
-        cell.recipe = object;
+        [cell setRecipe:object];
+        
         cell.titleLabel.text = [object objectForKey:@"title"];
         cell.saveCount.text = @"100";
         cell.commentCount.text = @"100";
@@ -332,13 +333,51 @@
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapSaveButton:(UIButton *)button recipe:(PFObject *)recipe {
     NSLog(@"Tap save button! %@", recipe.objectId);
     
-    // when user tap the button, we temperaly disable the button until server and cache are updated.
-    [recipeTableCellView shouldEnabledSaveButton:NO];
+    // When user tap the button, we temperaly disable the button until server and cache are updated.
+    [recipeTableCellView shouldEnableSaveButton:NO];
     
     BOOL saved = !button.selected;
     [recipeTableCellView setSaveStatus:saved];
     
-//    [recipeTableCellView shouldEnabledSaveButton:YES];
+    NSString *originalSaveCountTitle = recipeTableCellView.saveCount.text;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    NSNumber *saveCount = [numberFormatter numberFromString:originalSaveCountTitle];
+    
+    // Update cache
+    // TODO
+    if (saved) {
+        saveCount = [NSNumber numberWithInt:[saveCount intValue] + 1];
+        [[HMCache sharedCache] incrementSaverCountForRecipe:recipe];
+    } else {
+        if ([saveCount intValue] > 0) {
+            saveCount = [NSNumber numberWithInt:[saveCount intValue] - 1];
+        }
+        [[HMCache sharedCache] decrementSaverCountForRecipe:recipe];
+    }
+    [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:saved];
+    
+        
+    // update sever
+    if (saved) {
+        [HMUtility saveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
+            [recipeTableCellView shouldEnableSaveButton:YES];
+            [recipeTableCellView setSaveStatus:succeeded];
+            if (!succeeded) {
+                // Update label
+                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+            }
+        }];
+    } else {
+        [HMUtility unSaveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
+            [recipeTableCellView shouldEnableSaveButton:YES];
+            [recipeTableCellView setSaveStatus:!succeeded];
+            if (!succeeded) {
+                // Update label
+                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+            }
+        }];
+    }
+    
 }
 
 /*!

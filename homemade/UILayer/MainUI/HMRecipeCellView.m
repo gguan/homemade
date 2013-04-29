@@ -9,6 +9,7 @@
 #import "HMRecipeCellView.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface HMRecipeCellView()
 
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -126,12 +127,26 @@
         
         _leftIsVisible = NO;
         
-        // Add button listening selectors
-        [self.cellLeft.saveButton addTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self.cellLeft.shareButton addTarget:self action:@selector(didTapShareRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     
     return self;
+}
+
+
+// Override set method
+- (void)setRecipe:(PFObject *)aRecipe {
+    _recipe = aRecipe;
+    
+    // user's stuff
+//    PFUser *user = [self.recipe objectForKey:kHMUserProfilePicSmallKey];
+    
+    // Add button listening selectors
+    [self.cellLeft.saveButton addTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cellLeft.shareButton addTarget:self action:@selector(didTapShareRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self setNeedsDisplay];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -251,13 +266,13 @@
 }
 
 // Enable the save button to start receiving actions
-- (void)shouldEnabledSaveButton:(BOOL)enable {
-    if (enable) {
+- (void)shouldEnableSaveButton:(BOOL)enable {
+    if (!enable) {
         NSLog(@"Remove listener");
-        [self.cellLeft.saveButton removeTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.cellLeft.saveButton removeTarget:self.cellLeft.saveButton action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     } else {
          NSLog(@"Add listener");
-        [self.cellLeft.saveButton addTarget:self action:@selector(didTabSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.cellLeft.saveButton addTarget:self.cellLeft.saveButton action:@selector(didTabSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 

@@ -42,7 +42,7 @@
 - (void)setSaveStatus:(BOOL)saved;
 
 // Enable the save button to start receiving actions
-- (void)shouldEnabledSaveButton:(BOOL)enable;
+- (void)shouldEnableSaveButton:(BOOL)enable;
 
 // Hide left panel
 - (void)bounceToLeft:(CGFloat)duration;
