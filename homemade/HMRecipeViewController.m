@@ -82,6 +82,13 @@
 @synthesize Items = _Items;
 @synthesize color = _color;
 
+- (id)initWithRecipe:(PFObject*)recipeObject{
+   return  [self initWithPFObject:recipeObject andUIColor:[UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0]];
+    
+}
+
+
+
 - (id)initWithPFObject:(PFObject*)recipeObject andUIColor:(UIColor*)color
 {
     self = [super init];

@@ -158,12 +158,9 @@
         [cell bounceToLeft:0.2];
     } else {
         //For testing, point to the same HMRecipeViewController,add properties later
-<<<<<<< HEAD
+
         HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithPFObject:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
       
-=======
-        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
->>>>>>> 91b1f20a9cd9ddc529fa4ce3a7ac4f20153e6d80
         [[self navigationController] pushViewController:recipeViewController animated:YES];
     }
 }
