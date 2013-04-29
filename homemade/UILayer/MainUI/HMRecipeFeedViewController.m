@@ -159,8 +159,8 @@
         [cell bounceToLeft:0.2];
     } else {
         //For testing, point to the same HMRecipeViewController,add properties later
-        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] init];
-        recipeViewController.recipeObject = [self.objects objectAtIndex:indexPath.row];
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithPFObject:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
+      
         [[self navigationController] pushViewController:recipeViewController animated:YES];
     }
 }
@@ -217,6 +217,7 @@
 
         // If photo is in memory, load it right away
         if (cell.photo.file.isDataAvailable) {
+            
             [cell.photo loadInBackground:^(UIImage *image, NSError *error){
                 if (image) {
                     UIColor *colorArt = [[TMCache sharedCache] objectForKey:[NSString stringWithFormat: @"%@%@", cell.photo.file.name, kHMColorSuffixKey]];

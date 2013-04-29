@@ -11,7 +11,8 @@
 
 @interface HMRecipeViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,CustomTabBarDelegate>
 
-@property(nonatomic,strong) PFObject* recipeObject;
+- (id)initWithPFObject:(PFObject*)recipeObject andUIColor:(UIColor*)color;
+
 
 
 @end

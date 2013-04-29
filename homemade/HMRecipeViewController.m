@@ -57,6 +57,8 @@
 
 @property(nonatomic,strong) NSArray *Items;
 
+@property(nonatomic,strong) UIColor *color;
+
 @end
 
 @implementation HMRecipeViewController
@@ -78,26 +80,54 @@
 @synthesize ImadeitView = _ImadeitView;
 @synthesize tabBar = _tabBar;
 @synthesize Items = _Items;
-@synthesize recipeObject = _recipeObject;
+@synthesize color = _color;
 
-- (id)init
+- (id)initWithPFObject:(PFObject*)recipeObject andUIColor:(UIColor*)color
 {
     self = [super init];
     if (self)
     {
-      
-        
-        
-        // Custom initialization
-        self.view.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
-        
-        
+        self.color = color;
+       // self.color = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
         //The top image view
+        PFImageView *topImageView = [[PFImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
         
-        UIImage *topImage = [UIImage imageNamed:@"pic_4.jpg"];
-        UIImageView *topImageView = [[UIImageView alloc] initWithImage:topImage];
         [topImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, TopImageViewHeight + TABBARHEIGHT)];
         [self.view addSubview:topImageView];
+        
+        topImageView.file = [recipeObject objectForKey:kHMRecipePhotoKey];
+    
+        if (topImageView.file.isDataAvailable) {
+            [topImageView loadInBackground:^(UIImage *image, NSError *error){
+                if (!error) {
+                    [topImageView setContentMode:UIViewContentModeScaleAspectFill];
+                    topImageView.clipsToBounds = YES;
+                }
+                
+                else {
+                    
+                    NSLog(@"Error!");
+                }
+            }];
+
+        }
+        else{
+            NSLog(@"no image");
+            [topImageView.file getDataInBackgroundWithBlock:^(NSData* data,NSError* error){
+                if (!error) {
+                     [topImageView loadInBackground];
+                    [topImageView setContentMode:UIViewContentModeScaleAspectFill];
+                    topImageView.clipsToBounds = YES;
+                  
+                }
+                else{
+                    NSLog(@"error:%@",[error userInfo]);
+                }
+                
+            }];
+            
+        }
+   
         
         //The back button
         UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -153,7 +183,7 @@
         //        grayView.backgroundColor = [UIColor redColor];
         //        [self.ingredientsTableView addSubview:grayView];
 
-        self.ingredientsTableView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
+        self.ingredientsTableView.backgroundColor = self.color;
         self.ingredientsTableView.dataSource = self;
         self.ingredientsTableView.delegate = self;
         self.ingredientsTableView.tag = ingredientsTableView_TAG;
@@ -169,7 +199,7 @@
         //        grayView.backgroundColor = [UIColor redColor];
         //        [self.ingredientsTableView addSubview:grayView];
         
-        self.stepsTableView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
+        self.stepsTableView.backgroundColor =self.color;
         self.stepsTableView.dataSource = self;
         self.stepsTableView.delegate = self;
         self.stepsTableView.tag = stepsTableView_TAG;
@@ -233,9 +263,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
 
-    self.ingredientsTableView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:237.0/255.0 blue:239.0/255.0 alpha:1.0];
 
 }
 
@@ -295,21 +323,21 @@
             
             
             HMIngredientCell* cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HMIngredientCell"];
-            cell.contentView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
+            cell.contentView.backgroundColor = self.color;
             cell.textLabel.backgroundColor = [UIColor clearColor];
             
             [cell.textLabel setTextColor:[UIColor blackColor]];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                         
             UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 20)];
-            nameLabel.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
+            nameLabel.backgroundColor = self.color;
             nameLabel.text = [NSString stringWithFormat:@"%@",[[self.ingredients objectAtIndex:indexPath.row] objectForKey:@"name"]];
             nameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
             nameLabel.textAlignment = NSTextAlignmentLeft;
             [cell.nameView addSubview:nameLabel];
 
             UILabel *quantityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 140, 20)];
-            quantityLabel.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
+            quantityLabel.backgroundColor = self.color;
             quantityLabel.text = [NSString stringWithFormat:@"%dg",[[[self.ingredients objectAtIndex:indexPath.row] objectForKey:@"quantity"] intValue]];
             quantityLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
             quantityLabel.textAlignment = NSTextAlignmentLeft;
@@ -482,7 +510,7 @@
 
 - (UIImage*) tabBarArrowImage
 {
-    return [self changeImage:[UIImage imageNamed:@"TabBarNipple.png"] toColor:[UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0]] ;
+    return [self changeImage:[UIImage imageNamed:@"TabBarNipple.png"] toColor:self.color] ;
 }
 
 - (void) touchDownAtItemAtIndex:(NSUInteger)itemIndex
