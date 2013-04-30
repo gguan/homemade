@@ -34,7 +34,6 @@
 		462F0CBC172D3EB400BDDEB8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */; };
 		462F0CBE172D3F9F00BDDEB8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462F0CBD172D3F9F00BDDEB8 /* Parse.framework */; };
 		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
-		463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 463725631724086A002357E0 /* MCSwipeTableViewCell.m */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
 		4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372569172408A3002357E0 /* UIImage+ColorArt.m */; };
 		4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637256B172408A3002357E0 /* UIImage+Scale.m */; };
@@ -187,8 +186,6 @@
 		462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Vendor/FacebookSDK.framework; sourceTree = "<group>"; };
 		462F0CBD172D3F9F00BDDEB8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
 		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
-		463725621724086A002357E0 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
-		463725631724086A002357E0 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
 		46372566172408A3002357E0 /* SLColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLColorArt.h; sourceTree = "<group>"; };
 		46372567172408A3002357E0 /* SLColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLColorArt.m; sourceTree = "<group>"; };
 		46372568172408A3002357E0 /* UIImage+ColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorArt.h"; sourceTree = "<group>"; };
@@ -423,16 +420,6 @@
 			name = LoginUI;
 			sourceTree = "<group>";
 		};
-		463725611724086A002357E0 /* MCSwipeTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				463725621724086A002357E0 /* MCSwipeTableViewCell.h */,
-				463725631724086A002357E0 /* MCSwipeTableViewCell.m */,
-			);
-			name = MCSwipeTableViewCell;
-			path = Vendor/MCSwipeTableViewCell;
-			sourceTree = "<group>";
-		};
 		46372565172408A3002357E0 /* ColorArt */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,7 +600,6 @@
 				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
 				4637256F17241C81002357E0 /* AwesomeMenu */,
 				46372565172408A3002357E0 /* ColorArt */,
-				463725611724086A002357E0 /* MCSwipeTableViewCell */,
 				4606A4CF1716C039009FDFFB /* Reachability */,
 				466F4F771701A61B0076AB3D /* EDColor */,
 				46A7D8D816FDB5B7001C822D /* FXLabel */,
@@ -1041,7 +1027,6 @@
 				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,
 				4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */,
 				4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */,
-				463725641724086A002357E0 /* MCSwipeTableViewCell.m in Sources */,
 				4637256C172408A3002357E0 /* SLColorArt.m in Sources */,
 				4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */,
 				4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */,
