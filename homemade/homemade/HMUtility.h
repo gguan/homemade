@@ -20,5 +20,6 @@
 
 + (NSString *)firstNameForDisplayName:(NSString *)displayName;
 
++ (PFQuery *)queryForActivitiesOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy;
 
 @end

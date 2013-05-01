@@ -60,5 +60,9 @@ extern NSString *const kHMSaveFromUserKey;
 extern NSString *const kHMSaveToUserKey;
 extern NSString *const kHMSaveRecipeKey;
 
-
+#pragma mark - Save Class
+extern NSString *const kHMCommentClassKey;
+// Field keys
+extern NSString *const kHMCommentFromUserKey;
+extern NSString *const kHMCommentRecipeKey;
 
