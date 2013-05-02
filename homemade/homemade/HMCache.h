@@ -13,14 +13,15 @@
 + (id)sharedCache;
 
 - (void)clear;
-- (void)setAttributesForRecipe:(PFObject *)recipe savers:(NSArray *)savers makers:(NSArray *)makers commenters:(NSArray *)commenters savedByCurrentUser:(BOOL)savedByCurrentUser madeByCurrentUser:(BOOL)madeByCurrentUser;
+- (void)setAttributesForRecipe:(PFObject *)recipe attributes:(NSDictionary *)attributes;
+- (void)setAttributesForRecipe:(PFObject *)recipe saveCount:(int)saveCount makeCount:(int)makeCount commentCount:(int)commentCount savedByCurrentUser:(BOOL)savedByCurrentUser madeByCurrentUser:(BOOL)madeByCurrentUser;
 - (NSDictionary *)attributesForRecipe:(PFObject *)photo;
 - (NSNumber *)saveCountForRecipe:(PFObject *)recipe;
 - (NSNumber *)madeCountForRecipe:(PFObject *)recipe;
 - (NSNumber *)commentCountForRecipe:(PFObject *)recipe;
-- (NSArray *)saversForRecipe:(PFObject *)recipe;
-- (NSArray *)makersForRecipe:(PFObject *)recipe;
-- (NSArray *)commentersForRecipe:(PFObject *)recipe;
+//- (NSArray *)saversForRecipe:(PFObject *)recipe;
+//- (NSArray *)makersForRecipe:(PFObject *)recipe;
+//- (NSArray *)commentersForRecipe:(PFObject *)recipe;
 - (void)setRecipeIsSavedByCurrentUser:(PFObject *)recipe saved:(BOOL)saved;
 - (void)setRecipeIsMadeByCurrentUser:(PFObject *)recipe made:(BOOL)made;
 - (BOOL)isSavedByCurrentUser:(PFObject *)recipe;

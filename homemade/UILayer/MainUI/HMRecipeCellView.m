@@ -138,6 +138,9 @@
 - (void)setRecipe:(PFObject *)aRecipe {
     _recipe = aRecipe;
     
+    self.titleLabel.text = [_recipe objectForKey:@"title"];
+    self.photo.file = [_recipe objectForKey:kHMRecipePhotoKey];
+    
     // user's stuff
 //    PFUser *user = [self.recipe objectForKey:kHMUserProfilePicSmallKey];
     

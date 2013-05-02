@@ -73,7 +73,7 @@
     if (![PFUser currentUser]) {
         [self presentLoginViewControllerAnimated:YES];
     }
-
+//    [[HMCache sharedCache] clear];
     return YES;
 }
 
