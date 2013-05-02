@@ -211,6 +211,16 @@
         // Configure the cell
         [cell setRecipe:object];
         
+        NSDictionary *attributesForRecipe = [[HMCache sharedCache] attributesForRecipe:object];
+        
+        if (attributesForRecipe) {
+            [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:object]];
+        } else {
+            @synchronized(self) {
+                
+            }
+        }
+        
         cell.titleLabel.text = [object objectForKey:@"title"];
         cell.saveCount.text = @"100";
         cell.commentCount.text = @"100";

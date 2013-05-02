@@ -84,4 +84,20 @@
 }
 
 
++ (PFQuery *)queryForActivitiesOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy {
+    PFQuery *querySaves = [PFQuery queryWithClassName:kHMSaveClassKey];
+    [querySaves whereKey:kHMSaveRecipeKey equalTo:recipe];
+    
+    PFQuery *queryComments = [PFQuery queryWithClassName:kHMCommentClassKey];
+    [queryComments whereKey:kHMCommentRecipeKey equalTo:recipe];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:querySaves,queryComments,nil]];
+    [query setCachePolicy:cachePolicy];
+    [query includeKey:kHMSaveFromUserKey];
+    [query includeKey:kHMSaveRecipeKey];
+    
+    return query;
+}
+
+
 @end

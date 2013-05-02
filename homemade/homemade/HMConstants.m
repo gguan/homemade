@@ -56,3 +56,9 @@ NSString *const kHMSaveClassKey = @"Save";
 NSString *const kHMSaveFromUserKey  = @"fromUser";
 NSString *const kHMSaveToUserKey    = @"toUser";
 NSString *const kHMSaveRecipeKey    = @"recipe";
+
+#pragma mark - Save Class
+NSString *const kHMCommentClassKey = @"Comment";
+// Field keys
+NSString *const kHMCommentFromUserKey  = @"fromUser";
+NSString *const kHMCommentRecipeKey    = @"recipe";
