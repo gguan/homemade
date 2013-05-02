@@ -10,4 +10,6 @@
 
 @interface HMStepsViewController : UIViewController
 
+- (id)initWithRecipe:(PFObject*)recipeObject;
+
 @end

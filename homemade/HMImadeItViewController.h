@@ -10,4 +10,6 @@
 
 @interface HMImadeItViewController : UIViewController
 
+- (id)initWithRecipe:(PFObject*)recipeObject;
+
 @end

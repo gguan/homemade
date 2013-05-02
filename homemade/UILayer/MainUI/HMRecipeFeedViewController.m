@@ -8,7 +8,6 @@
 
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
-#import "HMRecipeDetailViewController.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SLColorArt.h"
@@ -159,7 +158,7 @@
     } else {
         //For testing, point to the same HMRecipeViewController,add properties later
 
-        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithPFObject:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
       
         [[self navigationController] pushViewController:recipeViewController animated:YES];
     }

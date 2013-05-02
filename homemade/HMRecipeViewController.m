@@ -21,6 +21,9 @@
 #import "HMIngredientCell.h"
 #import "HMRecipeStepCell.h"
 #import "HMRecipeTipCell.h"
+#import "HMStepsViewController.h"
+#import "HMIngredientViewController.h"
+#import "HMImadeItViewController.h"
 
 @interface HMRecipeViewController ()
 @property (strong, nonatomic) UIImageView  *photo;
@@ -59,6 +62,13 @@
 
 @property(nonatomic,strong) UIColor *color;
 
+@property(nonatomic,strong) HMStepsViewController *stepsViewController;
+
+@property(nonatomic,strong) HMIngredientViewController *ingredientViewController;
+
+@property(nonatomic,strong) HMImadeItViewController *imadeitViewController;
+
+
 @end
 
 @implementation HMRecipeViewController
@@ -81,6 +91,9 @@
 @synthesize tabBar = _tabBar;
 @synthesize Items = _Items;
 @synthesize color = _color;
+@synthesize ingredientViewController = _ingredientViewController;
+@synthesize stepsViewController = _stepsViewController;
+@synthesize imadeitViewController = _imadeitViewController;
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
    return  [self initWithPFObject:recipeObject andUIColor:[UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0]];
@@ -154,17 +167,15 @@
         
         
         //initialize the tabBar and three subViews
-        _stepView = [[UIView alloc] initWithFrame:CGRectMake(0, TopImageViewHeight + TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT) ];
-        [self.stepView setBackgroundColor:[UIColor greenColor]];
-        _ingredientView = [[UIView alloc] initWithFrame:CGRectMake(0, TopImageViewHeight +TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT)];
-        [self.ImadeitView setBackgroundColor:[UIColor redColor]];
-        _ImadeitView = [[UIView alloc] initWithFrame:CGRectMake(0, TopImageViewHeight +TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT)];
-        [self.ImadeitView setBackgroundColor:[UIColor blackColor]];
+        _stepsViewController = [[HMStepsViewController alloc] initWithRecipe:recipeObject];
+        _ingredientViewController = [[HMIngredientViewController alloc] initWithRecipe:recipeObject];
+        _imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:recipeObject];
+        
         
         _Items = [NSArray arrayWithObjects:
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"step.png", @"image", self.stepView, @"view", @"Steps",@"subTitle",nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"ingredient.png", @"image", self.ingredientView, @"view",@"ingredient",@"subTitle", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Imadit.png", @"image", self.ImadeitView, @"view",@"I made it",@"subTitle", nil],nil];
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"step.png", @"image", self.stepsViewController, @"viewController", @"Steps",@"subTitle",nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"ingredient.png", @"image", self.ingredientViewController, @"viewController",@"ingredient",@"subTitle", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"Imadit.png", @"image", self.imadeitViewController, @"viewController",@"I made it",@"subTitle", nil],nil];
     
         _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(self.view.frame.size.width/3, TABBARHEIGHT) tag:0 delegate:self];
         
@@ -528,13 +539,17 @@
     
     // Get the right view controller
     NSDictionary* data = [self.Items objectAtIndex:itemIndex];
-    UIView* view = [data objectForKey:@"view"];
+    UIViewController* viewController = [data objectForKey:@"viewController"];
+    
+    // Set the view controller's frame to account for the tab bar
+    viewController.view.frame = CGRectMake(0, TopImageViewHeight + TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT);
     
     // Se the tag so we can find it later
-    view.tag = SELECTED_VIEW_TAG;
+    viewController.view.tag = SELECTED_VIEW_TAG;
+    
     
     // Add the new view controller's view
-    [self.view insertSubview:view belowSubview:_tabBar];
+    [self.view insertSubview:viewController.view belowSubview:_tabBar];
     
 }
 

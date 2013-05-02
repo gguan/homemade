@@ -10,4 +10,6 @@
 
 @interface HMIngredientViewController : UIViewController
 
+- (id)initWithRecipe:(PFObject*)recipeObject;
+
 @end

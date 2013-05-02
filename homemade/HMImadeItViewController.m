@@ -14,6 +14,15 @@
 
 @implementation HMImadeItViewController
 
+- (id)initWithRecipe:(PFObject*)recipeObject{
+    self = [super init];
+    if (self) {
+        // Custom initialization
+        [self.view setBackgroundColor:[UIColor blueColor]];
+    }
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

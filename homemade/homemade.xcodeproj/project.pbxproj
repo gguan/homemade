@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		255CB9AA1731DA3F00D98DF1 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 255CB9A71731DA3F00D98DF1 /* iCarousel.m */; };
+		255CB9AB1731DA3F00D98DF1 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 255CB9A91731DA3F00D98DF1 /* ReflectionView.m */; };
+		25780F901730AF8500176EB7 /* HMStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25780F8F1730AF8500176EB7 /* HMStepsViewController.m */; };
+		25780F941730AFA100176EB7 /* HMIngredientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25780F931730AFA100176EB7 /* HMIngredientViewController.m */; };
+		25780F971730AFB700176EB7 /* HMImadeItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25780F961730AFB700176EB7 /* HMImadeItViewController.m */; };
 		25A9436F1728E3C800DA959B /* TabBarNipple.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A943691728E3C800DA959B /* TabBarNipple.png */; };
 		25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */; };
 		25A943761728E3F600DA959B /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943731728E3F600DA959B /* CustomTabBar.m */; };
@@ -40,7 +45,6 @@
 		4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637256B172408A3002357E0 /* UIImage+Scale.m */; };
 		4637257417241C81002357E0 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257117241C81002357E0 /* AwesomeMenu.m */; };
 		4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257317241C81002357E0 /* AwesomeMenuItem.m */; };
-		4637259117254956002357E0 /* HMRecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637259017254956002357E0 /* HMRecipeDetailViewController.m */; };
 		4637260E17279D44002357E0 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725E717279D44002357E0 /* account@2x.png */; };
 		4637260F17279D44002357E0 /* addToFavorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725E817279D44002357E0 /* addToFavorite@2x.png */; };
 		4637261017279D44002357E0 /* addToFavoriteActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 463725E917279D44002357E0 /* addToFavoriteActive@2x.png */; };
@@ -147,6 +151,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		255CB9A61731DA3F00D98DF1 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		255CB9A71731DA3F00D98DF1 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		255CB9A81731DA3F00D98DF1 /* ReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
+		255CB9A91731DA3F00D98DF1 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
+		25780F8E1730AF8500176EB7 /* HMStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStepsViewController.h; sourceTree = "<group>"; };
+		25780F8F1730AF8500176EB7 /* HMStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStepsViewController.m; sourceTree = "<group>"; };
+		25780F921730AFA100176EB7 /* HMIngredientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIngredientViewController.h; sourceTree = "<group>"; };
+		25780F931730AFA100176EB7 /* HMIngredientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIngredientViewController.m; sourceTree = "<group>"; };
+		25780F951730AFB700176EB7 /* HMImadeItViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMImadeItViewController.h; sourceTree = "<group>"; };
+		25780F961730AFB700176EB7 /* HMImadeItViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMImadeItViewController.m; sourceTree = "<group>"; };
 		25A943691728E3C800DA959B /* TabBarNipple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabBarNipple.png; path = ../../../TabBarNipple.png; sourceTree = "<group>"; };
 		25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TabBarNipple@2x.png"; path = "../../../TabBarNipple@2x.png"; sourceTree = "<group>"; };
 		25A943721728E3F600DA959B /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
@@ -199,8 +213,6 @@
 		4637257117241C81002357E0 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
 		4637257217241C81002357E0 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
 		4637257317241C81002357E0 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
-		4637258F17254956002357E0 /* HMRecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeDetailViewController.h; path = UILayer/RecipeUI/HMRecipeDetailViewController.h; sourceTree = "<group>"; };
-		4637259017254956002357E0 /* HMRecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeDetailViewController.m; path = UILayer/RecipeUI/HMRecipeDetailViewController.m; sourceTree = "<group>"; };
 		463725E717279D44002357E0 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		463725E817279D44002357E0 /* addToFavorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addToFavorite@2x.png"; sourceTree = "<group>"; };
 		463725E917279D44002357E0 /* addToFavoriteActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addToFavoriteActive@2x.png"; sourceTree = "<group>"; };
@@ -371,6 +383,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		255CB9AD1731DA4500D98DF1 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				255CB9A61731DA3F00D98DF1 /* iCarousel.h */,
+				255CB9A71731DA3F00D98DF1 /* iCarousel.m */,
+			);
+			name = iCarousel;
+			sourceTree = "<group>";
+		};
+		255CB9AE1731DA5600D98DF1 /* ReflectionView */ = {
+			isa = PBXGroup;
+			children = (
+				255CB9A81731DA3F00D98DF1 /* ReflectionView.h */,
+				255CB9A91731DA3F00D98DF1 /* ReflectionView.m */,
+			);
+			name = ReflectionView;
+			sourceTree = "<group>";
+		};
 		4606A4CF1716C039009FDFFB /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,8 +424,12 @@
 				25A943731728E3F600DA959B /* CustomTabBar.m */,
 				25A943741728E3F600DA959B /* HMRecipeViewController.h */,
 				25A943751728E3F600DA959B /* HMRecipeViewController.m */,
-				4637258F17254956002357E0 /* HMRecipeDetailViewController.h */,
-				4637259017254956002357E0 /* HMRecipeDetailViewController.m */,
+				25780F8E1730AF8500176EB7 /* HMStepsViewController.h */,
+				25780F8F1730AF8500176EB7 /* HMStepsViewController.m */,
+				25780F921730AFA100176EB7 /* HMIngredientViewController.h */,
+				25780F931730AFA100176EB7 /* HMIngredientViewController.m */,
+				25780F951730AFB700176EB7 /* HMImadeItViewController.h */,
+				25780F961730AFB700176EB7 /* HMImadeItViewController.m */,
 			);
 			name = RecipeUI;
 			sourceTree = "<group>";
@@ -610,6 +644,8 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				255CB9AE1731DA5600D98DF1 /* ReflectionView */,
+				255CB9AD1731DA4500D98DF1 /* iCarousel */,
 				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
 				4637256F17241C81002357E0 /* AwesomeMenu */,
 				46372565172408A3002357E0 /* ColorArt */,
@@ -1047,7 +1083,6 @@
 				4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */,
 				4637257417241C81002357E0 /* AwesomeMenu.m in Sources */,
 				4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */,
-				4637259117254956002357E0 /* HMRecipeDetailViewController.m in Sources */,
 				462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */,
 				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
@@ -1056,6 +1091,11 @@
 				25A943761728E3F600DA959B /* CustomTabBar.m in Sources */,
 				25A943771728E3F600DA959B /* HMRecipeViewController.m in Sources */,
 				46383EFF172E26AD0033345F /* HMUtility.m in Sources */,
+				25780F901730AF8500176EB7 /* HMStepsViewController.m in Sources */,
+				25780F941730AFA100176EB7 /* HMIngredientViewController.m in Sources */,
+				25780F971730AFB700176EB7 /* HMImadeItViewController.m in Sources */,
+				255CB9AA1731DA3F00D98DF1 /* iCarousel.m in Sources */,
+				255CB9AB1731DA3F00D98DF1 /* ReflectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
