@@ -37,10 +37,29 @@
                     if (completionBlock) {
                         completionBlock(succeeded, error);
                     }
+                    
+                    // refresh cache
+                    PFQuery *query = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                        if (!error) {
+                            BOOL isSavedByCurrentUser = NO;
+                            for (PFObject *save in objects) {
+                                if ([[[save objectForKey:kHMSaveFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                                    isSavedByCurrentUser = YES;
+                                    break;
+                                }
+                            }
+                            NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                        [NSNumber numberWithInt:[objects count]],
+                                                        kHMRecipeAttributesSaveCountKey,
+                                                        [NSNumber numberWithBool:isSavedByCurrentUser],
+                                                        kHMRecipeAttributesIsSavedByCurrentUserKey,
+                                                        nil];
+                            [[HMCache sharedCache] setAttributesForRecipe:recipe attributes:attributes];
+                        }
+                    }];
                 }];
                 
-                // refresh cache
-                // TODO
             }
         }
     }];
@@ -62,11 +81,29 @@
             }
             
             // refresh cache
-            // TODO
+            PFQuery *query = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    BOOL isSavedByCurrentUser = NO;
+                    for (PFObject *save in objects) {
+                        if ([[[save objectForKey:kHMSaveFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                            isSavedByCurrentUser = YES;
+                            break;
+                        }
+                    }
+                    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                [NSNumber numberWithInt:[objects count]],
+                                                kHMRecipeAttributesSaveCountKey,
+                                                [NSNumber numberWithBool:isSavedByCurrentUser],
+                                                kHMRecipeAttributesIsSavedByCurrentUserKey,
+                                                nil];
+                    [[HMCache sharedCache] setAttributesForRecipe:recipe attributes:attributes];
+                }
+            }];
         }
     }];
-    
 }
+
 
 + (void)processFacebookProfilePictureData:(NSData *)data {
     
@@ -84,20 +121,25 @@
 }
 
 
-+ (PFQuery *)queryForActivitiesOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy {
-    PFQuery *querySaves = [PFQuery queryWithClassName:kHMSaveClassKey];
-    [querySaves whereKey:kHMSaveRecipeKey equalTo:recipe];
-    
-    PFQuery *queryComments = [PFQuery queryWithClassName:kHMCommentClassKey];
-    [queryComments whereKey:kHMCommentRecipeKey equalTo:recipe];
-    
-    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:querySaves,queryComments,nil]];
+#pragma mark - Common queries 
++ (PFQuery *)queryForSavesOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy {
+    PFQuery *query = [PFQuery queryWithClassName:kHMSaveClassKey];
+    [query whereKey:kHMSaveRecipeKey equalTo:recipe];
     [query setCachePolicy:cachePolicy];
     [query includeKey:kHMSaveFromUserKey];
     [query includeKey:kHMSaveRecipeKey];
-    
     return query;
 }
+
++ (PFQuery *)queryForCommentsOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy {
+    PFQuery *query = [PFQuery queryWithClassName:kHMCommentClassKey];
+    [query whereKey:kHMCommentRecipeKey equalTo:recipe];
+    [query setCachePolicy:cachePolicy];
+    [query includeKey:kHMSaveFromUserKey];
+    [query includeKey:kHMSaveRecipeKey];
+    return query;
+}
+
 
 
 @end

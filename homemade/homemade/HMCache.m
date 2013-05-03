@@ -42,26 +42,26 @@
     [self.cache removeAllObjects];
 }
 
-- (void)setAttributesForRecipe:(PFObject *)recipe savers:(NSArray *)savers makers:(NSArray *)makers commenters:(NSArray *)commenters savedByCurrentUser:(BOOL)savedByCurrentUser madeByCurrentUser:(BOOL)madeByCurrentUser {
+- (void)setAttributesForRecipe:(PFObject *)recipe attributes:(NSDictionary *)attributes {
+   [self setAttributes:attributes forRecipe:recipe]; 
+}
+
+- (void)setAttributesForRecipe:(PFObject *)recipe saveCount:(int)saveCount makeCount:(int)makeCount commentCount:(int)commentCount savedByCurrentUser:(BOOL)savedByCurrentUser madeByCurrentUser:(BOOL)madeByCurrentUser {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSNumber numberWithInt:[savers count]],
+                                        [NSNumber numberWithInt:saveCount],
                                         kHMRecipeAttributesSaveCountKey,
-//                                      [NSNumber numberWithInt:[makers count]],
-//                                       kHMRecipeAttributesMakeCountKey,
-                                        [NSNumber numberWithInt:[commenters count]],
+                                        [NSNumber numberWithInt:makeCount],
+                                        kHMRecipeAttributesMakeCountKey,
+                                        [NSNumber numberWithInt:commentCount],
                                         kHMRecipeAttributesCommentCountKey,
                                         [NSNumber numberWithBool:savedByCurrentUser],
                                         kHMRecipeAttributesIsSavedByCurrentUserKey,
-//                                      [NSNumber numberWithBool:madeByCurrentUser],
-//                                       kHMRecipeAttributesIsMadeByCurrentUserKey,
+                                        [NSNumber numberWithBool:madeByCurrentUser],
+                                       kHMRecipeAttributesIsMadeByCurrentUserKey,
                                        nil];
     [self setAttributes:attributes forRecipe:recipe];
 }
 
-- (NSDictionary *)attributesForRecipe:(PFObject *)recipe {
-    NSString *key = [self keyForRecipe:recipe];
-    return [self.cache objectForKey:key];
-}
 
 - (NSNumber *)saveCountForRecipe:(PFObject *)recipe {
     NSDictionary *attributes = [self attributesForRecipe:recipe];
@@ -74,20 +74,23 @@
 
 - (NSNumber *)madeCountForRecipe:(PFObject *)recipe {
     NSDictionary *attributes = [self attributesForRecipe:recipe];
-    if (attributes) {
-        return [attributes objectForKey:kHMRecipeAttributesMakeCountKey];
+    NSNumber *madeCount = [attributes objectForKey:kHMRecipeAttributesMakeCountKey];
+    if (madeCount) {
+        return madeCount;
     }
     return [NSNumber numberWithInt:0];
 }
 
 - (NSNumber *)commentCountForRecipe:(PFObject *)recipe {
     NSDictionary *attributes = [self attributesForRecipe:recipe];
-    if (attributes) {
-        return [attributes objectForKey:kHMRecipeAttributesCommentCountKey];
+    NSNumber *commentCount = [attributes objectForKey:kHMRecipeAttributesCommentCountKey];
+    if (commentCount) {
+        return commentCount;
     }
     return [NSNumber numberWithInt:0];
 }
 
+/*
 - (NSArray *)saversForRecipe:(PFObject *)recipe {
     NSDictionary *attributes = [self attributesForRecipe:recipe];
     if (attributes) {
@@ -112,6 +115,7 @@
     }
     return [NSArray array];
 }
+ */
 
 - (void)setRecipeIsSavedByCurrentUser:(PFObject *)recipe saved:(BOOL)saved {
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self attributesForRecipe:recipe]];
@@ -230,6 +234,11 @@
 
 
 #pragma mark - ()
+
+- (NSDictionary *)attributesForRecipe:(PFObject *)recipe {
+    NSString *key = [self keyForRecipe:recipe];
+    return [self.cache objectForKey:key];
+}
 
 - (void)setAttributes:(NSDictionary *)attributes forRecipe:(PFObject *)recipe {
     NSString *key = [self keyForRecipe:recipe];

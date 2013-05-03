@@ -194,7 +194,7 @@
 }
 
 
-- (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+- (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)recipe {
     
     static NSString *CellIdentifier = @"RecipeCell";
     
@@ -206,27 +206,55 @@
     
     [self resetCell:cell];
     cell.tag = indexPath.row;
+    cell.saveButton.tag = indexPath.row;
+    
     // TODO
-    if (object) {
+    if (recipe) {
         // Configure the cell
-        [cell setRecipe:object];
+        [cell setRecipe:recipe];
         
-        NSDictionary *attributesForRecipe = [[HMCache sharedCache] attributesForRecipe:object];
+        NSDictionary *attributesForRecipe = [[HMCache sharedCache] attributesForRecipe:recipe];
         
         if (attributesForRecipe) {
-            [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:object]];
+            NSLog(@"Find cache for recipe %@", recipe.objectId);
+            NSLog(@"%@", attributesForRecipe);
+            [cell.saveCount setText:[[[HMCache sharedCache] saveCountForRecipe:recipe] description]];
+            [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:recipe]];
         } else {
+            NSLog(@"Didn't find cache for recipe %@", recipe.objectId);
             @synchronized(self) {
+                // dictionary hold recipe data
+                NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
                 
+                // query and cache save data on this recipe
+                PFQuery *query = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    
+                    if (error) {
+                        return;
+                    }
+                    
+                    BOOL isSavedByCurrentUser = NO;
+                    for (PFObject *save in objects) {
+                        if ([[[save objectForKey:kHMSaveFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                            isSavedByCurrentUser = YES;
+                            break;
+                        }
+                    }
+                    NSNumber *saveCount = [NSNumber numberWithInt:[objects count]];
+                    
+                    [attributes setObject:saveCount forKey:kHMRecipeAttributesSaveCountKey];
+                    [attributes setObject:[NSNumber numberWithBool:isSavedByCurrentUser] forKey:kHMRecipeAttributesIsSavedByCurrentUserKey];
+                    
+                    [cell.saveCount setText:[saveCount description]];
+                    [cell setSaveStatus:isSavedByCurrentUser];
+                }];
+                
+                // cache recipe data
+                [[HMCache sharedCache] setAttributesForRecipe:recipe attributes:attributes];
             }
         }
         
-        cell.titleLabel.text = [object objectForKey:@"title"];
-        cell.saveCount.text = @"100";
-        cell.commentCount.text = @"100";
-        cell.saveButton.tag = indexPath.row;
-        cell.photo.file = [object objectForKey:kHMRecipePhotoKey];
-
         // If photo is in memory, load it right away
         if (cell.photo.file.isDataAvailable) {
             
@@ -337,6 +365,9 @@
     [cell bounceToLeft:0];
     // Clear color line
     [cell.colorLine setBackgroundColor:[UIColor clearColor]];
+    // Clear text
+    [cell.saveCount setText:@""];
+    [cell.commentCount setText:@""];
     
 }
 
@@ -368,15 +399,16 @@
     }
     [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:saved];
     
-        
+    // update label
+    [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+    
     // update sever
     if (saved) {
         [HMUtility saveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
             [recipeTableCellView shouldEnableSaveButton:YES];
             [recipeTableCellView setSaveStatus:succeeded];
             if (!succeeded) {
-                // Update label
-                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+                [recipeTableCellView.saveCount setText:originalSaveCountTitle];
             }
         }];
     } else {
@@ -384,8 +416,7 @@
             [recipeTableCellView shouldEnableSaveButton:YES];
             [recipeTableCellView setSaveStatus:!succeeded];
             if (!succeeded) {
-                // Update label
-                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+                [recipeTableCellView.saveCount setText:originalSaveCountTitle];
             }
         }];
     }
