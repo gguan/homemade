@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		255CB9AA1731DA3F00D98DF1 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 255CB9A71731DA3F00D98DF1 /* iCarousel.m */; };
-		255CB9AB1731DA3F00D98DF1 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 255CB9A91731DA3F00D98DF1 /* ReflectionView.m */; };
 		25780F901730AF8500176EB7 /* HMStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25780F8F1730AF8500176EB7 /* HMStepsViewController.m */; };
 		25780F941730AFA100176EB7 /* HMIngredientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25780F931730AFA100176EB7 /* HMIngredientViewController.m */; };
 		25780F971730AFB700176EB7 /* HMImadeItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25780F961730AFB700176EB7 /* HMImadeItViewController.m */; };
@@ -16,6 +14,8 @@
 		25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A9436A1728E3C800DA959B /* TabBarNipple@2x.png */; };
 		25A943761728E3F600DA959B /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943731728E3F600DA959B /* CustomTabBar.m */; };
 		25A943771728E3F600DA959B /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943751728E3F600DA959B /* HMRecipeViewController.m */; };
+		25B0378A1733ADDE0015A78F /* HMStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B037891733ADDE0015A78F /* HMStepsView.m */; };
+		25E09A531733946400698DF6 /* PagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E09A511733946400698DF6 /* PagedFlowView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4606A4D21716C039009FDFFB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4D11716C039009FDFFB /* Reachability.m */; };
 		4606A4D717194AA7009FDFFB /* s14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4D317194AA7009FDFFB /* s14.jpg */; };
 		4606A4D817194AA7009FDFFB /* s13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4606A4D417194AA7009FDFFB /* s13.jpg */; };
@@ -150,10 +150,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		255CB9A61731DA3F00D98DF1 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
-		255CB9A71731DA3F00D98DF1 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		255CB9A81731DA3F00D98DF1 /* ReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
-		255CB9A91731DA3F00D98DF1 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
 		25780F8E1730AF8500176EB7 /* HMStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStepsViewController.h; sourceTree = "<group>"; };
 		25780F8F1730AF8500176EB7 /* HMStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStepsViewController.m; sourceTree = "<group>"; };
 		25780F921730AFA100176EB7 /* HMIngredientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIngredientViewController.h; sourceTree = "<group>"; };
@@ -166,6 +162,10 @@
 		25A943731728E3F600DA959B /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
 		25A943741728E3F600DA959B /* HMRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRecipeViewController.h; sourceTree = "<group>"; };
 		25A943751728E3F600DA959B /* HMRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRecipeViewController.m; sourceTree = "<group>"; };
+		25B037881733ADDE0015A78F /* HMStepsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStepsView.h; sourceTree = "<group>"; };
+		25B037891733ADDE0015A78F /* HMStepsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStepsView.m; sourceTree = "<group>"; };
+		25E09A511733946400698DF6 /* PagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagedFlowView.m; sourceTree = "<group>"; };
+		25E09A521733946400698DF6 /* PagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagedFlowView.h; sourceTree = "<group>"; };
 		4606A4D01716C039009FDFFB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4606A4D11716C039009FDFFB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4606A4D317194AA7009FDFFB /* s14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = s14.jpg; sourceTree = "<group>"; };
@@ -380,24 +380,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		255CB9AD1731DA4500D98DF1 /* iCarousel */ = {
-			isa = PBXGroup;
-			children = (
-				255CB9A61731DA3F00D98DF1 /* iCarousel.h */,
-				255CB9A71731DA3F00D98DF1 /* iCarousel.m */,
-			);
-			name = iCarousel;
-			sourceTree = "<group>";
-		};
-		255CB9AE1731DA5600D98DF1 /* ReflectionView */ = {
-			isa = PBXGroup;
-			children = (
-				255CB9A81731DA3F00D98DF1 /* ReflectionView.h */,
-				255CB9A91731DA3F00D98DF1 /* ReflectionView.m */,
-			);
-			name = ReflectionView;
-			sourceTree = "<group>";
-		};
 		4606A4CF1716C039009FDFFB /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,10 +405,14 @@
 				25A943751728E3F600DA959B /* HMRecipeViewController.m */,
 				25780F8E1730AF8500176EB7 /* HMStepsViewController.h */,
 				25780F8F1730AF8500176EB7 /* HMStepsViewController.m */,
+				25B037881733ADDE0015A78F /* HMStepsView.h */,
+				25B037891733ADDE0015A78F /* HMStepsView.m */,
 				25780F921730AFA100176EB7 /* HMIngredientViewController.h */,
 				25780F931730AFA100176EB7 /* HMIngredientViewController.m */,
 				25780F951730AFB700176EB7 /* HMImadeItViewController.h */,
 				25780F961730AFB700176EB7 /* HMImadeItViewController.m */,
+				25E09A511733946400698DF6 /* PagedFlowView.m */,
+				25E09A521733946400698DF6 /* PagedFlowView.h */,
 			);
 			name = RecipeUI;
 			sourceTree = "<group>";
@@ -631,8 +617,6 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				255CB9AE1731DA5600D98DF1 /* ReflectionView */,
-				255CB9AD1731DA4500D98DF1 /* iCarousel */,
 				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
 				4637256F17241C81002357E0 /* AwesomeMenu */,
 				46372565172408A3002357E0 /* ColorArt */,
@@ -1079,8 +1063,8 @@
 				25780F901730AF8500176EB7 /* HMStepsViewController.m in Sources */,
 				25780F941730AFA100176EB7 /* HMIngredientViewController.m in Sources */,
 				25780F971730AFB700176EB7 /* HMImadeItViewController.m in Sources */,
-				255CB9AA1731DA3F00D98DF1 /* iCarousel.m in Sources */,
-				255CB9AB1731DA3F00D98DF1 /* ReflectionView.m in Sources */,
+				25E09A531733946400698DF6 /* PagedFlowView.m in Sources */,
+				25B0378A1733ADDE0015A78F /* HMStepsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

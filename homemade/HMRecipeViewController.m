@@ -168,6 +168,8 @@
         
         //initialize the tabBar and three subViews
         _stepsViewController = [[HMStepsViewController alloc] initWithRecipe:recipeObject];
+       
+        NSLog(@"%@ 111",NSStringFromCGRect(_stepsViewController.view.bounds));
         _ingredientViewController = [[HMIngredientViewController alloc] initWithRecipe:recipeObject];
         _imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:recipeObject];
         
@@ -209,7 +211,7 @@
         [self.ingredientView addSubview:self.ingredientsTableView];
         
         //Initialize the steps table view
-        self.stepsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT - TopImageViewHeight) style:UITableViewStylePlain];
+        self.stepsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TABBARHEIGHT + TopImageViewHeight, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT - TopImageViewHeight) style:UITableViewStylePlain];
         
         //Add customized backgound color in top bounce area if needed
         //        CGRect frame =CGRectMake(0, -568, 320, 568);//for 4 inch device
@@ -542,8 +544,9 @@
     UIViewController* viewController = [data objectForKey:@"viewController"];
     
     // Set the view controller's frame to account for the tab bar
-    viewController.view.frame = CGRectMake(0, TopImageViewHeight + TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT);
-    
+    viewController.view.frame = CGRectMake(0, TopImageViewHeight + TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT -TopImageViewHeight);
+    viewController.view.clipsToBounds = YES;
+    NSLog(@"%@ 222",NSStringFromCGRect(viewController.view.bounds));
     // Se the tag so we can find it later
     viewController.view.tag = SELECTED_VIEW_TAG;
     
