@@ -399,15 +399,16 @@
     }
     [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:saved];
     
-        
+    // update label
+    [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+    
     // update sever
     if (saved) {
         [HMUtility saveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
             [recipeTableCellView shouldEnableSaveButton:YES];
             [recipeTableCellView setSaveStatus:succeeded];
             if (!succeeded) {
-                // Update label
-                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+                [recipeTableCellView.saveCount setText:originalSaveCountTitle];
             }
         }];
     } else {
@@ -415,8 +416,7 @@
             [recipeTableCellView shouldEnableSaveButton:YES];
             [recipeTableCellView setSaveStatus:!succeeded];
             if (!succeeded) {
-                // Update label
-                [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
+                [recipeTableCellView.saveCount setText:originalSaveCountTitle];
             }
         }];
     }
