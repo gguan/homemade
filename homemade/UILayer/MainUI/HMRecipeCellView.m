@@ -33,8 +33,14 @@
         
         self.backCover = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
         [self.backCover setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+        
         self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        self.backCover.clipsToBounds = YES;
+        self.backCover.clipsToBounds = NO;
+        self.backCover.layer.shadowRadius = 3.0f;
+        self.backCover.layer.shadowOpacity = 0.7f;
+        self.backCover.layer.shadowOffset = CGSizeMake( 0.0f, 0.0f);
+        self.backCover.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.backCover.layer.bounds].CGPath;
+        
         
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -109,6 +115,7 @@
         dropshadowView.layer.shadowOffset = CGSizeMake( 0.0f, 1.0f);
         dropshadowView.layer.shadowPath =
         [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
+        
         
         [self.contentView addSubview:dropshadowView];
         [self.contentView addSubview:self.cellLeft];
