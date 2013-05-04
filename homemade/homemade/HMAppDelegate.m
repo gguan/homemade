@@ -143,7 +143,7 @@
     HMLoginViewController *loginViewController = [[HMLoginViewController alloc] init];
     [loginViewController setDelegate:self];
     loginViewController.fields = PFLogInFieldsFacebook;
-    loginViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email" ];
+    loginViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email", @"publish_actions" ];
     
     [self.mainController presentViewController:loginViewController animated:animated completion:nil];
 }

@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SLColorArt.h"
 #import "TMCache.h"
-#import <Parse/Parse.h>
+#import "HMCommonUIUtility.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -428,6 +428,9 @@
  @param photo the PFObject for the photo that will be commented on
  */
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {
+    [HMCommonUIUtility showAlert:@"test"];
+    
+    
     
 }
 
