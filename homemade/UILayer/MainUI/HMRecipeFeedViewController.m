@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SLColorArt.h"
 #import "TMCache.h"
-#import "HMCommonUIUtility.h"
+#import "HMShareViewController.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -428,7 +428,46 @@
  @param photo the PFObject for the photo that will be commented on
  */
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {
-    [HMCommonUIUtility showAlert:@"test"];
+    
+    // First check if we can use the native dialog, otherwise will
+    // use our own
+    BOOL displayedNativeDialog =
+    [FBDialogs presentOSIntegratedShareDialogModallyFrom:self initialText:@"" image:[UIImage imageNamed:@"pic_10.png"] url:[NSURL URLWithString:@"https://developers.facebook.com/ios"] handler:^(FBOSIntegratedShareDialogResult result, NSError *error) {
+        // Only show the error if it is not due to the dialog
+        // not being supporte, i.e. code = 7, otherwise ignore
+        // because our fallback will show the share view controller.
+        if (error && [error code] == 7) {
+            return;
+        }
+        
+        NSString *alertText = @"";
+        if (error) {
+            alertText = [NSString stringWithFormat:
+                         @"error: domain = %@, code = %d",
+                         error.domain, error.code];
+        } else if (result == FBNativeDialogResultSucceeded) {
+            alertText = @"Posted successfully.";
+        }
+        if (![alertText isEqualToString:@""]) {
+            // Show the result in an alert
+            [[[UIAlertView alloc] initWithTitle:@"Result"
+                                        message:alertText
+                                       delegate:self
+                              cancelButtonTitle:@"OK!"
+                              otherButtonTitles:nil]
+             show];
+        }
+    }];
+    NSLog(@"%i", displayedNativeDialog);
+    // Fallback, show the view controller that will post using me/feed
+    if (!displayedNativeDialog) {
+        HMShareViewController *viewController = [[HMShareViewController alloc] init];
+        
+        [self presentViewController:viewController
+                           animated:YES
+                         completion:nil];
+    }
+
     
     
     
