@@ -166,8 +166,8 @@
 #pragma mark - ()
 - (BOOL)handleActionURL:(NSURL *)url {
     
-    if ([[url fragment] rangeOfString:@"^pic/[A-Za-z0-9]{10}$" options:NSRegularExpressionSearch].location != NSNotFound) {
-        NSString *recipeObjectId = [[url fragment] substringWithRange:NSMakeRange(4, 10)];
+    if ([[url fragment] rangeOfString:@"^recipe/[A-Za-z0-9]{10}$" options:NSRegularExpressionSearch].location != NSNotFound) {
+        NSString *recipeObjectId = [[url fragment] substringWithRange:NSMakeRange(8, 14)];
             if (recipeObjectId && recipeObjectId.length > 0) {
                 [self shouldNavigateToRecipe:[PFObject objectWithoutDataWithClassName:kHMRecipeClassKey objectId:recipeObjectId]];
                 return YES;

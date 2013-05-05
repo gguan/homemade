@@ -429,48 +429,101 @@
  */
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {
     
-    // First check if we can use the native dialog, otherwise will
-    // use our own
-    BOOL displayedNativeDialog =
-    [FBDialogs presentOSIntegratedShareDialogModallyFrom:self initialText:@"" image:[UIImage imageNamed:@"pic_10.png"] url:[NSURL URLWithString:@"https://developers.facebook.com/ios"] handler:^(FBOSIntegratedShareDialogResult result, NSError *error) {
-        // Only show the error if it is not due to the dialog
-        // not being supporte, i.e. code = 7, otherwise ignore
-        // because our fallback will show the share view controller.
-        if (error && [error code] == 7) {
-            return;
-        }
-        
-        NSString *alertText = @"";
-        if (error) {
-            alertText = [NSString stringWithFormat:
-                         @"error: domain = %@, code = %d",
-                         error.domain, error.code];
-        } else if (result == FBNativeDialogResultSucceeded) {
-            alertText = @"Posted successfully.";
-        }
-        if (![alertText isEqualToString:@""]) {
-            // Show the result in an alert
-            [[[UIAlertView alloc] initWithTitle:@"Result"
-                                        message:alertText
-                                       delegate:self
-                              cancelButtonTitle:@"OK!"
-                              otherButtonTitles:nil]
-             show];
-        }
-    }];
-    NSLog(@"%i", displayedNativeDialog);
-    // Fallback, show the view controller that will post using me/feed
-    if (!displayedNativeDialog) {
-        HMShareViewController *viewController = [[HMShareViewController alloc] init];
-        
-        [self presentViewController:viewController
-                           animated:YES
-                         completion:nil];
-    }
+    [self publishWithWebDialog:recipe];
+    
+}
 
+/*
+ * Share using the Web Dialog
+ */
+- (void) publishWithWebDialog:(PFObject *)recipe {
+    // Put together the dialog parameters
     
+    NSString *recipeLink = [NSString stringWithFormat:@"fb347539945367351://recipe/%@", recipe.objectId];
     
+    NSMutableDictionary *params =
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     [recipe objectForKey:kHMRecipeTitleKey], @"name",
+     [recipe objectForKey:kHMRecipeOverviewKey], @"description",
+     recipeLink, @"link",
+     [(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url], @"picture",
+     nil];
     
+    // Invoke the dialog
+    [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                           parameters:params
+                                              handler:
+     ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+         if (error) {
+             // Error launching the dialog or publishing a story.
+             [self showAlert:[self checkErrorMessage:error]];
+         } else {
+             if (result == FBWebDialogResultDialogNotCompleted) {
+                 // User clicked the "x" icon
+                 NSLog(@"User canceled story publishing.");
+             } else {
+                 // Handle the publish feed callback
+                 NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                 if (![urlParams valueForKey:@"post_id"]) {
+                     // User clicked the Cancel button
+                     NSLog(@"User canceled story publishing.");
+                 } else {
+                     // User clicked the Share button
+                     [self showAlert:[self checkPostId:urlParams]];
+                 }
+             }
+         }
+     }];
+}
+
+/*
+ * Helper method to parse URL parameters.
+ */
+- (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [[kv objectAtIndex:1]
+         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [params setObject:val forKey:[kv objectAtIndex:0]];
+    }
+    return params;
+}
+
+
+
+- (void)showAlert:(NSString *) alertMsg {
+    if (![alertMsg isEqualToString:@""]) {
+        [[[UIAlertView alloc] initWithTitle:@"Result"
+                                    message:alertMsg
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
+}
+
+- (NSString *) checkPostId:(NSDictionary *)results {
+    NSString *message = @"Posted successfully.";
+    // Share dialog
+    NSString *postId = results[@"postId"];
+    if (postId) {
+        message = [NSString stringWithFormat:@"Posted story, id: %@", postId];
+    }
+    return message;
+}
+
+
+- (NSString *)checkErrorMessage:(NSError *)error {
+    NSString *errorMessage = @"";
+    if (error.fberrorUserMessage) {
+        errorMessage = error.fberrorUserMessage;
+    } else {
+        errorMessage = @"Operation failed due to a connection problem, retry later.";
+    }
+    return errorMessage;
 }
 
 
