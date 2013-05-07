@@ -126,7 +126,7 @@
                 
                 else {
                     
-                    NSLog(@"Error!");
+                    NSLog(@"error:%@",[error userInfo]);
                 }
             }];
 

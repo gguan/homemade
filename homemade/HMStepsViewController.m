@@ -96,7 +96,7 @@
 #pragma mark -
 #pragma mark PagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(PagedFlowView *)flowView;{
-    return CGSizeMake(200, 260);
+    return CGSizeMake(220, 340);
 }
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(PagedFlowView *)flowView {
@@ -111,14 +111,42 @@
     return [self.items count];
 }
 
-//返回给某列使用的View
+
 - (UIView *)flowView:(PagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     HMStepsView *view = (HMStepsView*)[flowView dequeueReusableCell];
     if (!view) {
-        view = [[HMStepsView alloc] initWithFrame:CGRectMake(0, 0, 200, 260)];
-        view.autoresizesSubviews = YES;
-        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [view setBackgroundColor:[UIColor whiteColor]];
+        view = [[HMStepsView alloc] initWithFrame:CGRectMake(0, 0, 220, 340)];
+      //  view.autoresizesSubviews = YES;
+      //  view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+       // [view setBackgroundColor:[UIColor whiteColor]];
+        NSArray *temp = [self.items objectAtIndex:index];
+        NSString *description = [temp objectAtIndex:0];
+        
+        [view.stepDescrptionLabel setText:description];
+        
+        [view.stepImageView setImage:[UIImage imageNamed:@"pic_4.jpg"]];
+        [view.stepImageView setContentMode:UIViewContentModeScaleToFill];
+        //download image in background
+        if([temp count]>1){
+            view.stepImageView.file = [temp objectAtIndex:1];
+            if([view.stepImageView.file isDataAvailable]){
+                NSData * data = [view.stepImageView.file getData];
+                [view.stepImageView setImage:[UIImage imageWithData:data]];
+                
+            }
+            else{
+                [view.stepImageView loadInBackground:^(UIImage *image,NSError *error){
+                    if (!error) {
+                        [view.stepImageView setImage:image];
+                    }
+                    else
+                        NSLog(@"error:%@",[error userInfo]);
+                }];
+            }
+        }
+        
+        
+        
         
     }
   
