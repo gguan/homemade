@@ -10,6 +10,4 @@
 
 @interface HMCommonUIUtility : NSObject
 
-+ (void)showAlert:(NSString *) alertMsg;
-
 @end
