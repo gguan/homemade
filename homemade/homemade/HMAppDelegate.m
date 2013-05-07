@@ -143,7 +143,7 @@
     HMLoginViewController *loginViewController = [[HMLoginViewController alloc] init];
     [loginViewController setDelegate:self];
     loginViewController.fields = PFLogInFieldsFacebook;
-    loginViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email" ];
+    loginViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email", @"publish_actions" ];
     
     [self.mainController presentViewController:loginViewController animated:animated completion:nil];
 }
@@ -166,8 +166,8 @@
 #pragma mark - ()
 - (BOOL)handleActionURL:(NSURL *)url {
     
-    if ([[url fragment] rangeOfString:@"^pic/[A-Za-z0-9]{10}$" options:NSRegularExpressionSearch].location != NSNotFound) {
-        NSString *recipeObjectId = [[url fragment] substringWithRange:NSMakeRange(4, 10)];
+    if ([[url fragment] rangeOfString:@"^recipe/[A-Za-z0-9]{10}$" options:NSRegularExpressionSearch].location != NSNotFound) {
+        NSString *recipeObjectId = [[url fragment] substringWithRange:NSMakeRange(8, 14)];
             if (recipeObjectId && recipeObjectId.length > 0) {
                 [self shouldNavigateToRecipe:[PFObject objectWithoutDataWithClassName:kHMRecipeClassKey objectId:recipeObjectId]];
                 return YES;

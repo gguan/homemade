@@ -145,7 +145,7 @@
 - (void)setRecipe:(PFObject *)aRecipe {
     _recipe = aRecipe;
     
-    self.titleLabel.text = [_recipe objectForKey:@"title"];
+    self.titleLabel.text = [_recipe objectForKey:kHMRecipeTitleKey];
     self.photo.file = [_recipe objectForKey:kHMRecipePhotoKey];
     
     // user's stuff
