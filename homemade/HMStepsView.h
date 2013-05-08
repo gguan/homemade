@@ -13,5 +13,5 @@
 @property(nonatomic,retain) UILabel* stepNumberLabel;
 @property(nonatomic,retain) UILabel* stepDescrptionLabel;
 @property(nonatomic,retain) PFImageView *stepImageView;
-@property(nonatomic,retain) UITextView *stepDescriptionText;
+@property(nonatomic,retain) UIImageView *stepDescriptionLabelSnapShot;
 @end

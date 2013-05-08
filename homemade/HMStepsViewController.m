@@ -9,6 +9,7 @@
 #import "HMStepsViewController.h"
 #import "PagedFlowView.h"
 #import "HMStepsView.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define TABBARHEIGHT 44
 #define TopImageViewHeight 88
@@ -64,7 +65,7 @@
     [self.view setFrame:CGRectMake(0, TopImageViewHeight + TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT -TopImageViewHeight)];
     
     NSLog(@"%@",NSStringFromCGRect(self.view.bounds));
-    [self.view setBackgroundColor:[UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:162.0/255.0 green:73.0/255.0 blue:43.0/255.0 alpha:1.0]];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     //initialzie the pagedFlowView
     _pagedFlowView = [[PagedFlowView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -123,8 +124,16 @@
         NSString *description = [temp objectAtIndex:0];
         
         [view.stepDescrptionLabel setText:description];
+        UIGraphicsBeginImageContext(view.stepDescrptionLabel.bounds.size);
+        [view.stepDescrptionLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
+        CGImageRef viewImage = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
+        UIGraphicsEndImageContext();
+        UIImage *snapshot = [UIImage imageWithCGImage:viewImage];
+        [view.stepDescriptionLabelSnapShot setImage:snapshot];
+        
         
         [view.stepImageView setImage:[UIImage imageNamed:@"pic_4.jpg"]];
+        
         [view.stepImageView setContentMode:UIViewContentModeScaleToFill];
         //download image in background
         if([temp count]>1){

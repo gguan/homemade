@@ -96,7 +96,7 @@
 @synthesize imadeitViewController = _imadeitViewController;
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
-   return  [self initWithPFObject:recipeObject andUIColor:[UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0]];
+   return  [self initWithPFObject:recipeObject andUIColor:[UIColor colorWithRed:162.0/255.0 green:73.0/255.0 blue:43.0/255.0 alpha:1.0]];
     
 }
 
