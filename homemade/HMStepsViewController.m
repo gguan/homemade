@@ -124,7 +124,7 @@
         NSString *description = [temp objectAtIndex:0];
         
         [view.stepDescrptionLabel setText:description];
-        UIGraphicsBeginImageContext(view.stepDescrptionLabel.bounds.size);
+        UIGraphicsBeginImageContextWithOptions(view.stepDescrptionLabel.bounds.size, NO, self.view.window.screen.scale);
         [view.stepDescrptionLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
         CGImageRef viewImage = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
         UIGraphicsEndImageContext();
