@@ -115,7 +115,6 @@
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
 		464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */; };
-		464A9C4817349F6D005E08E1 /* HMShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A9C4717349F6D005E08E1 /* HMShareViewController.m */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
 		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
 		466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */; };
@@ -146,6 +145,9 @@
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
 		469FBD8D1716B1EB00D8BC84 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
+		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
+		46C075D4173A5E6300BB8823 /* searchFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D2173A5E6300BB8823 /* searchFrame.png */; };
+		46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D3173A5E6300BB8823 /* searchFrame@2x.png */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
 /* End PBXBuildFile section */
@@ -299,8 +301,6 @@
 		4645D3A816F727A300C38D39 /* HMAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/AccountUI/HMAccountViewController.m; sourceTree = "<group>"; };
 		464A9C43173497CC005E08E1 /* HMCommonUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCommonUIUtility.h; path = UILayer/CommonUI/HMCommonUIUtility.h; sourceTree = "<group>"; };
 		464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommonUIUtility.m; path = UILayer/CommonUI/HMCommonUIUtility.m; sourceTree = "<group>"; };
-		464A9C4617349F6D005E08E1 /* HMShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMShareViewController.h; path = UILayer/CommonUI/HMShareViewController.h; sourceTree = "<group>"; };
-		464A9C4717349F6D005E08E1 /* HMShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMShareViewController.m; path = UILayer/CommonUI/HMShareViewController.m; sourceTree = "<group>"; };
 		466F4F71170154860076AB3D /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		466F4F72170154860076AB3D /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		466F4F73170154860076AB3D /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
@@ -348,6 +348,10 @@
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		46C075CF173A589300BB8823 /* HMSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSearchBar.h; path = UILayer/SearchUI/HMSearchBar.h; sourceTree = "<group>"; };
+		46C075D0173A589300BB8823 /* HMSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchBar.m; path = UILayer/SearchUI/HMSearchBar.m; sourceTree = "<group>"; };
+		46C075D2173A5E6300BB8823 /* searchFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchFrame.png; sourceTree = "<group>"; };
+		46C075D3173A5E6300BB8823 /* searchFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchFrame@2x.png"; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
@@ -741,6 +745,8 @@
 			children = (
 				4645D38216F5E8ED00C38D39 /* HMSearchViewController.h */,
 				4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */,
+				46C075CF173A589300BB8823 /* HMSearchBar.h */,
+				46C075D0173A589300BB8823 /* HMSearchBar.m */,
 			);
 			name = SearchUI;
 			sourceTree = "<group>";
@@ -828,8 +834,6 @@
 			children = (
 				464A9C43173497CC005E08E1 /* HMCommonUIUtility.h */,
 				464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */,
-				464A9C4617349F6D005E08E1 /* HMShareViewController.h */,
-				464A9C4717349F6D005E08E1 /* HMShareViewController.m */,
 			);
 			name = CommonUI;
 			sourceTree = "<group>";
@@ -857,6 +861,8 @@
 		466F4FAD170408310076AB3D /* temp */ = {
 			isa = PBXGroup;
 			children = (
+				46C075D2173A5E6300BB8823 /* searchFrame.png */,
+				46C075D3173A5E6300BB8823 /* searchFrame@2x.png */,
 				4606A4DB17194F7C009FDFFB /* p1.jpg */,
 				4606A4D317194AA7009FDFFB /* s14.jpg */,
 				4606A4D417194AA7009FDFFB /* s13.jpg */,
@@ -1016,6 +1022,8 @@
 				462F0CB41728F08B00BDDEB8 /* divider.png in Resources */,
 				25A9436F1728E3C800DA959B /* TabBarNipple.png in Resources */,
 				25A943701728E3C800DA959B /* TabBarNipple@2x.png in Resources */,
+				46C075D4173A5E6300BB8823 /* searchFrame.png in Resources */,
+				46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,8 +1086,8 @@
 				25780F971730AFB700176EB7 /* HMImadeItViewController.m in Sources */,
 				25B0378A1733ADDE0015A78F /* HMStepsView.m in Sources */,
 				464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */,
-				464A9C4817349F6D005E08E1 /* HMShareViewController.m in Sources */,
 				468F9BA41739D884009CC05A /* PagedFlowView.m in Sources */,
+				46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

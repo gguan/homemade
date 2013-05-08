@@ -34,7 +34,7 @@
         _stepDescrptionLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, _stepImageView.frame.size.height, self.frame.size.width, self.frame.size.height - _stepImageView.frame.size.height)];
         _stepDescrptionLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
         [self.stepDescrptionLabel setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
-        self.stepDescrptionLabel.lineBreakMode = UILineBreakModeWordWrap;
+        self.stepDescrptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.stepDescrptionLabel.numberOfLines = 0;
         self.stepDescrptionLabel.adjustsFontSizeToFitWidth = YES;
         

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMSearchBar.h"
 
-@interface HMSearchViewController : UITableViewController
+@interface HMSearchViewController : PFQueryTableViewController <UISearchDisplayDelegate>
+
+@property (nonatomic, strong) HMSearchBar *searchBar;
+//@property (retain, nonatomic) UISearchDisplayController *searchDisplayController;
 
 @end

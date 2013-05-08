@@ -12,11 +12,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SLColorArt.h"
 #import "TMCache.h"
-#import "HMShareViewController.h"
+#import "HMSearchViewController.h"
 
 
 @interface HMRecipeFeedViewController ()
-@property (nonatomic, assign) BOOL shouldReloadOnAppear;
 @end
 
 @implementation HMRecipeFeedViewController {
@@ -39,8 +38,6 @@
         
         // The number of objects to show per page
         self.objectsPerPage = 10;
-        
-        self.shouldReloadOnAppear = NO;
         
     }
     return self;
@@ -80,7 +77,7 @@
     }
     
     // add Path style menu
-    UIImage *itemImg1 = [UIImage imageNamed:@"myFavorite.png"];
+    UIImage *itemImg1 = [UIImage imageNamed:@"searchMag.png"];
     UIImage *itemImg2 = [UIImage imageNamed:@"WhatIMade.png"];
     UIImage *itemImg3 = [UIImage imageNamed:@"notification.png"];
     UIImage *itemImg4 = [UIImage imageNamed:@"account.png"];
@@ -208,7 +205,6 @@
     cell.tag = indexPath.row;
     cell.saveButton.tag = indexPath.row;
     
-    // TODO
     if (recipe) {
         // Configure the cell
         [cell setRecipe:recipe];
@@ -220,6 +216,20 @@
             NSLog(@"%@", attributesForRecipe);
             [cell.saveCount setText:[[[HMCache sharedCache] saveCountForRecipe:recipe] description]];
             [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:recipe]];
+            
+            // although we have cache, we still fetch the latest data
+            PFQuery *query = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
+            [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+                if (error) {
+                    return;
+                }
+                // update label
+                [cell.saveCount setText:[NSString stringWithFormat:@"%i", count]];
+                // update cache
+                NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:attributesForRecipe];
+                [attributes setObject:[NSNumber numberWithInt:count] forKey:kHMRecipeAttributesSaveCountKey];
+                [[HMCache sharedCache] setAttributesForRecipe:recipe attributes:attributes];
+            }];
         } else {
             NSLog(@"Didn't find cache for recipe %@", recipe.objectId);
             @synchronized(self) {
@@ -334,8 +344,8 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
-    if (idx == 3) { // account
-        
+    if (idx == 0) { // search
+        [self presentViewController:[[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES completion:nil];
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
