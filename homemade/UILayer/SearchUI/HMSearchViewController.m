@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    self.searchBar = [[HMSearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.searchBar = [[HMSearchBar alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
     
     self.searchBar.delegate = self;
     

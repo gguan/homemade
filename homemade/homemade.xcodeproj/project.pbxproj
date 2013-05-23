@@ -36,7 +36,6 @@
 		462F0CB41728F08B00BDDEB8 /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 462F0CB21728F08B00BDDEB8 /* divider.png */; };
 		462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */; };
 		462F0CBC172D3EB400BDDEB8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */; };
-		462F0CBE172D3F9F00BDDEB8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462F0CBD172D3F9F00BDDEB8 /* Parse.framework */; };
 		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
 		4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372569172408A3002357E0 /* UIImage+ColorArt.m */; };
@@ -115,6 +114,8 @@
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		4645D3A916F727A300C38D39 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A816F727A300C38D39 /* HMAccountViewController.m */; };
 		464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */; };
+		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
+		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
 		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
 		466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */; };
@@ -199,7 +200,6 @@
 		462F0CB8172946AF00BDDEB8 /* HMCellLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCellLeftView.h; path = UILayer/MainUI/HMCellLeftView.h; sourceTree = "<group>"; };
 		462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCellLeftView.m; path = UILayer/MainUI/HMCellLeftView.m; sourceTree = "<group>"; };
 		462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Vendor/FacebookSDK.framework; sourceTree = "<group>"; };
-		462F0CBD172D3F9F00BDDEB8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
 		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		46372566172408A3002357E0 /* SLColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLColorArt.h; sourceTree = "<group>"; };
 		46372567172408A3002357E0 /* SLColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLColorArt.m; sourceTree = "<group>"; };
@@ -301,6 +301,9 @@
 		4645D3A816F727A300C38D39 /* HMAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/AccountUI/HMAccountViewController.m; sourceTree = "<group>"; };
 		464A9C43173497CC005E08E1 /* HMCommonUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCommonUIUtility.h; path = UILayer/CommonUI/HMCommonUIUtility.h; sourceTree = "<group>"; };
 		464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommonUIUtility.m; path = UILayer/CommonUI/HMCommonUIUtility.m; sourceTree = "<group>"; };
+		465F5962174BD48300E2164B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
+		465F5965174EA95F00E2164B /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Utility/UIImageView+Addition.h"; sourceTree = "<group>"; };
+		465F5966174EA95F00E2164B /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Utility/UIImageView+Addition.m"; sourceTree = "<group>"; };
 		466F4F71170154860076AB3D /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		466F4F72170154860076AB3D /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		466F4F73170154860076AB3D /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
@@ -380,7 +383,7 @@
 				4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */,
 				4645D2FA16F44D1900C38D39 /* CoreData.framework in Frameworks */,
 				462F0CBC172D3EB400BDDEB8 /* FacebookSDK.framework in Frameworks */,
-				462F0CBE172D3F9F00BDDEB8 /* Parse.framework in Frameworks */,
+				465F5963174BD48300E2164B /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +550,7 @@
 			children = (
 				4645D2FB16F44D1900C38D39 /* homemade */,
 				4645D38516F5ED9300C38D39 /* BaseLayer */,
+				465F5964174EA90C00E2164B /* Utility */,
 				4645D36216F4660800C38D39 /* UILayer */,
 				4645D32216F44E2400C38D39 /* Resources */,
 				4645D31516F44D3F00C38D39 /* Vendor */,
@@ -566,7 +570,7 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				462F0CBD172D3F9F00BDDEB8 /* Parse.framework */,
+				465F5962174BD48300E2164B /* Parse.framework */,
 				462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */,
 				469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */,
 				469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */,
@@ -838,6 +842,15 @@
 			name = CommonUI;
 			sourceTree = "<group>";
 		};
+		465F5964174EA90C00E2164B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				465F5965174EA95F00E2164B /* UIImageView+Addition.h */,
+				465F5966174EA95F00E2164B /* UIImageView+Addition.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		466F4F771701A61B0076AB3D /* EDColor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1101,7 @@
 				464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */,
 				468F9BA41739D884009CC05A /* PagedFlowView.m in Sources */,
 				46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */,
+				465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

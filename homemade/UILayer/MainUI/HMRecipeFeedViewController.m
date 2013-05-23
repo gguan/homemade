@@ -13,6 +13,7 @@
 #import "SLColorArt.h"
 #import "TMCache.h"
 #import "HMSearchViewController.h"
+#import "UIImageView+Addition.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -125,9 +126,7 @@
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
         });
     }];
-
- 
-
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -289,7 +288,7 @@
                             });
                         });
                     }
-                    
+                    [cell.photo addDetailShow];
                 }
                 if (error) {
                     NSLog(@"Error!");
@@ -323,6 +322,7 @@
                                                               }
                                                               completion:^(BOOL finished) { }];
                                          }];
+                        [cell.photo addDetailShow];
                         
                     });
 

@@ -11,6 +11,7 @@
 @interface HMCellLeftView : UIView
 
 @property (strong, nonatomic) UIButton *saveButton;
+@property (strong, nonatomic) UIButton *commentButton;
 @property (strong, nonatomic) UIButton *shareButton;
 
 @end
