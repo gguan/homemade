@@ -32,12 +32,23 @@
 {
     [super viewDidLoad];
     
-    self.searchBar = [[HMSearchBar alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
-    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.searchBar.userInteractionEnabled = YES;
+    self.searchBar.showsCancelButton = YES;
     self.searchBar.delegate = self;
     
+    for (UIView *possibleButton in self.searchBar.subviews)
+    {
+        if ([possibleButton isKindOfClass:[UIButton class]])
+        {
+            UIButton *cancelButton = (UIButton*)possibleButton;
+            cancelButton.enabled = YES;
+            break;
+        }
+    }
+    
     self.tableView.tableHeaderView = self.searchBar;
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -87,6 +98,11 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 @end
