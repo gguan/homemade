@@ -48,7 +48,13 @@ extern NSString *const kHMUserAttributesMadeCountKey;
 extern NSString *const kHMUserAttributesSaveCountKey;
 extern NSString *const kHMUserAttributesIsFollowedByCurrentUserKey;
 
+extern NSString *const kHMUserProfilePicMediumKey;
 extern NSString *const kHMUserProfilePicSmallKey;
+extern NSString *const kHMUserDisplayNameKey;
+extern NSString *const kHMUserEmailKey;
+extern NSString *const kHMUserFacebookIDKey;
+extern NSString *const kHMUserPhotoIDKey;
+
 #pragma mark - TMCache keys
 extern NSString *const kHMColorSuffixKey;
 
@@ -60,7 +66,7 @@ extern NSString *const kHMSaveFromUserKey;
 extern NSString *const kHMSaveToUserKey;
 extern NSString *const kHMSaveRecipeKey;
 
-#pragma mark - Save Class
+#pragma mark - Comment Class
 extern NSString *const kHMCommentClassKey;
 // Field keys
 extern NSString *const kHMCommentFromUserKey;

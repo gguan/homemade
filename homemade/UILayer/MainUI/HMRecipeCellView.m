@@ -149,7 +149,21 @@
     self.photo.file = [_recipe objectForKey:kHMRecipePhotoKey];
     
     // user's stuff
-//    PFUser *user = [self.recipe objectForKey:kHMUserProfilePicSmallKey];
+    PFUser *user = [_recipe objectForKey:kHMRecipeUserKey];
+    [user fetchIfNeeded];
+    
+    PFFile *profilePictureSmall = [user objectForKey:kHMUserProfilePicSmallKey];
+    if (profilePictureSmall) {
+        [self.cellLeft.avatarImageView setFile:profilePictureSmall];
+    } else {
+        [self.cellLeft.avatarImageView setFile:[PFFile fileWithData:UIImagePNGRepresentation([UIImage imageNamed:@"AvatarPlaceholder.png"])]];
+    }
+    
+    
+//    NSString *authorName = [user objectForKey:kHMUserDisplayNameKey];
+//    [self.userButton setTitle:authorName forState:UIControlStateNormal];
+//    NSLog(authorName);
+    
     
     // Add button listening selectors
     [self.cellLeft.saveButton addTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];

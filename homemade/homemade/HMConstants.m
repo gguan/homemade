@@ -35,7 +35,7 @@ NSString *const kHMRecipeAttributesIsMadeByCurrentUserKey   = @"isMadeByCurrentU
 NSString *const kHMRecipeAttributesMakeCountKey             = @"madeCount";
 NSString *const kHMRecipeAttributesMakersKey                = @"makers";
 NSString *const kHMRecipeAttributesCommentCountKey          = @"commentCount";
-NSString *const kHMRecipeAttributesCommentersKey             = @"commenters";
+NSString *const kHMRecipeAttributesCommentersKey            = @"commenters";
 
 #pragma mark - Cached User Attributes
 // keys
@@ -44,7 +44,12 @@ NSString *const kHMUserAttributesMadeCountKey        = @"userMadeCount";
 NSString *const kHMUserAttributesSaveCountKey        = @"userSaveCount";
 NSString *const kHMUserAttributesIsFollowedByCurrentUserKey  = @"isFollowedByCurrentUser";
 
+NSString *const kHMUserProfilePicMediumKey                     = @"profilePictureMedium";
 NSString *const kHMUserProfilePicSmallKey                      = @"profilePictureSmall";
+NSString *const kHMUserDisplayNameKey                          = @"displayName";
+NSString *const kHMUserEmailKey                                = @"email";
+NSString *const kHMUserFacebookIDKey                           = @"facebookId";
+NSString *const kHMUserPhotoIDKey                              = @"photoId";
 
 #pragma mark - TMCache keys
 NSString *const kHMColorSuffixKey = @"colorArt";

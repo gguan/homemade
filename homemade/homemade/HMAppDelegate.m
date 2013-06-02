@@ -20,12 +20,17 @@
 
 // Other libraries
 #import "Reachability.h"
+#import "SVProgressHUD.h"
 
-@interface HMAppDelegate()
+@interface HMAppDelegate() {
+    NSMutableData *_data;
+    BOOL firstLaunch;
+}
 
 @property (nonatomic, strong) Reachability *hostReach;
 @property (nonatomic, strong) Reachability *internetReach;
 @property (nonatomic, strong) Reachability *wifiReach;
+
 @end
 
 
@@ -34,7 +39,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
@@ -73,7 +77,7 @@
     if (![PFUser currentUser]) {
         [self presentLoginViewControllerAnimated:YES];
     }
-//    [[HMCache sharedCache] clear];
+
     return YES;
 }
 
@@ -148,18 +152,46 @@
     [self.mainController presentViewController:loginViewController animated:animated completion:nil];
 }
 
+#pragma mark - NSURLConnectionDataDelegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    _data = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [_data appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Process user facebook profile image");
+    [HMUtility processFacebookProfilePictureData:_data];
+}
+
+
 #pragma mark - LoginIn delegate
 
 /*! @name Responding to Actions */
 /// Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-//    [user save];
-    // TODO: retrieve user information from facebook, and store/update in local file system
+
+    // Retrieve user information from facebook, and store/update in local file system
+    [SVProgressHUD showWithStatus:@"Loading" maskType: SVProgressHUDMaskTypeBlack];
+    
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            [self facebookRequestDidLoad:result];
+        } else {
+            [self facebookRequestDidFailWithError:error];
+        }
+    }];
+    
+    [SVProgressHUD dismiss];
     [self.mainController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 /// Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    [SVProgressHUD showErrorWithStatus:@"Login failed"];
     NSLog(@"Login failed. Error: %@", error);
 }
 
@@ -195,5 +227,86 @@
         }
     }];
 }
+
+- (void)facebookRequestDidLoad:(id)result {
+    // This method is called for the user's /me profile.
+    NSLog(@"%@", result);
+    
+    PFUser *user = [PFUser currentUser];
+    
+    if (user) {
+        [SVProgressHUD showWithStatus:@"Creating Profile" maskType: SVProgressHUDMaskTypeBlack];
+        
+        // display name
+        NSString *facebookName = result[@"name"];
+        if (facebookName && [facebookName length] != 0) {
+            [user setObject:facebookName forKey:kHMUserDisplayNameKey];
+        } else {
+            [user setObject:@"Someone" forKey:kHMUserDisplayNameKey];
+        }
+        
+        // facebook id
+        NSString *facebookId = result[@"id"];
+        if (facebookId && [facebookId length] != 0) {
+            [user setObject:facebookId forKey:kHMUserFacebookIDKey];
+        }
+        
+        // email
+        NSString *email = result[@"email"];
+        if (email && [email length] != 0) {
+            user.email = email;
+        }
+        
+        [user saveEventually];
+        
+        // Download user's profile picture
+        NSURL *profilePictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", facebookId]];
+        NSURLRequest *profilePictureURLRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f]; // Facebook profile picture cache policy: Expires in 2 weeks
+        [NSURLConnection connectionWithRequest:profilePictureURLRequest delegate:self];
+        
+        [SVProgressHUD dismiss];
+    }
+    
+
+}
+
+- (void)facebookRequestDidFailWithError:(NSError *)error {
+    NSLog(@"Facebook error: %@", error);
+    [SVProgressHUD showErrorWithStatus:@"Facebook error"];
+    
+    if ([PFUser currentUser]) {
+        if ([[error userInfo][@"error"][@"type"] isEqualToString:@"OAuthException"]) {
+            NSLog(@"The Facebook token was invalidated. Logging out.");
+            [self logout];
+        }
+    }
+   
+}
+
+- (void)logout {
+    // clear cache
+    [[HMCache sharedCache] clear];
+    
+    // clear NSUserDefaults
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHMUserDefaultsCacheFacebookFriendsKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHMUserDefaultsActivityFeedViewControllerLastRefreshKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Unsubscribe from push notifications by removing the user association from the current installation.
+//    [[PFInstallation currentInstallation] removeObjectForKey:kHMInstallationUserKey];
+//    [[PFInstallation currentInstallation] saveInBackground];
+    
+    // Clear all caches
+    [PFQuery clearAllCachedResults];
+    
+    // Log out
+    [PFUser logOut];
+    
+    // clear out cached data, view controllers, etc
+    [(UINavigationController *)self.window.rootViewController popToRootViewControllerAnimated:NO];
+    [self presentLoginViewControllerAnimated:NO];
+    
+}
+
 
 @end

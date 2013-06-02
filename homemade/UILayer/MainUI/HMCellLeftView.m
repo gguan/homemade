@@ -33,6 +33,21 @@
         [self addSubview:self.saveButton];
         [self addSubview:self.commentButton];
         [self addSubview:self.shareButton];
+        
+        
+        self.avatarImageView = [[HMProfileImageView alloc] init];
+        self.avatarImageView.frame = CGRectMake( 10.0f, 10.0f, 40.0f, 40.0f);
+        [self.avatarImageView.profileButton addTarget:self action:@selector(didTapUserButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.avatarImageView];
+        
+        self.timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake( 50.0f, 24.0f, self.bounds.size.width - 50.0f - 72.0f, 18.0f)];
+        [self addSubview:self.timestampLabel];
+        [self.timestampLabel setTextColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:1.0f]];
+        [self.timestampLabel setShadowColor:[UIColor colorWithWhite:1.0f alpha:0.750f]];
+        [self.timestampLabel setShadowOffset:CGSizeMake( 0.0f, 1.0f)];
+        [self.timestampLabel setFont:[UIFont systemFontOfSize:11.0f]];
+        [self.timestampLabel setBackgroundColor:[UIColor clearColor]];
+
 
     }
     return self;

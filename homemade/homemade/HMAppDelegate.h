@@ -19,5 +19,6 @@
 
 - (BOOL)isParseReachable;
 - (void)presentLoginViewControllerAnimated:(BOOL)animated;
+- (void)logout;
 
 @end

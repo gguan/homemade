@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#import "HMAppDelegate.h"
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
 #import "SVPullToRefresh.h"
@@ -346,6 +347,8 @@
     NSLog(@"Select the index : %d",idx);
     if (idx == 0) { // search
         [self presentViewController:[[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES completion:nil];
+    } else if (idx == 3) {
+        [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
