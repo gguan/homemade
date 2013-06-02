@@ -62,6 +62,12 @@
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapSaveButton:(UIButton *)button recipe:(PFObject *)recipe;
 
 /*!
+ Sent to the delegate when the comment button is tapped
+ @param user the PFUser associated with this button
+ */
+- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapCommentButton:(UIButton *)button recipe:(PFObject *)recipe;
+
+/*!
  Sent to the delegate when the share button is tapped
  @param photo the PFObject for the photo that will be commented on
  */

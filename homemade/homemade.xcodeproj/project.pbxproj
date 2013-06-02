@@ -99,7 +99,6 @@
 		469201FA1759E73F0096F522 /* HMProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469201F91759E73F0096F522 /* HMProfileImageView.m */; };
 		469201FD1759E7760096F522 /* HMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469201FC1759E7760096F522 /* HMImageView.m */; };
 		46920217175A18BB0096F522 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920210175A18BB0096F522 /* UIImage+Alpha.m */; };
-		46920218175A18BB0096F522 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920212175A18BB0096F522 /* UIImage+AlphaAdditions.m */; };
 		46920219175A18BB0096F522 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920214175A18BB0096F522 /* UIImage+ResizeAdditions.m */; };
 		4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920216175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m */; };
 		46920250175B33A20096F522 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692021C175B33A20096F522 /* account.png */; };
@@ -320,8 +319,6 @@
 		469201FC1759E7760096F522 /* HMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMImageView.m; path = UILayer/CommonUI/HMImageView.m; sourceTree = "<group>"; };
 		4692020F175A18BB0096F522 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		46920210175A18BB0096F522 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
-		46920211175A18BB0096F522 /* UIImage+AlphaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaAdditions.h"; sourceTree = "<group>"; };
-		46920212175A18BB0096F522 /* UIImage+AlphaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaAdditions.m"; sourceTree = "<group>"; };
 		46920213175A18BB0096F522 /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
 		46920214175A18BB0096F522 /* UIImage+ResizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeAdditions.m"; sourceTree = "<group>"; };
 		46920215175A18BB0096F522 /* UIImage+RoundedCornerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCornerAdditions.h"; sourceTree = "<group>"; };
@@ -508,13 +505,6 @@
 			path = Vendor/AwesomeMenu;
 			sourceTree = "<group>";
 		};
-		463725E517279D35002357E0 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
@@ -616,7 +606,6 @@
 			isa = PBXGroup;
 			children = (
 				4692021B175B33A20096F522 /* Assets */,
-				463725E517279D35002357E0 /* images */,
 				46372466171FBBB1002357E0 /* app-icon.png */,
 				466F4FAD170408310076AB3D /* temp */,
 				4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */,
@@ -888,8 +877,6 @@
 			children = (
 				4692020F175A18BB0096F522 /* UIImage+Alpha.h */,
 				46920210175A18BB0096F522 /* UIImage+Alpha.m */,
-				46920211175A18BB0096F522 /* UIImage+AlphaAdditions.h */,
-				46920212175A18BB0096F522 /* UIImage+AlphaAdditions.m */,
 				46920213175A18BB0096F522 /* UIImage+ResizeAdditions.h */,
 				46920214175A18BB0096F522 /* UIImage+ResizeAdditions.m */,
 				46920215175A18BB0096F522 /* UIImage+RoundedCornerAdditions.h */,
@@ -1167,7 +1154,6 @@
 				469201FA1759E73F0096F522 /* HMProfileImageView.m in Sources */,
 				469201FD1759E7760096F522 /* HMImageView.m in Sources */,
 				46920217175A18BB0096F522 /* UIImage+Alpha.m in Sources */,
-				46920218175A18BB0096F522 /* UIImage+AlphaAdditions.m in Sources */,
 				46920219175A18BB0096F522 /* UIImage+ResizeAdditions.m in Sources */,
 				4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */,
 			);

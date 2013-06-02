@@ -6,7 +6,7 @@
 // http://vocaro.com/trevor/blog/2009/10/12/resize-a-uiimage-the-right-way/
 
 #import "UIImage+RoundedCornerAdditions.h"
-#import "UIImage+AlphaAdditions.h"
+#import "UIImage+Alpha.h"
 
 @implementation UIImage (RoundedCorner)
 

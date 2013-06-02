@@ -436,6 +436,10 @@
     
 }
 
+- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapCommentButton:(UIButton *)button recipe:(PFObject *)recipe {
+    NSLog(@"Comment button tapped.");
+}
+
 // Sent to the delegate when the share button is tapped
 // @param photo the PFObject for the photo that will be commented on
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {

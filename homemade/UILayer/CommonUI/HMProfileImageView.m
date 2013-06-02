@@ -7,6 +7,7 @@
 //
 
 #import "HMProfileImageView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface HMProfileImageView()
 @property (nonatomic, strong) UIImageView *borderImageView;
@@ -20,6 +21,8 @@
         self.backgroundColor = [UIColor clearColor];
         
         self.profileImageView = [[PFImageView alloc] initWithFrame:frame];
+        self.profileImageView.layer.masksToBounds = YES;
+        self.profileImageView.layer.cornerRadius = 4.0f;
         [self addSubview:self.profileImageView];
         
         self.profileButton = [UIButton buttonWithType:UIButtonTypeCustom];

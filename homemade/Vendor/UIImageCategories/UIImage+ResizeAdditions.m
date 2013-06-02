@@ -7,7 +7,7 @@
 
 #import "UIImage+ResizeAdditions.h"
 #import "UIImage+RoundedCornerAdditions.h"
-#import "UIImage+AlphaAdditions.h"
+#import "UIImage+Alpha.h"
 
 @implementation UIImage (Resize)
 

@@ -167,6 +167,7 @@
     
     // Add button listening selectors
     [self.cellLeft.saveButton addTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cellLeft.commentButton addTarget:self action:@selector(didTapCommentRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.cellLeft.shareButton addTarget:self action:@selector(didTapShareRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self setNeedsDisplay];
@@ -306,6 +307,13 @@
     if (_delegate && [_delegate respondsToSelector:@selector(recipeTableCellView:didTapSaveButton:recipe:)]) {
         NSLog(@"Tap save button...");
         [_delegate recipeTableCellView:self didTapSaveButton:button recipe:self.recipe];
+    }
+}
+
+- (void)didTapCommentRecipeButtonAction:(UIButton *)button {
+    if (_delegate && [_delegate respondsToSelector:@selector(recipeTableCellView:didTapCommentButton:recipe:)]) {
+        NSLog(@"Tap comment button...");
+        [_delegate recipeTableCellView:self didTapCommentButton:button recipe:self.recipe];
     }
 }
 
