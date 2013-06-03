@@ -150,14 +150,16 @@
     
     // user's stuff
     PFUser *user = [_recipe objectForKey:kHMRecipeUserKey];
-    [user fetchIfNeeded];
-    
-    PFFile *profilePictureSmall = [user objectForKey:kHMUserProfilePicSmallKey];
-    if (profilePictureSmall) {
-        [self.cellLeft.avatarImageView setFile:profilePictureSmall];
-    } else {
-        [self.cellLeft.avatarImageView setFile:[PFFile fileWithData:UIImagePNGRepresentation([UIImage imageNamed:@"AvatarPlaceholder.png"])]];
-    }
+    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            PFFile *profilePictureSmall = [user objectForKey:kHMUserProfilePicSmallKey];
+            if (profilePictureSmall) {
+                [self.cellLeft.avatarImageView setFile:profilePictureSmall];
+            } else {
+                [self.cellLeft.avatarImageView setFile:[PFFile fileWithData:UIImagePNGRepresentation([UIImage imageNamed:@"AvatarPlaceholder.png"])]];
+            }
+        }
+    }];
     
     
 //    NSString *authorName = [user objectForKey:kHMUserDisplayNameKey];
