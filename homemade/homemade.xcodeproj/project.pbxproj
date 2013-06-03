@@ -149,9 +149,9 @@
 		46920297175C99730096F522 /* HMImadeItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920291175C98790096F522 /* HMImadeItViewController.m */; };
 		46920298175C99730096F522 /* HMIngredientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920293175C98790096F522 /* HMIngredientViewController.m */; };
 		46920299175C99B40096F522 /* HMStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028D175C98660096F522 /* HMStepsView.m */; };
-		469202A0175C9AF30096F522 /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692029B175C9AD80096F522 /* HMIngredientCell.m */; };
-		469202A1175C9AF30096F522 /* HMRecipeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692029D175C9AD80096F522 /* HMRecipeStepCell.m */; };
-		469202A2175C9AF30096F522 /* HMRecipeTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692029F175C9AD80096F522 /* HMRecipeTipCell.m */; };
+		469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202A4175C9DDC0096F522 /* HMIngredientCell.m */; };
+		469202AA175C9E040096F522 /* HMRecipeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202A6175C9DDC0096F522 /* HMRecipeStepCell.m */; };
+		469202AB175C9E040096F522 /* HMRecipeTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202A8175C9DDE0096F522 /* HMRecipeTipCell.m */; };
 		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
@@ -366,12 +366,12 @@
 		46920291175C98790096F522 /* HMImadeItViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMImadeItViewController.m; path = UILayer/RecipeUI/HMImadeItViewController.m; sourceTree = "<group>"; };
 		46920292175C98790096F522 /* HMIngredientViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientViewController.h; path = UILayer/RecipeUI/HMIngredientViewController.h; sourceTree = "<group>"; };
 		46920293175C98790096F522 /* HMIngredientViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMIngredientViewController.m; path = UILayer/RecipeUI/HMIngredientViewController.m; sourceTree = "<group>"; };
-		4692029A175C9AD80096F522 /* HMIngredientCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientCell.h; path = UILayer/RecipeUI/HMIngredientCell.h; sourceTree = "<group>"; };
-		4692029B175C9AD80096F522 /* HMIngredientCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMIngredientCell.m; path = UILayer/RecipeUI/HMIngredientCell.m; sourceTree = "<group>"; };
-		4692029C175C9AD80096F522 /* HMRecipeStepCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeStepCell.h; path = UILayer/RecipeUI/HMRecipeStepCell.h; sourceTree = "<group>"; };
-		4692029D175C9AD80096F522 /* HMRecipeStepCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeStepCell.m; path = UILayer/RecipeUI/HMRecipeStepCell.m; sourceTree = "<group>"; };
-		4692029E175C9AD80096F522 /* HMRecipeTipCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeTipCell.h; path = UILayer/RecipeUI/HMRecipeTipCell.h; sourceTree = "<group>"; };
-		4692029F175C9AD80096F522 /* HMRecipeTipCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeTipCell.m; path = UILayer/RecipeUI/HMRecipeTipCell.m; sourceTree = "<group>"; };
+		469202A3175C9DDB0096F522 /* HMIngredientCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientCell.h; path = UILayer/RecipeUI/HMIngredientCell.h; sourceTree = "<group>"; };
+		469202A4175C9DDC0096F522 /* HMIngredientCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMIngredientCell.m; path = UILayer/RecipeUI/HMIngredientCell.m; sourceTree = "<group>"; };
+		469202A5175C9DDC0096F522 /* HMRecipeStepCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeStepCell.h; path = UILayer/RecipeUI/HMRecipeStepCell.h; sourceTree = "<group>"; };
+		469202A6175C9DDC0096F522 /* HMRecipeStepCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeStepCell.m; path = UILayer/RecipeUI/HMRecipeStepCell.m; sourceTree = "<group>"; };
+		469202A7175C9DDD0096F522 /* HMRecipeTipCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeTipCell.h; path = UILayer/RecipeUI/HMRecipeTipCell.h; sourceTree = "<group>"; };
+		469202A8175C9DDE0096F522 /* HMRecipeTipCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMRecipeTipCell.m; path = UILayer/RecipeUI/HMRecipeTipCell.m; sourceTree = "<group>"; };
 		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -431,14 +431,14 @@
 		462A770C16FC28B800C3CBF7 /* RecipeUI */ = {
 			isa = PBXGroup;
 			children = (
+				469202A3175C9DDB0096F522 /* HMIngredientCell.h */,
+				469202A4175C9DDC0096F522 /* HMIngredientCell.m */,
+				469202A5175C9DDC0096F522 /* HMRecipeStepCell.h */,
+				469202A6175C9DDC0096F522 /* HMRecipeStepCell.m */,
+				469202A7175C9DDD0096F522 /* HMRecipeTipCell.h */,
+				469202A8175C9DDE0096F522 /* HMRecipeTipCell.m */,
 				4692028A175C98280096F522 /* CustomTabBar.h */,
 				4692028B175C98280096F522 /* CustomTabBar.m */,
-				4692029A175C9AD80096F522 /* HMIngredientCell.h */,
-				4692029B175C9AD80096F522 /* HMIngredientCell.m */,
-				4692029C175C9AD80096F522 /* HMRecipeStepCell.h */,
-				4692029D175C9AD80096F522 /* HMRecipeStepCell.m */,
-				4692029E175C9AD80096F522 /* HMRecipeTipCell.h */,
-				4692029F175C9AD80096F522 /* HMRecipeTipCell.m */,
 				25A943741728E3F600DA959B /* HMRecipeViewController.h */,
 				25A943751728E3F600DA959B /* HMRecipeViewController.m */,
 				4692028C175C98660096F522 /* HMStepsView.h */,
@@ -1069,9 +1069,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				469202A0175C9AF30096F522 /* HMIngredientCell.m in Sources */,
-				469202A1175C9AF30096F522 /* HMRecipeStepCell.m in Sources */,
-				469202A2175C9AF30096F522 /* HMRecipeTipCell.m in Sources */,
+				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
+				469202AA175C9E040096F522 /* HMRecipeStepCell.m in Sources */,
+				469202AB175C9E040096F522 /* HMRecipeTipCell.m in Sources */,
 				46920299175C99B40096F522 /* HMStepsView.m in Sources */,
 				46920296175C99730096F522 /* HMStepsViewController.m in Sources */,
 				46920297175C99730096F522 /* HMImadeItViewController.m in Sources */,
