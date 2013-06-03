@@ -25,6 +25,7 @@ extern NSString *const kHMRecipeTitleKey;
 extern NSString *const kHMRecipeOverviewKey;
 extern NSString *const kHMRecipeUserKey;
 extern NSString *const kHMRecipePhotoKey;
+extern NSString *const kHMRecipeColorKey;
 extern NSString *const kHMRecipeDifficultyKey;
 extern NSString *const kHMRecipeIngredientsKey;
 extern NSString *const kHMRecipeStepsKey;

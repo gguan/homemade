@@ -153,6 +153,7 @@
 		46920281175B33A20096F522 /* step@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692024D175B33A20096F522 /* step@2x.png */; };
 		46920282175B33A20096F522 /* WhatIMade.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692024E175B33A20096F522 /* WhatIMade.png */; };
 		46920283175B33A20096F522 /* WhatIMade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692024F175B33A20096F522 /* WhatIMade@2x.png */; };
+		46920289175C89150096F522 /* UIColor+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920288175C89150096F522 /* UIColor+String.m */; };
 		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
@@ -375,6 +376,8 @@
 		4692024D175B33A20096F522 /* step@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "step@2x.png"; sourceTree = "<group>"; };
 		4692024E175B33A20096F522 /* WhatIMade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhatIMade.png; sourceTree = "<group>"; };
 		4692024F175B33A20096F522 /* WhatIMade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WhatIMade@2x.png"; sourceTree = "<group>"; };
+		46920287175C89150096F522 /* UIColor+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+String.h"; path = "Utility/UIColor+String.h"; sourceTree = "<group>"; };
+		46920288175C89150096F522 /* UIColor+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+String.m"; path = "Utility/UIColor+String.m"; sourceTree = "<group>"; };
 		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -812,6 +815,8 @@
 			children = (
 				465F5965174EA95F00E2164B /* UIImageView+Addition.h */,
 				465F5966174EA95F00E2164B /* UIImageView+Addition.m */,
+				46920287175C89150096F522 /* UIColor+String.h */,
+				46920288175C89150096F522 /* UIColor+String.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1156,6 +1161,7 @@
 				46920217175A18BB0096F522 /* UIImage+Alpha.m in Sources */,
 				46920219175A18BB0096F522 /* UIImage+ResizeAdditions.m in Sources */,
 				4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */,
+				46920289175C89150096F522 /* UIColor+String.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
