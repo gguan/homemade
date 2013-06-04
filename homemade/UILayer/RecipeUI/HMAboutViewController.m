@@ -71,7 +71,7 @@
     
     
     // Init table view header
-    UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50 + RecipeImageViewHeight + textSize.height + 10)];
+    UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50 + RecipeImageViewHeight + textSize.height + 30)];
     [headContainerView addSubview:titleLabel];
     [headContainerView addSubview:self.recipeImageView];
     [headContainerView addSubview:aboutLabel];
@@ -103,7 +103,7 @@
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 15.0f;
+    return 20.0f;
 }
 
 
@@ -113,11 +113,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+    
+    NSDictionary *ingredient = [self.ingredients objectAtIndex:indexPath.row];
+    NSString *name = [ingredient objectForKey:@"name"];
+    NSString *amount = [ingredient objectForKey:@"amount"];
+    [cell.textLabel setText:[NSString stringWithFormat:@"∙ %@ - %@", name, amount]];
     
     return cell;
 }
-
-
 
 @end

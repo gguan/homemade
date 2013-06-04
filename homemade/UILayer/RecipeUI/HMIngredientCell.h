@@ -10,7 +10,7 @@
 
 @interface HMIngredientCell : UITableViewCell
 
-@property (nonatomic,strong) UIView *nameView;
-@property (nonatomic,strong) UIView *quantityView;
+@property (nonatomic,strong) UILabel *nameLabel;
+@property (nonatomic,strong) UILabel *quantityLabel;
 
 @end
