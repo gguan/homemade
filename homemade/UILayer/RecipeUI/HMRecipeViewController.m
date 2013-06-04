@@ -96,13 +96,13 @@
 @synthesize imadeitViewController = _imadeitViewController;
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
-   return  [self initWithPFObject:recipeObject andUIColor:[UIColor colorWithRed:162.0/255.0 green:73.0/255.0 blue:43.0/255.0 alpha:1.0]];
+   return  [self initWithRecipe:recipeObject andUIColor:[UIColor colorWithRed:162.0/255.0 green:73.0/255.0 blue:43.0/255.0 alpha:1.0]];
     
 }
 
 
 
-- (id)initWithPFObject:(PFObject*)recipeObject andUIColor:(UIColor*)color
+- (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color
 {
     self = [super init];
     if (self)

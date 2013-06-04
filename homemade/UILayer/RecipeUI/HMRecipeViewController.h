@@ -11,7 +11,7 @@
 
 @interface HMRecipeViewController : UIViewController<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate,CustomTabBarDelegate>
 
-- (id)initWithPFObject:(PFObject*)recipeObject andUIColor:(UIColor*)color;
+- (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color;
 
 - (id)initWithRecipe:(PFObject*)recipeObject;
 

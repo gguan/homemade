@@ -55,6 +55,7 @@
     
     UIView *coverView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     coverView.backgroundColor = kBackViewColor;
+    coverView.alpha = 0.0f;
     coverView.tag = kCoverViewTag;
     UITapGestureRecognizer *hiddenViewGecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenViewAnimation)];
     [coverView addGestureRecognizer:hiddenViewGecognizer];
@@ -69,10 +70,18 @@
     [coverView addSubview:imageView];
     [[self window] addSubview:coverView];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:kAnimationDuration];
-    imageView.frame = [self autoFitFrame];
-    [UIView commitAnimations];
+    [UIView animateWithDuration:kAnimationDuration
+                     animations:^{
+                         coverView.alpha = 1.0f;
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:kAnimationDuration
+                                          animations:^{
+                                              imageView.frame = [self autoFitFrame];
+                                          }
+                                          completion:^(BOOL finished) { }];
+                     }];
+
     
 }
 
@@ -80,7 +89,7 @@
 {
     self.userInteractionEnabled = YES;
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0;
+    lpgr.minimumPressDuration = 0.5;
     [self addGestureRecognizer:lpgr];
 
 }
