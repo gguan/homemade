@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomTabBar.h"
 
-@interface HMRecipeViewController : UIViewController<UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, CustomTabBarDelegate>
+@interface HMRecipeViewController : UIViewController<CustomTabBarDelegate>
 
 - (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color;
 
