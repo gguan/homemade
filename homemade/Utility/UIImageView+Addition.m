@@ -89,7 +89,7 @@
 {
     self.userInteractionEnabled = YES;
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0;
+    lpgr.minimumPressDuration = 0.5;
     [self addGestureRecognizer:lpgr];
 
 }
