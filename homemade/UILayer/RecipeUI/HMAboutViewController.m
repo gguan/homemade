@@ -38,25 +38,22 @@
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    // Init recipe image view
+    self.recipeImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 3, self.view.frame.size.width, RecipeImageViewHeight)];
+    self.recipeImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    self.recipeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.recipeImageView.clipsToBounds = YES;
+    [self.recipeImageView setFile:[self.recipeObject objectForKey:kHMRecipePhotoKey]];
+    [self.recipeImageView loadInBackground];
+
     // Init title label
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 213, 300, 30)];
     [titleLabel setText:[self.recipeObject objectForKey:kHMRecipeTitleKey]];
     [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:21]];
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    
-    
-    // Init recipe image view
-    self.recipeImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, RecipeImageViewHeight)];
-    [self.recipeImageView setBackgroundColor:[UIColor greenColor]];
-    self.recipeImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-    self.recipeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.recipeImageView.clipsToBounds = YES;
-    [self.recipeImageView setFile:[self.recipeObject objectForKey:kHMRecipePhotoKey]];
-    //        [recipeImageView loadInBackground];
-    
-    
+        
     // Init description label
     UILabel *aboutLabel = [[UILabel alloc] init];
     NSString *aboutString = [self.recipeObject objectForKey:kHMRecipeOverviewKey];
@@ -77,6 +74,9 @@
     [headContainerView addSubview:self.recipeImageView];
     [headContainerView addSubview:aboutLabel];
     self.tableView.tableHeaderView = headContainerView;
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    self.tableView.tableFooterView = footerView;
     
     [self.recipeImageView addDetailShow];
 
