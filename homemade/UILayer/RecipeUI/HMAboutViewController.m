@@ -8,6 +8,7 @@
 
 #import "HMAboutViewController.h"
 #import "HMIngredientCell.h"
+#import "UIImageView+Addition.h"
 
 #define RecipeImageViewHeight 200
 
@@ -76,6 +77,8 @@
     [headContainerView addSubview:self.recipeImageView];
     [headContainerView addSubview:aboutLabel];
     self.tableView.tableHeaderView = headContainerView;
+    
+    [self.recipeImageView addDetailShow];
 
 }
 
