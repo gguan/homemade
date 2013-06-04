@@ -10,7 +10,8 @@
 #define descLabelWidth 280
 #define stepLabelWidth 135
 #define tipLabelWidth 280
-#define TABBARHEIGHT 44
+#define TabBarWidth 210
+#define TabBarHeight 55
 #define TopImageViewHeight 88
 #define SELECTED_VIEW_TAG 98456345
 #define ingredientsTableView_TAG 100
@@ -22,7 +23,7 @@
 #import "HMRecipeStepCell.h"
 #import "HMRecipeTipCell.h"
 #import "HMStepsViewController.h"
-#import "HMIngredientViewController.h"
+#import "HMAboutViewController.h"
 #import "HMImadeItViewController.h"
 
 @interface HMRecipeViewController ()
@@ -34,7 +35,7 @@
 
 @property (strong, nonatomic) UIButton     *saveButton;
 
-@property (strong, nonatomic) UITableView  *ingredientsTableView;
+@property (strong, nonatomic) UITableView  *aboutTableView;
 
 @property (strong, nonatomic) UITableView  *stepsTableView;
 
@@ -52,19 +53,19 @@
 
 @property(nonatomic,strong) UIView *stepView;
 
-@property(nonatomic,strong) UIView *ingredientView;
+@property(nonatomic,strong) UIView *aboutView;
 
 @property(nonatomic,strong) UIView *ImadeitView;
 
 @property(nonatomic,strong) CustomTabBar *tabBar;
 
-@property(nonatomic,strong) NSArray *Items;
+@property(nonatomic,strong) NSArray *tabBarItems;
 
 @property(nonatomic,strong) UIColor *color;
 
-@property(nonatomic,strong) HMStepsViewController *stepsViewController;
+@property(nonatomic,strong) HMAboutViewController *aboutViewController;
 
-@property(nonatomic,strong) HMIngredientViewController *ingredientViewController;
+@property(nonatomic,strong) HMStepsViewController *stepsViewController;
 
 @property(nonatomic,strong) HMImadeItViewController *imadeitViewController;
 
@@ -77,7 +78,7 @@
 @synthesize titleLabel = _titleLabel;
 @synthesize descLabel = _descLabel;
 @synthesize saveButton = _saveButton;
-@synthesize ingredientsTableView = _ingredientsTableView;
+@synthesize aboutTableView = _ingredientsTableView;
 @synthesize stepsTableView = _stepsTableView;
 @synthesize ingredients = _ingredients;
 @synthesize steps = _steps;
@@ -86,21 +87,18 @@
 @synthesize tipsLabelHeight = _tipsLabelHeight;
 @synthesize ingredientsQuantity = _ingredientsQuantity;
 @synthesize stepView = _stepView;
-@synthesize ingredientView = _ingredientView;
+@synthesize aboutView = _aboutView;
 @synthesize ImadeitView = _ImadeitView;
 @synthesize tabBar = _tabBar;
-@synthesize Items = _Items;
+@synthesize tabBarItems = _tabBarItems;
 @synthesize color = _color;
-@synthesize ingredientViewController = _ingredientViewController;
+@synthesize aboutViewController = _aboutViewController;
 @synthesize stepsViewController = _stepsViewController;
 @synthesize imadeitViewController = _imadeitViewController;
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
    return  [self initWithRecipe:recipeObject andUIColor:[UIColor colorWithRed:162.0/255.0 green:73.0/255.0 blue:43.0/255.0 alpha:1.0]];
-    
 }
-
-
 
 - (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color
 {
@@ -108,94 +106,62 @@
     if (self)
     {
         self.color = color;
-       // self.color = [UIColor colorWithRed:193.0/255.0 green:67.0/255.0 blue:29.0/255.0 alpha:1.0];
-        //The top image view
-        PFImageView *topImageView = [[PFImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
         
-        [topImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, TopImageViewHeight + TABBARHEIGHT)];
-        [self.view addSubview:topImageView];
+        // Add a baground color view
+        UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
+        [colorView setBackgroundColor:self.color];
+        [self.view addSubview:colorView];
         
-        topImageView.file = [recipeObject objectForKey:kHMRecipePhotoKey];
-    
-        if (topImageView.file.isDataAvailable) {
-            [topImageView loadInBackground:^(UIImage *image, NSError *error){
-                if (!error) {
-                    [topImageView setContentMode:UIViewContentModeScaleAspectFill];
-                    topImageView.clipsToBounds = YES;
-                }
-                
-                else {
-                    
-                    NSLog(@"error:%@",[error userInfo]);
-                }
-            }];
-
-        }
-        else{
-            NSLog(@"no image");
-            [topImageView.file getDataInBackgroundWithBlock:^(NSData* data,NSError* error){
-                if (!error) {
-                     [topImageView loadInBackground];
-                    [topImageView setContentMode:UIViewContentModeScaleAspectFill];
-                    topImageView.clipsToBounds = YES;
-                  
-                }
-                else{
-                    NSLog(@"error:%@",[error userInfo]);
-                }
-                
-            }];
-            
-        }
-   
+        // Set background image
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
         
         //The back button
         UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backButton setFrame:CGRectMake(12.5, 15, 12, 17)];
+        [backButton setFrame:CGRectMake(13, 20, 12, 17)];
         [backButton setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
         [backButton addTarget:self action:@selector(backButtonClicked) forControlEvents:UIControlEventAllTouchEvents];
         [self.view addSubview:backButton];
         
-        //The "Fuzzy Thing" label
+        // Initialize three subViews
+        self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:recipeObject];
+        self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:recipeObject];
+        self.imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:recipeObject];
         
+        // Place the tab bar at the top of our view
+        _tabBarItems = [NSArray arrayWithObjects:
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"about.png", @"image", self.aboutViewController, @"viewController", nil, @"subTitle", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"steps.png", @"image", self.stepsViewController, @"viewController", nil, @"subTitle", nil],
+                  [NSDictionary dictionaryWithObjectsAndKeys:@"imadeit.png", @"image", self.imadeitViewController, @"viewController", nil, @"subTitle", nil], nil];
+
+        _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(TabBarWidth/3, TabBarHeight-3) tag:0 delegate:self];
+        
+        self.tabBar.frame = CGRectMake((self.view.frame.size.width-TabBarWidth)/2, 0, TabBarWidth, TabBarHeight);
+        [self.tabBar setBackgroundColor:[UIColor clearColor]];
+        [self.view addSubview:self.tabBar];
+        
+        // Select the first tab
+        [self.tabBar selectItemAtIndex:0];
+        
+        
+        
+        //The "Fuzzy Thing" label
+
+        /*
         UILabel *fuzzyLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.5, 50, 130, 30)];
-        [fuzzyLabel setText:@"Fuzzy Thing"];
+        [fuzzyLabel setText:[recipeObject objectForKey:kHMRecipeTitleKey]];
         [fuzzyLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:21]];
         [fuzzyLabel setTextColor:[UIColor whiteColor]];
         [fuzzyLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:fuzzyLabel];
+        */
         
-        
-        //initialize the tabBar and three subViews
-        _stepsViewController = [[HMStepsViewController alloc] initWithRecipe:recipeObject];
-       
+                
         NSLog(@"%@ 111",NSStringFromCGRect(_stepsViewController.view.bounds));
-        _ingredientViewController = [[HMIngredientViewController alloc] initWithRecipe:recipeObject];
-        _imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:recipeObject];
+     
         
-        
-        _Items = [NSArray arrayWithObjects:
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"step.png", @"image", self.stepsViewController, @"viewController", @"Steps",@"subTitle",nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"ingredient.png", @"image", self.ingredientViewController, @"viewController",@"ingredient",@"subTitle", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"Imadit.png", @"image", self.imadeitViewController, @"viewController",@"I made it",@"subTitle", nil],nil];
     
-        _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(self.view.frame.size.width/3, TABBARHEIGHT) tag:0 delegate:self];
-        
-        // Place the tab bar at the top of our view
-        self.tabBar.frame = CGRectMake(0,TopImageViewHeight,self.view.frame.size.width, TABBARHEIGHT);
-        [self.view addSubview:self.tabBar];
-        // Select the first tab
-        [self.tabBar selectItemAtIndex:0];
-        [self.tabBar setBackgroundColor:[UIColor blackColor]];
-        [self touchDownAtItemAtIndex:0];
-        [self.tabBar setBackgroundColor:[UIColor clearColor]];
-        [self.view addSubview:self.tabBar];
-        
-        
-        
-        
-        //Initialize the ingredients table view
-        self.ingredientsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT - TopImageViewHeight) style:UITableViewStylePlain];
+        //Initialize the about view
+        self.aboutTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight) style:UITableViewStylePlain];
         
         //Add customized backgound color in top bounce area if needed
         //        CGRect frame =CGRectMake(0, -568, 320, 568);//for 4 inch device
@@ -203,15 +169,15 @@
         //        grayView.backgroundColor = [UIColor redColor];
         //        [self.ingredientsTableView addSubview:grayView];
 
-        self.ingredientsTableView.backgroundColor = self.color;
-        self.ingredientsTableView.dataSource = self;
-        self.ingredientsTableView.delegate = self;
-        self.ingredientsTableView.tag = ingredientsTableView_TAG;
-        [self.ingredientsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [self.ingredientView addSubview:self.ingredientsTableView];
+        self.aboutTableView.backgroundColor = self.color;
+        self.aboutTableView.dataSource = self;
+        self.aboutTableView.delegate = self;
+        self.aboutTableView.tag = ingredientsTableView_TAG;
+        [self.aboutTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [self.aboutView addSubview:self.aboutTableView];
         
         //Initialize the steps table view
-        self.stepsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TABBARHEIGHT + TopImageViewHeight, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT - TopImageViewHeight) style:UITableViewStylePlain];
+        self.stepsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TabBarHeight + TopImageViewHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight - TopImageViewHeight) style:UITableViewStylePlain];
         
         //Add customized backgound color in top bounce area if needed
         //        CGRect frame =CGRectMake(0, -568, 320, 568);//for 4 inch device
@@ -291,12 +257,12 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -305,29 +271,23 @@
 }
 
 
-
 #pragma tableView Delegate Method
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (tableView.tag)
-        {
-            case ingredientsTableView_TAG:
-            {
-                
-                return [self.ingredients count];
-                break;
-            }
-            case stepsTableView_TAG:
-            {
-                return [self.steps count]/2 + [self.steps count]%2;
-                break;
-            }
-    
-    
-            default:
-                return  0;
-                break;
+    switch (tableView.tag) {
+        case ingredientsTableView_TAG: {
+            return [self.ingredients count];
+            break;
         }
+        case stepsTableView_TAG: {
+            return [self.steps count]/2 + [self.steps count]%2;
+            break;
+        }
+        default: {
+            return  0;
+            break;
+        }
+    }
 
 }
 
@@ -501,19 +461,17 @@
 
 #pragma mark -
 #pragma mark CustomTabBarDelegate
-
 - (UIImage*) imageFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex
 {
-    
     // Get the right data
-    NSDictionary* data = [self.Items objectAtIndex:itemIndex];
+    NSDictionary* data = [self.tabBarItems objectAtIndex:itemIndex];
     // Return the image for this tab bar item
     return [UIImage imageNamed:[data objectForKey:@"image"]];
 }
 
 - (NSString*) titleFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex{
     
-    NSDictionary* data = [self.Items objectAtIndex:itemIndex];
+    NSDictionary* data = [self.tabBarItems objectAtIndex:itemIndex];
     // Return the image for this tab bar item
     return [data objectForKey:@"subTitle"];
 }
@@ -522,7 +480,7 @@
 // This is the blue background shown for selected tab bar items
 - (UIImage*) selectedItemBackgroundImage
 {
-    return [UIImage imageNamed:@""];
+    return nil;
 }
 
 
@@ -540,11 +498,11 @@
     [currentView removeFromSuperview];
     
     // Get the right view controller
-    NSDictionary* data = [self.Items objectAtIndex:itemIndex];
+    NSDictionary* data = [self.tabBarItems objectAtIndex:itemIndex];
     UIViewController* viewController = [data objectForKey:@"viewController"];
     
     // Set the view controller's frame to account for the tab bar
-    viewController.view.frame = CGRectMake(0, TopImageViewHeight + TABBARHEIGHT, self.view.frame.size.width, self.view.frame.size.height - TABBARHEIGHT -TopImageViewHeight);
+    viewController.view.frame = CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight);
     viewController.view.clipsToBounds = YES;
     NSLog(@"%@ 222",NSStringFromCGRect(viewController.view.bounds));
     // Se the tag so we can find it later
@@ -552,12 +510,12 @@
     
     
     // Add the new view controller's view
-    [self.view insertSubview:viewController.view belowSubview:_tabBar];
+    [self.view insertSubview:viewController.view aboveSubview:_tabBar];
     
 }
 
-#pragma UIbutton method
 
+#pragma UIbutton method
 - (void)backButtonClicked
 {
     [self.navigationController popToRootViewControllerAnimated:YES];

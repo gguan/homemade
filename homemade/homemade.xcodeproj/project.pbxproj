@@ -147,7 +147,7 @@
 		46920295175C995E0096F522 /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028B175C98280096F522 /* CustomTabBar.m */; };
 		46920296175C99730096F522 /* HMStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028F175C98660096F522 /* HMStepsViewController.m */; };
 		46920297175C99730096F522 /* HMImadeItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920291175C98790096F522 /* HMImadeItViewController.m */; };
-		46920298175C99730096F522 /* HMIngredientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920293175C98790096F522 /* HMIngredientViewController.m */; };
+		46920298175C99730096F522 /* HMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920293175C98790096F522 /* HMAboutViewController.m */; };
 		46920299175C99B40096F522 /* HMStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028D175C98660096F522 /* HMStepsView.m */; };
 		469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202A4175C9DDC0096F522 /* HMIngredientCell.m */; };
 		469202AA175C9E040096F522 /* HMRecipeStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202A6175C9DDC0096F522 /* HMRecipeStepCell.m */; };
@@ -376,8 +376,8 @@
 		4692028F175C98660096F522 /* HMStepsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepsViewController.m; path = UILayer/RecipeUI/HMStepsViewController.m; sourceTree = "<group>"; };
 		46920290175C98790096F522 /* HMImadeItViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMImadeItViewController.h; path = UILayer/RecipeUI/HMImadeItViewController.h; sourceTree = "<group>"; };
 		46920291175C98790096F522 /* HMImadeItViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMImadeItViewController.m; path = UILayer/RecipeUI/HMImadeItViewController.m; sourceTree = "<group>"; };
-		46920292175C98790096F522 /* HMIngredientViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientViewController.h; path = UILayer/RecipeUI/HMIngredientViewController.h; sourceTree = "<group>"; };
-		46920293175C98790096F522 /* HMIngredientViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMIngredientViewController.m; path = UILayer/RecipeUI/HMIngredientViewController.m; sourceTree = "<group>"; };
+		46920292175C98790096F522 /* HMAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMAboutViewController.h; path = UILayer/RecipeUI/HMAboutViewController.h; sourceTree = "<group>"; };
+		46920293175C98790096F522 /* HMAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMAboutViewController.m; path = UILayer/RecipeUI/HMAboutViewController.m; sourceTree = "<group>"; };
 		469202A3175C9DDB0096F522 /* HMIngredientCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientCell.h; path = UILayer/RecipeUI/HMIngredientCell.h; sourceTree = "<group>"; };
 		469202A4175C9DDC0096F522 /* HMIngredientCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMIngredientCell.m; path = UILayer/RecipeUI/HMIngredientCell.m; sourceTree = "<group>"; };
 		469202A5175C9DDC0096F522 /* HMRecipeStepCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMRecipeStepCell.h; path = UILayer/RecipeUI/HMRecipeStepCell.h; sourceTree = "<group>"; };
@@ -471,8 +471,8 @@
 				4692028F175C98660096F522 /* HMStepsViewController.m */,
 				46920290175C98790096F522 /* HMImadeItViewController.h */,
 				46920291175C98790096F522 /* HMImadeItViewController.m */,
-				46920292175C98790096F522 /* HMIngredientViewController.h */,
-				46920293175C98790096F522 /* HMIngredientViewController.m */,
+				46920292175C98790096F522 /* HMAboutViewController.h */,
+				46920293175C98790096F522 /* HMAboutViewController.m */,
 			);
 			name = RecipeUI;
 			sourceTree = "<group>";
@@ -1123,7 +1123,7 @@
 				46920299175C99B40096F522 /* HMStepsView.m in Sources */,
 				46920296175C99730096F522 /* HMStepsViewController.m in Sources */,
 				46920297175C99730096F522 /* HMImadeItViewController.m in Sources */,
-				46920298175C99730096F522 /* HMIngredientViewController.m in Sources */,
+				46920298175C99730096F522 /* HMAboutViewController.m in Sources */,
 				46920295175C995E0096F522 /* CustomTabBar.m in Sources */,
 				46920294175C99250096F522 /* HMRecipeViewController.m in Sources */,
 				4645D30216F44D1900C38D39 /* main.m in Sources */,

@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "HMIngredientViewController.h"
+#import "HMAboutViewController.h"
 
-@interface HMIngredientViewController ()
+@interface HMAboutViewController ()
 
 @end
 
-@implementation HMIngredientViewController
+@implementation HMAboutViewController
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
     self = [super init];
