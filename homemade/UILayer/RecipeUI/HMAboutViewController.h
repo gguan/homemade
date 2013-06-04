@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMAboutViewController : UIViewController
+@interface HMAboutViewController : UITableViewController 
 
 - (id)initWithRecipe:(PFObject*)recipeObject;
 

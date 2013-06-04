@@ -140,23 +140,8 @@
         [self.view addSubview:self.tabBar];
         
         // Select the first tab
+        [self touchDownAtItemAtIndex:0];
         [self.tabBar selectItemAtIndex:0];
-        
-        
-        
-        //The "Fuzzy Thing" label
-
-        /*
-        UILabel *fuzzyLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.5, 50, 130, 30)];
-        [fuzzyLabel setText:[recipeObject objectForKey:kHMRecipeTitleKey]];
-        [fuzzyLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:21]];
-        [fuzzyLabel setTextColor:[UIColor whiteColor]];
-        [fuzzyLabel setBackgroundColor:[UIColor clearColor]];
-        [self.view addSubview:fuzzyLabel];
-        */
-        
-                
-        NSLog(@"%@ 111",NSStringFromCGRect(_stepsViewController.view.bounds));
      
         
     
@@ -504,14 +489,12 @@
     // Set the view controller's frame to account for the tab bar
     viewController.view.frame = CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight);
     viewController.view.clipsToBounds = YES;
-    NSLog(@"%@ 222",NSStringFromCGRect(viewController.view.bounds));
+    NSLog(@"Bounds: %@",NSStringFromCGRect(viewController.view.bounds));
     // Se the tag so we can find it later
     viewController.view.tag = SELECTED_VIEW_TAG;
     
-    
     // Add the new view controller's view
     [self.view insertSubview:viewController.view aboveSubview:_tabBar];
-    
 }
 
 
