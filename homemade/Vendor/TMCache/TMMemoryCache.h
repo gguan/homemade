@@ -48,6 +48,18 @@ typedef void (^TMMemoryCacheObjectBlock)(TMMemoryCache *cache, NSString *key, id
  */
 @property (assign) NSTimeInterval ageLimit;
 
+/**
+ When `YES` on iOS the cache will remove all objects when the app receives a memory warning.
+ Defaults to `YES`.
+ */
+@property (assign) BOOL removeAllObjectsOnMemoryWarning;
+
+/**
+ When `YES` on iOS the cache will remove all objects when the app enters the background.
+ Defaults to `YES`.
+ */
+@property (assign) BOOL removeAllObjectsOnEnteringBackground;
+
 #pragma mark -
 /// @name Event Blocks
 
@@ -86,6 +98,18 @@ typedef void (^TMMemoryCacheObjectBlock)(TMMemoryCache *cache, NSString *key, id
  This block will be excuted within a barrier, i.e. all reads and writes are suspended for the duration of the block.
  */
 @property (copy) TMMemoryCacheBlock didRemoveAllObjectsBlock;
+
+/**
+ A block to be executed upon receiving a memory warning (iOS only) potentially in parallel with other blocks on the <queue>.
+ This block will be executed regardless of the value of <removeAllObjectsOnMemoryWarning>. Defaults to `nil`.
+ */
+@property (copy) TMMemoryCacheBlock didReceiveMemoryWarningBlock;
+
+/**
+ A block to be executed when the app enters the background (iOS only) potentially in parallel with other blocks on the <queue>.
+ This block will be executed regardless of the value of <removeAllObjectsOnEnteringBackground>. Defaults to `nil`.
+ */
+@property (copy) TMMemoryCacheBlock didEnterBackgroundBlock;
 
 #pragma mark -
 /// @name Shared Cache
@@ -179,6 +203,15 @@ typedef void (^TMMemoryCacheObjectBlock)(TMMemoryCache *cache, NSString *key, id
  */
 - (void)removeAllObjects:(TMMemoryCacheBlock)block;
 
+/**
+ Loops through all objects in the cache within a memory barrier (reads and writes are suspended during the enumeration).
+ This method returns immediately.
+
+ @param block A block to be executed for every object in the cache.
+ @param completionBlock An optional block to be executed concurrently when the enumeration is complete.
+ */
+- (void)enumerateObjectsWithBlock:(TMMemoryCacheObjectBlock)block completionBlock:(TMMemoryCacheBlock)completionBlock;
+
 #pragma mark -
 /// @name Synchronous Methods
 
@@ -249,5 +282,17 @@ typedef void (^TMMemoryCacheObjectBlock)(TMMemoryCache *cache, NSString *key, id
  Removes all objects from the cache. This method blocks the calling thread until the cache has been cleared.
  */
 - (void)removeAllObjects;
+
+/**
+ Loops through all objects in the cache within a memory barrier (reads and writes are suspended during the enumeration).
+ This method blocks the calling thread until all objects have been enumerated.
+
+ @param block A block to be executed for every object in the cache.
+ 
+ @warning Do not call this method within the event blocks (<didReceiveMemoryWarningBlock>, etc.)
+ Instead use the asynchronous version, <enumerateObjectsWithBlock:completionBlock:>.
+ 
+ */
+- (void)enumerateObjectsWithBlock:(TMMemoryCacheObjectBlock)block;
 
 @end

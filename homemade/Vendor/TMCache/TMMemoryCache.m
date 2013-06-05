@@ -24,8 +24,10 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
 @synthesize didAddObjectBlock = _didAddObjectBlock;
 @synthesize didRemoveObjectBlock = _didRemoveObjectBlock;
 @synthesize didRemoveAllObjectsBlock = _didRemoveAllObjectsBlock;
+@synthesize didReceiveMemoryWarningBlock = _didReceiveMemoryWarningBlock;
+@synthesize didEnterBackgroundBlock = _didEnterBackgroundBlock;
 
-#pragma mark - Initialization
+#pragma mark - Initialization -
 
 - (void)dealloc
 {
@@ -50,13 +52,20 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
         _willAddObjectBlock = nil;
         _willRemoveObjectBlock = nil;
         _willRemoveAllObjectsBlock = nil;
+
         _didAddObjectBlock = nil;
         _didRemoveObjectBlock = nil;
         _didRemoveAllObjectsBlock = nil;
 
+        _didReceiveMemoryWarningBlock = nil;
+        _didEnterBackgroundBlock = nil;
+
         _ageLimit = 0.0;
         _costLimit = 0;
         _totalCost = 0;
+
+        _removeAllObjectsOnMemoryWarning = YES;
+        _removeAllObjectsOnEnteringBackground = YES;
 
         #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
         for (NSString *name in @[UIApplicationDidReceiveMemoryWarningNotification, UIApplicationDidEnterBackgroundNotification]) {
@@ -82,11 +91,43 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
     return cache;
 }
 
-#pragma mark - Private Methods
+#pragma mark - Private Methods -
 
 - (void)didObserveApocalypticNotification:(NSNotification *)notification
 {
-    [self removeAllObjects:nil];
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+
+    if ([[notification name] isEqualToString:UIApplicationDidReceiveMemoryWarningNotification]) {
+        if (self.removeAllObjectsOnMemoryWarning)
+            [self removeAllObjects:nil];
+
+        __weak TMMemoryCache *weakSelf = self;
+
+        dispatch_async(_queue, ^{
+            TMMemoryCache *strongSelf = weakSelf;
+            if (!strongSelf)
+                return;
+
+            if (strongSelf->_didReceiveMemoryWarningBlock)
+                strongSelf->_didReceiveMemoryWarningBlock(strongSelf);
+        });
+    } else if ([[notification name] isEqualToString:UIApplicationDidEnterBackgroundNotification]) {
+        if (self.removeAllObjectsOnEnteringBackground)
+            [self removeAllObjects:nil];
+
+        __weak TMMemoryCache *weakSelf = self;
+
+        dispatch_async(_queue, ^{
+            TMMemoryCache *strongSelf = weakSelf;
+            if (!strongSelf)
+                return;
+
+            if (strongSelf->_didEnterBackgroundBlock)
+                strongSelf->_didEnterBackgroundBlock(strongSelf);
+        });
+    }
+    
+    #endif
 }
 
 - (void)removeObjectAndExecuteBlocksForKey:(NSString *)key
@@ -180,7 +221,7 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
     });
 }
 
-#pragma mark - Public Asynchronous Methods
+#pragma mark - Public Asynchronous Methods -
 
 - (void)objectForKey:(NSString *)key block:(TMMemoryCacheObjectBlock)block
 {
@@ -387,7 +428,36 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
     });
 }
 
-#pragma mark - Public Synchronous Methods
+- (void)enumerateObjectsWithBlock:(TMMemoryCacheObjectBlock)block completionBlock:(TMMemoryCacheBlock)completionBlock
+{
+    if (!block)
+        return;
+
+    __weak TMMemoryCache *weakSelf = self;
+
+    dispatch_barrier_async(_queue, ^{
+        TMMemoryCache *strongSelf = weakSelf;
+        if (!strongSelf)
+            return;
+
+        NSArray *keysSortedByDate = [strongSelf->_dates keysSortedByValueUsingSelector:@selector(compare:)];
+        
+        for (NSString *key in keysSortedByDate) {
+            block(strongSelf, key, [strongSelf->_dictionary objectForKey:key]);
+        }
+
+        if (completionBlock) {
+            __weak TMMemoryCache *weakSelf = strongSelf;
+            dispatch_async(strongSelf->_queue, ^{
+                TMMemoryCache *strongSelf = weakSelf;
+                if (strongSelf)
+                    completionBlock(strongSelf);
+            });
+        }
+    });
+}
+
+#pragma mark - Public Synchronous Methods -
 
 - (id)objectForKey:(NSString *)key
 {
@@ -521,7 +591,25 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
     #endif
 }
 
-#pragma mark - Public Thread Safe Accessors
+- (void)enumerateObjectsWithBlock:(TMMemoryCacheObjectBlock)block
+{
+    if (!block)
+        return;
+
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+    [self enumerateObjectsWithBlock:block completionBlock:^(TMMemoryCache *cache) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    #if !OS_OBJECT_USE_OBJC
+    dispatch_release(semaphore);
+    #endif
+}
+
+#pragma mark - Public Thread Safe Accessors -
 
 - (TMMemoryCacheObjectBlock)willAddObjectBlock
 {
@@ -664,6 +752,54 @@ NSString * const TMMemoryCachePrefix = @"com.tumblr.TMMemoryCache";
             return;
 
         strongSelf->_didRemoveAllObjectsBlock = [block copy];
+    });
+}
+
+- (TMMemoryCacheBlock)didReceiveMemoryWarningBlock
+{
+    __block TMMemoryCacheBlock block = nil;
+
+    dispatch_sync(_queue, ^{
+        block = _didReceiveMemoryWarningBlock;
+    });
+
+    return block;
+}
+
+- (void)setDidReceiveMemoryWarningBlock:(TMMemoryCacheBlock)block
+{
+    __weak TMMemoryCache *weakSelf = self;
+
+    dispatch_barrier_async(_queue, ^{
+        TMMemoryCache *strongSelf = weakSelf;
+        if (!strongSelf)
+            return;
+
+        strongSelf->_didReceiveMemoryWarningBlock = [block copy];
+    });
+}
+
+- (TMMemoryCacheBlock)didEnterBackgroundBlock
+{
+    __block TMMemoryCacheBlock block = nil;
+
+    dispatch_sync(_queue, ^{
+        block = _didEnterBackgroundBlock;
+    });
+
+    return block;
+}
+
+- (void)setDidEnterBackgroundBlock:(TMMemoryCacheBlock)block
+{
+    __weak TMMemoryCache *weakSelf = self;
+
+    dispatch_barrier_async(_queue, ^{
+        TMMemoryCache *strongSelf = weakSelf;
+        if (!strongSelf)
+            return;
+
+        strongSelf->_didEnterBackgroundBlock = [block copy];
     });
 }
 
