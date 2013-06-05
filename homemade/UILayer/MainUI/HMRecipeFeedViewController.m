@@ -155,7 +155,7 @@
     } else {
         //For testing, point to the same HMRecipeViewController,add properties later
 
-        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
+        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
       
         [[self navigationController] pushViewController:recipeViewController animated:YES];
     }

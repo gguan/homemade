@@ -97,24 +97,23 @@
     switch (orientation) {
         case PagedFlowViewOrientationHorizontal:{
             CGFloat offset = _scrollView.contentOffset.x;
-            
             for (int i = _visibleRange.location; i < _visibleRange.location + _visibleRange.length; i++) {
                 UIView *cell = [_cells objectAtIndex:i];
                 CGFloat origin = cell.frame.origin.x;
                 CGFloat delta = fabs(origin - offset);
-                
-                CGRect originCellFrame = CGRectMake(_pageSize.width * i, 0, _pageSize.width, _pageSize.height);//如果没有缩小效果的情况下的本该的Frame
-                
+
                 [UIView beginAnimations:@"CellAnimation" context:nil];
                 if (delta < _pageSize.width) {
                     cell.alpha = 1 - (delta / _pageSize.width) * (1 - _minimumPageAlpha);
                     
                     CGFloat inset = (_pageSize.width * (1 - _minimumPageScale)) * (delta / _pageSize.width)/2.0;
-                    cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(inset, inset, inset, inset));
+                    CGFloat scale = 1 - inset * 2.0 / _pageSize.width;
+                    cell.transform = CGAffineTransformMakeScale(scale, scale);
                 } else {
                     cell.alpha = _minimumPageAlpha;
                     CGFloat inset = _pageSize.width * (1 - _minimumPageScale) / 2.0 ;
-                    cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(inset, inset, inset, inset));
+                    CGFloat scale = 1 - inset * 2.0 / _pageSize.width;
+                    cell.transform = CGAffineTransformMakeScale(scale, scale);
                 }
                 [UIView commitAnimations];
             }

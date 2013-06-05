@@ -9,7 +9,8 @@
 #import "HMImadeItViewController.h"
 
 @interface HMImadeItViewController ()
-
+@property (nonatomic, strong) PFObject *recipeObject;
+@property (nonatomic, strong) NSMutableArray *works;
 @end
 
 @implementation HMImadeItViewController
@@ -17,25 +18,21 @@
 - (id)initWithRecipe:(PFObject*)recipeObject{
     self = [super init];
     if (self) {
-        // Custom initialization
-        [self.view setBackgroundColor:[UIColor blueColor]];
+        self.recipeObject = recipeObject;
     }
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // Custom initialization
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
 }
 
 - (void)didReceiveMemoryWarning

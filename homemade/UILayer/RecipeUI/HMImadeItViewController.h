@@ -6,9 +6,8 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface HMImadeItViewController : UIViewController
+@interface HMImadeItViewController : UITableViewController
 
 - (id)initWithRecipe:(PFObject*)recipeObject;
 

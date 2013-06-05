@@ -6,12 +6,19 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TTTAttributedLabel.h"
 
 @interface HMStepsView : UIView
 
-@property(nonatomic,retain) UILabel* stepNumberLabel;
-@property(nonatomic,retain) UILabel* stepDescrptionLabel;
-@property(nonatomic,retain) PFImageView *stepImageView;
-@property(nonatomic,retain) UIImageView *stepDescriptionLabelSnapShot;
+@property (nonatomic, strong) TTTAttributedLabel* stepNumberLabel;
+@property (nonatomic, strong) UIImageView *stepNumberImage;
+@property (nonatomic, strong) NSString *stepDescriptionText;
+@property (nonatomic, strong) TTTAttributedLabel *stepDescrptionLabel;
+@property (nonatomic, strong) PFImageView *stepImageView;
+@property (nonatomic, strong) UIImageView *stepDescriptionLabelSnapShot;
+
+- (void)setLayout;
+- (void)hideSubViews;
+- (void)showSubViews;
+
 @end

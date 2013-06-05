@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "CustomTabBar.h"
 
 @interface HMRecipeViewController : UIViewController<CustomTabBarDelegate>

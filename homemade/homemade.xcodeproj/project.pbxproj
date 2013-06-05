@@ -162,6 +162,8 @@
 		469202BF175DA1FF0096F522 /* pagination@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202BD175DA1FF0096F522 /* pagination@2x.png */; };
 		469202C2175DA2090096F522 /* steps.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202C0175DA2090096F522 /* steps.png */; };
 		469202C3175DA2090096F522 /* steps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202C1175DA2090096F522 /* steps@2x.png */; };
+		469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202CB175F041D0096F522 /* TTTAttributedLabel.m */; };
+		469202CE175F0A610096F522 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469202CD175F0A600096F522 /* CoreText.framework */; };
 		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
@@ -390,6 +392,9 @@
 		469202BD175DA1FF0096F522 /* pagination@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pagination@2x.png"; sourceTree = "<group>"; };
 		469202C0175DA2090096F522 /* steps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steps.png; sourceTree = "<group>"; };
 		469202C1175DA2090096F522 /* steps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "steps@2x.png"; sourceTree = "<group>"; };
+		469202CA175F041D0096F522 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		469202CB175F041D0096F522 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		469202CD175F0A600096F522 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -415,6 +420,7 @@
 				469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */,
 				469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */,
 				4645D2F816F44D1900C38D39 /* CoreGraphics.framework in Frameworks */,
+				469202CE175F0A610096F522 /* CoreText.framework in Frameworks */,
 				469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */,
 				469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */,
 				EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */,
@@ -541,6 +547,7 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				469202CD175F0A600096F522 /* CoreText.framework */,
 				465F5962174BD48300E2164B /* Parse.framework */,
 				462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */,
 				469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */,
@@ -597,6 +604,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				469202C9175F041D0096F522 /* TTTAttributedLabel */,
 				4692020E175A18BB0096F522 /* UIImageCategories */,
 				468F9BA11739D884009CC05A /* PagedFlowView */,
 				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
@@ -945,6 +953,16 @@
 			path = Resources/Assets;
 			sourceTree = "<group>";
 		};
+		469202C9175F041D0096F522 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				469202CA175F041D0096F522 /* TTTAttributedLabel.h */,
+				469202CB175F041D0096F522 /* TTTAttributedLabel.m */,
+			);
+			name = TTTAttributedLabel;
+			path = Vendor/TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1182,7 @@
 				46920219175A18BB0096F522 /* UIImage+ResizeAdditions.m in Sources */,
 				4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				46920289175C89150096F522 /* UIColor+String.m in Sources */,
+				469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

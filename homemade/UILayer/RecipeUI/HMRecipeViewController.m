@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#define TabBarWidth 210
-#define TabBarHeight 55
 #define SELECTED_VIEW_TAG 98456345
 
 #import "HMRecipeViewController.h"

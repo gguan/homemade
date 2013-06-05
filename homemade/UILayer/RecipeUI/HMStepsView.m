@@ -9,58 +9,86 @@
 #import "HMStepsView.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define kStepDescriptionTextFontSize 13
+
 @implementation HMStepsView
-@synthesize stepDescrptionLabel = _stepDescrptionLabel;
-@synthesize stepImageView = _stepImageView;
-@synthesize stepNumberLabel = _stepNumberLabel;
-@synthesize stepDescriptionLabelSnapShot = _stepDescriptionLabelSnapShot;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:[UIColor clearColor]];
+                
+        [self setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
         self.layer.masksToBounds = NO;
-        self.layer.cornerRadius = 0; // if you like rounded corners
         self.layer.shadowOffset = CGSizeMake(0, 10);
         self.layer.shadowRadius = 10;
         self.layer.shadowOpacity = 0.6;
         
-        _stepImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width*3/4)];
-       _stepImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+        // Init step image view
+        self.stepImageView = [[PFImageView alloc] initWithFrame:CGRectZero];
+        self.stepImageView.clipsToBounds = YES;
+        self.stepImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview:self.stepImageView];
         
-        _stepDescrptionLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, _stepImageView.frame.size.height, self.frame.size.width, self.frame.size.height - _stepImageView.frame.size.height)];
-        _stepDescrptionLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
-        [self.stepDescrptionLabel setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
+        // Init step description
+        self.stepDescrptionLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+        [self.stepDescrptionLabel setBackgroundColor:[UIColor clearColor]];
+        self.stepDescrptionLabel.font = [UIFont systemFontOfSize:kStepDescriptionTextFontSize];
+        self.stepDescrptionLabel.textColor = [UIColor darkGrayColor];
         self.stepDescrptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.stepDescrptionLabel.numberOfLines = 0;
-        self.stepDescrptionLabel.adjustsFontSizeToFitWidth = YES;
+        self.stepDescrptionLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+        [self addSubview:self.stepDescrptionLabel];
+                
+        // Init step number image and text
+        self.stepNumberImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pagination.png"]];
+        self.stepNumberImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+        self.stepNumberLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(0, 0, 47, 41)];
+        [self.stepNumberLabel setBackgroundColor:[UIColor clearColor]];
+        self.stepNumberLabel.font = [UIFont systemFontOfSize:20];
+        self.stepNumberLabel.textColor = [UIColor whiteColor];
+        self.stepNumberLabel.numberOfLines = 1;
+        self.stepNumberLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+        [self.stepNumberLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.stepNumberImage addSubview:self.stepNumberLabel];
+        [self addSubview:self.stepNumberImage];
         
-        _stepDescriptionLabelSnapShot = [[UIImageView alloc] initWithFrame:CGRectMake(0, _stepImageView.frame.size.height, self.frame.size.width, self.frame.size.height - _stepImageView.frame.size.height)];
+        self.stepDescriptionLabelSnapShot = [[UIImageView alloc] initWithFrame:frame];
         self.stepDescriptionLabelSnapShot.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
-      [self addSubview:self.stepDescriptionLabelSnapShot];
-        
-        
-        
-        _stepNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.stepImageView.frame.size.height - 10, 20, 20)];
-        _stepNumberLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
-        [self addSubview:self.stepNumberLabel];
-        
-      
+        [self addSubview:self.stepDescriptionLabelSnapShot];
+
         
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+
+
+- (CGFloat)heightForStepText:(NSString *)text {
+    CGFloat height = 10.0f;
+    height += ceilf([text sizeWithFont:[UIFont systemFontOfSize:kStepDescriptionTextFontSize] constrainedToSize:CGSizeMake(PageFlowViewWidth - 20, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping].height);
+    return height;
 }
-*/
+
+- (void)setLayout {
+    CGFloat textHeight = [self heightForStepText:self.description];
+    self.stepDescrptionLabel.frame = CGRectMake(10, PageFlowViewHeight - textHeight - 10, PageFlowViewWidth - 20, textHeight);
+    self.stepImageView.frame = CGRectMake(0, 0, PageFlowViewWidth, PageFlowViewHeight - textHeight - 30);
+    self.stepNumberImage.frame = CGRectMake(0, PageFlowViewHeight - textHeight - 30 - 21, 47, 41);
+}
+
+- (void)hideSubViews {
+    [self.stepDescrptionLabel setHidden:YES];
+    [self.stepImageView setHidden:YES];
+    [self.stepNumberImage setHidden:YES];
+
+}
+
+- (void)showSubViews {
+    [self.stepDescrptionLabel setHidden:NO];
+    [self.stepImageView setHidden:NO];
+    [self.stepNumberImage setHidden:NO];
+}
 
 @end

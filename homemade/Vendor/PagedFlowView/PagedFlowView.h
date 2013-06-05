@@ -58,9 +58,9 @@ typedef enum{
     id <PagedFlowViewDelegate>   _delegate;
 }
 
-@property(nonatomic,assign)   id <PagedFlowViewDataSource> dataSource;
-@property(nonatomic,assign)   id <PagedFlowViewDelegate>   delegate;
-@property(nonatomic,retain)    UIPageControl       *pageControl;
+@property(nonatomic,assign)   id <PagedFlowViewDataSource>  dataSource;
+@property(nonatomic,assign)   id <PagedFlowViewDelegate>    delegate;
+@property(nonatomic,retain)   UIPageControl                 *pageControl;
 @property (nonatomic, assign) CGFloat minimumPageAlpha;
 @property (nonatomic, assign) CGFloat minimumPageScale;
 @property (nonatomic, assign) PagedFlowViewOrientation orientation;
