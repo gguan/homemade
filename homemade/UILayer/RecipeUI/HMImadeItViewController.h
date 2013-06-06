@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "HMCameraButton.h"
-
 
 @interface HMImadeItViewController : UITableViewController
 
