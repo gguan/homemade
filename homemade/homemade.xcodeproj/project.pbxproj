@@ -164,6 +164,11 @@
 		469202C3175DA2090096F522 /* steps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202C1175DA2090096F522 /* steps@2x.png */; };
 		469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202CB175F041D0096F522 /* TTTAttributedLabel.m */; };
 		469202CE175F0A610096F522 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469202CD175F0A600096F522 /* CoreText.framework */; };
+		469202D217607EC50096F522 /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202D117607EC50096F522 /* TTTTimeIntervalFormatter.m */; };
+		469202D717607F360096F522 /* buttonCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D317607F350096F522 /* buttonCamera.png */; };
+		469202D817607F360096F522 /* buttonCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D417607F350096F522 /* buttonCamera@2x.png */; };
+		469202D917607F360096F522 /* buttonCameraSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D517607F350096F522 /* buttonCameraSelected.png */; };
+		469202DA17607F360096F522 /* buttonCameraSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D617607F350096F522 /* buttonCameraSelected@2x.png */; };
 		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
@@ -395,6 +400,12 @@
 		469202CA175F041D0096F522 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		469202CB175F041D0096F522 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		469202CD175F0A600096F522 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		469202D017607EC50096F522 /* TTTTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTTimeIntervalFormatter.h; sourceTree = "<group>"; };
+		469202D117607EC50096F522 /* TTTTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTTimeIntervalFormatter.m; sourceTree = "<group>"; };
+		469202D317607F350096F522 /* buttonCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCamera.png; sourceTree = "<group>"; };
+		469202D417607F350096F522 /* buttonCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonCamera@2x.png"; sourceTree = "<group>"; };
+		469202D517607F350096F522 /* buttonCameraSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCameraSelected.png; sourceTree = "<group>"; };
+		469202D617607F350096F522 /* buttonCameraSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonCameraSelected@2x.png"; sourceTree = "<group>"; };
 		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -604,6 +615,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				469202CF17607EC50096F522 /* TTTTimeIntervalFormatter */,
 				469202C9175F041D0096F522 /* TTTAttributedLabel */,
 				4692020E175A18BB0096F522 /* UIImageCategories */,
 				468F9BA11739D884009CC05A /* PagedFlowView */,
@@ -683,6 +695,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				469202DB1760812F0096F522 /* CameraUI */,
 				462F0CA91728EBB600BDDEB8 /* LoginUI */,
 				462A770C16FC28B800C3CBF7 /* RecipeUI */,
 				4645D3F616FB52BC00C38D39 /* CommonUI */,
@@ -884,6 +897,10 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				469202D317607F350096F522 /* buttonCamera.png */,
+				469202D417607F350096F522 /* buttonCamera@2x.png */,
+				469202D517607F350096F522 /* buttonCameraSelected.png */,
+				469202D617607F350096F522 /* buttonCameraSelected@2x.png */,
 				469202C0175DA2090096F522 /* steps.png */,
 				469202C1175DA2090096F522 /* steps@2x.png */,
 				469202BC175DA1FF0096F522 /* pagination.png */,
@@ -961,6 +978,23 @@
 			);
 			name = TTTAttributedLabel;
 			path = Vendor/TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
+		469202CF17607EC50096F522 /* TTTTimeIntervalFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				469202D017607EC50096F522 /* TTTTimeIntervalFormatter.h */,
+				469202D117607EC50096F522 /* TTTTimeIntervalFormatter.m */,
+			);
+			name = TTTTimeIntervalFormatter;
+			path = Vendor/TTTTimeIntervalFormatter;
+			sourceTree = "<group>";
+		};
+		469202DB1760812F0096F522 /* CameraUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CameraUI;
 			sourceTree = "<group>";
 		};
 		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
@@ -1115,6 +1149,10 @@
 				469202BF175DA1FF0096F522 /* pagination@2x.png in Resources */,
 				469202C2175DA2090096F522 /* steps.png in Resources */,
 				469202C3175DA2090096F522 /* steps@2x.png in Resources */,
+				469202D717607F360096F522 /* buttonCamera.png in Resources */,
+				469202D817607F360096F522 /* buttonCamera@2x.png in Resources */,
+				469202D917607F360096F522 /* buttonCameraSelected.png in Resources */,
+				469202DA17607F360096F522 /* buttonCameraSelected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1183,6 +1221,7 @@
 				4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				46920289175C89150096F522 /* UIColor+String.m in Sources */,
 				469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */,
+				469202D217607EC50096F522 /* TTTTimeIntervalFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
