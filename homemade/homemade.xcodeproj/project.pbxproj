@@ -169,6 +169,8 @@
 		469202D817607F360096F522 /* buttonCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D417607F350096F522 /* buttonCamera@2x.png */; };
 		469202D917607F360096F522 /* buttonCameraSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D517607F350096F522 /* buttonCameraSelected.png */; };
 		469202DA17607F360096F522 /* buttonCameraSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469202D617607F350096F522 /* buttonCameraSelected@2x.png */; };
+		469202DE17608C600096F522 /* HMEditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202DD17608C600096F522 /* HMEditPhotoViewController.m */; };
+		469202F01760B4EC0096F522 /* HMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202EF1760B4EC0096F522 /* HMCameraViewController.m */; };
 		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
@@ -406,6 +408,10 @@
 		469202D417607F350096F522 /* buttonCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonCamera@2x.png"; sourceTree = "<group>"; };
 		469202D517607F350096F522 /* buttonCameraSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCameraSelected.png; sourceTree = "<group>"; };
 		469202D617607F350096F522 /* buttonCameraSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonCameraSelected@2x.png"; sourceTree = "<group>"; };
+		469202DC17608C600096F522 /* HMEditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMEditPhotoViewController.h; path = UILayer/CameraUI/HMEditPhotoViewController.h; sourceTree = "<group>"; };
+		469202DD17608C600096F522 /* HMEditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMEditPhotoViewController.m; path = UILayer/CameraUI/HMEditPhotoViewController.m; sourceTree = "<group>"; };
+		469202EE1760B4EC0096F522 /* HMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCameraViewController.h; path = UILayer/CommonUI/HMCameraViewController.h; sourceTree = "<group>"; };
+		469202EF1760B4EC0096F522 /* HMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCameraViewController.m; path = UILayer/CommonUI/HMCameraViewController.m; sourceTree = "<group>"; };
 		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -809,6 +815,8 @@
 				469201F91759E73F0096F522 /* HMProfileImageView.m */,
 				469201FB1759E7760096F522 /* HMImageView.h */,
 				469201FC1759E7760096F522 /* HMImageView.m */,
+				469202EE1760B4EC0096F522 /* HMCameraViewController.h */,
+				469202EF1760B4EC0096F522 /* HMCameraViewController.m */,
 			);
 			name = CommonUI;
 			sourceTree = "<group>";
@@ -993,6 +1001,8 @@
 		469202DB1760812F0096F522 /* CameraUI */ = {
 			isa = PBXGroup;
 			children = (
+				469202DC17608C600096F522 /* HMEditPhotoViewController.h */,
+				469202DD17608C600096F522 /* HMEditPhotoViewController.m */,
 			);
 			name = CameraUI;
 			sourceTree = "<group>";
@@ -1222,6 +1232,8 @@
 				46920289175C89150096F522 /* UIColor+String.m in Sources */,
 				469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */,
 				469202D217607EC50096F522 /* TTTTimeIntervalFormatter.m in Sources */,
+				469202DE17608C600096F522 /* HMEditPhotoViewController.m in Sources */,
+				469202F01760B4EC0096F522 /* HMCameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

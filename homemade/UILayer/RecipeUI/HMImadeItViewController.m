@@ -7,16 +7,13 @@
 //
 
 #import "HMImadeItViewController.h"
+#import "HMCameraViewController.h"
 
 #define HeaderHeight 60
-#define CameraButtonWidth 100
-#define CameraButtonHeight 47
 
 @interface HMImadeItViewController ()
 @property (nonatomic, strong) PFObject *recipeObject;
 @property (nonatomic, strong) NSMutableArray *works;
-
-@property (nonatomic, strong) UIButton *cameraButton;
 
 @end
 
@@ -44,6 +41,7 @@
     self.cameraButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-CameraButtonWidth)/2, 10, CameraButtonWidth, CameraButtonHeight)];
     [self.cameraButton setBackgroundImage:[UIImage imageNamed:@"buttonCamera"] forState:UIControlStateNormal];
     [self.cameraButton setBackgroundImage:[UIImage imageNamed:@"buttonCameraSelected"] forState:UIControlStateHighlighted];
+    [self.cameraButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:self.cameraButton];
     
     self.tableView.tableHeaderView = headerView;
@@ -56,5 +54,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)takePicture {
+    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
+    [self presentViewController:photoPicker animated:YES completion:nil];
+}
+
 
 @end

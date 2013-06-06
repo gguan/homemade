@@ -15,6 +15,8 @@
 #define TabBarWidth 210
 #define PageFlowViewWidth 250
 #define PageFlowViewHeight 400
+#define CameraButtonWidth 100
+#define CameraButtonHeight 47
 
 #pragma mark - NSUserDefaults
 extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;
