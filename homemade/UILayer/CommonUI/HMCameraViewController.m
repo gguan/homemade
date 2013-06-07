@@ -28,19 +28,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view.opaque = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-//    if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
-//        [_delegate cameraViewControllerShowPicker:self];
-//    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    NSLog(@"picker did disappear");
+    self.view.opaque = YES;
+    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,10 +55,9 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated:NO completion:^{
         NSLog(@"Dismiss picker controller");
         if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
-            NSLog(@"has delegate");
             [_delegate cameraViewControllerDidCancel:self];
         }
     }];
@@ -77,7 +65,12 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:^{
+        if (_delegate && [_delegate respondsToSelector:@selector(cameraViewController:didFinishPickingMediaWithInfo:)]) {
+            [_delegate cameraViewController:self didFinishPickingMediaWithInfo:info];
+        }
+    }];
+    
     
 //    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
 //    
@@ -143,7 +136,7 @@
     cameraUI.showsCameraControls = YES;
     cameraUI.delegate = self;
     
-    [self presentViewController:cameraUI animated:YES completion:nil];
+    [self presentViewController:cameraUI animated:NO completion:nil];
     
     return YES;
 }
@@ -175,7 +168,7 @@
     cameraUI.allowsEditing = YES;
     cameraUI.delegate = self;
     
-    [self presentViewController:cameraUI animated:YES completion:nil];
+    [self presentViewController:cameraUI animated:NO completion:nil];
     
     return YES;
 }

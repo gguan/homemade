@@ -42,7 +42,6 @@
     self = [super init];
     if (self)
     {
-        self.cameraPicker = [[HMCameraViewController alloc] init];
         self.color = color;
         
         // Add a baground color view
@@ -64,6 +63,7 @@
         self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:recipeObject];
         self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:recipeObject];
         self.imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:recipeObject];
+        self.imadeitViewController.recipeViewController = self;
         
         // Place the tab bar at the top of our view
         _tabBarItems = [NSArray arrayWithObjects:

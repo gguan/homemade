@@ -14,7 +14,6 @@
 @interface HMImadeItViewController ()
 @property (nonatomic, strong) PFObject *recipeObject;
 @property (nonatomic, strong) NSMutableArray *works;
-
 @end
 
 @implementation HMImadeItViewController
@@ -56,9 +55,8 @@
 
 - (void)takePicture {
     NSLog(@"button clicked");
-//    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
-//    photoPicker.delegate = (HMRecipeViewController *)self.parentViewController;
-    HMCameraViewController *photoPicker = [(HMRecipeViewController *)self.parentViewController cameraPicker];
+    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
+    photoPicker.delegate = self.recipeViewController;
     NSLog(@"%@", photoPicker);
     if (photoPicker.delegate && [photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
             NSLog(@"has delegate");

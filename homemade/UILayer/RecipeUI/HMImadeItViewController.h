@@ -6,11 +6,13 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "HMCameraViewController.h"
+#import "HMRecipeViewController.h"
 
-@interface HMImadeItViewController : UITableViewController <HMCameraDelegate>
+@interface HMImadeItViewController : UITableViewController
 
+@property (nonatomic, weak) HMRecipeViewController *recipeViewController;
 @property (nonatomic, strong) UIButton *cameraButton;
+
 
 - (id)initWithRecipe:(PFObject*)recipeObject;
 
