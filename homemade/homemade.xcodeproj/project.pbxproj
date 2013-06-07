@@ -758,7 +758,6 @@
 			isa = PBXGroup;
 			children = (
 				4645D38916F5EDFE00C38D39 /* Account */,
-				4645D38816F5EDF100C38D39 /* Network */,
 				4645D38716F5EDE100C38D39 /* CoreData */,
 				4645D38616F5EDD100C38D39 /* DataModel */,
 			);
@@ -789,13 +788,6 @@
 			children = (
 			);
 			name = CoreData;
-			sourceTree = "<group>";
-		};
-		4645D38816F5EDF100C38D39 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 		4645D38916F5EDFE00C38D39 /* Account */ = {
