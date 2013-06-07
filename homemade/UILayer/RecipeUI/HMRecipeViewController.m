@@ -42,6 +42,7 @@
     self = [super init];
     if (self)
     {
+        self.cameraPicker = [[HMCameraViewController alloc] init];
         self.color = color;
         
         // Add a baground color view
@@ -169,5 +170,21 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+
+#pragma mark - HMCameraDelegate
+- (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
+    NSLog(@"run delegate from RecipeViewController");
+    [self presentViewController:picker animated:NO completion:^{
+        [picker showPhotoPicker];
+    }];
+}
+
+- (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
+    NSLog(@"dismiss pick controller from RecipeViewController... delegate");
+    [self dismissViewControllerAnimated:NO completion:^{
+        NSLog(@"!!! %f", self.view.frame.size.height);
+    }];
+    
+}
 
 @end

@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#import "HMCameraViewController.h"
 
-@interface HMImadeItViewController : UITableViewController
+@interface HMImadeItViewController : UITableViewController <HMCameraDelegate>
 
 @property (nonatomic, strong) UIButton *cameraButton;
 

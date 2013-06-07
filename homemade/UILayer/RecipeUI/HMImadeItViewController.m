@@ -7,7 +7,7 @@
 //
 
 #import "HMImadeItViewController.h"
-#import "HMCameraViewController.h"
+#import "HMRecipeViewController.h"
 
 #define HeaderHeight 60
 
@@ -46,7 +46,6 @@
     
     self.tableView.tableHeaderView = headerView;
 
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,9 +55,16 @@
 }
 
 - (void)takePicture {
-    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
-    [self presentViewController:photoPicker animated:YES completion:nil];
+    NSLog(@"button clicked");
+//    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
+//    photoPicker.delegate = (HMRecipeViewController *)self.parentViewController;
+    HMCameraViewController *photoPicker = [(HMRecipeViewController *)self.parentViewController cameraPicker];
+    NSLog(@"%@", photoPicker);
+    if (photoPicker.delegate && [photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
+            NSLog(@"has delegate");
+            [photoPicker.delegate cameraViewControllerShowPicker:photoPicker];
+    }
+    
 }
-
 
 @end

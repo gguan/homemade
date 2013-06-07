@@ -12,7 +12,7 @@
 
 @protocol HMCameraDelegate <NSObject>
 @optional
-- (void)cameraViewControllerShowActionSheet:(HMCameraViewController *)picker;
+- (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker;
 - (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker;
 @end
@@ -20,5 +20,7 @@
 @interface HMCameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (assign, nonatomic) id <HMCameraDelegate> delegate;
+- (void)showPhotoPicker;
+
 
 @end

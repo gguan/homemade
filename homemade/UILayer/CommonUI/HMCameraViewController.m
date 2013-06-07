@@ -29,11 +29,27 @@
 	// Do any additional setup after loading the view.
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.opaque = NO;
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+//    if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
+//        [_delegate cameraViewControllerShowPicker:self];
+//    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    NSLog(@"picker did disappear");
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)showPhotoPicker {
     BOOL cameraDeviceAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     BOOL photoLibraryAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
     
@@ -46,19 +62,45 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - UIImagePickerDelegate
 
-- (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Dismiss picker controller");
+        if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
+            NSLog(@"has delegate");
+            [_delegate cameraViewControllerDidCancel:self];
+        }
+    }];
     
 }
 
-- (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissViewControllerAnimated:NO completion:nil];
     
+//    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+//    
+//    PAPEditPhotoViewController *viewController = [[PAPEditPhotoViewController alloc] initWithImage:image];
+//    [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+//    
+//    [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+//    [self.navController pushViewController:viewController animated:NO];
+//    
+//    [self presentModalViewController:self.navController animated:YES];
 }
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self shouldStartCameraController];
+    } else if (buttonIndex == 1) {
+        [self shouldStartPhotoLibraryPickerController];
+    }
+}
+
+
 
 #pragma mark -
 
