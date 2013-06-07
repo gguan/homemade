@@ -12,9 +12,11 @@
 #import "HMStepsViewController.h"
 #import "HMAboutViewController.h"
 #import "HMImadeItViewController.h"
+#import "HMEditPhotoViewController.h"
 
 @interface HMRecipeViewController ()
 
+@property (nonatomic,strong) UINavigationController *navController;
 @property(nonatomic,strong) CustomTabBar *tabBar;
 @property(nonatomic,strong) NSArray *tabBarItems;
 @property(nonatomic,strong) UIColor *color;
@@ -94,6 +96,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.navController = [[UINavigationController alloc] init];
+    self.navController.navigationBarHidden = YES;
 }
 
 #pragma mark -
@@ -151,7 +155,7 @@
 
 
 #pragma mark - Helper
-//change the image color to required color
+//change the nipple image color to required color
 -(UIImage*)changeImage:(UIImage*)image toColor:(UIColor*)color{
     
     CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
@@ -179,17 +183,29 @@
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
     NSLog(@"run delegate from RecipeViewController");
-//    [self presentViewController:picker animated:NO completion:^{
     [self.photoPicker showPhotoPicker];
-//    }];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
     NSLog(@"dismiss pick controller from RecipeViewController... delegate");
     [self dismissViewControllerAnimated:NO completion:^{
-        NSLog(@"!!! %f", self.view.frame.size.height);
+//        NSLog(@"!!! %f", self.view.frame.size.height);
     }];
+}
+
+- (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    NSLog(@"didFinishPickingMediaWithInfo get executed...");
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    HMEditPhotoViewController *viewController = [[HMEditPhotoViewController alloc] initWithImage:image];
+    [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self.navController pushViewController:viewController animated:NO];
+
+    [self presentViewController:self.navController animated:YES completion:nil];
 }
 
 @end

@@ -18,9 +18,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.view.opaque = NO;
-//    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,17 +58,6 @@
             [_delegate cameraViewController:self didFinishPickingMediaWithInfo:info];
         }
     }];
-    
-    
-//    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-//    
-//    PAPEditPhotoViewController *viewController = [[PAPEditPhotoViewController alloc] initWithImage:image];
-//    [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-//    
-//    [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-//    [self.navController pushViewController:viewController animated:NO];
-//    
-//    [self presentModalViewController:self.navController animated:YES];
 }
 
 #pragma mark - UIActionSheetDelegate

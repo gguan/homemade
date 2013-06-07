@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMEditPhotoViewController : UIViewController
+@interface HMEditPhotoViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate>
+
+- (id)initWithImage:(UIImage *)aImage;
 
 @end

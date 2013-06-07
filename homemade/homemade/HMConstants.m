@@ -27,6 +27,12 @@ NSString *const kHMRecipeIngredientsKey  = @"ingredients";
 NSString *const kHMRecipeStepsKey    = @"steps";
 NSString *const kHMRecipeTipsKey     = @"tips";
 
+#pragma mark - PFObject Drink Photo Class
+NSString *const kHMDrinkPhotoClassKey   = @"Photo";
+NSString *const kHMDrinkPhotoUserKey    = @"user";
+NSString *const kHMDrinkPhotoRecipeKey  = @"recipe";
+NSString *const kHMDrinkPhotoPictureKey = @"picture";
+
 #pragma mark - Cached Recipe Attributes
 // keys
 NSString *const kHMRecipeAttributesIsSavedByCurrentUserKey  = @"isSavedByCurrentUser";
@@ -56,6 +62,7 @@ NSString *const kHMUserPhotoIDKey                              = @"photoId";
 NSString *const kHMColorSuffixKey = @"colorArt";
 
 
+
 #pragma mark - Save Class
 NSString *const kHMSaveClassKey = @"Save";
 // Field keys
@@ -63,8 +70,22 @@ NSString *const kHMSaveFromUserKey  = @"fromUser";
 NSString *const kHMSaveToUserKey    = @"toUser";
 NSString *const kHMSaveRecipeKey    = @"recipe";
 
-#pragma mark - Save Class
+#pragma mark - Comment Class
 NSString *const kHMCommentClassKey = @"Comment";
 // Field keys
-NSString *const kHMCommentFromUserKey  = @"fromUser";
-NSString *const kHMCommentRecipeKey    = @"recipe";
+NSString *const kHMCommentFromUserKey   = @"fromUser";
+NSString *const kHMCommentContentKey    = @"content";
+NSString *const kHMCommentTypeKey       = @"type";
+NSString *const kHMCommentRecipeKey     = @"recipe";
+NSString *const kHMCommentPhotoKey      = @"photo";
+// Type values
+NSString *const kHMCommentTypeRecipe    = @"recipe";
+NSString *const kHMCommentTypePhoto     = @"photo";
+
+
+#pragma mark - User Info Keys
+NSString *const kHMEditPhotoViewControllerUserInfoCommentKey = @"comment";
+
+#pragma mark - NSNotification
+NSString *const HMTabBarControllerDidFinishEditingPhotoNotification = @"com.gguan.drink.tabBarController.didFinishEditingPhoto";
+

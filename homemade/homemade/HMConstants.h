@@ -25,7 +25,6 @@ extern NSString *const kHMUserDefaultsCacheFacebookFriendsKey;
 #pragma mark - PFObject Recipe Class
 // Class key
 extern NSString *const kHMRecipeClassKey;
-
 // Field keys
 extern NSString *const kHMRecipeTitleKey;
 extern NSString *const kHMRecipeOverviewKey;
@@ -36,6 +35,13 @@ extern NSString *const kHMRecipeDifficultyKey;
 extern NSString *const kHMRecipeIngredientsKey;
 extern NSString *const kHMRecipeStepsKey;
 extern NSString *const kHMRecipeTipsKey;
+
+#pragma mark - PFObject Drink Photo Class
+extern NSString *const kHMDrinkPhotoClassKey;
+extern NSString *const kHMDrinkPhotoUserKey;
+extern NSString *const kHMDrinkPhotoRecipeKey;
+extern NSString *const kHMDrinkPhotoPictureKey;
+
 
 #pragma mark - Cached Recipe Attributes
 // keys
@@ -77,5 +83,19 @@ extern NSString *const kHMSaveRecipeKey;
 extern NSString *const kHMCommentClassKey;
 // Field keys
 extern NSString *const kHMCommentFromUserKey;
+extern NSString *const kHMCommentTypeKey;
+extern NSString *const kHMCommentContentKey;
 extern NSString *const kHMCommentRecipeKey;
+extern NSString *const kHMCommentPhotoKey;
+// Type values
+extern NSString *const kHMCommentTypeRecipe;
+extern NSString *const kHMCommentTypePhoto;
+
+
+#pragma mark - User Info Keys
+extern NSString *const kHMEditPhotoViewControllerUserInfoCommentKey;
+
+
+#pragma mark - NSNotification
+extern NSString *const HMTabBarControllerDidFinishEditingPhotoNotification;
 
