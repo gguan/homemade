@@ -9,27 +9,18 @@
 #import "HMCameraViewController.h"
 
 @interface HMCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, HMCameraDelegate>
-
 @end
 
 @implementation HMCameraViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view.opaque = YES;
-    self.view.backgroundColor = [UIColor clearColor];
+//    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.view.opaque = NO;
+//    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +35,7 @@
     
     if (cameraDeviceAvailable && photoLibraryAvailable) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Photo", nil];
-        [actionSheet showInView:self.view];
+        [actionSheet showInView:self.container.view];
     } else {
         // if we don't have at least two options, we automatically show whichever is available (camera or roll)
         [self shouldPresentPhotoCaptureController];
@@ -55,7 +46,7 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
-    [self dismissViewControllerAnimated:NO completion:^{
+    [self.container dismissViewControllerAnimated:NO completion:^{
         NSLog(@"Dismiss picker controller");
         if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
             [_delegate cameraViewControllerDidCancel:self];
@@ -65,7 +56,7 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:NO completion:^{
+    [self.container dismissViewControllerAnimated:NO completion:^{
         if (_delegate && [_delegate respondsToSelector:@selector(cameraViewController:didFinishPickingMediaWithInfo:)]) {
             [_delegate cameraViewController:self didFinishPickingMediaWithInfo:info];
         }
@@ -90,9 +81,15 @@
         [self shouldStartCameraController];
     } else if (buttonIndex == 1) {
         [self shouldStartPhotoLibraryPickerController];
+    } else {
+        [self.container dismissViewControllerAnimated:NO completion:^{
+            NSLog(@"Dismiss picker controller");
+            if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
+                [_delegate cameraViewControllerDidCancel:self];
+            }
+        }];
     }
 }
-
 
 
 #pragma mark -
@@ -136,7 +133,7 @@
     cameraUI.showsCameraControls = YES;
     cameraUI.delegate = self;
     
-    [self presentViewController:cameraUI animated:NO completion:nil];
+    [self.container presentViewController:cameraUI animated:NO completion:nil];
     
     return YES;
 }
@@ -168,7 +165,7 @@
     cameraUI.allowsEditing = YES;
     cameraUI.delegate = self;
     
-    [self presentViewController:cameraUI animated:NO completion:nil];
+    [self.container presentViewController:cameraUI animated:NO completion:nil];
     
     return YES;
 }

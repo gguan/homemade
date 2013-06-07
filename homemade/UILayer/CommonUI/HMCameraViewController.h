@@ -19,8 +19,9 @@
 
 @interface HMCameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
-@property (assign, nonatomic) id <HMCameraDelegate> delegate;
-- (void)showPhotoPicker;
+@property (nonatomic, assign) id <HMCameraDelegate> delegate;
+@property (nonatomic, weak) UIViewController *container;
 
+- (void)showPhotoPicker;
 
 @end

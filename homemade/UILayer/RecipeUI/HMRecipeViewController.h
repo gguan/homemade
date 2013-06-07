@@ -11,8 +11,9 @@
 
 @interface HMRecipeViewController : UIViewController<CustomTabBarDelegate, HMCameraDelegate>
 
-- (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color;
+@property (nonatomic, strong) HMCameraViewController *photoPicker;
 
+- (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color;
 - (id)initWithRecipe:(PFObject*)recipeObject;
 
 @end

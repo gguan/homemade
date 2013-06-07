@@ -44,6 +44,11 @@
     {
         self.color = color;
         
+        // Init photo picker
+        self.photoPicker = [[HMCameraViewController alloc] init];
+        self.photoPicker.delegate = self;
+        self.photoPicker.container = self;
+        
         // Add a baground color view
         UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
         [colorView setBackgroundColor:self.color];
@@ -174,9 +179,9 @@
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
     NSLog(@"run delegate from RecipeViewController");
-    [self presentViewController:picker animated:NO completion:^{
-        [picker showPhotoPicker];
-    }];
+//    [self presentViewController:picker animated:NO completion:^{
+    [self.photoPicker showPhotoPicker];
+//    }];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {

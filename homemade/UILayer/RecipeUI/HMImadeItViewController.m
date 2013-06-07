@@ -44,7 +44,6 @@
     [headerView addSubview:self.cameraButton];
     
     self.tableView.tableHeaderView = headerView;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,8 +54,9 @@
 
 - (void)takePicture {
     NSLog(@"button clicked");
-    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
-    photoPicker.delegate = self.recipeViewController;
+//    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
+    HMCameraViewController *photoPicker = self.recipeViewController.photoPicker;
+//    photoPicker.delegate = self.recipeViewController;
     NSLog(@"%@", photoPicker);
     if (photoPicker.delegate && [photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
             NSLog(@"has delegate");
