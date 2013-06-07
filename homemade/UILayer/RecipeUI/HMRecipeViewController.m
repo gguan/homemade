@@ -44,6 +44,7 @@
     self = [super init];
     if (self)
     {
+        self.recipeObject = recipeObject;
         self.color = color;
         
         // Init photo picker
@@ -199,7 +200,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    HMEditPhotoViewController *viewController = [[HMEditPhotoViewController alloc] initWithImage:image];
+    HMEditPhotoViewController *viewController = [[HMEditPhotoViewController alloc] initWithImage:image withRecipe:self.recipeObject];
     [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
     [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];

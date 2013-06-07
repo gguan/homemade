@@ -8,7 +8,7 @@
 
 #import "HMRecipeViewController.h"
 
-@interface HMImadeItViewController : UITableViewController
+@interface HMImadeItViewController : PFQueryTableViewController
 
 @property (nonatomic, weak) HMRecipeViewController *recipeViewController;
 @property (nonatomic, strong) UIButton *cameraButton;

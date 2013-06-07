@@ -62,6 +62,7 @@
 		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */; };
+		465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465435E71762685E00B3B33D /* HMIMadeItCell.m */; };
 		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
 		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
@@ -275,6 +276,8 @@
 		4645D3A416F718DD00C38D39 /* HMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSettingViewController.m; path = UILayer/SettingUI/HMSettingViewController.m; sourceTree = "<group>"; };
 		464A9C43173497CC005E08E1 /* HMCommonUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCommonUIUtility.h; path = UILayer/CommonUI/HMCommonUIUtility.h; sourceTree = "<group>"; };
 		464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommonUIUtility.m; path = UILayer/CommonUI/HMCommonUIUtility.m; sourceTree = "<group>"; };
+		465435E61762685E00B3B33D /* HMIMadeItCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMIMadeItCell.h; path = UILayer/RecipeUI/HMIMadeItCell.h; sourceTree = "<group>"; };
+		465435E71762685E00B3B33D /* HMIMadeItCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIMadeItCell.m; path = UILayer/RecipeUI/HMIMadeItCell.m; sourceTree = "<group>"; };
 		465F5962174BD48300E2164B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
 		465F5965174EA95F00E2164B /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Utility/UIImageView+Addition.h"; sourceTree = "<group>"; };
 		465F5966174EA95F00E2164B /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Utility/UIImageView+Addition.m"; sourceTree = "<group>"; };
@@ -489,6 +492,8 @@
 				46920293175C98790096F522 /* HMAboutViewController.m */,
 				469202A3175C9DDB0096F522 /* HMIngredientCell.h */,
 				469202A4175C9DDC0096F522 /* HMIngredientCell.m */,
+				465435E61762685E00B3B33D /* HMIMadeItCell.h */,
+				465435E71762685E00B3B33D /* HMIMadeItCell.m */,
 			);
 			name = RecipeUI;
 			sourceTree = "<group>";
@@ -1240,6 +1245,7 @@
 				469202DE17608C600096F522 /* HMEditPhotoViewController.m in Sources */,
 				469202F01760B4EC0096F522 /* HMCameraViewController.m in Sources */,
 				469202F31761CFEE0096F522 /* HMPhotoCommentView.m in Sources */,
+				465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

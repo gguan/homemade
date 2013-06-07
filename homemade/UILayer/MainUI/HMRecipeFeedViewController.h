@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <Parse/Parse.h>
 #import "AwesomeMenu.h"
 #import "HMRecipeCellView.h"
 
