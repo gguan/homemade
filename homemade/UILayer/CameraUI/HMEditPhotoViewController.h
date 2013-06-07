@@ -10,6 +10,8 @@
 
 @interface HMEditPhotoViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate>
 
-- (id)initWithImage:(UIImage *)aImage;
+@property (nonatomic, strong) PFObject *recipeObject;
+
+- (id)initWithImage:(UIImage *)aImage withRecipe:(PFObject *)recipe;
 
 @end

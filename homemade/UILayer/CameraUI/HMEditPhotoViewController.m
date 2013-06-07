@@ -23,12 +23,14 @@
 
 @implementation HMEditPhotoViewController
 
-- (id)initWithImage:(UIImage *)aImage {
+- (id)initWithImage:(UIImage *)aImage withRecipe:(PFObject *)recipe {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         if (!aImage) {
             return nil;
         }
+        
+        self.recipeObject = recipe;
         
         self.image = aImage;
         self.fileUploadBackgroundTaskId = UIBackgroundTaskInvalid;
@@ -195,6 +197,7 @@
     PFObject *photo = [PFObject objectWithClassName:kHMDrinkPhotoClassKey];
     [photo setObject:[PFUser currentUser] forKey:kHMDrinkPhotoUserKey];
     [photo setObject:self.photoFile forKey:kHMDrinkPhotoPictureKey];
+    [photo setObject:self.recipeObject forKey:kHMDrinkPhotoRecipeKey];
     
     // photos are public, but may only be modified by the user who uploaded them
     PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
