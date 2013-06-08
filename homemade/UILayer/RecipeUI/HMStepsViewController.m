@@ -55,7 +55,7 @@
     _pagedFlowView.delegate = self;
     
     _pagedFlowView.minimumPageAlpha = 0.8;
-    _pagedFlowView.minimumPageScale = 0.8;
+    _pagedFlowView.minimumPageScale = 0.9;
     [self.view addSubview:self.pagedFlowView];
     
     //initialzie the pageControll

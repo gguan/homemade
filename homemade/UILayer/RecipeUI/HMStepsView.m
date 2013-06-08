@@ -7,6 +7,7 @@
 //
 
 #import "HMStepsView.h"
+#import "UIImageView+Addition.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kStepDescriptionTextFontSize 13
@@ -21,14 +22,15 @@
                 
         [self setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
         self.layer.masksToBounds = NO;
-        self.layer.shadowOffset = CGSizeMake(0, 10);
-        self.layer.shadowRadius = 10;
+        self.layer.shadowOffset = CGSizeMake(0, 5);
+        self.layer.shadowRadius = 5;
         self.layer.shadowOpacity = 0.6;
         
         // Init step image view
         self.stepImageView = [[PFImageView alloc] initWithFrame:CGRectZero];
         self.stepImageView.clipsToBounds = YES;
         self.stepImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
+        [self.stepImageView addDetailShow];
         [self addSubview:self.stepImageView];
         
         // Init step description
@@ -53,11 +55,6 @@
         [self.stepNumberLabel setTextAlignment:NSTextAlignmentCenter];
         [self.stepNumberImage addSubview:self.stepNumberLabel];
         [self addSubview:self.stepNumberImage];
-        
-        self.stepDescriptionLabelSnapShot = [[UIImageView alloc] initWithFrame:frame];
-        self.stepDescriptionLabelSnapShot.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
-        [self addSubview:self.stepDescriptionLabelSnapShot];
-
         
     }
     return self;
