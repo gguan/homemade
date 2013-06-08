@@ -97,5 +97,5 @@ extern NSString *const kHMEditPhotoViewControllerUserInfoCommentKey;
 
 
 #pragma mark - NSNotification
-extern NSString *const HMTabBarControllerDidFinishEditingPhotoNotification;
+extern NSString *const HMCameraControllerDidFinishEditingPhotoNotification;
 

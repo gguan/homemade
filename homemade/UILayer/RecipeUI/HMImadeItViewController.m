@@ -14,7 +14,8 @@
 
 @interface HMImadeItViewController ()
 @property (nonatomic, strong) PFObject *recipeObject;
-@property (nonatomic, strong) NSMutableArray *works;
+@property (nonatomic, strong) UIButton *cameraButton;
+
 @end
 
 @implementation HMImadeItViewController
@@ -35,6 +36,7 @@
         
         // The number of objects to show per page
         self.objectsPerPage = 10;
+        
     }
     return self;
 }
@@ -59,6 +61,8 @@
     [headerView addSubview:self.cameraButton];
     
     self.tableView.tableHeaderView = headerView;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidPublishPhoto:) name:HMCameraControllerDidFinishEditingPhotoNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,15 +71,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HMCameraControllerDidFinishEditingPhotoNotification object:nil];
+}
+
 - (void)takePicture {
-    NSLog(@"button clicked");
-//    HMCameraViewController *photoPicker = [[HMCameraViewController alloc] init];
     HMCameraViewController *photoPicker = self.recipeViewController.photoPicker;
-//    photoPicker.delegate = self.recipeViewController;
-    NSLog(@"%@", photoPicker);
     if (photoPicker.delegate && [photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
-            NSLog(@"has delegate");
+            NSLog(@"camera button has delegate");
             [photoPicker.delegate cameraViewControllerShowPicker:photoPicker];
+        
     }
     
 }
@@ -193,6 +198,15 @@
     [cell.avatar setFile: [user objectForKey:kHMUserProfilePicSmallKey]];
     [cell.avatar loadInBackground];
     return cell;
+}
+
+#pragma mark - Notification
+- (void)userDidPublishPhoto:(NSNotification *)note {
+    if (self.objects.count > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    
+    [self loadObjects];
 }
 
 @end

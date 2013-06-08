@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @class HMCameraViewController;
 
 @protocol HMCameraDelegate <NSObject>

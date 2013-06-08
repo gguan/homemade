@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface HMAboutViewController : UITableViewController 
 
 - (id)initWithRecipe:(PFObject*)recipeObject;

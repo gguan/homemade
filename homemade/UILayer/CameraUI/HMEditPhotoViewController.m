@@ -7,6 +7,7 @@
 //
 
 #import "HMEditPhotoViewController.h"
+#import "HMRecipeViewController.h"
 #import "HMPhotoCommentView.h"
 #import "UIImage+ResizeAdditions.h"
 #import <QuartzCore/QuartzCore.h>
@@ -234,7 +235,7 @@
                 }
             }
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:HMTabBarControllerDidFinishEditingPhotoNotification object:photo];
+            [[NSNotificationCenter defaultCenter] postNotificationName:HMCameraControllerDidFinishEditingPhotoNotification object:photo];
         } else {
             NSLog(@"Photo failed to save: %@", error);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];

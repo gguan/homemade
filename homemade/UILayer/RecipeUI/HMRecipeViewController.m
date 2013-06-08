@@ -18,11 +18,11 @@
 
 @property (nonatomic,strong) UINavigationController *navController;
 @property(nonatomic,strong) CustomTabBar *tabBar;
+@property (nonatomic, strong) HMAboutViewController *aboutViewController;
+@property (nonatomic, strong) HMStepsViewController *stepsViewController;
+@property (nonatomic, strong) HMImadeItViewController *imadeitViewController;
 @property(nonatomic,strong) NSArray *tabBarItems;
 @property(nonatomic,strong) UIColor *color;
-@property(nonatomic,strong) HMAboutViewController *aboutViewController;
-@property(nonatomic,strong) HMStepsViewController *stepsViewController;
-@property(nonatomic,strong) HMImadeItViewController *imadeitViewController;
 
 @end
 
