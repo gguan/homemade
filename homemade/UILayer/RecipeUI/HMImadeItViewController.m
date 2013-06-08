@@ -9,12 +9,14 @@
 #import "HMImadeItViewController.h"
 #import "HMRecipeViewController.h"
 #import "HMIMadeItCell.h"
+#import "TTTTimeIntervalFormatter.h"
 
 #define HeaderHeight 60
 
 @interface HMImadeItViewController ()
 @property (nonatomic, strong) PFObject *recipeObject;
 @property (nonatomic, strong) UIButton *cameraButton;
+@property (nonatomic, strong) TTTTimeIntervalFormatter *timeIntervalFormatter;
 
 @end
 
@@ -36,6 +38,8 @@
         
         // The number of objects to show per page
         self.objectsPerPage = 10;
+        
+        self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
         
     }
     return self;
@@ -99,7 +103,9 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [HMIMadeItCell cellHeight];
+    PFObject *photoObject = [self.objects objectAtIndex:indexPath.row];
+    NSString *note = [photoObject objectForKey:kHMDrinkPhotoNoteKey];
+    return [HMIMadeItCell cellInitialHeight] + [HMIMadeItCell heightForText:note];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,11 +157,17 @@
     
     if (photoObject) {
         [cell.photo setFile:[photoObject objectForKey:kHMDrinkPhotoPictureKey]];
+        NSTimeInterval timeInterval = [[photoObject createdAt] timeIntervalSinceNow];
+        NSString *timestamp = [self.timeIntervalFormatter stringForTimeInterval:timeInterval];
+        [cell.timestampLabel setText:timestamp];
+        NSString *note = [photoObject objectForKey:kHMDrinkPhotoNoteKey];
+        [cell.noteLabel setText:note];
+        [cell adjustSize];
     } else {
         NSLog(@"Bad object");
         return cell;
     }
-   
+    
     // If photo is in memory, load it right away
     if (cell.photo.file.isDataAvailable) {
         [cell.photo loadInBackground:^(UIImage *image, NSError *error){

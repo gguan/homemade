@@ -13,8 +13,14 @@
 @property (strong, nonatomic) PFObject *photoObject;
 @property (strong, nonatomic) PFImageView *avatar;
 @property (strong, nonatomic) PFImageView *photo;
-@property (strong, nonatomic) UILabel *timeLabel;
+@property (strong, nonatomic) UILabel *timestampLabel;
+@property (strong, nonatomic) UILabel *commentButtonLabel;
+@property (strong, nonatomic) UILabel *noteLabel;
+@property (strong, nonatomic) UIView *container;
 
-+ (CGFloat) cellHeight;
++ (CGFloat) cellInitialHeight;
++ (CGFloat) heightForText:(NSString *)text;
+
+- (void) adjustSize;
 
 @end

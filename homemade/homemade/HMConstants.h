@@ -41,6 +41,7 @@ extern NSString *const kHMDrinkPhotoClassKey;
 extern NSString *const kHMDrinkPhotoUserKey;
 extern NSString *const kHMDrinkPhotoRecipeKey;
 extern NSString *const kHMDrinkPhotoPictureKey;
+extern NSString *const kHMDrinkPhotoNoteKey;
 
 
 #pragma mark - Cached Recipe Attributes

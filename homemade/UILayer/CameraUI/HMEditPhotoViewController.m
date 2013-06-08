@@ -195,7 +195,7 @@
     if (trimmedComment.length > 0) {
         [photo setObject:trimmedComment forKey:kHMDrinkPhotoNoteKey];
     } else {
-        [photo setObject:[NSNull null] forKey:kHMDrinkPhotoNoteKey];
+        [photo setObject:@"" forKey:kHMDrinkPhotoNoteKey];
     }
     // photos are public, but may only be modified by the user who uploaded them
     PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];

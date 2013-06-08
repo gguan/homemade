@@ -32,6 +32,7 @@ NSString *const kHMDrinkPhotoClassKey   = @"Photo";
 NSString *const kHMDrinkPhotoUserKey    = @"user";
 NSString *const kHMDrinkPhotoRecipeKey  = @"recipe";
 NSString *const kHMDrinkPhotoPictureKey = @"picture";
+NSString *const kHMDrinkPhotoNoteKey    = @"note";
 
 #pragma mark - Cached Recipe Attributes
 // keys
