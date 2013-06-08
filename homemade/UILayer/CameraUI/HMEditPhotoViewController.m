@@ -178,13 +178,6 @@
 }
 
 - (void)doneButtonAction:(id)sender {
-    NSDictionary *userInfo = [NSDictionary dictionary];
-    NSString *trimmedComment = [self.commentTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if (trimmedComment.length != 0) {
-        userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                    trimmedComment,kHMEditPhotoViewControllerUserInfoCommentKey,
-                    nil];
-    }
     
     if (!self.photoFile) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
@@ -192,14 +185,18 @@
         return;
     }
     
-    // both files have finished uploading
-    
+    NSString *trimmedComment = [self.commentTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
     // create a photo object
     PFObject *photo = [PFObject objectWithClassName:kHMDrinkPhotoClassKey];
     [photo setObject:[PFUser currentUser] forKey:kHMDrinkPhotoUserKey];
     [photo setObject:self.photoFile forKey:kHMDrinkPhotoPictureKey];
     [photo setObject:self.recipeObject forKey:kHMDrinkPhotoRecipeKey];
-    
+    if (trimmedComment.length > 0) {
+        [photo setObject:trimmedComment forKey:kHMDrinkPhotoNoteKey];
+    } else {
+        [photo setObject:[NSNull null] forKey:kHMDrinkPhotoNoteKey];
+    }
     // photos are public, but may only be modified by the user who uploaded them
     PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
     [photoACL setPublicReadAccess:YES];
@@ -214,27 +211,7 @@
     [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Photo uploaded");
-            
-            // userInfo might contain any caption which might have been posted by the uploader
-            if (userInfo) {
-                NSString *commentText = [userInfo objectForKey:kHMEditPhotoViewControllerUserInfoCommentKey];
-                
-                if (commentText && commentText.length != 0) {
-                    // create and save comment
-                    PFObject *comment = [PFObject objectWithClassName:kHMCommentClassKey];
-                    [comment setObject:kHMCommentTypePhoto forKey:kHMCommentTypeKey];
-                    [comment setObject:photo forKey:kHMCommentPhotoKey];
-                    [comment setObject:[PFUser currentUser] forKey:kHMCommentFromUserKey];
-                    [comment setObject:commentText forKey:kHMCommentContentKey];
-                    
-                    PFACL *ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                    [ACL setPublicReadAccess:YES];
-                    comment.ACL = ACL;
-                    
-                    [comment saveEventually];
-                }
-            }
-            
+                        
             [[NSNotificationCenter defaultCenter] postNotificationName:HMCameraControllerDidFinishEditingPhotoNotification object:photo];
         } else {
             NSLog(@"Photo failed to save: %@", error);
