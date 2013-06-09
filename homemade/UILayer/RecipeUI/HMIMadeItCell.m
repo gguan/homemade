@@ -100,10 +100,9 @@
 
 - (void) adjustSize {
     CGFloat noteHeight = [HMIMadeItCell heightForText:self.noteLabel.text];
-    NSLog(@"%@",self.noteLabel.text);
     self.container.frame = CGRectMake(self.avatar.frame.origin.x + AvatarSize + 20.0f, 5.0f, PictureSize, TimeLabelHeight + PictureSize + CommentButtonHeight + noteHeight);
     self.noteLabel.frame = CGRectMake( 10.0f, 5.0f, self.container.bounds.size.width - 20.0f, noteHeight);
-    self.timestampLabel.frame = CGRectMake( 10.0f, 5.0f + noteHeight, self.container.bounds.size.width - 10.0f - 72.0f, 15.0f);
+    self.timestampLabel.frame = CGRectMake( 10.0f, noteHeight, self.container.bounds.size.width - 10.0f - 72.0f, 15.0f);
     self.photo.frame = CGRectMake(0.0f, TimeLabelHeight + noteHeight, PictureSize, PictureSize);
     self.commentButtonLabel.frame = CGRectMake(10.0f, self.container.frame.size.height - CommentButtonHeight + 5, PictureSize - 20, CommentButtonHeight - 10);
 

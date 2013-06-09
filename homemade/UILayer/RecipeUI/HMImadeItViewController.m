@@ -163,49 +163,52 @@
         NSString *note = [photoObject objectForKey:kHMDrinkPhotoNoteKey];
         [cell.noteLabel setText:note];
         [cell adjustSize];
+        
+        // If photo is in memory, load it right away
+        if (cell.photo.file.isDataAvailable) {
+            [cell.photo loadInBackground:^(UIImage *image, NSError *error){
+                if (error) {
+                    NSLog(@"Error when load from memory!");
+                }
+            }];
+        } else {
+            // Manually download images from parse and set animation
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                NSData *data = [cell.photo.file getData];
+                if(data) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    dispatch_async( dispatch_get_main_queue(), ^{
+                        
+                        // fade in fetched photo
+                        [UIView animateWithDuration:0.0
+                                         animations:^{
+                                             cell.photo.alpha = 0.0f;
+                                         }
+                                         completion:^(BOOL finished) {
+                                             [UIView animateWithDuration:0.3
+                                                              animations:^{
+                                                                  [cell.photo setImage: image];
+                                                                  cell.photo.alpha = 1.0f;
+                                                              }
+                                                              completion:^(BOOL finished) { }];
+                                         }];
+                    });
+                    
+                } else {
+                    NSLog(@"Error! Failed to download data from parse!");
+                }
+                
+            });
+        } // if isDataAvailable end
+        
+        // load comments
+        // TODO
     } else {
         NSLog(@"Bad object");
         return cell;
     }
-    
-    // If photo is in memory, load it right away
-    if (cell.photo.file.isDataAvailable) {
-        [cell.photo loadInBackground:^(UIImage *image, NSError *error){
-            if (error) {
-                NSLog(@"Error when load from memory!");
-            }
-        }];
-    } else {
-        // Manually download images from parse and set animation
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            NSData *data = [cell.photo.file getData];
-            if(data) {
-                UIImage *image = [UIImage imageWithData:data];
-                dispatch_async( dispatch_get_main_queue(), ^{
-                    
-                    // fade in fetched photo
-                    [UIView animateWithDuration:0.0
-                                     animations:^{
-                                         cell.photo.alpha = 0.0f;
-                                     }
-                                     completion:^(BOOL finished) {
-                                         [UIView animateWithDuration:0.3
-                                                          animations:^{
-                                                              [cell.photo setImage: image];
-                                                              cell.photo.alpha = 1.0f;
-                                                          }
-                                                          completion:^(BOOL finished) { }];
-                                     }];
-                });
-                
-            } else {
-                NSLog(@"Error! Failed to download data from parse!");
-            }
-            
-        });
-    } // if isDataAvailable end
-
+ 
     PFUser *user = [photoObject objectForKey:kHMDrinkPhotoUserKey];
     [cell.avatar setFile: [user objectForKey:kHMUserProfilePicSmallKey]];
     [cell.avatar loadInBackground];

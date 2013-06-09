@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define kTypeRecipe     0
+#define kTypePhoto      1
+
 #define kCellDragDist           60
 #define kMinimumGestureLength   40
 #define kMaximumGestureLength   100

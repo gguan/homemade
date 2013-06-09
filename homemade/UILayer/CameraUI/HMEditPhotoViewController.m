@@ -25,7 +25,7 @@
 @implementation HMEditPhotoViewController
 
 - (id)initWithImage:(UIImage *)aImage withRecipe:(PFObject *)recipe {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super init];
     if (self) {
         if (!aImage) {
             return nil;
