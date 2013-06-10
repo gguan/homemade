@@ -7,6 +7,7 @@
 //
 
 #import "HMImadeItViewController.h"
+#import "HMCommentViewController.h"
 #import "HMRecipeViewController.h"
 #import "HMIMadeItCell.h"
 #import "TTTTimeIntervalFormatter.h"
@@ -17,7 +18,6 @@
 @property (nonatomic, strong) PFObject *recipeObject;
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) TTTTimeIntervalFormatter *timeIntervalFormatter;
-
 @end
 
 @implementation HMImadeItViewController
@@ -84,7 +84,6 @@
     if (photoPicker.delegate && [photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
             NSLog(@"camera button has delegate");
             [photoPicker.delegate cameraViewControllerShowPicker:photoPicker];
-        
     }
     
 }
@@ -110,7 +109,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"!!!! %@", self.recipeViewController.navigationController);
+    PFObject *obj = [self.objects objectAtIndex:indexPath.row];
+    HMCommentViewController *commentView = [[HMCommentViewController alloc] initWithPFObject:obj andType:kHMCommentTypePhoto];
+    [[self.recipeViewController navigationController] pushViewController:commentView animated:YES];
 }
 
 

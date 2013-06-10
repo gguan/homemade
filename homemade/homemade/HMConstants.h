@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define kTypeRecipe     0
-#define kTypePhoto      1
-
 #define kCellDragDist           60
 #define kMinimumGestureLength   40
 #define kMaximumGestureLength   100
@@ -94,7 +91,6 @@ extern NSString *const kHMCommentPhotoKey;
 // Type values
 extern NSString *const kHMCommentTypeRecipe;
 extern NSString *const kHMCommentTypePhoto;
-
 
 #pragma mark - User Info Keys
 extern NSString *const kHMEditPhotoViewControllerUserInfoCommentKey;

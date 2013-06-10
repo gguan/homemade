@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "HMPhotoCommentView.h"
+#import "HMEditPhotoCommentTextField.h"
 #import "HMUtility.h"
 
-@interface HMPhotoCommentView()
+@interface HMEditPhotoCommentTextField()
 @property (nonatomic, strong) UIView *mainView;
 @end
 
-@implementation HMPhotoCommentView
+@implementation HMEditPhotoCommentTextField
 
 - (id)initWithFrame:(CGRect)frame
 {

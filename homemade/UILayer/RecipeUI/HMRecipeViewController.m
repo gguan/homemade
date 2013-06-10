@@ -16,7 +16,7 @@
 
 @interface HMRecipeViewController ()
 
-@property (nonatomic,strong) UINavigationController *navController;
+//@property (nonatomic,strong) UINavigationController *navigationController;
 @property(nonatomic,strong) CustomTabBar *tabBar;
 @property (nonatomic, strong) HMAboutViewController *aboutViewController;
 @property (nonatomic, strong) HMStepsViewController *stepsViewController;
@@ -97,9 +97,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navController = [[UINavigationController alloc] init];
-    self.navController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;
 }
+
+// TODO
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
 
 #pragma mark -
 #pragma mark CustomTabBarDelegate
@@ -203,10 +209,8 @@
     HMEditPhotoViewController *viewController = [[HMEditPhotoViewController alloc] initWithImage:image withRecipe:self.recipeObject];
     [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
-    [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self.navController pushViewController:viewController animated:NO];
-
-    [self presentViewController:self.navController animated:YES completion:nil];
+    [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:viewController animated:NO completion:nil];
 }
 
 @end

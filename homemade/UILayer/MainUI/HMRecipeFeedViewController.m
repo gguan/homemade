@@ -182,7 +182,6 @@
 }
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
-    // overridden, since we want to implement sections
     if (indexPath.row < self.objects.count) {
         return [self.objects objectAtIndex:indexPath.row];
     }

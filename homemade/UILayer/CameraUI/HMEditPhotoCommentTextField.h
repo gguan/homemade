@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMPhotoCommentView : UIView
+@interface HMEditPhotoCommentTextField : UIView
 
 @property (nonatomic, strong) UITextField *commentField;
 @property (nonatomic) BOOL hideDropShadow;

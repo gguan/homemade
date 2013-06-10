@@ -8,7 +8,7 @@
 
 #import "HMEditPhotoViewController.h"
 #import "HMRecipeViewController.h"
-#import "HMPhotoCommentView.h"
+#import "HMEditPhotoCommentTextField.h"
 #import "UIImage+ResizeAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -66,10 +66,10 @@
     
     [self.scrollView addSubview:photoImageView];
     
-    CGRect footerRect = [HMPhotoCommentView rectForView];
+    CGRect footerRect = [HMEditPhotoCommentTextField rectForView];
     footerRect.origin.y = photoImageView.frame.origin.y + photoImageView.frame.size.height;
     
-    HMPhotoCommentView *footerView = [[HMPhotoCommentView alloc] initWithFrame:footerRect];
+    HMEditPhotoCommentTextField *footerView = [[HMEditPhotoCommentTextField alloc] initWithFrame:footerRect];
     self.commentTextField = footerView.commentField;
     self.commentTextField.delegate = self;
     [self.scrollView addSubview:footerView];
@@ -221,11 +221,11 @@
         [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
     }];
     
-    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)cancelButtonAction:(id)sender {
-    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

@@ -11,8 +11,8 @@
 @interface HMCommentViewController : PFQueryTableViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) PFObject *object;
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, assign) NSString *type;
 
-- (id)initWithPFObject:(PFObject *)object andType:(NSInteger)type;
+- (id)initWithPFObject:(PFObject *)object andType:(NSString *)type;
 
 @end
