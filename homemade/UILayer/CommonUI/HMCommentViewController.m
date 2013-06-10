@@ -9,6 +9,10 @@
 #import "HMCommentViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TTTTimeIntervalFormatter.h"
+#import "HMCommentViewCell.h"
+
+#define CommentTextWidth 200
+#define CommentTextFontSize 13.0f
 
 @interface HMCommentViewController () {
     BOOL isSaving;
@@ -134,13 +138,15 @@
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     static NSString *CellIdentifier = @"CommentCell";
     
-    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HMCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;    
+        cell = [[HMCommentViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [cell.textLabel setText:[object objectForKey:kHMCommentContentKey]];
+    NSString *content = [object objectForKey:kHMCommentContentKey];
+    CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
+    [cell.commentLabel setFrame:CGRectMake( 40.0f, 5.0f, CommentTextWidth, height)];
+    [cell.commentLabel setText:content];
     return cell;
 }
 
@@ -150,8 +156,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    NSString *content = [object objectForKey:kHMDrinkPhotoNoteKey];
-    return 50;
+    NSString *content = [object objectForKey:kHMCommentContentKey];
+    CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
+    NSLog(@"%@ %f", content, height);
+    if (height + 10.0f > 40.0f) {
+        return height + 10.0f;
+    } else {
+        return 40.0f;
+    }
 }
 
 - (void)keyboardWillShow:(NSNotification *)note {

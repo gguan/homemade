@@ -27,4 +27,6 @@
 
 + (void)drawSideAndBottomDropShadowForRect:(CGRect)rect inContext:(CGContextRef)context;
 
++ (CGFloat)textHeight:(NSString *)text fontSize:(CGFloat)fontSize width:(CGFloat)width;
+
 @end

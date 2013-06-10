@@ -230,5 +230,9 @@
     CGContextRestoreGState(context);
 }
 
++ (CGFloat)textHeight:(NSString *)text fontSize:(CGFloat)fontSize width:(CGFloat)width {
+    return ceilf([text sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping].height);
+}
+
 
 @end

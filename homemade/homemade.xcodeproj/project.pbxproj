@@ -175,6 +175,7 @@
 		469202F61764B4600096F522 /* HMCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202F51764B4600096F522 /* HMCommentViewController.m */; };
 		469202F917657CD00096F522 /* HMEditPhotoCommentTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202F817657C970096F522 /* HMEditPhotoCommentTextField.m */; };
 		469202FC17657E730096F522 /* HMCommentTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202FB17657E720096F522 /* HMCommentTextField.m */; };
+		469202FF1765EFE50096F522 /* HMCommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202FE1765EFE40096F522 /* HMCommentViewCell.m */; };
 		469FBD851716B1A000D8BC84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD841716B1A000D8BC84 /* AudioToolbox.framework */; };
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
@@ -424,6 +425,8 @@
 		469202F817657C970096F522 /* HMEditPhotoCommentTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMEditPhotoCommentTextField.m; path = UILayer/CameraUI/HMEditPhotoCommentTextField.m; sourceTree = "<group>"; };
 		469202FA17657E720096F522 /* HMCommentTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCommentTextField.h; path = UILayer/CommonUI/HMCommentTextField.h; sourceTree = "<group>"; };
 		469202FB17657E720096F522 /* HMCommentTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommentTextField.m; path = UILayer/CommonUI/HMCommentTextField.m; sourceTree = "<group>"; };
+		469202FD1765EFE40096F522 /* HMCommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCommentViewCell.h; path = UILayer/CommonUI/HMCommentViewCell.h; sourceTree = "<group>"; };
+		469202FE1765EFE40096F522 /* HMCommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommentViewCell.m; path = UILayer/CommonUI/HMCommentViewCell.m; sourceTree = "<group>"; };
 		469FBD841716B1A000D8BC84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		469FBD861716B1A900D8BC84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -827,6 +830,8 @@
 				469202F51764B4600096F522 /* HMCommentViewController.m */,
 				469202FA17657E720096F522 /* HMCommentTextField.h */,
 				469202FB17657E720096F522 /* HMCommentTextField.m */,
+				469202FD1765EFE40096F522 /* HMCommentViewCell.h */,
+				469202FE1765EFE40096F522 /* HMCommentViewCell.m */,
 			);
 			name = CommonUI;
 			sourceTree = "<group>";
@@ -1250,6 +1255,7 @@
 				465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */,
 				469202F61764B4600096F522 /* HMCommentViewController.m in Sources */,
 				469202FC17657E730096F522 /* HMCommentTextField.m in Sources */,
+				469202FF1765EFE50096F522 /* HMCommentViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
