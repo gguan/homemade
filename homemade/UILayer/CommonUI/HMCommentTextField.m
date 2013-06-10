@@ -44,13 +44,25 @@
         [self.postButton setFrame:CGRectMake(10.0f + TextFieldWidth, 8.0f, 80.0f, 35.0f)];
         [self.postButton setBackgroundColor:[UIColor grayColor]];
         [self.postButton setTitle:@"Post" forState:UIControlStateNormal];
-        [self.mainView addSubview:self.postButton];
+        [self.postButton addTarget:self action:@selector(postButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.postButton];
     }
     return self;
 }
 
 + (CGRect)rectForView {
     return CGRectMake( 0.0f, [UIScreen mainScreen].bounds.size.height - HeightOfView - 44.0f - 20.0f, [UIScreen mainScreen].bounds.size.width, HeightOfView);
+}
+
+- (void)postButtonAction {
+    if (_delegate && [_delegate respondsToSelector:@selector(postButtonAction)]) {
+        NSLog(@"Tap post button...");
+        [_delegate postButtonAction];
+    }
+}
+
+- (void) text {
+    NSLog(@"test");
 }
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HMCommentTextField.h"
 
-@interface HMCommentViewController : PFQueryTableViewController <UITextFieldDelegate>
+@interface HMCommentViewController : PFQueryTableViewController <UITextFieldDelegate, HMCommentTextFieldDelegate>
 
 @property (nonatomic, strong) PFObject *object;
 @property (nonatomic, assign) NSString *type;

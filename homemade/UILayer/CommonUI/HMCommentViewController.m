@@ -9,7 +9,6 @@
 #import "HMCommentViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TTTTimeIntervalFormatter.h"
-#import "HMCommentTextField.h"
 
 @interface HMCommentViewController () {
     BOOL isSaving;
@@ -78,17 +77,14 @@
     
     self.commentTextField = [[HMCommentTextField alloc] initWithFrame:[HMCommentTextField rectForView]];
     self.commentTextField.commentField.delegate = self;
+    self.commentTextField.delegate = self;
     [self.view addSubview:self.commentTextField];
-    [self.commentTextField.postButton addTarget:self action:@selector(doneButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
    
     NSLog(@"Height: %f Table: %f Content:%f", [UIScreen mainScreen].bounds.size.height, self.tableView.frame.size.height, self.tableView.contentSize.height);
     
-
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -275,6 +271,12 @@
     }];
     
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+#pragma mark - HMCommentTextFieldDelegate
+
+- (void) postButtonAction {
+    [self doneButtonAction:self.commentTextField.postButton];
 }
 
 @end
