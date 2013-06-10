@@ -89,4 +89,5 @@ NSString *const kHMEditPhotoViewControllerUserInfoCommentKey = @"comment";
 
 #pragma mark - NSNotification
 NSString *const HMCameraControllerDidFinishEditingPhotoNotification = @"com.gguan.drink.tabBarController.didFinishEditingPhoto";
+NSString *const HMCommentControllerDidFinishEditingCommentNotification = @"com.gguan.drink.navController.didFinishEditingComment";
 
