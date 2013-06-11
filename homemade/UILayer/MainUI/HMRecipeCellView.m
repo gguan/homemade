@@ -24,7 +24,7 @@
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;    
-        self.contentView.backgroundColor = [UIColor clearColor];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         // Initialization code
         
@@ -36,8 +36,8 @@
         
         self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.backCover.clipsToBounds = NO;
-        self.backCover.layer.shadowRadius = 3.0f;
-        self.backCover.layer.shadowOpacity = 0.7f;
+        self.backCover.layer.shadowRadius = kShadowRadius;
+        self.backCover.layer.shadowOpacity = kShadowOpacity;
         self.backCover.layer.shadowOffset = CGSizeMake( 0.0f, 0.0f);
         self.backCover.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.backCover.layer.bounds].CGPath;
         
@@ -51,7 +51,7 @@
         banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
                 
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 7.0, 270.0, 30.0)];
-        self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:19.0];
+        self.titleLabel.font = [HMUtility appFontOfSize:19.0];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -65,8 +65,6 @@
         [self.divider setFrame:CGRectMake(5.0f, 23.0f, 11.0f, 24.0f)];
         [self.divider setBackgroundImage:[UIImage imageNamed:@"divider.png"] forState:UIControlStateNormal];
         [self.divider setBackgroundImage:[UIImage imageNamed:@"divider.png"] forState:UIControlStateSelected];
-
-//        NSLog(@"%@", [UIFont fontNamesForFamilyName:@"Helvetica Neue"]);
         
         // add save button
         self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -110,12 +108,10 @@
         dropshadowView.frame = CGRectMake(0.0, 0.0, 320.0, 205.0);
         [dropshadowView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
         dropshadowView.layer.masksToBounds = NO;
-        dropshadowView.layer.shadowRadius = 2.0f;
-        dropshadowView.layer.shadowOpacity = 0.7f;
-        dropshadowView.layer.shadowOffset = CGSizeMake( 0.0f, 1.0f);
-        dropshadowView.layer.shadowPath =
-        [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
-        
+        dropshadowView.layer.shadowRadius = kShadowRadius;
+        dropshadowView.layer.shadowOpacity = kShadowOpacity;
+        dropshadowView.layer.shadowOffset = kShadowOffset;
+        dropshadowView.layer.shadowPath = [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
         
         [self.contentView addSubview:dropshadowView];
         [self.contentView addSubview:self.cellLeft];
@@ -123,7 +119,6 @@
         [self.backCover addSubview:self.photo];
         [self.backCover addSubview:banner];
         [self.contentView addSubview:self.colorLine];
-        
         
         // Add Pan Gesture to cell view
         _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
@@ -133,8 +128,6 @@
         [self addGestureRecognizer:_panGestureRecognizer];
         
         _leftIsVisible = NO;
-        
-        
     }
     
     return self;

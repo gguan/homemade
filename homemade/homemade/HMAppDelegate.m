@@ -72,7 +72,7 @@
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.mainController];
     [self.window makeKeyAndVisible];
-
+    
     // Display login view
     if (![PFUser currentUser]) {
         [self presentLoginViewControllerAnimated:YES];

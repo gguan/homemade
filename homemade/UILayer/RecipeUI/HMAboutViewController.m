@@ -49,7 +49,7 @@
     // Init title label
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 213, 300, 30)];
     [titleLabel setText:[self.recipeObject objectForKey:kHMRecipeTitleKey]];
-    [titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:21]];
+    [titleLabel setFont:[HMUtility appFontOfSize:21.0f]];
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -61,7 +61,7 @@
     NSLog(@"%@, %f, %f", aboutString, textSize.width, textSize.height);
     [aboutLabel setFrame:CGRectMake(10, 260, textSize.width, textSize.height)];
     [aboutLabel setText:aboutString];
-    [aboutLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15]];
+    [aboutLabel setFont:[HMUtility appFontOfSize:15.0f]];
     [aboutLabel setTextColor:[UIColor whiteColor]];
     [aboutLabel setBackgroundColor:[UIColor clearColor]];
     [aboutLabel setLineBreakMode:NSLineBreakByWordWrapping];

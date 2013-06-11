@@ -16,8 +16,7 @@
 
 @interface HMRecipeViewController ()
 
-//@property (nonatomic,strong) UINavigationController *navigationController;
-@property(nonatomic,strong) CustomTabBar *tabBar;
+@property (nonatomic, strong) CustomTabBar *tabBar;
 @property (nonatomic, strong) HMAboutViewController *aboutViewController;
 @property (nonatomic, strong) HMStepsViewController *stepsViewController;
 @property (nonatomic, strong) HMImadeItViewController *imadeitViewController;
@@ -54,7 +53,7 @@
         
         // Add a baground color view
         UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
-        [colorView setBackgroundColor:self.color];
+//        [colorView setBackgroundColor:self.color];
         [self.view addSubview:colorView];
         
         // Set background image
@@ -195,8 +194,7 @@
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
     NSLog(@"dismiss pick controller from RecipeViewController... delegate");
-    [self dismissViewControllerAnimated:NO completion:^{
-//        NSLog(@"!!! %f", self.view.frame.size.height);
+    [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 

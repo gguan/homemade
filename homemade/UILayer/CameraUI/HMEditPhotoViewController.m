@@ -30,6 +30,8 @@
         if (!aImage) {
             return nil;
         }
+        self.edgesForExtendedLayout = UIExtendedEdgeTop;
+        self.extendedLayoutIncludesOpaqueBars = NO;
         
         self.recipeObject = recipe;
         
@@ -47,7 +49,8 @@
     self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0];
     self.view = self.scrollView;
-    
+    NSLog(@"%f %f %f", [[UIScreen mainScreen] applicationFrame].origin.y, [[UIScreen mainScreen] applicationFrame].size.height, self.view.frame.size.height);
+
     self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)];
     self.toolBar.barStyle = UIBarStyleDefault;
     [self.view addSubview:self.toolBar];

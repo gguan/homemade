@@ -51,14 +51,14 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
-    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+//    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
     for (UIView *view in loadingView.subviews) {
         if ([view isKindOfClass:[UILabel class]]) {
             UILabel *label = (UILabel *)view;
-            label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
+            label.font = [HMUtility appFontOfSize:15.0f];
             label.textColor = [UIColor whiteColor];
             label.backgroundColor = [UIColor clearColor];
             label.shadowOffset = CGSizeMake(0, 0);
@@ -71,7 +71,7 @@
     for (UIView *view in pullToRefreshView.subviews) {
         if ([view isKindOfClass:[UILabel class]]) {
             UILabel *label = (UILabel *)view;
-            label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:10.0];
+            label.font = [HMUtility appFontOfSize:10.0f];
             label.textColor = [UIColor whiteColor];
             label.backgroundColor = [UIColor clearColor];
             label.shadowOffset = CGSizeMake(0, 0);
@@ -101,8 +101,8 @@
                                                                ContentImage:nil
                                                     highlightedContentImage:nil];
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
-    menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) menus:menus];
-
+    menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [HMUtility screenHeight]) menus:menus];
+    NSLog(@"%f %f", [HMUtility screenHeight], self.view.frame.size.height);
 	// customize menu
 	menu.rotateAngle = 0;
 	menu.menuWholeAngle = M_PI;

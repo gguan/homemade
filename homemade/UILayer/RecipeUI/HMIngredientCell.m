@@ -15,6 +15,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        [self setBackgroundColor:[UIColor clearColor]];
         [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15]];
         [self.textLabel setTextColor:[UIColor whiteColor]];
         [self.textLabel setBackgroundColor:[UIColor clearColor]];

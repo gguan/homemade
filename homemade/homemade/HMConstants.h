@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
+// Global config
+#define kShadowRadius   0.4f
+#define kShadowOpacity  0.4f
+#define kShadowOffset   CGSizeMake(0.0f, 0.4f)
+
+#define kToolBarHeight  44.0f
+
 #define kCellDragDist           60
 #define kMinimumGestureLength   40
 #define kMaximumGestureLength   100
