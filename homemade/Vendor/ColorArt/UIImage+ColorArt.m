@@ -15,7 +15,8 @@
 }
 
 - (SLColorArt *)colorArtInRect:(CGRect)rect {
-    return [[SLColorArt alloc] initWithImage:[self croppedToRect: rect]];
+    UIImage *rectImage = [[self croppedToRect: rect] scaledToSize:CGSizeMake(20.0f, 20.0f)];
+    return [[SLColorArt alloc] initWithImage:rectImage];
 }
 
 - (SLColorArt *)colorArt{
