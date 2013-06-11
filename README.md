@@ -1,7 +1,7 @@
-homemade
+Drink+
 ========
 
-drink&amp;cake recipe
+Drinks recipes
 
 ![Design](https://dl.dropboxusercontent.com/u/56896655/Recipe_UI.jpg)
 
