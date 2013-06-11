@@ -19,7 +19,9 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
+NSUInteger DeviceSystemMajorVersion();
 
+#define DEVICE_VERSION_7 (DeviceSystemMajorVersion() > 7)
 
 
 @interface HMUtility : NSObject
