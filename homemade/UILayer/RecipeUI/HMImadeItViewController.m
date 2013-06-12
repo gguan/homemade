@@ -109,7 +109,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"!!!! %@", self.recipeViewController.navigationController);
     PFObject *obj = [self.objects objectAtIndex:indexPath.row];
     HMCommentViewController *commentView = [[HMCommentViewController alloc] initWithPFObject:obj andType:kHMCommentTypePhoto];
     [[self.recipeViewController navigationController] pushViewController:commentView animated:YES];

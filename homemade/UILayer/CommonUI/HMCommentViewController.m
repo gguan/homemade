@@ -9,7 +9,7 @@
 #import "HMCommentViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TTTTimeIntervalFormatter.h"
-#import "HMCommentViewCell.h"
+#import "HMCommentCell.h"
 
 #define CommentTextWidth 200
 #define CommentTextFontSize 13.0f
@@ -51,7 +51,6 @@
         self.objectsPerPage = 20;
         
         self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
-
         isSaving = NO;
         isKeyboardShown = NO;
         isAnimating = NO;
@@ -69,8 +68,7 @@
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     // Custom initialization
-//    [self.tableView setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
-//    [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     // photo as table header
@@ -152,9 +150,9 @@
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     static NSString *CellIdentifier = @"CommentCell";
     
-    HMCommentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HMCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[HMCommentViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[HMCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     NSString *text = [object objectForKey:kHMCommentContentKey];

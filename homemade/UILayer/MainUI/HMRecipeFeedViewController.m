@@ -15,6 +15,7 @@
 #import "TMCache.h"
 #import "HMSearchViewController.h"
 #import "UIImageView+Addition.h"
+#import "HMCommentViewController.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -40,6 +41,7 @@
         
         // The number of objects to show per page
         self.objectsPerPage = 10;
+        
         
     }
     return self;
@@ -435,6 +437,9 @@
 }
 
 - (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapCommentButton:(UIButton *)button recipe:(PFObject *)recipe {
+    HMCommentViewController *commentView = [[HMCommentViewController alloc] initWithPFObject:recipe andType:kHMCommentTypeRecipe];
+    [[self navigationController] pushViewController:commentView animated:YES];
+
     NSLog(@"Comment button tapped.");
 }
 
