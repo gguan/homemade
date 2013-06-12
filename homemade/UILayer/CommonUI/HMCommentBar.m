@@ -7,8 +7,9 @@
 //
 
 #import "HMCommentBar.h"
+#import <QuartzCore/QuartzCore.h>
 
-#define TextFieldWidth 220
+#define TextFieldWidth 250
 #define TextFontSize 14.0f
 #define HeightOfView 51.0f
 
@@ -23,17 +24,23 @@
     if (self) {
         
         // Initialization code
-//        self.mainView = [[UIView alloc] initWithFrame:CGRectMake( 0.0f, 0.0f, TextFieldWidth, HeightOfView)];
-//        self.mainView.backgroundColor = [UIColor clearColor];
-//        [self addSubview:self.mainView];
+//        if (!DEVICE_VERSION_7) {
+//            self.mainView = [[UIView alloc] initWithFrame:CGRectMake( 0.0f, 0.0f, TextFieldWidth, HeightOfView)];
+//            self.mainView.backgroundColor = [UIColor clearColor];
+//            self.mainView.layer.borderWidth = 1.0;
+//            self.mainView.layer.borderColor = [UIColor colorWithRed:73.0f/255.0f green:55.0f/255.0f blue:35.0f/255.0f alpha:1.0f].CGColor;
+//            [self addSubview:self.mainView];
 //        
-//        UIImageView *commentBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchFrame.png"]];
-//        commentBox.frame = CGRectMake(5.0f, 8.0f, TextFieldWidth, 35.0f);
-//        [self.mainView addSubview:commentBox];
-//        
+//            UIImageView *commentBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchFrame.png"]];
+//            commentBox.frame = CGRectMake(5.0f, 8.0f, TextFieldWidth, 35.0f);
+//            [self.mainView addSubview:commentBox];
+//        }
+        
         self.commentField = [[UITextField alloc] initWithFrame:CGRectMake( 10.0f, 10.0f, TextFieldWidth - 20, 31.0f)];
+        [self.commentField setBackgroundColor:[UIColor whiteColor]];
+        self.commentField.borderStyle = UITextBorderStyleRoundedRect;
         self.commentField.font = [UIFont systemFontOfSize:TextFontSize];
-        self.commentField.placeholder = @"Add a comment";
+        self.commentField.placeholder = @" Add a comment";
         self.commentField.returnKeyType = UIReturnKeySend;
         self.commentField.textColor = [UIColor colorWithRed:73.0f/255.0f green:55.0f/255.0f blue:35.0f/255.0f alpha:1.0f];
         self.commentField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -46,11 +53,10 @@
             self.postButton = [UIButton buttonWithType:UIButtonTypeSystem];
         } else {
             self.postButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//            [self.postButton setBackgroundColor:[UIColor grayColor]];
         }
         
         [self.postButton setTitle:@"Post" forState:UIControlStateNormal];
-        [self.postButton setFrame:CGRectMake(10.0f + TextFieldWidth, 8.0f, 80.0f, 35.0f)];
+        [self.postButton setFrame:CGRectMake(10.0f + TextFieldWidth, 8.0f, 50.0f, 35.0f)];
         [self.postButton addTarget:self action:@selector(postButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.postButton];
     }
@@ -72,8 +78,5 @@
     }
 }
 
-- (void) text {
-    NSLog(@"test");
-}
 
 @end

@@ -17,7 +17,9 @@
 @interface HMCommentViewController () {
     BOOL isSaving;
     BOOL isKeyboardShown;
+    BOOL isAnimating;
 }
+@property (nonatomic, strong) UIView *mainView;
 @property (nonatomic, strong) HMCommentBar *commentTextField;
 @property (nonatomic, strong) PFImageView *photoView;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier commentPostBackgroundTaskId;
@@ -52,6 +54,8 @@
 
         isSaving = NO;
         isKeyboardShown = NO;
+        isAnimating = NO;
+        
     }
     
     return self;
@@ -60,11 +64,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.navigationController.navigationBarHidden = NO;
+    
     // Custom initialization
 //    [self.tableView setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
-    [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
+//    [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     // photo as table header
     self.photoView = [[PFImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
@@ -77,19 +83,28 @@
     self.tableView.tableHeaderView = self.photoView;
     
     // empty table footer
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 51.0f)];
     
-    
+    // comment tool bar
     self.commentTextField = [[HMCommentBar alloc] initWithFrame:[HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden]];
-    self.commentTextField.commentField.delegate = self;
-    self.commentTextField.textFieldDelegate = self;
-    [self.view addSubview:self.commentTextField];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-           NSLog(@"%f %f", self.view.frame.origin.y, self.view.frame.size.height);
+    NSLog(@"Comment! %f %f %f", self.commentTextField.frame.origin.y, self.view.frame.origin.y, self.view.frame.size.height);
+    NSLog(@"%f %f", self.view.frame.origin.y, self.view.frame.size.height);
     NSLog(@"Height: %f Table: %f Content:%f", [UIScreen mainScreen].bounds.size.height, self.tableView.frame.size.height, self.tableView.contentSize.height);
     
+    self.commentTextField.commentField.delegate = self;
+    self.commentTextField.textFieldDelegate = self;
+    // make so the toolbar stays to the bottom and keep the width matching the device's screen width
+    self.commentTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+
+    [self.view addSubview:self.commentTextField];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,10 +159,35 @@
         cell = [[HMCommentViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NSString *content = [object objectForKey:kHMCommentContentKey];
-    CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
-    [cell.commentLabel setFrame:CGRectMake( 40.0f, 5.0f, CommentTextWidth, height)];
-    [cell.commentLabel setText:content];
+    NSString *text = [object objectForKey:kHMCommentContentKey];
+    PFUser *user = [object objectForKey:kHMCommentFromUserKey];
+    
+    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (error) {
+            return;
+        }
+        [cell.avatar setFile:[user objectForKey:kHMUserProfilePicSmallKey]];
+        [cell.avatar loadInBackground];
+        
+        NSString *content = [NSString stringWithFormat:@"%@ : %@", [user objectForKey:kHMUserDisplayNameKey], text];
+        CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
+        [cell.commentLabel setFrame:CGRectMake( 45.0f, 5.0f, CommentTextWidth, height)];
+        [cell.commentLabel setText:content afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            NSRange boldRange = [[mutableAttributedString string] rangeOfString:[user objectForKey:kHMUserDisplayNameKey] options:NSLiteralSearch];
+            // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
+            UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:13.0f];
+            CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
+            if (font) {
+                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)font range:boldRange];
+                CFRelease(font);
+            }
+            
+            return mutableAttributedString;
+        }];
+
+    }];
+    
+    
     return cell;
 }
 
@@ -157,9 +197,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    NSString *content = [object objectForKey:kHMCommentContentKey];
+    PFUser *user = [object objectForKey:kHMDrinkPhotoUserKey];
+   
+    NSString *content = [NSString stringWithFormat:@"%@: %@", [user objectForKey:kHMUserDisplayNameKey], [object objectForKey:kHMCommentContentKey]];
     CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
-    NSLog(@"%@ %f", content, height);
+//    NSLog(@"%@ %f", content, height);
     if (height + 10.0f > 40.0f) {
         return height + 10.0f;
     } else {
@@ -171,49 +213,50 @@
     if (isKeyboardShown) {
         return;
     }
-    
+    isKeyboardShown = YES;
     NSLog(@"Display keyboard");
     CGRect keyboardFrameEnd = [[note.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    double animationDuration = [[note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    isAnimating = YES;
     
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrameEnd.size.height, 0.0);
-//    self.tableView.contentInset = contentInsets;
-//    self.tableView.scrollIndicatorInsets = contentInsets;
-    
-    [UIView animateWithDuration:3 animations:^{
-        CGRect viewFrame = self.tableView.frame;
-       
-        viewFrame.size.height -= keyboardFrameEnd.size.height;
-         NSLog(@"%f !!", viewFrame.size.height);
-//        CGRect commentBarFrame = [HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden];
-//        commentBarFrame.origin.y -= keyboardFrameEnd.size.height;
-        // When keyboard popup, the self.view.size increase!
-//        NSLog(@"Height: %f Table: %f Content:%f", commentBarFrame.origin.y, self.view.frame.size.height, self.view.frame.origin.y);
-        NSLog(@"Keyboard Frame %f", keyboardFrameEnd.size.height);
+    [UIView animateWithDuration:animationDuration animations:^{
+        // When keyboard popup, the tableview size decrease!
         
-        if (!self.navigationController.isNavigationBarHidden) {
-//            commentBarFrame.origin.y -= 44.0f;
-        }
+        CGRect viewFrame = self.tableView.frame;
+        viewFrame.size.height -= keyboardFrameEnd.size.height;
         [self.tableView setFrame:viewFrame];
-//        [self.commentTextField setFrame:commentBarFrame];
+
+//        self.tableView.contentInset = UIEdgeInsetsMake(0,0,keyboardFrameEnd.size.height,0);
+//        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0,0,keyboardFrameEnd.size.height,0);
+//        if (!self.navigationController.isNavigationBarHidden) {
+//            commentBarFrame.origin.y -= 44.0f;
+//        }
         
     }];
-    NSLog(@"Height: %f Content: %f", self.tableView.bounds.size.height, [UIScreen mainScreen].bounds.size.height);
-    isKeyboardShown = YES;
+
+    isAnimating = NO;
+    NSLog(@"Height: %f Content: %f", self.tableView.frame.size.height, [UIScreen mainScreen].bounds.size.height);
+    
 }
 
 - (void)keyboardWillHide:(NSNotification *)note {
-//    CGRect keyboardFrameEnd = [[note.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    CGSize scrollViewContentSize = self.tableView.bounds.size;
-//    scrollViewContentSize.height -= keyboardFrameEnd.size.height;
-//    [UIView animateWithDuration:0.200f animations:^{
+    if (!isKeyboardShown) {
+        return;
+    }
+    CGRect keyboardFrameEnd = [[note.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    double animationDuration = [[note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+
+    CGSize scrollViewContentSize = self.tableView.bounds.size;
+    scrollViewContentSize.height -= keyboardFrameEnd.size.height;
+    [UIView animateWithDuration:animationDuration animations:^{
 //        [self.commentTextField setFrame:[HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden]];
 //        [self.tableView setContentSize:scrollViewContentSize];
-//    }];
-//    NSLog(@"Height: %f Table: %f Content:%f", self.view.bounds.size.height, self.tableView.bounds.size.height, self.tableView.contentSize.height);
-//    
-//    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-//    self.tableView.contentInset = contentInsets;
-//    self.tableView.scrollIndicatorInsets = contentInsets;
+        CGRect viewFrame = self.tableView.frame;
+        viewFrame.size.height += keyboardFrameEnd.size.height;
+        [self.tableView setFrame:viewFrame];
+    }];
+    NSLog(@"Height: %f Table: %f Content:%f", self.view.bounds.size.height, self.tableView.bounds.size.height, self.tableView.contentSize.height);
+    isKeyboardShown = NO;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -232,6 +275,9 @@
 
 // Need keep menu button fix position on the view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (isAnimating) {
+        return;
+    }
     CGRect fixedFrame = [HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden];
     fixedFrame.origin.y += scrollView.contentOffset.y;
     if (!self.navigationController.isNavigationBarHidden) {
@@ -307,5 +353,6 @@
 - (void) postButtonAction {
     [self doneButtonAction:self.commentTextField.postButton];
 }
+
 
 @end

@@ -8,7 +8,7 @@
 
 #import "HMCommentBar.h"
 
-@interface HMCommentViewController : PFQueryTableViewController <UITextFieldDelegate, HMCommentTextFieldDelegate>
+@interface HMCommentViewController : PFQueryTableViewController <UITextFieldDelegate, HMCommentTextFieldDelegate, UIBarPositioningDelegate>
 
 @property (nonatomic, strong) PFObject *object;
 @property (nonatomic, assign) NSString *type;

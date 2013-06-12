@@ -122,6 +122,7 @@
 
 #pragma mark - Customize Style
 - (void)setupAppearance {
+//    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
 }
 
 
