@@ -21,7 +21,7 @@
 
 NSUInteger DeviceSystemMajorVersion();
 
-#define DEVICE_VERSION_7 (DeviceSystemMajorVersion() > 7)
+#define DEVICE_VERSION_7 (DeviceSystemMajorVersion() >= 7)
 
 
 @interface HMUtility : NSObject

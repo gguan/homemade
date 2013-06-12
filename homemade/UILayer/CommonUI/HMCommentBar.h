@@ -9,13 +9,13 @@
 
 @protocol HMCommentTextFieldDelegate;
 
-@interface HMCommentTextField : UIView <UITextViewDelegate>
+@interface HMCommentBar : UIToolbar <UITextViewDelegate>
 
 @property (nonatomic, strong) UITextField *commentField;
 @property (nonatomic, strong) UIButton *postButton;
-@property (nonatomic, weak) id <HMCommentTextFieldDelegate> delegate;
+@property (nonatomic, weak) id <HMCommentTextFieldDelegate> textFieldDelegate;
 
-+ (CGRect)rectForView;
++ (CGRect)rectForView:(CGRect)viewRect navBarHidden:(BOOL)hidden;
 
 @end
 

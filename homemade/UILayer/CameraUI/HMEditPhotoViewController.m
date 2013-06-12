@@ -30,8 +30,6 @@
         if (!aImage) {
             return nil;
         }
-        self.edgesForExtendedLayout = UIExtendedEdgeTop;
-        self.extendedLayoutIncludesOpaqueBars = NO;
         
         self.recipeObject = recipe;
         

@@ -250,10 +250,8 @@ NSUInteger DeviceSystemMajorVersion() {
 
 + (UIFont *)appFontOfSize:(CGFloat)size {
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        NSLog(@"self font");
         return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
     } else {
-        NSLog(@"system font");
         return [UIFont systemFontOfSize:size];
     }
 }

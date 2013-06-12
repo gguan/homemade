@@ -48,7 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.navigationController setNavigationBarHidden:YES];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
 //    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
@@ -112,7 +111,7 @@
 	menu.nearRadius = 58.0f;
     menu.startPoint = CGPointMake(160.0, self.view.frame.size.height);
     menu.delegate = self;
-    [self. view addSubview:menu];
+    [self.view addSubview:menu];
 
     
     
