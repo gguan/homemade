@@ -25,7 +25,7 @@
     if (self) {
         self.recipeObject = recipeObject;
         self.ingredients = [recipeObject objectForKey:kHMRecipeIngredientsKey];
-    }
+     }
     return self;
 }
 
@@ -33,6 +33,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    CGFloat y = 0.0f;
+    if (DEVICE_VERSION_7) {
+        y = 20.0f;
+    }
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + y);
+    self.view.clipsToBounds = YES;
+    
     
     // Custom initialization
     [self.tableView setBackgroundColor:[UIColor clearColor]];
@@ -76,7 +83,7 @@
     
     
     // Init table view header
-    UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50 + RecipeImageViewHeight + textSize.height + 30)];
+    UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40 + RecipeImageViewHeight + textSize.height + 30)];
     [headContainerView addSubview:titleLabel];
     [headContainerView addSubview:self.recipeImageView];
     [headContainerView addSubview:aboutLabel];

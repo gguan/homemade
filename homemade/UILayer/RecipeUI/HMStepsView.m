@@ -21,10 +21,6 @@
         // Initialization code
                 
         [self setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
-        self.layer.masksToBounds = NO;
-        self.layer.shadowRadius = kShadowRadius;
-        self.layer.shadowOpacity = kShadowOpacity;
-        self.layer.shadowOffset = kShadowOffset;
         
         // Init step image view
         self.stepImageView = [[PFImageView alloc] initWithFrame:CGRectZero];

@@ -42,8 +42,7 @@
         
         // The number of objects to show per page
         self.objectsPerPage = 10;
-        
-        
+
     }
     return self;
 }
@@ -51,12 +50,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.navigationController setNavigationBarHidden:YES];
+    
     [self.tableView setSeparatorColor:[UIColor clearColor]];
-     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    
-//    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
-    
+    [self.navigationItem setTitle:@"DRINK+"];
+
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
     for (UIView *view in loadingView.subviews) {
@@ -68,20 +65,7 @@
             label.shadowOffset = CGSizeMake(0, 0);
         }
     }
-    
-    // Customize pullToRefresh view
-//    UIView *pullToRefreshView = (UIView *)[self.view.subviews objectAtIndex:1];
-//    [pullToRefreshView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
-//    for (UIView *view in pullToRefreshView.subviews) {
-//        if ([view isKindOfClass:[UILabel class]]) {
-//            UILabel *label = (UILabel *)view;
-//            label.font = [HMUtility appFontOfSize:10.0f];
-//            label.textColor = [UIColor whiteColor];
-//            label.backgroundColor = [UIColor clearColor];
-//            label.shadowOffset = CGSizeMake(0, 0);
-//        }
-//    }
-    
+        
     // add Path style menu
     UIImage *itemImg1 = [UIImage imageNamed:@"searchMag.png"];
     UIImage *itemImg2 = [UIImage imageNamed:@"WhatIMade.png"];
@@ -114,15 +98,23 @@
 	menu.farRadius = 61.0f;
 	menu.endRadius = 60.0f;
 	menu.nearRadius = 58.0f;
-    menu.startPoint = CGPointMake(160.0, self.view.frame.size.height);
+    if (DEVICE_VERSION_7) {
+        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height + 20.0f);
+    } else {
+        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height);
+    }
     menu.delegate = self;
     [self.view addSubview:menu];
-
 
     __weak HMRecipeFeedViewController *weakSelf = self;
     // add pull to refresh
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf loadObjects];
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf loadObjects];
+            [weakSelf.tableView.pullToRefreshView stopAnimating];
+        });
     }];
     // setup infinite scrolling
     [self.tableView addInfiniteScrollingWithActionHandler:^{
@@ -172,10 +164,6 @@
 #pragma mark - PFQueryTableViewController
 
 - (PFQuery *)queryForTable {
-//    if (![PFUser currentUser]) {
-//        [super objectsDidLoad:nil];
-//        return nil;
-//    }
     
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
@@ -369,6 +357,9 @@
 // Need keep menu button fix position on the view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGRect fixedFrame = self.view.frame;
+    if (DEVICE_VERSION_7) {
+        fixedFrame.origin.y += 20;
+    }
     fixedFrame.origin.y = 0 + scrollView.contentOffset.y;
     menu.frame = fixedFrame;
 }

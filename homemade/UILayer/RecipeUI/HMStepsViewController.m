@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#define PageControlHeight 30
+#define PageControlHeight 40
 
 @interface HMStepsViewController ()<PagedFlowViewDelegate,PagedFlowViewDataSource>
 
@@ -48,13 +48,9 @@
     if (DEVICE_VERSION_7) {
         y = 64.0f;
     }
-    [self.view setFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y)];
-    NSLog(@"------%f %f %f", self.view.frame.origin.y, self.view.frame.size.height, self.view.bounds.origin.y);
-
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     //initialzie the pagedFlowView
-    _pagedFlowView = [[PagedFlowView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _pagedFlowView = [[PagedFlowView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y)];
     _pagedFlowView.autoresizingMask= UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _pagedFlowView.dataSource = self;
     _pagedFlowView.delegate = self;
@@ -67,8 +63,12 @@
     _pageControll = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - PageControlHeight , self.view.frame.size.width, PageControlHeight)];
     _pageControll.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_pageControll addTarget:self action:@selector(pageControlValueDidChange:) forControlEvents:UIControlEventAllTouchEvents];
+    [_pageControll setCurrentPageIndicatorTintColor:[UIColor purpleColor]];
+    [_pageControll setPageIndicatorTintColor:[UIColor lightGrayColor]];
     [self.view addSubview:self.pageControll];
     _pagedFlowView.pageControl = _pageControll;
+    NSLog(@"step %@ %@ %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_pagedFlowView.frame), NSStringFromCGRect(_pageControll.frame));
+
 }
 
 - (void)didReceiveMemoryWarning

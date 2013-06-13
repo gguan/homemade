@@ -29,18 +29,17 @@
         // Initialization code
         
         // Init cell swipe left view
-        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(0.0, 0.0, 120.0, 205.0)];
+        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, kFeedCellHeight)];
         
-        self.backCover = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
-        [self.backCover setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+        self.backCover = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, kFeedCellHeight)];
         
-        self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        self.backCover.clipsToBounds = NO;
-        self.backCover.layer.shadowRadius = kShadowRadius;
-        self.backCover.layer.shadowOpacity = kShadowOpacity;
-        self.backCover.layer.shadowOffset = CGSizeMake( 0.0f, 0.0f);
-        self.backCover.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.backCover.layer.bounds].CGPath;
-        
+//        self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+//        self.backCover.clipsToBounds = NO;
+//        self.backCover.layer.shadowRadius = kShadowRadius;
+//        self.backCover.layer.shadowOpacity = kShadowOpacity;
+//        self.backCover.layer.shadowOffset = CGSizeMake( 0.0f, 0.0f);
+//        self.backCover.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.backCover.layer.bounds].CGPath;
+//        
         
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -48,7 +47,7 @@
         self.photo.clipsToBounds = YES;
         
         UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(0.0, 135.0, 320.0, 70.0)];
-        banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
+        banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
                 
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 7.0, 270.0, 30.0)];
         self.titleLabel.font = [HMUtility appFontOfSize:19.0];
@@ -104,16 +103,17 @@
         
         
         // add shadow view
-        UIView *dropshadowView = [[UIView alloc] init];
-        dropshadowView.frame = CGRectMake(0.0, 0.0, 320.0, 205.0);
-        [dropshadowView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
-        dropshadowView.layer.masksToBounds = NO;
-        dropshadowView.layer.shadowRadius = kShadowRadius;
-        dropshadowView.layer.shadowOpacity = kShadowOpacity;
-        dropshadowView.layer.shadowOffset = kShadowOffset;
-        dropshadowView.layer.shadowPath = [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
+//        UIView *dropshadowView = [[UIView alloc] init];
+//        dropshadowView.frame = CGRectMake(0.0, 0.0, 320.0, 205.0);
+//        [dropshadowView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+//        dropshadowView.layer.masksToBounds = NO;
+//        dropshadowView.layer.shadowRadius = kShadowRadius;
+//        dropshadowView.layer.shadowOpacity = kShadowOpacity;
+//        dropshadowView.layer.shadowOffset = kShadowOffset;
+//        dropshadowView.layer.shadowPath = [UIBezierPath bezierPathWithRect:dropshadowView.layer.bounds].CGPath;
+//        
+//        [self.contentView addSubview:dropshadowView];
         
-        [self.contentView addSubview:dropshadowView];
         [self.contentView addSubview:self.cellLeft];
         [self.contentView addSubview:self.backCover];
         [self.backCover addSubview:self.photo];

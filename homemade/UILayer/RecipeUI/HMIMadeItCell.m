@@ -42,12 +42,7 @@
 
         // create a container view
         self.container = [[UIView alloc] initWithFrame:CGRectMake(self.avatar.frame.origin.x + AvatarSize + 20.0f, 5.0f, PictureSize, TimeLabelHeight + PictureSize + CommentButtonHeight)];
-        [self.container setBackgroundColor:[UIColor whiteColor]];
-        self.container.layer.shadowRadius = 0.4f;
-        self.container.layer.shadowOpacity = 0.4f;
-        self.container.layer.shadowOffset = CGSizeMake( 0.0f, 0.4f);
-        self.container.layer.cornerRadius = 3.5f;
-        
+         
         // add photo imageview
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0f, TimeLabelHeight, PictureSize, PictureSize)];
         [self.container addSubview:self.photo];
@@ -70,17 +65,17 @@
         [self.container addSubview:self.timestampLabel];
         
         // add comment label
-        self.commentButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, self.container.frame.size.height - CommentButtonHeight + 5, PictureSize - 20, CommentButtonHeight - 10)];
-        [self.commentButtonLabel setText:@"  Comment..."];
-        [self.commentButtonLabel setTextColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:1.0f]];
-        [self.commentButtonLabel setShadowColor:[UIColor colorWithWhite:1.0f alpha:0.750f]];
-        [self.commentButtonLabel setShadowOffset:CGSizeMake( 0.0f, 1.0f)];
-        [self.commentButtonLabel setFont:[UIFont systemFontOfSize:TextFontSize]];
-        [self.commentButtonLabel setBackgroundColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:0.2f]];
-        self.commentButtonLabel.layer.cornerRadius = 3.5f;
-        self.commentButtonLabel.layer.borderColor = [UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:0.3f].CGColor;
-        self.commentButtonLabel.layer.borderWidth = 0.2f;
-        [self.container addSubview:self.commentButtonLabel];
+//        self.commentButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, self.container.frame.size.height - CommentButtonHeight + 5, PictureSize - 20, CommentButtonHeight - 10)];
+//        [self.commentButtonLabel setText:@"  Comment..."];
+//        [self.commentButtonLabel setTextColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:1.0f]];
+//        [self.commentButtonLabel setShadowColor:[UIColor colorWithWhite:1.0f alpha:0.750f]];
+//        [self.commentButtonLabel setShadowOffset:CGSizeMake( 0.0f, 1.0f)];
+//        [self.commentButtonLabel setFont:[UIFont systemFontOfSize:TextFontSize]];
+//        [self.commentButtonLabel setBackgroundColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:0.2f]];
+//        self.commentButtonLabel.layer.cornerRadius = 3.5f;
+//        self.commentButtonLabel.layer.borderColor = [UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:0.3f].CGColor;
+//        self.commentButtonLabel.layer.borderWidth = 0.2f;
+//        [self.container addSubview:self.commentButtonLabel];
         
         [self addSubview:self.container];
     }
@@ -89,7 +84,7 @@
 }
 
 + (CGFloat) cellInitialHeight {
-    return TimeLabelHeight + PictureSize + CommentButtonHeight + 10;
+    return TimeLabelHeight + PictureSize + 10;
 }
 
 + (CGFloat)heightForText:(NSString *)text {

@@ -13,7 +13,7 @@
 //fequalzro() from http://stackoverflow.com/a/1614761/184130
 #define fequalzero(a) (fabs(a) < FLT_EPSILON)
 
-static CGFloat const SVPullToRefreshViewHeight = 60;
+static CGFloat const SVPullToRefreshViewHeight = 80;
 
 @interface SVPullToRefreshArrow : UIView
 
@@ -65,12 +65,15 @@ static char UIScrollViewPullToRefreshView;
 - (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler {
     
     if(!self.pullToRefreshView) {
-        SVPullToRefreshView *view = [[SVPullToRefreshView alloc] initWithFrame:CGRectMake(0, -SVPullToRefreshViewHeight, self.bounds.size.width, SVPullToRefreshViewHeight)];
+        SVPullToRefreshView *view = [[SVPullToRefreshView alloc] initWithFrame:CGRectMake(0, - SVPullToRefreshViewHeight, self.bounds.size.width, SVPullToRefreshViewHeight)];
         view.pullToRefreshActionHandler = actionHandler;
         view.scrollView = self;
         [self addSubview:view];
         
         view.originalTopInset = self.contentInset.top;
+        if (DEVICE_VERSION_7) {
+            view.originalTopInset += 64.0f;
+        }
         self.pullToRefreshView = view;
         self.showsPullToRefresh = YES;
     }
@@ -140,7 +143,7 @@ static char UIScrollViewPullToRefreshView;
         
         // default styling values
         self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        self.textColor = [UIColor darkGrayColor];
+        self.textColor = [UIColor lightGrayColor];
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.state = SVPullToRefreshStateStopped;
         self.showsDateLabel = NO;
@@ -262,6 +265,11 @@ static char UIScrollViewPullToRefreshView;
 - (void)resetScrollViewContentInset {
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
     currentInsets.top = self.originalTopInset;
+//    currentInsets.bottom = self.originalBottomInset;
+//    if (DEVICE_VERSION_7) {
+//        currentInsets.top += 64.0f;
+//        currentInsets.bottom -= 64.0f;
+//    }
     [self setScrollViewContentInset:currentInsets];
 }
 

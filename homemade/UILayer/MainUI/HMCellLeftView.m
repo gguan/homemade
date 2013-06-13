@@ -16,7 +16,7 @@
     if (self) {
         // Initialization code
         
-        [self setBackgroundColor:[UIColor darkGrayColor]];
+        [self setBackgroundColor:[UIColor clearColor]];
         
         self.saveButton = [[UIButton alloc] initWithFrame:CGRectMake(21.0, 75.0, 18.0, 18.0)];
         [self.saveButton setBackgroundImage:[UIImage imageNamed:@"addToFavorite.png"] forState:UIControlStateNormal];

@@ -66,24 +66,6 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    // Add a baground color view
-    NSLog(@"------%f %f %f", self.view.frame.origin.y, self.view.frame.size.height, self.view.bounds.origin.y);
-    //        UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
-    //        [colorView setBackgroundColor:self.color];
-    //        [self.view addSubview:colorView];
-    
-    // Set background image
-    
-//    
-//    //The back button
-//    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [backButton setFrame:CGRectMake(13, 20, 12, 17)];
-//    [backButton setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-//    [backButton addTarget:self action:@selector(shareButtonClicked) forControlEvents:UIControlEventAllTouchEvents];
-//    [self.view addSubview:backButton];
-    
-    
-    
     // Initialize three subViews
     self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:self.recipeObject];
     self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:self.recipeObject];
@@ -144,7 +126,8 @@
 
 - (UIImage*) tabBarArrowImage
 {
-    return [self changeImage:[UIImage imageNamed:@"TabBarNipple.png"] toColor:self.color] ;
+    return [UIImage imageNamed:@"tabArrow.png"];
+//    return [self changeImage:[UIImage imageNamed:@"TabBarNipple.png"] toColor:self.color] ;
 }
 
 - (void) touchDownAtItemAtIndex:(NSUInteger)itemIndex
@@ -158,13 +141,7 @@
     UIViewController* viewController = [data objectForKey:@"viewController"];
     
     // Set the view controller's frame to account for the tab bar
-    CGFloat y = 0.0f;
-    if (DEVICE_VERSION_7) {
-        y = 64.0f;
-    }
-    viewController.view.frame = CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y);
-    viewController.view.clipsToBounds = YES;
-    NSLog(@"Bounds: %@",NSStringFromCGRect(viewController.view.bounds));
+    NSLog(@"Bounds: %@ %@",NSStringFromCGRect(self.view.bounds), NSStringFromCGRect(viewController.view.bounds));
     // Se the tag so we can find it later
     viewController.view.tag = SELECTED_VIEW_TAG;
     

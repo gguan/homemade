@@ -20,11 +20,13 @@
 #define kMinimumGestureLength   40
 #define kMaximumGestureLength   100
 #define TabBarHeight 44
-#define TabBarWidth 180
+#define TabBarWidth 165
 #define PageFlowViewWidth 250
-#define PageFlowViewHeight 400
+#define PageFlowViewHeight 360
 #define CameraButtonWidth 100
 #define CameraButtonHeight 47
+
+#define kFeedCellHeight 205.0f
 
 #pragma mark - NSUserDefaults
 extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;

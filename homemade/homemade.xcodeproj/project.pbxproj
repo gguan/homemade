@@ -57,7 +57,6 @@
 		4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */; };
 		4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */; };
 		4645D36E16F494AC00C38D39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D36D16F494AC00C38D39 /* QuartzCore.framework */; };
-		4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */; };
 		4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39116F5F1BB00C38D39 /* HMFeedItem.m */; };
 		4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D39916F68F4C00C38D39 /* HMSaveViewController.m */; };
 		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
@@ -182,9 +181,14 @@
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
 		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
+		46B777AA1769BC5300C162BE /* tabArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A81769BC5300C162BE /* tabArrow.png */; };
+		46B777AB1769BC5300C162BE /* tabArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A91769BC5300C162BE /* tabArrow@2x.png */; };
 		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
 		46C075D4173A5E6300BB8823 /* searchFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D2173A5E6300BB8823 /* searchFrame.png */; };
 		46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D3173A5E6300BB8823 /* searchFrame@2x.png */; };
+		46D305E0176995B8004ED9F9 /* navbarMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D305DE176995B8004ED9F9 /* navbarMask.png */; };
+		46D305E1176995B8004ED9F9 /* navbarMask@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D305DF176995B8004ED9F9 /* navbarMask@2.png */; };
+		46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B777AD1769ECBC00C162BE /* HMSearchViewController.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
 /* End PBXBuildFile section */
@@ -269,8 +273,6 @@
 		4645D35E16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		4645D35F16F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		4645D36D16F494AC00C38D39 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4645D38216F5E8ED00C38D39 /* HMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
-		4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchViewController.m; path = UILayer/SearchUI/HMSearchViewController.m; sourceTree = "<group>"; };
 		4645D39016F5F1BB00C38D39 /* HMFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMFeedItem.h; path = BaseLayer/DataModel/HMFeedItem.h; sourceTree = "<group>"; };
 		4645D39116F5F1BB00C38D39 /* HMFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMFeedItem.m; path = BaseLayer/DataModel/HMFeedItem.m; sourceTree = "<group>"; };
 		4645D39816F68F4C00C38D39 /* HMSaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSaveViewController.h; path = UILayer/SaveUI/HMSaveViewController.h; sourceTree = "<group>"; };
@@ -435,10 +437,16 @@
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		46B777A81769BC5300C162BE /* tabArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabArrow.png; sourceTree = "<group>"; };
+		46B777A91769BC5300C162BE /* tabArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabArrow@2x.png"; sourceTree = "<group>"; };
+		46B777AC1769ECBC00C162BE /* HMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
+		46B777AD1769ECBC00C162BE /* HMSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMSearchViewController.m; path = UILayer/SearchUI/HMSearchViewController.m; sourceTree = "<group>"; };
 		46C075CF173A589300BB8823 /* HMSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSearchBar.h; path = UILayer/SearchUI/HMSearchBar.h; sourceTree = "<group>"; };
 		46C075D0173A589300BB8823 /* HMSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchBar.m; path = UILayer/SearchUI/HMSearchBar.m; sourceTree = "<group>"; };
 		46C075D2173A5E6300BB8823 /* searchFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchFrame.png; sourceTree = "<group>"; };
 		46C075D3173A5E6300BB8823 /* searchFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchFrame@2x.png"; sourceTree = "<group>"; };
+		46D305DE176995B8004ED9F9 /* navbarMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbarMask.png; sourceTree = "<group>"; };
+		46D305DF176995B8004ED9F9 /* navbarMask@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbarMask@2.png"; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
@@ -757,10 +765,10 @@
 		4645D38116F5E8C900C38D39 /* SearchUI */ = {
 			isa = PBXGroup;
 			children = (
-				4645D38216F5E8ED00C38D39 /* HMSearchViewController.h */,
-				4645D38316F5E8ED00C38D39 /* HMSearchViewController.m */,
 				46C075CF173A589300BB8823 /* HMSearchBar.h */,
 				46C075D0173A589300BB8823 /* HMSearchBar.m */,
+				46B777AC1769ECBC00C162BE /* HMSearchViewController.h */,
+				46B777AD1769ECBC00C162BE /* HMSearchViewController.m */,
 			);
 			name = SearchUI;
 			sourceTree = "<group>";
@@ -922,6 +930,10 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				46B777A81769BC5300C162BE /* tabArrow.png */,
+				46B777A91769BC5300C162BE /* tabArrow@2x.png */,
+				46D305DE176995B8004ED9F9 /* navbarMask.png */,
+				46D305DF176995B8004ED9F9 /* navbarMask@2.png */,
 				469202D317607F350096F522 /* buttonCamera.png */,
 				469202D417607F350096F522 /* buttonCamera@2x.png */,
 				469202D517607F350096F522 /* buttonCameraSelected.png */,
@@ -1101,6 +1113,7 @@
 				4645D30016F44D1900C38D39 /* InfoPlist.strings in Resources */,
 				4645D30816F44D1900C38D39 /* Default.png in Resources */,
 				4645D30A16F44D1900C38D39 /* Default@2x.png in Resources */,
+				46B777AA1769BC5300C162BE /* tabArrow.png in Resources */,
 				4645D30C16F44D1900C38D39 /* Default-568h@2x.png in Resources */,
 				4645D32416F44E3B00C38D39 /* FacebookSDKResources.bundle in Resources */,
 				4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */,
@@ -1139,7 +1152,9 @@
 				4692025C175B33A20096F522 /* BackgroundLogin.png in Resources */,
 				4692025D175B33A20096F522 /* BackgroundLogin@2x.png in Resources */,
 				4692025E175B33A20096F522 /* comment.png in Resources */,
+				46D305E0176995B8004ED9F9 /* navbarMask.png in Resources */,
 				4692025F175B33A20096F522 /* comment@2x.png in Resources */,
+				46B777AB1769BC5300C162BE /* tabArrow@2x.png in Resources */,
 				46920260175B33A20096F522 /* commentActive.png in Resources */,
 				46920261175B33A20096F522 /* commentActive@2x.png in Resources */,
 				46920262175B33A20096F522 /* divider.png in Resources */,
@@ -1188,6 +1203,7 @@
 				469202BF175DA1FF0096F522 /* pagination@2x.png in Resources */,
 				469202C2175DA2090096F522 /* steps.png in Resources */,
 				469202C3175DA2090096F522 /* steps@2x.png in Resources */,
+				46D305E1176995B8004ED9F9 /* navbarMask@2.png in Resources */,
 				469202D717607F360096F522 /* buttonCamera.png in Resources */,
 				469202D817607F360096F522 /* buttonCamera@2x.png in Resources */,
 				469202D917607F360096F522 /* buttonCameraSelected.png in Resources */,
@@ -1202,6 +1218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */,
 				469202F917657CD00096F522 /* HMEditPhotoCommentTextField.m in Sources */,
 				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
 				46920299175C99B40096F522 /* HMStepsView.m in Sources */,
@@ -1217,7 +1234,6 @@
 				4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
-				4645D38416F5E8ED00C38D39 /* HMSearchViewController.m in Sources */,
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
 				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,

@@ -60,6 +60,9 @@ UIEdgeInsets scrollViewOriginalContentInsets;
         [self addSubview:view];
         
         view.originalBottomInset = self.contentInset.bottom;
+        if (DEVICE_VERSION_7) {
+            view.originalBottomInset -= 64.0f;
+        }
         self.infiniteScrollingView = view;
         self.showsInfiniteScrolling = YES;
     }

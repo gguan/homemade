@@ -14,4 +14,5 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
+
 @end

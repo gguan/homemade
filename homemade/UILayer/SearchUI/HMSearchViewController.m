@@ -32,6 +32,12 @@
 {
     [super viewDidLoad];
     
+    UISearchDisplayController *searchController = [[UISearchDisplayController alloc]
+                                                   initWithSearchBar:self.searchBar contentsController:self];
+    searchController.searchResultsDataSource = self;
+    searchController.searchResultsDelegate = self;
+    searchController.delegate = self;
+    
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     self.searchBar.userInteractionEnabled = YES;
     self.searchBar.showsCancelButton = YES;
