@@ -51,43 +51,6 @@
         self.photoPicker.delegate = self;
         self.photoPicker.container = self;
         
-        // Add a baground color view
-        UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
-//        [colorView setBackgroundColor:self.color];
-        [self.view addSubview:colorView];
-        
-        // Set background image
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
-        
-        //The back button
-        UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backButton setFrame:CGRectMake(13, 20, 12, 17)];
-        [backButton setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-        [backButton addTarget:self action:@selector(backButtonClicked) forControlEvents:UIControlEventAllTouchEvents];
-        [self.view addSubview:backButton];
-        
-        // Initialize three subViews
-        self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:recipeObject];
-        self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:recipeObject];
-        self.imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:recipeObject];
-        self.imadeitViewController.recipeViewController = self;
-        
-        // Place the tab bar at the top of our view
-        _tabBarItems = [NSArray arrayWithObjects:
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"about.png", @"image", self.aboutViewController, @"viewController", nil, @"subTitle", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"steps.png", @"image", self.stepsViewController, @"viewController", nil, @"subTitle", nil],
-                  [NSDictionary dictionaryWithObjectsAndKeys:@"imadeit.png", @"image", self.imadeitViewController, @"viewController", nil, @"subTitle", nil], nil];
-
-        _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(TabBarWidth/3, TabBarHeight-3) tag:0 delegate:self];
-        
-        self.tabBar.frame = CGRectMake((self.view.frame.size.width-TabBarWidth)/2, 0, TabBarWidth, TabBarHeight);
-        [self.tabBar setBackgroundColor:[UIColor clearColor]];
-        [self.view addSubview:self.tabBar];
-        
-        // Select the first tab
-        [self touchDownAtItemAtIndex:0];
-        [self.tabBar selectItemAtIndex:0];
-    
     }
     return self;
 }
@@ -96,13 +59,58 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationController.navigationBarHidden = YES;
+    
+    // Add a share navBarItem
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(shareButtonClicked)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    // Add a baground color view
+    NSLog(@"------%f %f %f", self.view.frame.origin.y, self.view.frame.size.height, self.view.bounds.origin.y);
+    //        UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
+    //        [colorView setBackgroundColor:self.color];
+    //        [self.view addSubview:colorView];
+    
+    // Set background image
+    
+//    
+//    //The back button
+//    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backButton setFrame:CGRectMake(13, 20, 12, 17)];
+//    [backButton setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+//    [backButton addTarget:self action:@selector(shareButtonClicked) forControlEvents:UIControlEventAllTouchEvents];
+//    [self.view addSubview:backButton];
+    
+    
+    
+    // Initialize three subViews
+    self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:self.recipeObject];
+    self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:self.recipeObject];
+    self.imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:self.recipeObject];
+    self.imadeitViewController.recipeViewController = self;
+    
+    // Place the tab bar at the top of our view
+    _tabBarItems = [NSArray arrayWithObjects:
+                    [NSDictionary dictionaryWithObjectsAndKeys:@"about.png", @"image", self.aboutViewController, @"viewController", @"About", @"subTitle", nil],
+                    [NSDictionary dictionaryWithObjectsAndKeys:@"steps.png", @"image", self.stepsViewController, @"viewController", @"Steps", @"subTitle", nil],
+                    [NSDictionary dictionaryWithObjectsAndKeys:@"imadeit.png", @"image", self.imadeitViewController, @"viewController", @"Pics", @"subTitle", nil], nil];
+    
+    _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(TabBarWidth/3, TabBarHeight) tag:0 delegate:self];
+    self.tabBar.frame = CGRectMake(0, 0, TabBarWidth, TabBarHeight);
+    [self.tabBar setBackgroundColor:[UIColor clearColor]];
+    [self.navigationItem setTitleView:_tabBar];
+    
+    // Select the first tab
+    [self touchDownAtItemAtIndex:0];
+    [self.tabBar selectItemAtIndex:0];
+
+    
 }
 
 // TODO
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
 }
 
 
@@ -111,9 +119,10 @@
 - (UIImage*) imageFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex
 {
     // Get the right data
-    NSDictionary* data = [self.tabBarItems objectAtIndex:itemIndex];
+//    NSDictionary* data = [self.tabBarItems objectAtIndex:itemIndex];
     // Return the image for this tab bar item
-    return [UIImage imageNamed:[data objectForKey:@"image"]];
+//    return [UIImage imageNamed:[data objectForKey:@"image"]];
+    return nil;
 }
 
 - (NSString*) titleFor:(CustomTabBar*)tabBar atIndex:(NSUInteger)itemIndex{
@@ -149,14 +158,19 @@
     UIViewController* viewController = [data objectForKey:@"viewController"];
     
     // Set the view controller's frame to account for the tab bar
-    viewController.view.frame = CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight);
+    CGFloat y = 0.0f;
+    if (DEVICE_VERSION_7) {
+        y = 64.0f;
+    }
+    viewController.view.frame = CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y);
     viewController.view.clipsToBounds = YES;
     NSLog(@"Bounds: %@",NSStringFromCGRect(viewController.view.bounds));
     // Se the tag so we can find it later
     viewController.view.tag = SELECTED_VIEW_TAG;
     
     // Add the new view controller's view
-    [self.view insertSubview:viewController.view aboveSubview:_tabBar];
+    [self.view insertSubview:viewController.view aboveSubview:self.view];
+//    [self.view addSubview:viewController.view];
 }
 
 
@@ -180,7 +194,7 @@
 
 
 #pragma UIbutton method
-- (void)backButtonClicked
+- (void)shareButtonClicked
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

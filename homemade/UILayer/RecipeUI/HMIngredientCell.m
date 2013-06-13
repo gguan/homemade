@@ -17,7 +17,7 @@
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
         [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15]];
-        [self.textLabel setTextColor:[UIColor whiteColor]];
+        [self.textLabel setTextColor:[UIColor grayColor]];
         [self.textLabel setBackgroundColor:[UIColor clearColor]];
         [self.textLabel setAdjustsFontSizeToFitWidth:YES];
     }

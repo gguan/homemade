@@ -20,10 +20,10 @@
     if (self) {
         // Custom initialization
         
-        self.parseClassName = kHMRecipeClassKey;
-        self.pullToRefreshEnabled = NO;
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 10;
+//        self.parseClassName = kHMRecipeClassKey;
+//        self.pullToRefreshEnabled = NO;
+//        self.paginationEnabled = YES;
+//        self.objectsPerPage = 10;
     }
     return self;
 }

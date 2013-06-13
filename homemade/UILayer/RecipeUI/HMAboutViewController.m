@@ -39,7 +39,7 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     // Init recipe image view
-    self.recipeImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 3, self.view.frame.size.width, RecipeImageViewHeight)];
+    self.recipeImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, RecipeImageViewHeight)];
     self.recipeImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     self.recipeImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.recipeImageView.clipsToBounds = YES;
@@ -47,15 +47,14 @@
     [self.recipeImageView loadInBackground];
 
     // Init title label
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 213, 300, 30)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 210, 300, 30)];
     [titleLabel setText:[self.recipeObject objectForKey:kHMRecipeTitleKey]];
     if (DEVICE_VERSION_7) {
         [titleLabel setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
     } else {
         [titleLabel setFont:[HMUtility appFontOfSize:21.0f]];
     }
-    
-    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setTextColor:[UIColor blackColor]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
         
@@ -63,7 +62,6 @@
     UILabel *aboutLabel = [[UILabel alloc] init];
     NSString *aboutString = [self.recipeObject objectForKey:kHMRecipeOverviewKey];
     CGSize textSize = [aboutString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15] constrainedToSize:CGSizeMake(300, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-    NSLog(@"%@, %f, %f", aboutString, textSize.width, textSize.height);
     [aboutLabel setFrame:CGRectMake(10, 260, textSize.width, textSize.height)];
     [aboutLabel setText:aboutString];
     if (DEVICE_VERSION_7) {
@@ -71,7 +69,7 @@
     } else {
         [aboutLabel setFont:[HMUtility appFontOfSize:15.0f]];
     }
-    [aboutLabel setTextColor:[UIColor whiteColor]];
+    [aboutLabel setTextColor:[UIColor darkGrayColor]];
     [aboutLabel setBackgroundColor:[UIColor clearColor]];
     [aboutLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [aboutLabel setNumberOfLines:0];

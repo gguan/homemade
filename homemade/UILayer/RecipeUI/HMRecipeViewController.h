@@ -9,7 +9,7 @@
 #import "CustomTabBar.h"
 #import "HMCameraViewController.h"
 
-@interface HMRecipeViewController : UIViewController<CustomTabBarDelegate, HMCameraDelegate>
+@interface HMRecipeViewController : UIViewController <CustomTabBarDelegate, HMCameraDelegate>
 
 @property (nonatomic, strong) PFObject *recipeObject;
 @property (nonatomic, strong) HMCameraViewController *photoPicker;

@@ -43,9 +43,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
     // Do any additional setup after loading the view.
-    [self.view setFrame:CGRectMake(0, TabBarHeight, self.view.frame.size.width, self.view.frame.size.height - TabBarHeight)];
+    CGFloat y = 0.0f;
+    if (DEVICE_VERSION_7) {
+        y = 64.0f;
+    }
+    [self.view setFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y)];
+    NSLog(@"------%f %f %f", self.view.frame.origin.y, self.view.frame.size.height, self.view.bounds.origin.y);
+
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     //initialzie the pagedFlowView

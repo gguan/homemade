@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class HMRecipeFeedViewController;
+//@class HMSearchViewController;
 
 @interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, PFLogInViewControllerDelegate>
 

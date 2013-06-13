@@ -65,7 +65,7 @@
     [super viewDidLoad];
 
     self.navigationController.navigationBarHidden = NO;
-    self.extendedLayoutIncludesOpaqueBars = NO;
+    
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     // Custom initialization
     [self.tableView setSeparatorColor:[UIColor clearColor]];
@@ -85,7 +85,11 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 51.0f)];
     
     // comment tool bar
-    self.commentTextField = [[HMCommentBar alloc] initWithFrame:[HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden]];
+    CGRect commentFrame = [HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden];
+    if (!self.navigationController.isNavigationBarHidden) {
+        commentFrame.origin.y += 44.0f;
+    }
+    self.commentTextField = [[HMCommentBar alloc] initWithFrame:commentFrame];
     
     self.commentTextField.commentField.delegate = self;
     self.commentTextField.textFieldDelegate = self;

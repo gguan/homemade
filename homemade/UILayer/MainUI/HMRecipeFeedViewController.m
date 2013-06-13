@@ -16,6 +16,7 @@
 #import "HMSearchViewController.h"
 #import "UIImageView+Addition.h"
 #import "HMCommentViewController.h"
+#import "HMAboutViewController.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -25,16 +26,16 @@
     AwesomeMenu *menu;
 }
 
-
-- (id)initWithStyle:(UITableViewStyle)style {
+- (id)initWithStyle:(UITableViewStyle)style
+{
     self = [super initWithStyle:style];
     if (self) {
         
         // The className to query on
         self.parseClassName = kHMRecipeClassKey;
         
-        // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
+        // Whether the built-in pull-to-refresh is enabled, we manuall add it
+        self.pullToRefreshEnabled = NO;
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = YES;
@@ -50,8 +51,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
+     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    
 //    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     
     // Customize loading view
@@ -60,24 +63,24 @@
         if ([view isKindOfClass:[UILabel class]]) {
             UILabel *label = (UILabel *)view;
             label.font = [HMUtility appFontOfSize:15.0f];
-            label.textColor = [UIColor whiteColor];
+            label.textColor = [UIColor darkGrayColor];
             label.backgroundColor = [UIColor clearColor];
             label.shadowOffset = CGSizeMake(0, 0);
         }
     }
     
     // Customize pullToRefresh view
-    UIView *pullToRefreshView = (UIView *)[self.view.subviews objectAtIndex:1];
-    [pullToRefreshView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
-    for (UIView *view in pullToRefreshView.subviews) {
-        if ([view isKindOfClass:[UILabel class]]) {
-            UILabel *label = (UILabel *)view;
-            label.font = [HMUtility appFontOfSize:10.0f];
-            label.textColor = [UIColor whiteColor];
-            label.backgroundColor = [UIColor clearColor];
-            label.shadowOffset = CGSizeMake(0, 0);
-        }
-    }
+//    UIView *pullToRefreshView = (UIView *)[self.view.subviews objectAtIndex:1];
+//    [pullToRefreshView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+//    for (UIView *view in pullToRefreshView.subviews) {
+//        if ([view isKindOfClass:[UILabel class]]) {
+//            UILabel *label = (UILabel *)view;
+//            label.font = [HMUtility appFontOfSize:10.0f];
+//            label.textColor = [UIColor whiteColor];
+//            label.backgroundColor = [UIColor clearColor];
+//            label.shadowOffset = CGSizeMake(0, 0);
+//        }
+//    }
     
     // add Path style menu
     UIImage *itemImg1 = [UIImage imageNamed:@"searchMag.png"];
@@ -115,11 +118,13 @@
     menu.delegate = self;
     [self.view addSubview:menu];
 
-    
-    
-    // setup infinite scrolling
+
     __weak HMRecipeFeedViewController *weakSelf = self;
-    
+    // add pull to refresh
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf loadObjects];
+    }];
+    // setup infinite scrolling
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         int64_t delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -128,7 +133,6 @@
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
         });
     }];
-    
 }
 
 #pragma mark - UITableViewDataSource
@@ -157,8 +161,10 @@
         //For testing, point to the same HMRecipeViewController,add properties later
 
         HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
-      
+
         [[self navigationController] pushViewController:recipeViewController animated:YES];
+//        HMAboutViewController *recipeViewController = [[HMAboutViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
+//        [[self navigationController] pushViewController:recipeViewController animated:YES];
     }
 }
 

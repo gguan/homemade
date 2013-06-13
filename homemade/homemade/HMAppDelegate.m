@@ -12,9 +12,9 @@
 
 // Import view controllers
 #import "HMLoginViewController.h"
-#import "HMRecipeViewController.h"
 #import "HMRecipeFeedViewController.h"
-
+#import "HMRecipeViewController.h"
+#import "HMSearchViewController.h"
 // Import parse 
 #import <Parse/Parse.h>
 
@@ -44,9 +44,15 @@
     
     // ****************************************************************************
     // Parse initialization
+#ifdef DEBUG
     [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
                   clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+#else
+    [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
+                  clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+#endif
     
     // Make sure to update your URL scheme to match this facebook id. It should be "fbFACEBOOK_APP_ID" where FACEBOOK_APP_ID is your Facebook app's id.
     // You may set one up at https://developers.facebook.com/apps
@@ -69,7 +75,7 @@
     
     // Initialize panel controller
     self.mainController = [[HMRecipeFeedViewController alloc] init];
-    
+//    self.mainController = [[HMSearchViewController alloc] init];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.mainController];
     [self.window makeKeyAndVisible];
 
@@ -122,7 +128,11 @@
 
 #pragma mark - Customize Style
 - (void)setupAppearance {
-//    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    if (DEVICE_VERSION_7) {
+        [[UINavigationBar appearance] setBarTintColor:[UIColor purpleColor]];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    }
+    
 }
 
 

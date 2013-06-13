@@ -19,8 +19,8 @@
 #define kCellDragDist           60
 #define kMinimumGestureLength   40
 #define kMaximumGestureLength   100
-#define TabBarHeight 55
-#define TabBarWidth 210
+#define TabBarHeight 44
+#define TabBarWidth 180
 #define PageFlowViewWidth 250
 #define PageFlowViewHeight 400
 #define CameraButtonWidth 100

@@ -52,10 +52,15 @@
 	// Do any additional setup after loading the view.
     
     // Custom initialization
+    CGFloat y = 0.0f;
+    if (DEVICE_VERSION_7) {
+        y = 64.0f;
+    }
+    [self.view setFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y)];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
-
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HeaderHeight)];
     self.cameraButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width-CameraButtonWidth)/2, 10, CameraButtonWidth, CameraButtonHeight)];
