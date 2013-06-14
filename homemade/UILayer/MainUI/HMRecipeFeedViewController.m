@@ -47,13 +47,21 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"load main view");
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     [self.navigationItem setTitle:@"DRINK+"];
-
+    
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchButtonClicked)];
+    [self.navigationItem setRightBarButtonItem:searchItem];
+    
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
     for (UIView *view in loadingView.subviews) {
@@ -141,7 +149,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 220.0f;
+    return 225.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -341,7 +349,7 @@
     NSLog(@"Select the index : %d",idx);
     if (idx == 0) { // search
 //        [self presentViewController:[[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES completion:nil];
-        HMSearchViewController *searchViewController = [[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain];
+        HMSearchViewController *searchViewController = [[HMSearchViewController alloc] init];
         [[self navigationController] pushViewController:searchViewController animated:YES];
     } else if (idx == 3) {
         [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
@@ -542,7 +550,7 @@
     params.name = [recipe objectForKey:kHMRecipeTitleKey];
     params.description = [recipe objectForKey:kHMRecipeOverviewKey];
     // Set this flag on to enable the Share Dialog beta feature
-    [FBSettings enableBetaFeature:FBBetaFeaturesShareDialog];
+//    [FBSettings  enableBetaFeature:FBBetaFeaturesShareDialog];
     return [FBDialogs presentShareDialogWithParams:params
                                        clientState:nil
                                            handler:
@@ -626,6 +634,9 @@
     }
 }
 
-
+- (void)searchButtonClicked {
+    HMSearchViewController *searchViewController = [[HMSearchViewController alloc] init];
+    [[self navigationController] pushViewController:searchViewController animated:YES];
+}
 
 @end

@@ -14,24 +14,30 @@
 
 @implementation HMSearchViewController
 
+@synthesize searchController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+//    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+//    [self.view addSubview:self.tableView];
+    NSLog(@"%@", self.searchDisplayController);
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44)];
+    self.searchBar.userInteractionEnabled = YES;
+    self.searchBar.showsCancelButton = NO;
+//    self.searchBar.delegate = self;
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44)];
-    searchBar.userInteractionEnabled = YES;
-    searchBar.showsCancelButton = NO;
-    searchBar.delegate = self;
     
-    self.tableView.tableHeaderView = searchBar;
     
-    self.searchController = [[UISearchDisplayController alloc]
-                                                   initWithSearchBar:searchBar contentsController:self];
+    self.tableView.tableHeaderView = self.searchBar;
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    
     self.searchController.searchResultsDataSource = self;
     self.searchController.searchResultsDelegate = self;
     self.searchController.delegate = self;
-    
+    self.searchController.searchResultsTableView.delegate = self;
     
     if (DEVICE_VERSION_7) {
         self.searchController.displaysSearchBarInNavigationBar = NO;
@@ -60,6 +66,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)viewDidUnload {
+     NSLog(@"unload view");
+    [super viewDidUnload];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    NSLog(@"disappear");
+    [super viewDidDisappear:animated];
+}
+
+- (void)dealloc {
+    
+    self.searchController.searchResultsTableView.delegate = nil;
+    self.searchController.delegate = nil;
+    self.searchController.searchResultsDelegate = nil;
+    self.searchController.searchResultsDataSource = nil;
+    self.searchController = nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -78,7 +105,9 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
     
     return cell;
@@ -105,4 +134,8 @@
 ////    [searchBar resignFirstResponder];
 //}
 //
+
+
+
+
 @end

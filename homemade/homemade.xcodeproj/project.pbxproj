@@ -33,6 +33,12 @@
 		4637257417241C81002357E0 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257117241C81002357E0 /* AwesomeMenu.m */; };
 		4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257317241C81002357E0 /* AwesomeMenuItem.m */; };
 		46383EFF172E26AD0033345F /* HMUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46383EFE172E26AD0033345F /* HMUtility.m */; };
+		46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943751728E3F600DA959B /* HMRecipeViewController.m */; };
+		46409D4E176B1BD000E7494E /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D47176B1BD000E7494E /* MMDrawerBarButtonItem.m */; };
+		46409D4F176B1BD000E7494E /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D49176B1BD000E7494E /* MMDrawerController.m */; };
+		46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */; };
+		46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */; };
+		46409D54176B1EAD00E7494E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */; };
 		4644DA1E1766CF52006F619D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644DA1D1766CF52006F619D /* StoreKit.framework */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -85,6 +91,7 @@
 		466F4FC417042A880076AB3D /* HMPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC317042A880076AB3D /* HMPerson.m */; };
 		466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC61704392B0076AB3D /* HMIngredient.m */; };
 		466F4FCA170448F00076AB3D /* HMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC9170448F00076AB3D /* HMStep.m */; };
+		46783EF2176AD49D0065B5BE /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028B175C98280096F522 /* CustomTabBar.m */; };
 		468F9BA41739D884009CC05A /* PagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 468F9BA31739D884009CC05A /* PagedFlowView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		469201FA1759E73F0096F522 /* HMProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469201F91759E73F0096F522 /* HMProfileImageView.m */; };
 		469201FD1759E7760096F522 /* HMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469201FC1759E7760096F522 /* HMImageView.m */; };
@@ -144,8 +151,6 @@
 		46920282175B33A20096F522 /* WhatIMade.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692024E175B33A20096F522 /* WhatIMade.png */; };
 		46920283175B33A20096F522 /* WhatIMade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692024F175B33A20096F522 /* WhatIMade@2x.png */; };
 		46920289175C89150096F522 /* UIColor+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920288175C89150096F522 /* UIColor+String.m */; };
-		46920294175C99250096F522 /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943751728E3F600DA959B /* HMRecipeViewController.m */; };
-		46920295175C995E0096F522 /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028B175C98280096F522 /* CustomTabBar.m */; };
 		46920296175C99730096F522 /* HMStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028F175C98660096F522 /* HMStepsViewController.m */; };
 		46920297175C99730096F522 /* HMImadeItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920291175C98790096F522 /* HMImadeItViewController.m */; };
 		46920298175C99730096F522 /* HMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920293175C98790096F522 /* HMAboutViewController.m */; };
@@ -239,6 +244,16 @@
 		4637257317241C81002357E0 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		46383EFD172E26AD0033345F /* HMUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUtility.h; sourceTree = "<group>"; };
 		46383EFE172E26AD0033345F /* HMUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUtility.m; sourceTree = "<group>"; };
+		46409D46176B1BD000E7494E /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		46409D47176B1BD000E7494E /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		46409D48176B1BD000E7494E /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		46409D49176B1BD000E7494E /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		46409D4A176B1BD000E7494E /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		46409D4C176B1BD000E7494E /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		46409D52176B1EAD00E7494E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Utility/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Utility/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		4644DA1D1766CF52006F619D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -565,6 +580,22 @@
 			path = Vendor/AwesomeMenu;
 			sourceTree = "<group>";
 		};
+		46409D45176B1BD000E7494E /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				46409D46176B1BD000E7494E /* MMDrawerBarButtonItem.h */,
+				46409D47176B1BD000E7494E /* MMDrawerBarButtonItem.m */,
+				46409D48176B1BD000E7494E /* MMDrawerController.h */,
+				46409D49176B1BD000E7494E /* MMDrawerController.m */,
+				46409D4A176B1BD000E7494E /* MMDrawerVisualState.h */,
+				46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */,
+				46409D4C176B1BD000E7494E /* UIViewController+MMDrawerController.h */,
+				46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */,
+			);
+			name = MMDrawerController;
+			path = Vendor/MMDrawerController;
+			sourceTree = "<group>";
+		};
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +679,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				46409D45176B1BD000E7494E /* MMDrawerController */,
 				469202CF17607EC50096F522 /* TTTTimeIntervalFormatter */,
 				469202C9175F041D0096F522 /* TTTAttributedLabel */,
 				4692020E175A18BB0096F522 /* UIImageCategories */,
@@ -849,6 +881,8 @@
 		465F5964174EA90C00E2164B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				46409D52176B1EAD00E7494E /* UIImage+ImageEffects.h */,
+				46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */,
 				465F5965174EA95F00E2164B /* UIImageView+Addition.h */,
 				465F5966174EA95F00E2164B /* UIImageView+Addition.m */,
 				46920287175C89150096F522 /* UIColor+String.h */,
@@ -1218,6 +1252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */,
+				46783EF2176AD49D0065B5BE /* CustomTabBar.m in Sources */,
 				46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */,
 				469202F917657CD00096F522 /* HMEditPhotoCommentTextField.m in Sources */,
 				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
@@ -1225,8 +1261,6 @@
 				46920296175C99730096F522 /* HMStepsViewController.m in Sources */,
 				46920297175C99730096F522 /* HMImadeItViewController.m in Sources */,
 				46920298175C99730096F522 /* HMAboutViewController.m in Sources */,
-				46920295175C995E0096F522 /* CustomTabBar.m in Sources */,
-				46920294175C99250096F522 /* HMRecipeViewController.m in Sources */,
 				4645D30216F44D1900C38D39 /* main.m in Sources */,
 				4645D30616F44D1900C38D39 /* HMAppDelegate.m in Sources */,
 				4645D34716F4513600C38D39 /* FXImageView.m in Sources */,
@@ -1241,6 +1275,7 @@
 				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,
 				46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */,
 				466F4F75170154860076AB3D /* SSKeychain.m in Sources */,
+				46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */,
 				466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */,
 				466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */,
 				466F4F851701A61B0076AB3D /* UIColor+Crayola.m in Sources */,
@@ -1254,6 +1289,7 @@
 				4606A4DF17195750009FDFFB /* HMConstants.m in Sources */,
 				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,
 				4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */,
+				46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */,
 				4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */,
 				4637256C172408A3002357E0 /* SLColorArt.m in Sources */,
 				4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */,
@@ -1263,6 +1299,7 @@
 				462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */,
 				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
+				46409D4E176B1BD000E7494E /* MMDrawerBarButtonItem.m in Sources */,
 				462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */,
 				462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */,
 				46383EFF172E26AD0033345F /* HMUtility.m in Sources */,
@@ -1276,6 +1313,7 @@
 				46920219175A18BB0096F522 /* UIImage+ResizeAdditions.m in Sources */,
 				4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				46920289175C89150096F522 /* UIColor+String.m in Sources */,
+				46409D54176B1EAD00E7494E /* UIImage+ImageEffects.m in Sources */,
 				469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */,
 				469202D217607EC50096F522 /* TTTTimeIntervalFormatter.m in Sources */,
 				469202DE17608C600096F522 /* HMEditPhotoViewController.m in Sources */,
@@ -1283,6 +1321,7 @@
 				465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */,
 				469202F61764B4600096F522 /* HMCommentViewController.m in Sources */,
 				469202FC17657E730096F522 /* HMCommentBar.m in Sources */,
+				46409D4F176B1BD000E7494E /* MMDrawerController.m in Sources */,
 				469202FF1765EFE50096F522 /* HMCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@
 #import "HMRecipeCellView.h"
 #import <QuartzCore/QuartzCore.h>
 
-
 @interface HMRecipeCellView()
 
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -29,26 +28,24 @@
         // Initialization code
         
         // Init cell swipe left view
-        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, kFeedCellHeight)];
+        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(20.0, 0.0, self.frame.size.width, kFeedCellHeight)];
         
-        self.backCover = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, kFeedCellHeight)];
+        self.backCover = [[UIView alloc] initWithFrame:CGRectMake(20.0, 10.0, kFeedCellWidth, kFeedCellHeight)];
+        self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+
         
-//        self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-//        self.backCover.clipsToBounds = NO;
-//        self.backCover.layer.shadowRadius = kShadowRadius;
-//        self.backCover.layer.shadowOpacity = kShadowOpacity;
-//        self.backCover.layer.shadowOffset = CGSizeMake( 0.0f, 0.0f);
-//        self.backCover.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.backCover.layer.bounds].CGPath;
-//        
-        
-        self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 205.0)];
+        self.photo = [[PFImageView alloc] initWithFrame:self.backCover.frame];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.contentMode = UIViewContentModeScaleAspectFill;
         self.photo.clipsToBounds = YES;
+        [self.backCover addSubview:self.photo];
         
-        UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(0.0, 135.0, 320.0, 70.0)];
-        banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.7f];
-                
+        
+        
+        UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(20.0, 155.0, kFeedCellWidth, 60.0)];
+        banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
+        [self.backCover addSubview:banner];
+        
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 7.0, 270.0, 30.0)];
         self.titleLabel.font = [HMUtility appFontOfSize:19.0];
         self.titleLabel.textColor = [UIColor whiteColor];
@@ -56,7 +53,7 @@
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
-        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(312.0, 135.0, 12.0, 70.0)];
+        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(310.0, 155.0, 10.0, 60.0)];
         [self.colorLine setBackgroundColor:[UIColor clearColor]];
         self.colorLine.alpha = 0.95;
         
@@ -116,8 +113,7 @@
         
         [self.contentView addSubview:self.cellLeft];
         [self.contentView addSubview:self.backCover];
-        [self.backCover addSubview:self.photo];
-        [self.backCover addSubview:banner];
+        
         [self.contentView addSubview:self.colorLine];
         
         // Add Pan Gesture to cell view

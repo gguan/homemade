@@ -7,6 +7,7 @@
 //
 
 #import "HMCellLeftView.h"
+#import "UIColor+Crayola.h"
 
 @implementation HMCellLeftView
 
@@ -18,17 +19,20 @@
         
         [self setBackgroundColor:[UIColor clearColor]];
         
-        self.saveButton = [[UIButton alloc] initWithFrame:CGRectMake(21.0, 75.0, 18.0, 18.0)];
-        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"addToFavorite.png"] forState:UIControlStateNormal];
-        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"addToFavoriteActive.png"] forState:UIControlStateSelected];
+        self.saveButton = [[UIButton alloc] initWithFrame:CGRectMake(10.0, 20.0, 50.0, 50.0)];
+        [self.saveButton setBackgroundColor:[UIColor colorWithCrayola:@"Wisteria"]];
+//        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"addToFavorite.png"] forState:UIControlStateNormal];
+//        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"addToFavoriteActive.png"] forState:UIControlStateSelected];
         
-        self.commentButton = [[UIButton alloc] initWithFrame:CGRectMake(21.0, 115.0, 18.0, 18.0)];
-        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
-        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"commentActive.png"] forState:UIControlStateSelected];
+        self.commentButton = [[UIButton alloc] initWithFrame:CGRectMake(10.0, 70.0, 50.0, 50.0)];
+        [self.commentButton setBackgroundColor:[UIColor colorWithCrayola:@"Yellow"]];
+//        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
+//        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"commentActive.png"] forState:UIControlStateSelected];
         
-        self.shareButton = [[UIButton alloc] initWithFrame:CGRectMake(21.0, 155.0, 18.0, 18.0)];
-        [self.shareButton setBackgroundImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
-        [self.shareButton setBackgroundImage:[UIImage imageNamed:@"shareActive.png"] forState:UIControlStateSelected];
+        self.shareButton = [[UIButton alloc] initWithFrame:CGRectMake(10.0, 120.0, 50.0, 50.0)];
+        [self.shareButton setBackgroundColor:[UIColor colorWithCrayola:@"Yellow Green"]];
+//        [self.shareButton setBackgroundImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+//        [self.shareButton setBackgroundImage:[UIImage imageNamed:@"shareActive.png"] forState:UIControlStateSelected];
         
         [self addSubview:self.saveButton];
         [self addSubview:self.commentButton];
@@ -38,7 +42,7 @@
         self.avatarImageView = [[HMProfileImageView alloc] init];
         self.avatarImageView.frame = CGRectMake( 10.0f, 10.0f, 40.0f, 40.0f);
         [self.avatarImageView.profileButton addTarget:self action:@selector(didTapUserButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.avatarImageView];
+//        [self addSubview:self.avatarImageView];
         
         self.timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake( 50.0f, 24.0f, self.bounds.size.width - 50.0f - 72.0f, 18.0f)];
         [self addSubview:self.timestampLabel];

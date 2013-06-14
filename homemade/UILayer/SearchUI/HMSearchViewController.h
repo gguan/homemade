@@ -11,7 +11,8 @@
 
 @interface HMSearchViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
 
-@property (nonatomic, strong) UISearchDisplayController *searchController;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, retain) IBOutlet UISearchDisplayController *searchController;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
 
