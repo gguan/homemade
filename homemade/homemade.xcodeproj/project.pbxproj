@@ -56,8 +56,6 @@
 		4645D31E16F44DC200C38D39 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D31916F44DC200C38D39 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4645D31F16F44DC200C38D39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D31A16F44DC200C38D39 /* SystemConfiguration.framework */; };
 		4645D32416F44E3B00C38D39 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */; };
-		4645D34716F4513600C38D39 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34416F4513600C38D39 /* FXImageView.m */; };
-		4645D34816F4513600C38D39 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D34616F4513600C38D39 /* UIImage+FX.m */; };
 		4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4645D35516F4514800C38D39 /* SVProgressHUD.bundle */; };
 		4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35716F4514800C38D39 /* SVProgressHUD.m */; };
 		4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D35D16F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m */; };
@@ -276,10 +274,6 @@
 		4645D31916F44DC200C38D39 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4645D31A16F44DC200C38D39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = Vendor/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		4645D34316F4513600C38D39 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
-		4645D34416F4513600C38D39 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
-		4645D34516F4513600C38D39 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
-		4645D34616F4513600C38D39 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
 		4645D35516F4514800C38D39 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		4645D35616F4514800C38D39 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		4645D35716F4514800C38D39 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -697,7 +691,6 @@
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
 				4645D35416F4514800C38D39 /* SVProgressHUD */,
 				4645D35016F4514200C38D39 /* SSKeychain */,
-				4645D34216F4513600C38D39 /* FXImageView */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -711,18 +704,6 @@
 				4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		4645D34216F4513600C38D39 /* FXImageView */ = {
-			isa = PBXGroup;
-			children = (
-				4645D34316F4513600C38D39 /* FXImageView.h */,
-				4645D34416F4513600C38D39 /* FXImageView.m */,
-				4645D34516F4513600C38D39 /* UIImage+FX.h */,
-				4645D34616F4513600C38D39 /* UIImage+FX.m */,
-			);
-			name = FXImageView;
-			path = Vendor/FXImageView;
 			sourceTree = "<group>";
 		};
 		4645D35016F4514200C38D39 /* SSKeychain */ = {
@@ -1267,8 +1248,6 @@
 				46920298175C99730096F522 /* HMAboutViewController.m in Sources */,
 				4645D30216F44D1900C38D39 /* main.m in Sources */,
 				4645D30616F44D1900C38D39 /* HMAppDelegate.m in Sources */,
-				4645D34716F4513600C38D39 /* FXImageView.m in Sources */,
-				4645D34816F4513600C38D39 /* UIImage+FX.m in Sources */,
 				4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,

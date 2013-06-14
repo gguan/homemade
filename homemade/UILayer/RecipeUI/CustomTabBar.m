@@ -34,7 +34,6 @@
 - (void) addTabBarArrowAtIndex:(NSUInteger)itemIndex;
 -(UIButton*) buttonAtIndex:(NSUInteger)itemIndex width:(CGFloat)width;
 -(UIImage*) tabBarImage:(UIImage*)startImage size:(CGSize)targetSize backgroundImage:(UIImage*)backgroundImage;
--(UIImage*) blackFilledImageWithWhiteBackgroundUsing:(UIImage*)startImage;
 -(UIImage*) tabBarBackgroundImageWithSize:(CGSize)targetSize backgroundImage:(UIImage*)backgroundImage;
 @end
 
@@ -219,39 +218,6 @@
     
     return button;
 }
-
-
-// Convert the image's fill color to black and background to white
--(UIImage*) blackFilledImageWithWhiteBackgroundUsing:(UIImage*)startImage
-{
-    // Create the proper sized rect
-    CGRect imageRect = CGRectMake(0, 0, CGImageGetWidth(startImage.CGImage), CGImageGetHeight(startImage.CGImage));
-    
-    // Create a new bitmap context
-    CGContextRef context = CGBitmapContextCreate(NULL, imageRect.size.width, imageRect.size.height, 8, 0, CGImageGetColorSpace(startImage.CGImage), kCGImageAlphaPremultipliedLast);
-    
-    CGContextSetRGBFillColor(context, 1, 1, 1, 1);
-    CGContextFillRect(context, imageRect);
-    
-    // Use the passed in image as a clipping mask
-    CGContextClipToMask(context, imageRect, startImage.CGImage);
-    // Set the fill color to black: R:0 G:0 B:0 alpha:1
-    CGContextSetRGBFillColor(context, 0, 0, 0, 1);
-    // Fill with black
-    CGContextFillRect(context, imageRect);
-    
-    // Generate a new image
-    CGImageRef newCGImage = CGBitmapContextCreateImage(context);
-    UIImage* newImage = [UIImage imageWithCGImage:newCGImage scale:startImage.scale orientation:startImage.imageOrientation];
-    
-    // Cleanup
-    CGContextRelease(context);
-    CGImageRelease(newCGImage);
-    
-    return newImage;
-}
-
-
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
