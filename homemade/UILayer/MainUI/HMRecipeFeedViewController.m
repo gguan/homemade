@@ -90,7 +90,7 @@
                                                     highlightedContentImage:nil];
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
     menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [HMUtility screenHeight]) menus:menus];
-    NSLog(@"%f %f", [HMUtility screenHeight], self.view.frame.size.height);
+    NSLog(@"%f %f %@", [HMUtility screenHeight], self.view.frame.size.height, NSStringFromCGRect(self.tableView.frame));
 	// customize menu
 	menu.rotateAngle = 0;
 	menu.menuWholeAngle = M_PI;
@@ -99,9 +99,9 @@
 	menu.endRadius = 60.0f;
 	menu.nearRadius = 58.0f;
     if (DEVICE_VERSION_7) {
-        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height + 20.0f);
+        menu.startPoint = CGPointMake(160.0, self.tableView.frame.size.height + 20.0f);
     } else {
-        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height);
+        menu.startPoint = CGPointMake(160.0, self.tableView.frame.size.height);
     }
     menu.delegate = self;
     [self.view addSubview:menu];
@@ -340,7 +340,9 @@
 {
     NSLog(@"Select the index : %d",idx);
     if (idx == 0) { // search
-        [self presentViewController:[[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES completion:nil];
+//        [self presentViewController:[[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES completion:nil];
+        HMSearchViewController *searchViewController = [[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain];
+        [[self navigationController] pushViewController:searchViewController animated:YES];
     } else if (idx == 3) {
         [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
     }
@@ -357,10 +359,11 @@
 // Need keep menu button fix position on the view
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGRect fixedFrame = self.view.frame;
-    if (DEVICE_VERSION_7) {
-        fixedFrame.origin.y += 20;
-    }
-    fixedFrame.origin.y = 0 + scrollView.contentOffset.y;
+    
+    fixedFrame.origin.y = scrollView.contentOffset.y;
+//    if (DEVICE_VERSION_7) {
+//        fixedFrame.origin.y += 20;
+//    }
     menu.frame = fixedFrame;
 }
 

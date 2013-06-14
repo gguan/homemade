@@ -61,7 +61,7 @@
 	// Do any additional setup after loading the view.
     
     // Add a share navBarItem
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(shareButtonClicked)];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareButtonClicked)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
@@ -81,7 +81,9 @@
     _tabBar = [[CustomTabBar alloc] initWithItemCount:3 itemSize:CGSizeMake(TabBarWidth/3, TabBarHeight) tag:0 delegate:self];
     self.tabBar.frame = CGRectMake(0, 0, TabBarWidth, TabBarHeight);
     [self.tabBar setBackgroundColor:[UIColor clearColor]];
+
     [self.navigationItem setTitleView:_tabBar];
+//    self.edgesForExtendedLayout = UIExtendedEdgeNone;
     
     // Select the first tab
     [self touchDownAtItemAtIndex:0];

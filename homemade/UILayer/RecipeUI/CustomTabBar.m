@@ -188,7 +188,7 @@
     [self addSubview:tabBarArrow];
     
     // To get the vertical location we go up by the height of arrow and then come back down 2 pixels so the arrow is slightly on top of the tab bar.
-    CGFloat verticalLocation = 40 - tabBarArrowImage.size.height + 2;
+    CGFloat verticalLocation = 40 - tabBarArrowImage.size.height;
     tabBarArrow.frame = CGRectMake([self horizontalLocationFor:itemIndex], verticalLocation, tabBarArrowImage.size.width, tabBarArrowImage.size.height);
 }
 
@@ -204,7 +204,7 @@
     // Create the normal state image by converting the image's background to gray
     NSString* subTitle = [delegate titleFor:self atIndex:itemIndex];
     [button setTitle:subTitle forState:UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12.5f]];
+    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal]; // SET the colour for your wishes
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted]; // SET the colour for your wishes
     //   [button setTitleEdgeInsets:UIEdgeInsetsMake(0.f, 0.f, .f, -10.f)];

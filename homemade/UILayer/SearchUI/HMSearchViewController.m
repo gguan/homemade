@@ -14,46 +14,38 @@
 
 @implementation HMSearchViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-        
-//        self.parseClassName = kHMRecipeClassKey;
-//        self.pullToRefreshEnabled = NO;
-//        self.paginationEnabled = YES;
-//        self.objectsPerPage = 10;
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UISearchDisplayController *searchController = [[UISearchDisplayController alloc]
-                                                   initWithSearchBar:self.searchBar contentsController:self];
-    searchController.searchResultsDataSource = self;
-    searchController.searchResultsDelegate = self;
-    searchController.delegate = self;
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44)];
+    searchBar.userInteractionEnabled = YES;
+    searchBar.showsCancelButton = NO;
+    searchBar.delegate = self;
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    self.searchBar.userInteractionEnabled = YES;
-    self.searchBar.showsCancelButton = YES;
-    self.searchBar.delegate = self;
+    self.tableView.tableHeaderView = searchBar;
     
-    for (UIView *possibleButton in self.searchBar.subviews)
-    {
-        if ([possibleButton isKindOfClass:[UIButton class]])
-        {
-            UIButton *cancelButton = (UIButton*)possibleButton;
-            cancelButton.enabled = YES;
-            break;
-        }
+    self.searchController = [[UISearchDisplayController alloc]
+                                                   initWithSearchBar:searchBar contentsController:self];
+    self.searchController.searchResultsDataSource = self;
+    self.searchController.searchResultsDelegate = self;
+    self.searchController.delegate = self;
+    
+    
+    if (DEVICE_VERSION_7) {
+        self.searchController.displaysSearchBarInNavigationBar = NO;
     }
-    
-    self.tableView.tableHeaderView = self.searchBar;
+            
+//    for (UIView *possibleButton in self.searchBar.subviews)
+//    {
+//        if ([possibleButton isKindOfClass:[UIButton class]])
+//        {
+//            UIButton *cancelButton = (UIButton*)possibleButton;
+//            cancelButton.enabled = YES;
+//            break;
+//        }
+//    }
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -106,9 +98,11 @@
      */
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
+//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+//{
+//    // DO ur operations
+//    NSLog(@"Canceled");
+////    [searchBar resignFirstResponder];
+//}
+//
 @end

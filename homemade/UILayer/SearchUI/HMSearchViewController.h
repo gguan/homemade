@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "HMSearchBar.h"
 
-@interface HMSearchViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface HMSearchViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
 
-@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
 
