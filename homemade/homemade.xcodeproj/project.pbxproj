@@ -193,6 +193,7 @@
 		46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D3173A5E6300BB8823 /* searchFrame@2x.png */; };
 		46D305E0176995B8004ED9F9 /* navbarMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D305DE176995B8004ED9F9 /* navbarMask.png */; };
 		46D305E1176995B8004ED9F9 /* navbarMask@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D305DF176995B8004ED9F9 /* navbarMask@2.png */; };
+		46E08A16176BB065001A2C13 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E08A15176BB065001A2C13 /* Accelerate.framework */; };
 		46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B777AD1769ECBC00C162BE /* HMSearchViewController.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
@@ -462,6 +463,7 @@
 		46C075D3173A5E6300BB8823 /* searchFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchFrame@2x.png"; sourceTree = "<group>"; };
 		46D305DE176995B8004ED9F9 /* navbarMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbarMask.png; sourceTree = "<group>"; };
 		46D305DF176995B8004ED9F9 /* navbarMask@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbarMask@2.png"; sourceTree = "<group>"; };
+		46E08A15176BB065001A2C13 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E08A16176BB065001A2C13 /* Accelerate.framework in Frameworks */,
 				4644DA1E1766CF52006F619D /* StoreKit.framework in Frameworks */,
 				469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */,
 				469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */,
@@ -621,6 +624,7 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46E08A15176BB065001A2C13 /* Accelerate.framework */,
 				4644DA1D1766CF52006F619D /* StoreKit.framework */,
 				469202CD175F0A600096F522 /* CoreText.framework */,
 				465F5962174BD48300E2164B /* Parse.framework */,
