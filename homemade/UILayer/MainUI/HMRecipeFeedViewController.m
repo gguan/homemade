@@ -17,6 +17,7 @@
 #import "UIImageView+Addition.h"
 #import "HMCommentViewController.h"
 #import "HMAboutViewController.h"
+#import "UIViewController+MMDrawerController.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -57,10 +58,14 @@
     [super viewDidLoad];
     
     [self.tableView setSeparatorColor:[UIColor clearColor]];
-    [self.navigationItem setTitle:@"DRINK+"];
     
+    // Setup navigation bar
+    [self.navigationItem setTitle:@"DRINK+"];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(leftDrawerButtonClicked)];
+    [self.navigationItem setLeftBarButtonItem:leftItem];
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchButtonClicked)];
     [self.navigationItem setRightBarButtonItem:searchItem];
+    
     
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
@@ -133,6 +138,10 @@
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
         });
     }];
+}
+
+- (void) dealloc {
+    NSLog(@"FeedView dealloc");
 }
 
 #pragma mark - UITableViewDataSource
@@ -632,6 +641,10 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];
     }
+}
+
+- (void)leftDrawerButtonClicked {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 - (void)searchButtonClicked {

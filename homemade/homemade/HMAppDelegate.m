@@ -13,8 +13,10 @@
 // Import view controllers
 #import "HMLoginViewController.h"
 #import "HMRecipeFeedViewController.h"
+#import "HMLeftPanelViewController.h"
 #import "HMRecipeViewController.h"
 #import "HMSearchViewController.h"
+#import "MMDrawerController.h"
 // Import parse 
 #import <Parse/Parse.h>
 
@@ -74,9 +76,19 @@
     [self setupAppearance];
     
     // Initialize panel controller
-    self.mainController = [[HMRecipeFeedViewController alloc] init];
-//    self.mainController = [[HMSearchViewController alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.mainController];
+    UIViewController *leftSidePanelController = [[HMLeftPanelViewController alloc] init];
+    HMRecipeFeedViewController *centerViewController = [[HMRecipeFeedViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+    
+    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:navigationController leftDrawerViewController:leftSidePanelController];
+    [drawerController setMaximumLeftDrawerWidth:270.0];
+    [drawerController setShowsShadow:NO];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
+    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+
+    
+    self.mainController = centerViewController;
+    self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
 
     // Display login view

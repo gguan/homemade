@@ -12,28 +12,28 @@
 
 @end
 
-@implementation HMSearchViewController
+@implementation HMSearchViewController {
+    BOOL isSearching;
+}
 
 @synthesize searchController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    isSearching = NO;
+    
+    self.searchResults = [NSMutableArray array];
 
-//    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-//    [self.view addSubview:self.tableView];
-    NSLog(@"%@", self.searchDisplayController);
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44)];
     self.searchBar.userInteractionEnabled = YES;
     self.searchBar.showsCancelButton = NO;
-//    self.searchBar.delegate = self;
-    
-    
-    
+    self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
     
-    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     self.searchController.searchResultsDataSource = self;
     self.searchController.searchResultsDelegate = self;
     self.searchController.delegate = self;
@@ -92,23 +92,26 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"SearchTableCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
+    PFObject *object = [self.searchResults objectAtIndex:indexPath.row];
+    NSString *title = [object objectForKey:kHMRecipeTitleKey];
+    [cell.textLabel setText:title];
     
     return cell;
 }
@@ -127,15 +130,46 @@
      */
 }
 
-//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-//{
-//    // DO ur operations
-//    NSLog(@"Canceled");
-////    [searchBar resignFirstResponder];
-//}
-//
+- (void)filterResults:(NSString *)searchTerm {
+    NSString *trimmedTerm = [searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (trimmedTerm.length == 0) {
+        return;
+    }
+    [self.searchResults removeAllObjects];
+    
+    NSLog(@"Do search");
+    
+    PFQuery *query = [PFQuery queryWithClassName:kHMRecipeClassKey];
+    [query whereKey:kHMRecipeTitleKey containsString:trimmedTerm];
+    isSearching = YES;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [self.searchResults addObjectsFromArray:objects];
+            [self.searchController.searchResultsTableView reloadData];
+        }
+    }];
+    
+    isSearching = NO;
+    
+}
 
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    if (isSearching == NO) {
+//        [self filterResults:searchString];
+    }
+    return YES;
+}
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"%i", isSearching);
+    if (isSearching == NO) {
+        NSString *searchString = [NSString stringWithString:searchBar.text];
+        [self filterResults:searchString];
+        NSLog(@"search %@", searchString);
 
+    }
+    NSLog(@"search clicked!");
+    
+}
 
 @end

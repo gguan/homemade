@@ -192,6 +192,8 @@
 		46D305E0176995B8004ED9F9 /* navbarMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D305DE176995B8004ED9F9 /* navbarMask.png */; };
 		46D305E1176995B8004ED9F9 /* navbarMask@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D305DF176995B8004ED9F9 /* navbarMask@2.png */; };
 		46E08A16176BB065001A2C13 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E08A15176BB065001A2C13 /* Accelerate.framework */; };
+		46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E08A18176BB74A001A2C13 /* HMLeftPanelViewController.m */; };
+		46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E08A1C176BC7EE001A2C13 /* HMAccountViewController.m */; };
 		46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B777AD1769ECBC00C162BE /* HMSearchViewController.m */; };
 		EA0C4446170D685000DFE846 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */; };
 		EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */; };
@@ -458,6 +460,10 @@
 		46D305DE176995B8004ED9F9 /* navbarMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbarMask.png; sourceTree = "<group>"; };
 		46D305DF176995B8004ED9F9 /* navbarMask@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbarMask@2.png"; sourceTree = "<group>"; };
 		46E08A15176BB065001A2C13 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		46E08A17176BB74A001A2C13 /* HMLeftPanelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMLeftPanelViewController.h; path = UILayer/MainUI/HMLeftPanelViewController.h; sourceTree = "<group>"; };
+		46E08A18176BB74A001A2C13 /* HMLeftPanelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMLeftPanelViewController.m; path = UILayer/MainUI/HMLeftPanelViewController.m; sourceTree = "<group>"; };
+		46E08A1B176BC7EE001A2C13 /* HMAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMAccountViewController.h; path = UILayer/UserUI/HMAccountViewController.h; sourceTree = "<group>"; };
+		46E08A1C176BC7EE001A2C13 /* HMAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/UserUI/HMAccountViewController.m; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
@@ -745,6 +751,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				46E08A1A176BC7C0001A2C13 /* UserUI */,
 				469202DB1760812F0096F522 /* CameraUI */,
 				462F0CA91728EBB600BDDEB8 /* LoginUI */,
 				462A770C16FC28B800C3CBF7 /* RecipeUI */,
@@ -766,6 +773,8 @@
 				4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */,
 				462F0CB8172946AF00BDDEB8 /* HMCellLeftView.h */,
 				462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */,
+				46E08A17176BB74A001A2C13 /* HMLeftPanelViewController.h */,
+				46E08A18176BB74A001A2C13 /* HMLeftPanelViewController.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -1067,6 +1076,15 @@
 			path = Vendor/FXLabel;
 			sourceTree = "<group>";
 		};
+		46E08A1A176BC7C0001A2C13 /* UserUI */ = {
+			isa = PBXGroup;
+			children = (
+				46E08A1B176BC7EE001A2C13 /* HMAccountViewController.h */,
+				46E08A1C176BC7EE001A2C13 /* HMAccountViewController.m */,
+			);
+			name = UserUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1237,6 +1255,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */,
+				46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */,
 				46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */,
 				46783EF2176AD49D0065B5BE /* CustomTabBar.m in Sources */,
 				46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */,
