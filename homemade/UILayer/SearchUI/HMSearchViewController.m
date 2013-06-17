@@ -7,6 +7,9 @@
 //
 
 #import "HMSearchViewController.h"
+#import "SVPullToRefresh.h"
+
+#define QueryLimit 2
 
 @interface HMSearchViewController ()
 
@@ -14,6 +17,8 @@
 
 @implementation HMSearchViewController {
     BOOL isSearching;
+    NSInteger page;
+    NSString *searchTerm;
 }
 
 @synthesize searchController;
@@ -23,6 +28,8 @@
     [super viewDidLoad];
     
     isSearching = NO;
+    page = 0;
+    searchTerm = nil;
     
     self.searchResults = [NSMutableArray array];
 
@@ -42,16 +49,17 @@
     if (DEVICE_VERSION_7) {
         self.searchController.displaysSearchBarInNavigationBar = NO;
     }
-            
-//    for (UIView *possibleButton in self.searchBar.subviews)
-//    {
-//        if ([possibleButton isKindOfClass:[UIButton class]])
-//        {
-//            UIButton *cancelButton = (UIButton*)possibleButton;
-//            cancelButton.enabled = YES;
-//            break;
-//        }
-//    }
+    
+    // Infinite scroll and pagination
+    __weak HMSearchViewController *weakSelf = self;
+    [self.searchController.searchResultsTableView addInfiniteScrollingWithActionHandler:^{
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf loadNextPage];
+            [weakSelf.searchController.searchResultsTableView.infiniteScrollingView stopAnimating];
+        });
+    }];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -106,13 +114,23 @@
     static NSString *CellIdentifier = @"SearchTableCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
     PFObject *object = [self.searchResults objectAtIndex:indexPath.row];
     NSString *title = [object objectForKey:kHMRecipeTitleKey];
-    [cell.textLabel setText:title];
+    NSString *description = [object objectForKey:kHMRecipeOverviewKey];
+//    NSRange stringRange = {0, MIN([description length], 30)};
     
+    
+    PFFile *imageFile = [object objectForKey:kHMRecipePhotoKey];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            [cell.imageView setImage:[UIImage imageWithData:data]];
+        }
+    }];
+    [cell.textLabel setText:title];
+    [cell.detailTextLabel setText:description];
     return cell;
 }
 
@@ -130,8 +148,8 @@
      */
 }
 
-- (void)filterResults:(NSString *)searchTerm {
-    NSString *trimmedTerm = [searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+- (void)filterResults:(NSString *)searchText {
+    NSString *trimmedTerm = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (trimmedTerm.length == 0) {
         return;
     }
@@ -141,11 +159,14 @@
     
     PFQuery *query = [PFQuery queryWithClassName:kHMRecipeClassKey];
     [query whereKey:kHMRecipeTitleKey containsString:trimmedTerm];
+    query.limit = QueryLimit;
     isSearching = YES;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [self.searchResults addObjectsFromArray:objects];
             [self.searchController.searchResultsTableView reloadData];
+            page = 1;
+            searchTerm = [NSString stringWithString:searchText];
         }
     }];
     
@@ -170,6 +191,36 @@
     }
     NSLog(@"search clicked!");
     
+}
+
+#pragma mark -
+
+- (void)loadNextPage {
+    if (isSearching) {
+        return;
+    }
+    NSLog(@"Load next page");
+    if ([self.searchBar.text isEqualToString:searchTerm]) {
+        NSString *trimmedTerm = [searchTerm stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        if (trimmedTerm.length == 0) {
+            return;
+        }
+        
+        PFQuery *query = [PFQuery queryWithClassName:kHMRecipeClassKey];
+        [query whereKey:kHMRecipeTitleKey containsString:trimmedTerm];
+        query.limit = QueryLimit;
+        query.skip = QueryLimit * page;
+        isSearching = YES;
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                [self.searchResults addObjectsFromArray:objects];
+                [self.searchController.searchResultsTableView reloadData];
+                page += 1;
+            }
+        }];
+        
+        isSearching = NO;
+    }
 }
 
 @end
