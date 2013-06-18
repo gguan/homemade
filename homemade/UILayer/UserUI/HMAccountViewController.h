@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMAccountViewController : UIViewController
+@interface HMAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) PFImageView *coverView;
+@property (nonatomic, strong) UIScrollView *coverScroller;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) PFUser *user;
+
+- (id)initWithUser:(PFUser *)user;
 
 @end

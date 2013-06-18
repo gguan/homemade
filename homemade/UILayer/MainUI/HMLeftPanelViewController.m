@@ -38,6 +38,7 @@
     [header setText:@"Drink+"];
     [header setTextAlignment:NSTextAlignmentCenter];
     [header setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
+    header.autoresizingMask = UIViewAutoresizingNone;
     self.tableView.tableHeaderView = header;
 }
 
@@ -98,7 +99,7 @@
         
     } else if (indexPath.row == 1) {
         if (!self.accountViewController) {
-            self.accountViewController = [[HMAccountViewController alloc] init];
+            self.accountViewController = [[HMAccountViewController alloc] initWithUser:[PFUser currentUser]];
         }
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.accountViewController];
         [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {

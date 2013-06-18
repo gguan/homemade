@@ -79,6 +79,7 @@ extern NSString *const kHMUserDisplayNameKey;
 extern NSString *const kHMUserEmailKey;
 extern NSString *const kHMUserFacebookIDKey;
 extern NSString *const kHMUserPhotoIDKey;
+extern NSString *const kHMUserCoverPhotoKey;
 
 #pragma mark - TMCache keys
 extern NSString *const kHMColorSuffixKey;

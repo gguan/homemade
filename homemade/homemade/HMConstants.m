@@ -52,12 +52,13 @@ NSString *const kHMUserAttributesMadeCountKey        = @"userMadeCount";
 NSString *const kHMUserAttributesSaveCountKey        = @"userSaveCount";
 NSString *const kHMUserAttributesIsFollowedByCurrentUserKey  = @"isFollowedByCurrentUser";
 
-NSString *const kHMUserProfilePicMediumKey                     = @"profilePictureMedium";
-NSString *const kHMUserProfilePicSmallKey                      = @"profilePictureSmall";
-NSString *const kHMUserDisplayNameKey                          = @"displayName";
-NSString *const kHMUserEmailKey                                = @"email";
-NSString *const kHMUserFacebookIDKey                           = @"facebookId";
-NSString *const kHMUserPhotoIDKey                              = @"photoId";
+NSString *const kHMUserProfilePicMediumKey          = @"profilePictureMedium";
+NSString *const kHMUserProfilePicSmallKey           = @"profilePictureSmall";
+NSString *const kHMUserDisplayNameKey               = @"displayName";
+NSString *const kHMUserEmailKey                     = @"email";
+NSString *const kHMUserFacebookIDKey                = @"facebookId";
+NSString *const kHMUserPhotoIDKey                   = @"photoId";
+NSString *const kHMUserCoverPhotoKey                = @"coverPhoto";
 
 #pragma mark - TMCache keys
 NSString *const kHMColorSuffixKey = @"colorArt";

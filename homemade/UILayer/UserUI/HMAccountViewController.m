@@ -9,6 +9,11 @@
 #import "HMAccountViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "HMSettingViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
+#define AvatarSize 80
+#define WindowHeight 220
+#define CoverHeight 320
 
 @interface HMAccountViewController ()
 
@@ -16,19 +21,41 @@
 
 @implementation HMAccountViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithUser:(PFUser *)user
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
-        [self.view setBackgroundColor:[UIColor whiteColor]];
+        self.user = user;
+        
+        _coverScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
+        _coverScroller.backgroundColor = [UIColor whiteColor];
+        _coverScroller.showsHorizontalScrollIndicator = NO;
+        _coverScroller.showsVerticalScrollIndicator = NO;
+        
+        _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+        _coverView.backgroundColor = [UIColor whiteColor];
+        [_coverScroller addSubview:_coverView];
+        
+        _tableView = [[UITableView alloc] init];
+        _tableView.backgroundColor              = [UIColor clearColor];
+        _tableView.dataSource                   = self;
+        _tableView.delegate                     = self;
+        _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        UIView *tableHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
+        _tableView.tableHeaderView = tableHeader;
+        
+        [self.view addSubview:_coverScroller];
+        [self.view addSubview:_tableView];
     }
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	// Do any additional setup after loading the view.
     NSString *title = [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey];
     [self.navigationItem setTitle:title];
@@ -36,12 +63,111 @@
     [self.navigationItem setLeftBarButtonItem:leftItem];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Setting" style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
     [self.navigationItem setRightBarButtonItem:rightItem];
+    
+    // Cover Photo
+    [self.coverView setFile: [self.user objectForKey:kHMUserProfilePicMediumKey]];
+    [self.coverView loadInBackground];
+    
+    // Avatar
+    PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, 125.0f, AvatarSize, AvatarSize)];
+    [avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
+    [avatar loadInBackground];
+    avatar.layer.cornerRadius = AvatarSize / 2;
+    avatar.layer.borderWidth = 2.0f;
+    avatar.layer.borderColor = [UIColor whiteColor].CGColor;
+    avatar.layer.masksToBounds = YES;
+    [self.tableView.tableHeaderView addSubview:avatar];
+
+    // Name label
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 165, 200, 30)];
+    [nameLabel setText:[self.user objectForKey:kHMUserDisplayNameKey]];
+    [nameLabel setFont:[HMUtility appFontOfSize:21.0f]];
+    nameLabel.textAlignment = UITextAlignmentRight;
+    [nameLabel setTextColor:[UIColor whiteColor]];
+    [self.tableView.tableHeaderView addSubview:nameLabel];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Parallax effect
+
+- (void)updateOffsets {
+    CGFloat yOffset   = _tableView.contentOffset.y;
+    CGFloat threshold = CoverHeight - WindowHeight;
+    
+    if (yOffset > -threshold && yOffset < 0) {
+        _coverScroller.contentOffset = CGPointMake(0.0, floorf(yOffset / 2.0));
+    } else if (yOffset < 0) {
+        _coverScroller.contentOffset = CGPointMake(0.0, yOffset + floorf(threshold / 2.0));
+    } else {
+        _coverScroller.contentOffset = CGPointMake(0.0, yOffset);
+    }
+}
+
+#pragma mark - View Layout
+- (void)layoutImage {
+    CGFloat imageWidth   = _coverScroller.frame.size.width;
+    CGFloat imageYOffset = floorf((WindowHeight  - CoverHeight) / 2.0);
+    CGFloat imageXOffset = 0.0;
+    
+    _coverView.frame  = CGRectMake(imageXOffset, imageYOffset, imageWidth, CoverHeight);
+    _coverScroller.contentSize   = CGSizeMake(imageWidth, self.view.bounds.size.height);
+    _coverScroller.contentOffset = CGPointMake(0.0, 0.0);
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    CGRect bounds = self.view.bounds;
+    
+    _coverScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
+    _tableView.backgroundView   = nil;
+    _tableView.frame            = bounds;
+    
+    [self layoutImage];
+    [self updateOffsets];
+}
+
+#pragma mark - Table View Datasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 100;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 10.0;         
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellReuseIdentifier   = @"RBParallaxTableViewCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    if (!cell) {
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+            cell.backgroundColor             = [UIColor purpleColor];
+            cell.contentView.backgroundColor = [UIColor clearColor];
+            cell.selectionStyle              = UITableViewCellSelectionStyleNone;
+    } 
+    
+    return cell;
+}
+
+#pragma mark - Table View Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self updateOffsets];
 }
 
 
