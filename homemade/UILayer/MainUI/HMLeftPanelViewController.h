@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMCategoryViewController.h"
+#import "HMRecipeFeedViewController.h"
+#import "HMAccountViewController.h"
+#import "HMSaveViewController.h"
 
 @interface HMLeftPanelViewController : UITableViewController
 
 @property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, strong) HMRecipeFeedViewController *recipeFeedViewController;
+@property (nonatomic, strong) HMAccountViewController *accountViewController;
+@property (nonatomic, strong) HMCategoryViewController *categoryViewController;
+@property (nonatomic, strong) HMSaveViewController *saveViewController;
 
 @end

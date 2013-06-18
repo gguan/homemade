@@ -8,9 +8,7 @@
 
 #import "HMLeftPanelViewController.h"
 #import "UIViewController+MMDrawerController.h"
-#import "HMRecipeFeedViewController.h"
-#import "HMAccountViewController.h"
-#import "HMSaveViewController.h"
+
 
 @interface HMLeftPanelViewController ()
 
@@ -90,25 +88,37 @@
     if (self.currentIndex == indexPath.row) {
         [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     } else if (indexPath.row == 0) {
-        HMRecipeFeedViewController *centerViewController = [[HMRecipeFeedViewController alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
-//        __weak HMLeftPanelViewController *weakSelf = self;
+        if (!self.recipeFeedViewController) {
+            self.recipeFeedViewController = [[HMRecipeFeedViewController alloc] init];
+        }
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.recipeFeedViewController];
         [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
-            
         }];
         self.currentIndex = 0;
         
     } else if (indexPath.row == 1) {
-        HMAccountViewController *accountViewController = [[HMAccountViewController alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:accountViewController];
-        [self.mm_drawerController setCenterViewController:navigationController];
+        if (!self.accountViewController) {
+            self.accountViewController = [[HMAccountViewController alloc] init];
+        }
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.accountViewController];
+        [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
+        }];
         self.currentIndex = 1;
     } else if (indexPath.row == 2) {
-        // TODO
-    } else if (indexPath.row == 3) {
-        HMSaveViewController *saveViewController = [[HMSaveViewController alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:saveViewController];
+        if (!self.categoryViewController) {
+            self.categoryViewController = [[HMCategoryViewController alloc] init];
+        }
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.categoryViewController];
         [self.mm_drawerController setCenterViewController:navigationController];
+        self.currentIndex = 2;
+    } else if (indexPath.row == 3) {
+        if (!self.saveViewController) {
+            self.saveViewController = [[HMSaveViewController alloc] init];
+
+        }
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.saveViewController];
+        [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
+        }];
         self.currentIndex = 3;
     }
 }

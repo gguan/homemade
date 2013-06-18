@@ -30,8 +30,14 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
     
+    NSString *title = @"Setting";
+    [self.navigationItem setTitle:title];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(leftDrawerButtonClicked)];
+    [self.navigationItem setLeftBarButtonItem:leftItem];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightDrawerButtonClicked)];
+    [self.navigationItem setRightBarButtonItem:rightItem];
+
 //    [self uploadtestingdata];
 }
 
@@ -77,6 +83,21 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+#pragma mark -
+- (void)leftDrawerButtonClicked {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (void)rightDrawerButtonClicked {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+
 
 
 - (void)uploadtestingdata {

@@ -39,6 +39,7 @@
 		46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */; };
 		46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */; };
 		46409D54176B1EAD00E7494E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */; };
+		46409D5A1770248C00E7494E /* HMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D581770205200E7494E /* HMCategoryViewController.m */; };
 		4644DA1E1766CF52006F619D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644DA1D1766CF52006F619D /* StoreKit.framework */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -255,6 +256,8 @@
 		46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		46409D52176B1EAD00E7494E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Utility/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Utility/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		46409D571770205200E7494E /* HMCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCategoryViewController.h; path = UILayer/CategoryUI/HMCategoryViewController.h; sourceTree = "<group>"; };
+		46409D581770205200E7494E /* HMCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCategoryViewController.m; path = UILayer/CategoryUI/HMCategoryViewController.m; sourceTree = "<group>"; };
 		4644DA1D1766CF52006F619D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -599,6 +602,15 @@
 			path = Vendor/MMDrawerController;
 			sourceTree = "<group>";
 		};
+		46409D561770202B00E7494E /* CategoryUI */ = {
+			isa = PBXGroup;
+			children = (
+				46409D571770205200E7494E /* HMCategoryViewController.h */,
+				46409D581770205200E7494E /* HMCategoryViewController.m */,
+			);
+			name = CategoryUI;
+			sourceTree = "<group>";
+		};
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
@@ -751,6 +763,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				46409D561770202B00E7494E /* CategoryUI */,
 				46E08A1A176BC7C0001A2C13 /* UserUI */,
 				469202DB1760812F0096F522 /* CameraUI */,
 				462F0CA91728EBB600BDDEB8 /* LoginUI */,
@@ -1255,6 +1268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46409D5A1770248C00E7494E /* HMCategoryViewController.m in Sources */,
 				46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */,
 				46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */,
 				46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */,

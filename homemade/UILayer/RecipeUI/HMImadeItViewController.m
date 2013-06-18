@@ -216,7 +216,7 @@
     }
  
     PFUser *user = [photoObject objectForKey:kHMDrinkPhotoUserKey];
-    [cell.avatar setFile: [user objectForKey:kHMUserProfilePicSmallKey]];
+    [cell.avatar setFile: [user objectForKey:kHMUserProfilePicMediumKey]];
     [cell.avatar loadInBackground];
     return cell;
 }

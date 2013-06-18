@@ -15,7 +15,6 @@
 #import "HMRecipeFeedViewController.h"
 #import "HMLeftPanelViewController.h"
 #import "HMRecipeViewController.h"
-#import "HMSearchViewController.h"
 #import "MMDrawerController.h"
 // Import parse 
 #import <Parse/Parse.h>
@@ -76,9 +75,9 @@
     [self setupAppearance];
     
     // Initialize panel controller
-    UIViewController *leftSidePanelController = [[HMLeftPanelViewController alloc] init];
-    HMRecipeFeedViewController *centerViewController = [[HMRecipeFeedViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+    HMLeftPanelViewController *leftSidePanelController = [[HMLeftPanelViewController alloc] init];
+    leftSidePanelController.recipeFeedViewController = [[HMRecipeFeedViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:leftSidePanelController.recipeFeedViewController];
     
     MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:navigationController leftDrawerViewController:leftSidePanelController];
     [drawerController setMaximumLeftDrawerWidth:270.0];
@@ -87,7 +86,7 @@
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 
     
-    self.mainController = centerViewController;
+    self.mainController = leftSidePanelController.recipeFeedViewController;
     self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
 

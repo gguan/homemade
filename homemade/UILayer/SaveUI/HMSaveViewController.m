@@ -7,6 +7,7 @@
 //
 
 #import "HMSaveViewController.h"
+#import "UIViewController+MMDrawerController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface HMSaveViewController ()
@@ -27,25 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    UIImageView *btnImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 20.0f, 20.0f)];
-    [btnImage setImage:[UIImage imageNamed:@"icons_search.png"]];
-    btnImage.alpha = 0.6f;
-    btnImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-    btnImage.layer.shadowOffset = CGSizeMake(0.0, -1.0);
-    btnImage.contentMode = UIViewContentModeScaleAspectFit;
     
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.frame = CGRectMake(0.0f, 12.0f, 32.0f, 20.0f);
-    [rightButton addSubview:btnImage];
-    [rightButton addTarget:self action:@selector(toggleRightPanel:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    
-    [self.navigationItem setRightBarButtonItem:rightBarButton];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem setTitle:@"DRINK+"];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(leftDrawerButtonClicked)];
+    [self.navigationItem setLeftBarButtonItem:leftItem];    
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,6 +114,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#pragma mark -
+
+- (void)leftDrawerButtonClicked {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 @end
