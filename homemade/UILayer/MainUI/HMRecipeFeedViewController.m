@@ -18,6 +18,7 @@
 #import "HMCommentViewController.h"
 #import "HMAboutViewController.h"
 #import "UIViewController+MMDrawerController.h"
+#import "HMCreateViewController.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -356,10 +357,14 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
-    if (idx == 0) { // search
-//        [self presentViewController:[[HMSearchViewController alloc] initWithStyle:UITableViewStylePlain] animated:YES completion:nil];
-        HMSearchViewController *searchViewController = [[HMSearchViewController alloc] init];
-        [[self navigationController] pushViewController:searchViewController animated:YES];
+    if (idx == 0) {
+        HMCreateViewController *createViewController = [[HMCreateViewController alloc] initWithStyle:UITableViewStylePlain];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createViewController];
+        
+        
+        [self presentViewController:navigationController animated:YES completion:^{
+            
+        }];
     } else if (idx == 3) {
         [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
     }

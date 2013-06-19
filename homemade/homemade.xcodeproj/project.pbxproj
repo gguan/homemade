@@ -70,6 +70,7 @@
 		465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465435E71762685E00B3B33D /* HMIMadeItCell.m */; };
 		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
 		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
+		4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D601771DDE100E7494E /* HMCreateViewController.m */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
 		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
 		466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */; };
@@ -258,6 +259,8 @@
 		46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Utility/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		46409D571770205200E7494E /* HMCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCategoryViewController.h; path = UILayer/CategoryUI/HMCategoryViewController.h; sourceTree = "<group>"; };
 		46409D581770205200E7494E /* HMCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCategoryViewController.m; path = UILayer/CategoryUI/HMCategoryViewController.m; sourceTree = "<group>"; };
+		46409D5F1771DDE100E7494E /* HMCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCreateViewController.h; path = UILayer/CreateUI/HMCreateViewController.h; sourceTree = "<group>"; };
+		46409D601771DDE100E7494E /* HMCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCreateViewController.m; path = UILayer/CreateUI/HMCreateViewController.m; sourceTree = "<group>"; };
 		4644DA1D1766CF52006F619D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4645D2F016F44D1900C38D39 /* homemade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homemade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4645D2F316F44D1900C38D39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -611,6 +614,15 @@
 			name = CategoryUI;
 			sourceTree = "<group>";
 		};
+		46409D5B1771DC8A00E7494E /* CreateUI */ = {
+			isa = PBXGroup;
+			children = (
+				46409D5F1771DDE100E7494E /* HMCreateViewController.h */,
+				46409D601771DDE100E7494E /* HMCreateViewController.m */,
+			);
+			name = CreateUI;
+			sourceTree = "<group>";
+		};
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
@@ -763,6 +775,7 @@
 		4645D36216F4660800C38D39 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				46409D5B1771DC8A00E7494E /* CreateUI */,
 				46409D561770202B00E7494E /* CategoryUI */,
 				46E08A1A176BC7C0001A2C13 /* UserUI */,
 				469202DB1760812F0096F522 /* CameraUI */,
@@ -1268,6 +1281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */,
 				46409D5A1770248C00E7494E /* HMCategoryViewController.m in Sources */,
 				46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */,
 				46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */,
