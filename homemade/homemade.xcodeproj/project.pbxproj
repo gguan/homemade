@@ -185,7 +185,6 @@
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
-		46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7D8DA16FDB5B7001C822D /* FXLabel.m */; };
 		46B777AA1769BC5300C162BE /* tabArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A81769BC5300C162BE /* tabArrow.png */; };
 		46B777AB1769BC5300C162BE /* tabArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A91769BC5300C162BE /* tabArrow@2x.png */; };
 		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
@@ -453,8 +452,6 @@
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		46A7D8D916FDB5B7001C822D /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
-		46A7D8DA16FDB5B7001C822D /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		46B777A81769BC5300C162BE /* tabArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabArrow.png; sourceTree = "<group>"; };
 		46B777A91769BC5300C162BE /* tabArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabArrow@2x.png"; sourceTree = "<group>"; };
 		46B777AC1769ECBC00C162BE /* HMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
@@ -717,7 +714,6 @@
 				46372565172408A3002357E0 /* ColorArt */,
 				4606A4CF1716C039009FDFFB /* Reachability */,
 				466F4F771701A61B0076AB3D /* EDColor */,
-				46A7D8D816FDB5B7001C822D /* FXLabel */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
 				4645D35416F4514800C38D39 /* SVProgressHUD */,
 				4645D35016F4514200C38D39 /* SSKeychain */,
@@ -1092,16 +1088,6 @@
 			name = CameraUI;
 			sourceTree = "<group>";
 		};
-		46A7D8D816FDB5B7001C822D /* FXLabel */ = {
-			isa = PBXGroup;
-			children = (
-				46A7D8D916FDB5B7001C822D /* FXLabel.h */,
-				46A7D8DA16FDB5B7001C822D /* FXLabel.m */,
-			);
-			name = FXLabel;
-			path = Vendor/FXLabel;
-			sourceTree = "<group>";
-		};
 		46E08A1A176BC7C0001A2C13 /* UserUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,7 +1290,6 @@
 				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,
 				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
 				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,
-				46A7D8DB16FDB5B7001C822D /* FXLabel.m in Sources */,
 				466F4F75170154860076AB3D /* SSKeychain.m in Sources */,
 				46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */,
 				466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */,
