@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMCameraViewController.h"
 
-@interface HMAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HMAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HMCameraDelegate>
 
-@property (nonatomic, strong) PFImageView *coverView;
+@property (nonatomic, strong) HMCameraViewController *photoPicker;
+
 @property (nonatomic, strong) UIScrollView *coverScroller;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) PFUser *user;

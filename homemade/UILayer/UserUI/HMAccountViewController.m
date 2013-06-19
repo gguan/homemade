@@ -9,6 +9,7 @@
 #import "HMAccountViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "HMSettingViewController.h"
+#import "UIImage+ResizeAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define AvatarSize 80
@@ -16,6 +17,9 @@
 #define CoverHeight 320
 
 @interface HMAccountViewController ()
+
+@property (nonatomic, strong) PFImageView *coverView;
+@property (nonatomic, strong) PFImageView *avatar;
 
 @end
 
@@ -27,6 +31,11 @@
     if (self) {
         self.user = user;
         
+        // photo picker
+        self.photoPicker = [[HMCameraViewController alloc] init];
+        self.photoPicker.delegate = self;
+        self.photoPicker.container = self;
+        
         _coverScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
         _coverScroller.backgroundColor = [UIColor whiteColor];
         _coverScroller.showsHorizontalScrollIndicator = NO;
@@ -35,15 +44,37 @@
         _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
         _coverView.backgroundColor = [UIColor whiteColor];
         [_coverScroller addSubview:_coverView];
-        
+                
+        // table view
         _tableView = [[UITableView alloc] init];
         _tableView.backgroundColor              = [UIColor clearColor];
         _tableView.dataSource                   = self;
         _tableView.delegate                     = self;
         _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
-        UIView *tableHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
-        _tableView.tableHeaderView = tableHeader;
+        
+        
+        // add a upload button
+        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [coverButton setBackgroundColor:[UIColor clearColor]];
+        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
+        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
+        _tableView.tableHeaderView = coverButton;
+        
+        // add a border
+//        UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight-1, _tableView.bounds.size.width, 1.0f)];
+//        [border setBackgroundColor:[UIColor blackColor]];
+//        [coverButton addSubview:border];
+        
+        // avatar
+        _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, 125.0f, AvatarSize, AvatarSize)];
+        _avatar.layer.cornerRadius = AvatarSize / 2;
+        _avatar.layer.borderWidth = 2.0f;
+        _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
+        _avatar.layer.masksToBounds = YES;
+        [self.tableView.tableHeaderView addSubview:_avatar];
+        
+        
         
         [self.view addSubview:_coverScroller];
         [self.view addSubview:_tableView];
@@ -65,18 +96,13 @@
     [self.navigationItem setRightBarButtonItem:rightItem];
     
     // Cover Photo
-    [self.coverView setFile: [self.user objectForKey:kHMUserProfilePicMediumKey]];
+    [self.coverView setFile: [self.user objectForKey:kHMUserCoverPhotoKey]];
     [self.coverView loadInBackground];
     
     // Avatar
-    PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, 125.0f, AvatarSize, AvatarSize)];
-    [avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
-    [avatar loadInBackground];
-    avatar.layer.cornerRadius = AvatarSize / 2;
-    avatar.layer.borderWidth = 2.0f;
-    avatar.layer.borderColor = [UIColor whiteColor].CGColor;
-    avatar.layer.masksToBounds = YES;
-    [self.tableView.tableHeaderView addSubview:avatar];
+    [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
+    [self.avatar loadInBackground];
+    
 
     // Name label
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 165, 200, 30)];
@@ -171,6 +197,32 @@
 }
 
 
+#pragma mark - HMCameraDelegate
+- (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
+    NSLog(@"run delegate from RecipeViewController");
+    [self.photoPicker showPhotoPicker:@"Change cover"];
+}
+
+- (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
+    NSLog(@"dismiss pick controller from RecipeViewController... delegate");
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    NSLog(@"didFinishPickingMediaWithInfo get executed...");
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    [self shouldUploadCoverImage:image];
+    [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+
+
 #pragma mark -
 - (void)leftDrawerButtonClicked {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
@@ -182,5 +234,42 @@
     [self presentViewController:navigationController animated:YES completion:^{
     }];
 }
+
+- (void)uploadCover {
+    [self cameraViewControllerShowPicker:self.photoPicker];
+}
+
+
+- (BOOL)shouldUploadCoverImage:(UIImage *)anImage {
+    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640.0f, 640.0f) interpolationQuality:kCGInterpolationHigh];
+    
+    // JPEG to decrease file size and enable faster uploads & downloads
+    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+    
+    if (!imageData) {
+        return NO;
+    }
+    
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self.user setObject:imageFile forKey:kHMUserCoverPhotoKey];
+            [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    NSLog(@"Saved new cover");
+                    [self.coverView setFile:imageFile];
+                    [self.coverView loadInBackground];
+                } else {
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return YES;
+}
+
 
 @end

@@ -182,7 +182,7 @@
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
     NSLog(@"run delegate from RecipeViewController");
-    [self.photoPicker showPhotoPicker];
+    [self.photoPicker showPhotoPicker:@"Upload a picture"];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
