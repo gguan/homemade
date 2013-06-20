@@ -385,6 +385,8 @@
     fixedFrame.origin.y = scrollView.contentOffset.y;
     if (!DEVICE_VERSION_7) {
         fixedFrame.origin.y -= 44;
+    } else {
+        fixedFrame.origin.y += 20;
     }
     menu.frame = fixedFrame;
 }

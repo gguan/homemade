@@ -16,25 +16,21 @@
 
 @interface HMStepsViewController ()<PagedFlowViewDelegate,PagedFlowViewDataSource>
 
-@property (nonatomic, retain) NSMutableArray *items;
-@property (nonatomic, retain) PagedFlowView *pagedFlowView;
-@property (nonatomic, retain) UIPageControl *pageControll;
+@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) PagedFlowView *pagedFlowView;
+@property (nonatomic, strong) UIPageControl *pageControll;
 
 @end
 
-@implementation HMStepsViewController
 
-@synthesize items = _items;
-@synthesize pagedFlowView = _pagedFlowView;
-@synthesize pageControll = _pageControll;
+@implementation HMStepsViewController
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
     self = [super init];
     if (self) {
         
-        NSArray *result = [recipeObject objectForKey:@"steps"];
-       	self.items = [NSMutableArray arrayWithArray:result];
-        
+        NSArray *steps= [recipeObject objectForKey:kHMRecipeStepsKey];
+       	self.items = [NSMutableArray arrayWithArray:steps];
     }
     return self;
 }
@@ -67,7 +63,8 @@
     [_pageControll setPageIndicatorTintColor:[UIColor lightGrayColor]];
     [self.view addSubview:self.pageControll];
     _pagedFlowView.pageControl = _pageControll;
-    NSLog(@"step %@ %@ %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_pagedFlowView.frame), NSStringFromCGRect(_pageControll.frame));
+    NSLog(@"!!!!!!!!!!!step %@ %@ %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_pagedFlowView.frame), NSStringFromCGRect(_pageControll.frame));
+    NSLog(@"--------------%@", self.items);
 
 }
 
@@ -98,16 +95,17 @@
     
     HMStepsView *view = [[HMStepsView alloc] initWithFrame:CGRectMake(0, 0, PageFlowViewWidth, PageFlowViewHeight)];
     
-    NSArray *step = [self.items objectAtIndex:index];
-    NSString *description = [step objectAtIndex:0];
+    NSDictionary *step = [self.items objectAtIndex:index];
+    NSString *description = [step objectForKey:kHMRecipeStepsContentKey];
+    PFFile *stepPhoto = [step objectForKey:kHMRecipeStepsPhotoKey];
     
-    view.stepDescriptionText = [description copy];
+    view.stepDescriptionText = description;
     [view.stepDescrptionLabel setText:description];
     [view.stepNumberLabel setText:[NSString stringWithFormat:@"%i", index + 1]];
     [view setLayout];
     
-    if ([step count] > 1) {
-        [view.stepImageView setFile:[step objectAtIndex:1]];
+    if (stepPhoto) {
+        [view.stepImageView setFile:stepPhoto];
         [view.stepImageView setContentMode:UIViewContentModeScaleAspectFill];
         [view.stepImageView loadInBackground];
     }

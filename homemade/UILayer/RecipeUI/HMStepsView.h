@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) TTTAttributedLabel* stepNumberLabel;
 @property (nonatomic, strong) UIImageView *stepNumberImage;
-@property (nonatomic, strong) NSString *stepDescriptionText;
+@property (nonatomic, copy) NSString *stepDescriptionText;
 @property (nonatomic, strong) TTTAttributedLabel *stepDescrptionLabel;
 @property (nonatomic, strong) PFImageView *stepImageView;
 @property (nonatomic, strong) UIImageView *stepDescriptionLabelSnapShot;
