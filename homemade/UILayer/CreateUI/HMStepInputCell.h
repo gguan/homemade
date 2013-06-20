@@ -10,8 +10,7 @@
 
 @interface HMStepInputCell : UITableViewCell
 
-@property (nonatomic, strong) UITextView *contentField;
+@property (nonatomic, strong) UILabel *content;
 @property (nonatomic, strong) PFImageView *stepImage;
-@property (nonatomic, strong) UIButton *imageButton;
 
 @end

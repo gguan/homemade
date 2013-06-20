@@ -6,8 +6,17 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HMCameraViewController.h"
 
-@interface HMStepEditViewController : UIViewController
 
+@protocol HMStepEditDelegate;
+
+@interface HMStepEditViewController : UIViewController <HMCameraDelegate>
+@property (nonatomic, weak) id <HMStepEditDelegate> delegate;
+- (id)initWithContent:(NSString *)content photo:(PFFile *)photoFile;
+@end
+
+
+@protocol HMStepEditDelegate <NSObject>
+- (void)addStepItemViewController:(HMStepEditViewController *)controller didFinishEnteringItem:(NSDictionary *)stepItem;
 @end

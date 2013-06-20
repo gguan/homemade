@@ -383,10 +383,9 @@
     CGRect fixedFrame = self.view.frame;
     
     fixedFrame.origin.y = scrollView.contentOffset.y;
-    NSLog(@"%@", NSStringFromCGRect(fixedFrame));
-//    if (!DEVICE_VERSION_7) {
-//        fixedFrame.origin.y -= 104;
-//    }
+    if (!DEVICE_VERSION_7) {
+        fixedFrame.origin.y -= 44;
+    }
     menu.frame = fixedFrame;
 }
 

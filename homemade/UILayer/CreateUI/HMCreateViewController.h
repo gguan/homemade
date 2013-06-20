@@ -7,7 +7,10 @@
 //
 
 #import "HMCameraViewController.h"
+#import "HMStepEditViewController.h"
+#import "HMIngredientEditViewController.h"
+#import "HMTipEditViewController.h"
 
-@interface HMCreateViewController : UITableViewController <HMCameraDelegate>
+@interface HMCreateViewController : UITableViewController <HMCameraDelegate, HMStepEditDelegate, HMIngredientEditDelegate, HMTipEditDelegate>
 
 @end

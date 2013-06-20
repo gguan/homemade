@@ -29,7 +29,6 @@
 @property (nonatomic, strong) NSMutableArray *steps; // dict array hold step content and PFFile
 @property (nonatomic, strong) NSMutableArray *ingridents;
 @property (nonatomic, strong) NSMutableArray *tips;
-@property (nonatomic, weak)   PFImageView *imageViewholder;
 
 @end
 
@@ -60,25 +59,20 @@
         
         // cover imageView
         self.coverView = [[PFImageView alloc] initWithFrame:CGRectMake(100, 60, 120, 120)];
+        self.coverView.image = [UIImage imageNamed:@"UploadCoverPlaceholder.png"];
         self.coverView.contentMode = UIViewContentModeScaleAspectFill;
         self.coverView.clipsToBounds = YES;
         self.coverView.layer.borderColor = [UIColor colorWithWhite:0.7f alpha:0.5f].CGColor;
         self.descriptionField.layer.borderWidth = 1.0f;
         UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [coverButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [coverButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [coverButton setFrame:CGRectMake(100, 60, 120, 120)];
         [coverButton setBackgroundColor:[UIColor clearColor]];
-        [coverButton setTitle:@"drink picture" forState:UIControlStateNormal];
-        coverButton.layer.borderColor = [UIColor colorWithWhite:0.7f alpha:0.5f].CGColor;
-        coverButton.layer.borderWidth = 1.0f;
         [coverButton addTarget:self action:@selector(uploadCoverPhoto) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:self.coverView];
         [headerView insertSubview:coverButton aboveSubview:self.coverView];
         
         self.descriptionField = [[UITextView alloc] initWithFrame:CGRectMake( 20.0f, 190.0f, 280.0f, 90.0f)];
         self.descriptionField.font = [UIFont systemFontOfSize:14.0f];
-//        self.descriptionField.placeholder = @"add some description to introduce this drink";
         self.descriptionField.returnKeyType = UIReturnKeyDefault;
         self.descriptionField.layer.borderWidth = 1.0f;
         self.descriptionField.layer.borderColor = [UIColor colorWithWhite:0.7f alpha:0.5f].CGColor;
@@ -172,32 +166,36 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    // add button for each section
     if (indexPath.section == 0 && indexPath.row == self.steps.count) {
         UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
         [buttonCell setBackgroundColor:[UIColor redColor]];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [button setTitle:@"Add step" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(addStepAction) forControlEvents:UIControlEventTouchUpInside];
-        [buttonCell addSubview:button];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
+        [buttonLabel setText:@"Add step"];
+        buttonLabel.textAlignment = NSTextAlignmentCenter;
+        buttonLabel.textColor = [UIColor whiteColor];
+        buttonLabel.backgroundColor = [UIColor clearColor];
+        [buttonCell addSubview:buttonLabel];
         return buttonCell;
     } else if (indexPath.section == 1 && indexPath.row == self.ingridents.count) {
         UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
         [buttonCell setBackgroundColor:[UIColor redColor]];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [button setTitle:@"Add ingredient" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(addIngredientAction) forControlEvents:UIControlEventTouchUpInside];
-        [buttonCell addSubview:button];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
+        [buttonLabel setText:@"Add ingredient"];
+        buttonLabel.textAlignment = NSTextAlignmentCenter;
+        buttonLabel.textColor = [UIColor whiteColor];
+        buttonLabel.backgroundColor = [UIColor clearColor];
+        [buttonCell addSubview:buttonLabel];
         return buttonCell;
     } else if (indexPath.section == 2 && indexPath.row == self.tips.count) {
         UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
         [buttonCell setBackgroundColor:[UIColor redColor]];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [button setTitle:@"Add tip" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(addTipAction) forControlEvents:UIControlEventTouchUpInside];
-        [buttonCell addSubview:button];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
+        [buttonLabel setText:@"Add tip"];
+        buttonLabel.textAlignment = NSTextAlignmentCenter;
+        buttonLabel.textColor = [UIColor whiteColor];
+        buttonLabel.backgroundColor = [UIColor clearColor];
+        [buttonCell addSubview:buttonLabel];
         return buttonCell;
     }
     
@@ -210,21 +208,34 @@
         if (!cell) {
             cell = [[HMStepInputCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:StepCellIdentifier];
         }
-        cell.imageButton.tag = indexPath.row;
-        [cell.imageButton addTarget:self action:@selector(uploadStepPhoto:) forControlEvents:UIControlEventTouchUpInside];
+        NSDictionary *stepItem = [self.steps objectAtIndex:indexPath.row];
+        NSString *content = [stepItem objectForKey:kHMRecipeStepsContentKey];
+        PFFile *imageFile = [stepItem objectForKey:kHMRecipeStepsPhotoKey];
+        [cell.content setText:content];
+        if (imageFile) {
+            [cell.stepImage setFile:imageFile];
+            [cell.stepImage loadInBackground];
+        }
+        
         return cell;
     } else if (indexPath.section == 1) {
-        HMIngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:IngredientCellIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:IngredientCellIdentifier];
         if (!cell) {
-            cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IngredientCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:IngredientCellIdentifier];
         }
+        NSDictionary *ingredient = [self.ingridents objectAtIndex:indexPath.row];
+        NSString *name = [ingredient objectForKey:kHMRecipeIngredientNameKey];
+        NSString *amount = [ingredient objectForKey:kHMRecipeIngredientAmountKey];
+        NSString *text = [NSString stringWithFormat:@"%@ - %@", name, amount];
+        [cell.textLabel setText:text];
         return cell;
     } else if (indexPath.section == 2) {
-        HMTipInputCell *cell = [tableView dequeueReusableCellWithIdentifier:TipCellIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TipCellIdentifier];
         if (!cell) {
-            cell = [[HMTipInputCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:
                     TipCellIdentifier];
         }
+        [cell.textLabel setText:[self.tips objectAtIndex:indexPath.row]];
         return cell;
     } else {
         return nil;
@@ -232,10 +243,57 @@
     
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        HMStepEditViewController *editViewController;
+        if (indexPath.row == self.steps.count) {
+            editViewController = [[HMStepEditViewController alloc] initWithContent:nil photo:nil];
+        } else {
+            NSDictionary *step = [self.steps objectAtIndex:indexPath.row];
+            NSString *content = [step objectForKey:kHMRecipeStepsContentKey];
+            PFFile *photo = [step objectForKey:kHMRecipeStepsPhotoKey];
+            editViewController = [[HMStepEditViewController alloc] initWithContent:content photo:photo];
+        }
+        editViewController.delegate = self;
+        [self.navigationController pushViewController:editViewController animated:YES];
+         
+    } else if (indexPath.section == 1) {
+        HMIngredientEditViewController *editViewController;
+        if (indexPath.row == self.ingridents.count) {
+            editViewController = [[HMIngredientEditViewController alloc] initWithName:nil amount:nil];
+        } else {
+            NSDictionary *ingredient = [self.ingridents objectAtIndex:indexPath.row];
+            NSString *name = [ingredient objectForKey:kHMRecipeIngredientNameKey];
+            NSString *amount = [ingredient objectForKey:kHMRecipeIngredientAmountKey];
+            editViewController = [[HMIngredientEditViewController alloc] initWithName:name amount:amount];
+        }
+        editViewController.delegate = self;
+        [self.navigationController pushViewController:editViewController animated:YES];
+    } else if (indexPath.section == 2) {
+        HMTipEditViewController *editViewController;
+        if (indexPath.row == self.tips.count) {
+            editViewController = [[HMTipEditViewController alloc] initWithTip:nil];
+        } else {
+            NSString *tip = [self.tips objectAtIndex:indexPath.row];
+            editViewController = [[HMTipEditViewController alloc] initWithTip:tip];
+        }
+        editViewController.delegate = self;
+        [self.navigationController pushViewController:editViewController animated:YES];
+    } 
+}
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
+    if (indexPath.section == 0 && indexPath.row == self.steps.count) {
+        return NO;
+    } else if (indexPath.section == 1 && indexPath.row == self.ingridents.count) {
+        return NO;
+    } else if (indexPath.section == 2 && indexPath.row == self.tips.count) {
+        return NO;
+    }
     return YES;
 }
 
@@ -245,29 +303,16 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        if (indexPath.section == 0) {
+            [self.steps removeObjectAtIndex:indexPath.row];
+        } else if (indexPath.section == 1) {
+            [self.ingridents removeObjectAtIndex:indexPath.row];
+        } else if (indexPath.section == 2) {
+            [self.tips removeObjectAtIndex:indexPath.row];
+        }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
 }
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
@@ -299,8 +344,9 @@
     PFFile *imageFile = [PFFile fileWithData:imageData];
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            [self.imageViewholder setFile:imageFile];
-            [self.imageViewholder loadInBackground];
+            self.coverImage = imageFile;
+            [self.coverView setFile:imageFile];
+            [self.coverView loadInBackground];
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
@@ -310,6 +356,7 @@
 }
 
 
+#pragma mark -
 - (void)leftDrawerButtonClicked {
     [self dismissViewControllerAnimated:YES completion:^{
         
@@ -318,32 +365,78 @@
 
 - (void)rightDrawerButtonClicked {
     NSLog(@"Save clicked!");
+    
+    NSString *trimmedTitle = [self.titleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *trimmedDescription = [self.descriptionField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if (trimmedTitle.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Drink title can't be empty"
+                                                        message:@"Please input drink title in title field."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    } else if (trimmedDescription.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Drink description can't be empty"
+                                                        message:@"Please input some note for the drink."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    } else if (!self.coverImage) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Drink photo haven't been uploaded"
+                                                        message:@"Please upload a photo for the drink."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    } else if (self.steps.count == 0 || self.ingridents.count == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Steps and ingredients can't be empty"
+                                                        message:@"Please writes some steps and list ingredients."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    } else {
+        // construct PFObject and upload
+        PFObject *recipe = [PFObject objectWithClassName:kHMRecipeClassKey];
+        [recipe setObject:[PFUser currentUser] forKey:kHMRecipeUserKey];
+        [recipe setObject:trimmedTitle forKey:kHMRecipeTitleKey];
+        [recipe setObject:trimmedDescription forKey:kHMRecipeOverviewKey];
+        [recipe setObject:self.coverImage forKey:kHMRecipePhotoKey];
+        [recipe setObject:self.ingridents forKey:kHMRecipeIngredientsKey];
+        [recipe setObject:self.steps forKey:kHMRecipeStepsKey];
+        [recipe setObject:self.tips forKey:kHMRecipeTipsKey];
+        
+        // Photos are public, but may only be modified by the user who uploaded them
+        PFACL *recipeACL = [PFACL ACLWithUser:[PFUser currentUser]];
+        [recipeACL setPublicReadAccess:YES];
+        recipe.ACL = recipeACL;
+        
+        [recipe saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save drink recipe failed"
+                                                                message:@"Please check your network conection and input content."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+        }];
+    }
 }
 
 - (void)uploadCoverPhoto {
     NSLog(@"photo button clicked!");
-    self.imageViewholder = self.coverView;
     [self cameraViewControllerShowPicker:self.photoPicker];
-}
-
-- (void)uploadStepPhoto:(id)sender {
-    UIButton *button = sender;
-    NSInteger index = button.tag;
-//    self.imageViewholder = [self.tableView 
-    [self cameraViewControllerShowPicker:self.photoPicker];
-}
-
-- (void)addStepAction {
-    [self.steps addObject:@[@""]];
-    [self.tableView reloadData];
-}
-
-- (void)addIngridentAction {
-    
-}
-
-- (void)addTipAction {
-    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -352,6 +445,24 @@
     if (self.titleField.isFirstResponder || self.descriptionField.isFirstResponder) {
         [self.view endEditing:YES];
     }
+}
+
+
+#pragma mark - Step edit view delegate
+- (void)addStepItemViewController:(HMStepEditViewController *)controller didFinishEnteringItem:(NSDictionary *)stepItem {
+    
+    [self.steps addObject:stepItem];
+    [self.tableView reloadData];
+}
+
+- (void)addIngredientItemViewController:(HMStepEditViewController *)controller didFinishEnteringItem:(NSDictionary *)ingredientItem {
+    [self.ingridents addObject:ingredientItem];
+    [self.tableView reloadData];
+}
+
+- (void)addTipItemViewController:(HMTipEditViewController *)controller didFinishEnteringItem:(NSString *)tipItem {
+    [self.tips addObject:tipItem];
+    [self.tableView reloadData];
 }
 
 @end

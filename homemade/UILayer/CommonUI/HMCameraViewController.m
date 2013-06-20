@@ -68,12 +68,12 @@
     } else if (buttonIndex == 1) {
         [self shouldStartPhotoLibraryPickerController];
     } else {
-        [self.container dismissViewControllerAnimated:NO completion:^{
-            NSLog(@"Dismiss picker controller");
-            if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
-                [_delegate cameraViewControllerDidCancel:self];
-            }
-        }];
+//        [self.container dismissViewControllerAnimated:NO completion:^{
+//            NSLog(@"Dismiss picker controller");
+//            if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
+//                [_delegate cameraViewControllerDidCancel:self];
+//            }
+//        }];
     }
 }
 

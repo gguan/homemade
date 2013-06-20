@@ -68,9 +68,7 @@
         [self.saveButton setBackgroundColor:[UIColor clearColor]];
         [self.saveButton setAdjustsImageWhenHighlighted:NO];
         [self.saveButton setAdjustsImageWhenDisabled:NO];
-        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"likeActive.png"] forState:UIControlStateSelected];
-        [self.saveButton setSelected:YES];
+        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"heart.png"] forState:UIControlStateNormal];
         
         self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(110.0f, 40.0f, 40.0f, 18.0f)];
         [self.saveCount setBackgroundColor:[UIColor clearColor]];
@@ -83,8 +81,6 @@
         [self.commentButton setAdjustsImageWhenHighlighted:NO];
         [self.commentButton setAdjustsImageWhenDisabled:NO];
         [self.commentButton setBackgroundImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
-        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"commentActive.png"] forState:UIControlStateSelected];
-        [self.commentButton setSelected:YES];
         
         self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 40.0f, 40.0f, 18.0f)];
         [self.commentCount setBackgroundColor:[UIColor clearColor]];
