@@ -37,7 +37,12 @@
 
     [header setText:@"Drink+"];
     [header setTextAlignment:NSTextAlignmentCenter];
-    [header setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
+    if (DEVICE_VERSION_7) {
+        [header setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
+    } else {
+        [header setFont:[UIFont systemFontOfSize:15.0f]];
+    }
+    
     header.autoresizingMask = UIViewAutoresizingNone;
     self.tableView.tableHeaderView = header;
 }

@@ -46,6 +46,12 @@ extern NSString *const kHMRecipeDifficultyKey;
 extern NSString *const kHMRecipeIngredientsKey;
 extern NSString *const kHMRecipeStepsKey;
 extern NSString *const kHMRecipeTipsKey;
+// Recipe subkeys
+extern NSString *const kHMRecipeStepsContentKey;
+extern NSString *const kHMRecipeStepsPhotoKey;
+extern NSString *const kHMRecipeIngredientNameKey;
+extern NSString *const kHMRecipeIngredientAmountKey;
+
 
 #pragma mark - PFObject Drink Photo Class
 extern NSString *const kHMDrinkPhotoClassKey;

@@ -108,7 +108,7 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 165, 200, 30)];
     [nameLabel setText:[self.user objectForKey:kHMUserDisplayNameKey]];
     [nameLabel setFont:[HMUtility appFontOfSize:21.0f]];
-    nameLabel.textAlignment = UITextAlignmentRight;
+    nameLabel.textAlignment = NSTextAlignmentRight;
     [nameLabel setTextColor:[UIColor whiteColor]];
     [self.tableView.tableHeaderView addSubview:nameLabel];
 

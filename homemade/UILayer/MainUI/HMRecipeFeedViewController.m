@@ -115,7 +115,7 @@
     if (DEVICE_VERSION_7) {
         menu.startPoint = CGPointMake(160.0, self.tableView.frame.size.height + 20.0f);
     } else {
-        menu.startPoint = CGPointMake(160.0, self.tableView.frame.size.height);
+        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 44);
     }
     menu.delegate = self;
     [self.view addSubview:menu];
@@ -383,8 +383,9 @@
     CGRect fixedFrame = self.view.frame;
     
     fixedFrame.origin.y = scrollView.contentOffset.y;
-//    if (DEVICE_VERSION_7) {
-//        fixedFrame.origin.y += 20;
+    NSLog(@"%@", NSStringFromCGRect(fixedFrame));
+//    if (!DEVICE_VERSION_7) {
+//        fixedFrame.origin.y -= 104;
 //    }
     menu.frame = fixedFrame;
 }

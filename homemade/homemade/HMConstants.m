@@ -26,6 +26,11 @@ NSString *const kHMRecipeDifficultyKey   = @"difficulty";
 NSString *const kHMRecipeIngredientsKey  = @"ingredients";
 NSString *const kHMRecipeStepsKey    = @"steps";
 NSString *const kHMRecipeTipsKey     = @"tips";
+// Recipe subkeys
+NSString *const kHMRecipeStepsContentKey = @"content";
+NSString *const kHMRecipeStepsPhotoKey = @"photo";
+NSString *const kHMRecipeIngredientNameKey = @"name";
+NSString *const kHMRecipeIngredientAmountKey = @"amount";
 
 #pragma mark - PFObject Drink Photo Class
 NSString *const kHMDrinkPhotoClassKey   = @"Photo";

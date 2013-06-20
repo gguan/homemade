@@ -26,6 +26,10 @@
 		462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */; };
 		462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */; };
 		462F0CBC172D3EB400BDDEB8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */; };
+		46339B9817726C94009F309E /* HMStepInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9317725CAA009F309E /* HMStepInputCell.m */; };
+		46339B9917726C94009F309E /* HMIngredientInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9517725CC2009F309E /* HMIngredientInputCell.m */; };
+		46339B9A17726C94009F309E /* HMTipInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9717725CDC009F309E /* HMTipInputCell.m */; };
+		46339B9D17729A72009F309E /* HMStepEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9C17729665009F309E /* HMStepEditViewController.m */; };
 		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
 		4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372569172408A3002357E0 /* UIImage+ColorArt.m */; };
@@ -233,6 +237,14 @@
 		462F0CB8172946AF00BDDEB8 /* HMCellLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCellLeftView.h; path = UILayer/MainUI/HMCellLeftView.h; sourceTree = "<group>"; };
 		462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCellLeftView.m; path = UILayer/MainUI/HMCellLeftView.m; sourceTree = "<group>"; };
 		462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Vendor/FacebookSDK.framework; sourceTree = "<group>"; };
+		46339B9217725CAA009F309E /* HMStepInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMStepInputCell.h; path = UILayer/CreateUI/HMStepInputCell.h; sourceTree = "<group>"; };
+		46339B9317725CAA009F309E /* HMStepInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepInputCell.m; path = UILayer/CreateUI/HMStepInputCell.m; sourceTree = "<group>"; };
+		46339B9417725CC2009F309E /* HMIngredientInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientInputCell.h; path = UILayer/CreateUI/HMIngredientInputCell.h; sourceTree = "<group>"; };
+		46339B9517725CC2009F309E /* HMIngredientInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMIngredientInputCell.m; path = UILayer/CreateUI/HMIngredientInputCell.m; sourceTree = "<group>"; };
+		46339B9617725CDC009F309E /* HMTipInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMTipInputCell.h; path = UILayer/CreateUI/HMTipInputCell.h; sourceTree = "<group>"; };
+		46339B9717725CDC009F309E /* HMTipInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMTipInputCell.m; path = UILayer/CreateUI/HMTipInputCell.m; sourceTree = "<group>"; };
+		46339B9B17729665009F309E /* HMStepEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMStepEditViewController.h; path = UILayer/CreateUI/HMStepEditViewController.h; sourceTree = "<group>"; };
+		46339B9C17729665009F309E /* HMStepEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepEditViewController.m; path = UILayer/CreateUI/HMStepEditViewController.m; sourceTree = "<group>"; };
 		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		46372566172408A3002357E0 /* SLColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLColorArt.h; sourceTree = "<group>"; };
 		46372567172408A3002357E0 /* SLColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLColorArt.m; sourceTree = "<group>"; };
@@ -616,6 +628,14 @@
 			children = (
 				46409D5F1771DDE100E7494E /* HMCreateViewController.h */,
 				46409D601771DDE100E7494E /* HMCreateViewController.m */,
+				46339B9217725CAA009F309E /* HMStepInputCell.h */,
+				46339B9317725CAA009F309E /* HMStepInputCell.m */,
+				46339B9417725CC2009F309E /* HMIngredientInputCell.h */,
+				46339B9517725CC2009F309E /* HMIngredientInputCell.m */,
+				46339B9617725CDC009F309E /* HMTipInputCell.h */,
+				46339B9717725CDC009F309E /* HMTipInputCell.m */,
+				46339B9B17729665009F309E /* HMStepEditViewController.h */,
+				46339B9C17729665009F309E /* HMStepEditViewController.m */,
 			);
 			name = CreateUI;
 			sourceTree = "<group>";
@@ -1267,6 +1287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46339B9D17729A72009F309E /* HMStepEditViewController.m in Sources */,
+				46339B9817726C94009F309E /* HMStepInputCell.m in Sources */,
+				46339B9917726C94009F309E /* HMIngredientInputCell.m in Sources */,
+				46339B9A17726C94009F309E /* HMTipInputCell.m in Sources */,
 				4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */,
 				46409D5A1770248C00E7494E /* HMCategoryViewController.m in Sources */,
 				46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */,
@@ -1431,7 +1455,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "homemade/homemade-Prefix.pch";
 				INFOPLIST_FILE = "homemade/homemade-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -1453,7 +1477,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "homemade/homemade-Prefix.pch";
 				INFOPLIST_FILE = "homemade/homemade-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",

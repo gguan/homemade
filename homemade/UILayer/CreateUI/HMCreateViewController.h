@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#import "HMCameraViewController.h"
 
-@interface HMCreateViewController : UITableViewController
+@interface HMCreateViewController : UITableViewController <HMCameraDelegate>
 
 @end
