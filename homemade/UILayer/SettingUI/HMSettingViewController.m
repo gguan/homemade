@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
+#import "HMAppDelegate.h"
 #import "HMSettingViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -37,7 +38,14 @@
     [self.navigationItem setLeftBarButtonItem:leftItem];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightDrawerButtonClicked)];
     [self.navigationItem setRightBarButtonItem:rightItem];
-
+    
+    UIButton *logoutView = [UIButton buttonWithType:UIButtonTypeCustom];
+    [logoutView setFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 60)];
+    [logoutView setTitle:@"Logout" forState:UIControlStateNormal];
+    [logoutView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [logoutView addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    self.tableView.tableFooterView = logoutView;
+    
 //    [self uploadtestingdata];
 }
 
@@ -155,6 +163,12 @@
     recipe.ACL = recipeACL;
     
     [recipe save];
+}
+
+- (void)logout {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
+    }];
 }
 
 @end

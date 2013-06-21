@@ -329,8 +329,11 @@
     [PFUser logOut];
     
     // clear out cached data, view controllers, etc
-    [(UINavigationController *)self.window.rootViewController popToRootViewControllerAnimated:NO];
-    [self presentLoginViewControllerAnimated:NO];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.mainController];
+    __weak HMAppDelegate *weakSelf = self;
+    [(MMDrawerController *)self.window.rootViewController setCenterViewController:navigationController withCloseAnimation:NO completion:^(BOOL success) {
+        [weakSelf presentLoginViewControllerAnimated:NO];
+    }];
     
 }
 

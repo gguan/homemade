@@ -60,6 +60,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
+
     // Add a share navBarItem
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareButtonClicked)];
     self.navigationItem.rightBarButtonItem = shareButton;
@@ -83,13 +85,10 @@
     [self.tabBar setBackgroundColor:[UIColor clearColor]];
 
     [self.navigationItem setTitleView:_tabBar];
-//    self.edgesForExtendedLayout = UIExtendedEdgeNone;
     
     // Select the first tab
     [self touchDownAtItemAtIndex:0];
     [self.tabBar selectItemAtIndex:0];
-
-    
 }
 
 // TODO
@@ -142,8 +141,6 @@
     NSDictionary* data = [self.tabBarItems objectAtIndex:itemIndex];
     UIViewController* viewController = [data objectForKey:@"viewController"];
     
-    // Set the view controller's frame to account for the tab bar
-    NSLog(@"Bounds: %@ %@",NSStringFromCGRect(self.view.bounds), NSStringFromCGRect(viewController.view.bounds));
     // Se the tag so we can find it later
     viewController.view.tag = SELECTED_VIEW_TAG;
     

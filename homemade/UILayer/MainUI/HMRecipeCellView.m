@@ -64,28 +64,28 @@
         
         // add save button
         self.saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.saveButton setFrame:CGRectMake(92.0f, 40.0f, 18.0f, 18.0f)];
+        [self.saveButton setFrame:CGRectMake(90.0f, 40.0f, 18.0f, 18.0f)];
         [self.saveButton setBackgroundColor:[UIColor clearColor]];
         [self.saveButton setAdjustsImageWhenHighlighted:NO];
         [self.saveButton setAdjustsImageWhenDisabled:NO];
         [self.saveButton setBackgroundImage:[UIImage imageNamed:@"heart.png"] forState:UIControlStateNormal];
         
-        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(110.0f, 40.0f, 40.0f, 18.0f)];
+        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(110.0f, 41.0f, 40.0f, 18.0f)];
         [self.saveCount setBackgroundColor:[UIColor clearColor]];
         self.saveCount.textColor = [UIColor whiteColor];
-        self.saveCount.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+        self.saveCount.font = [UIFont fontWithName:@"HelveticaNeue" size:12.0];
         
         self.commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.commentButton setFrame:CGRectMake(32.0f, 40.0f, 18.0f, 18.0f)];
+        [self.commentButton setFrame:CGRectMake(30.0f, 40.0f, 18.0f, 18.0f)];
         [self.commentButton setBackgroundColor:[UIColor clearColor]];
         [self.commentButton setAdjustsImageWhenHighlighted:NO];
         [self.commentButton setAdjustsImageWhenDisabled:NO];
         [self.commentButton setBackgroundImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
         
-        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 40.0f, 40.0f, 18.0f)];
+        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 41.0f, 40.0f, 18.0f)];
         [self.commentCount setBackgroundColor:[UIColor clearColor]];
         self.commentCount.textColor = [UIColor whiteColor];
-        self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+        self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue" size:12.0];
         
         [banner addSubview:self.divider];
         [banner addSubview:self.titleLabel];

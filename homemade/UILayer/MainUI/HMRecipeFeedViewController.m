@@ -168,13 +168,8 @@
     if (cell.leftIsVisible == YES) {
         [cell bounceToLeft:0.2];
     } else {
-        //For testing, point to the same HMRecipeViewController,add properties later
-
         HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
-
         [[self navigationController] pushViewController:recipeViewController animated:YES];
-//        HMAboutViewController *recipeViewController = [[HMAboutViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row]];
-//        [[self navigationController] pushViewController:recipeViewController animated:YES];
     }
 }
 
@@ -383,9 +378,7 @@
     CGRect fixedFrame = self.view.frame;
     
     fixedFrame.origin.y = scrollView.contentOffset.y;
-    if (!DEVICE_VERSION_7) {
-        fixedFrame.origin.y -= 44;
-    } else {
+    if (DEVICE_VERSION_7) {
         fixedFrame.origin.y += 20;
     }
     menu.frame = fixedFrame;

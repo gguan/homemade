@@ -71,17 +71,5 @@
     self.stepNumberImage.frame = CGRectMake(0, PageFlowViewHeight - textHeight - 30 - 21, 47, 41);
 }
 
-- (void)hideSubViews {
-    [self.stepDescrptionLabel setHidden:YES];
-    [self.stepImageView setHidden:YES];
-    [self.stepNumberImage setHidden:YES];
-
-}
-
-- (void)showSubViews {
-    [self.stepDescrptionLabel setHidden:NO];
-    [self.stepImageView setHidden:NO];
-    [self.stepNumberImage setHidden:NO];
-}
 
 @end

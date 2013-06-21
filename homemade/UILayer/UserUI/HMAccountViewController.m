@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) PFImageView *coverView;
 @property (nonatomic, strong) PFImageView *avatar;
+@property (nonatomic, strong) NSMutableArray *objects;
 
 @end
 
@@ -42,6 +43,12 @@
         _coverScroller.showsVerticalScrollIndicator = NO;
         
         _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+        if (DEVICE_VERSION_7) {
+            _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+        } else {
+            _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320 - 64)];
+        }
+        _coverView.clipsToBounds = YES;
         _coverView.backgroundColor = [UIColor whiteColor];
         [_coverScroller addSubview:_coverView];
                 
@@ -62,9 +69,9 @@
         _tableView.tableHeaderView = coverButton;
         
         // add a border
-//        UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight-1, _tableView.bounds.size.width, 1.0f)];
-//        [border setBackgroundColor:[UIColor blackColor]];
-//        [coverButton addSubview:border];
+        UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.tableHeaderView.frame.size.height-1, _tableView.bounds.size.width, 1.0f)];
+        [border setBackgroundColor:[UIColor blackColor]];
+        [_tableView.tableHeaderView addSubview:border];
         
         // avatar
         _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, 125.0f, AvatarSize, AvatarSize)];
@@ -107,9 +114,10 @@
     // Name label
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 165, 200, 30)];
     [nameLabel setText:[self.user objectForKey:kHMUserDisplayNameKey]];
-    [nameLabel setFont:[HMUtility appFontOfSize:21.0f]];
+    [nameLabel setFont:[HMUtility appFontOfSize:22.0f]];
     nameLabel.textAlignment = NSTextAlignmentRight;
     [nameLabel setTextColor:[UIColor whiteColor]];
+    [nameLabel setBackgroundColor:[UIColor clearColor]];
     [self.tableView.tableHeaderView addSubview:nameLabel];
 
 }
@@ -182,11 +190,13 @@
     if (!cell) {
             
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
-            cell.backgroundColor             = [UIColor purpleColor];
-            cell.contentView.backgroundColor = [UIColor clearColor];
+           
+//            cell.contentView.backgroundColor = [UIColor clearColor];
             cell.selectionStyle              = UITableViewCellSelectionStyleNone;
-    } 
-    
+    }
+    cell.textLabel.text = @"asdfasdfsadf";
+    cell.backgroundColor             = [UIColor purpleColor];
+    cell.contentView.backgroundColor = [UIColor purpleColor];
     return cell;
 }
 
@@ -269,6 +279,10 @@
     }];
     
     return YES;
+}
+
+- (void)doQuery {
+    
 }
 
 

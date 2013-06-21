@@ -18,7 +18,5 @@
 @property (nonatomic, strong) UIImageView *stepDescriptionLabelSnapShot;
 
 - (void)setLayout;
-- (void)hideSubViews;
-- (void)showSubViews;
 
 @end
