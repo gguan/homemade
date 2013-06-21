@@ -19,6 +19,7 @@
 		4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
 		462BAA1C1775051C0069A615 /* HMUserRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462BAA1B1775034C0069A615 /* HMUserRecipeCell.m */; };
+		462BAA1F1775141B0069A615 /* HMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462BAA1E177513E80069A615 /* HMSearchCell.m */; };
 		462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA11728AAEB00BDDEB8 /* TMCache.m */; };
 		462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */; };
 		462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */; };
@@ -227,6 +228,8 @@
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
 		462BAA1A1775034C0069A615 /* HMUserRecipeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMUserRecipeCell.h; path = UILayer/UserUI/HMUserRecipeCell.h; sourceTree = "<group>"; };
 		462BAA1B1775034C0069A615 /* HMUserRecipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMUserRecipeCell.m; path = UILayer/UserUI/HMUserRecipeCell.m; sourceTree = "<group>"; };
+		462BAA1D177513E80069A615 /* HMSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSearchCell.h; path = UILayer/SearchUI/HMSearchCell.h; sourceTree = "<group>"; };
+		462BAA1E177513E80069A615 /* HMSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMSearchCell.m; path = UILayer/SearchUI/HMSearchCell.m; sourceTree = "<group>"; };
 		462F0CA01728AAEB00BDDEB8 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
 		462F0CA11728AAEB00BDDEB8 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
 		462F0CA21728AAEB00BDDEB8 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
@@ -846,6 +849,8 @@
 				46C075D0173A589300BB8823 /* HMSearchBar.m */,
 				46B777AC1769ECBC00C162BE /* HMSearchViewController.h */,
 				46B777AD1769ECBC00C162BE /* HMSearchViewController.m */,
+				462BAA1D177513E80069A615 /* HMSearchCell.h */,
+				462BAA1E177513E80069A615 /* HMSearchCell.m */,
 			);
 			name = SearchUI;
 			sourceTree = "<group>";
@@ -1294,6 +1299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462BAA1F1775141B0069A615 /* HMSearchCell.m in Sources */,
 				462BAA1C1775051C0069A615 /* HMUserRecipeCell.m in Sources */,
 				4669D2DE17730C1C002D3171 /* HMIngredientEditViewController.m in Sources */,
 				4669D2DF17730C1C002D3171 /* HMTipEditViewController.m in Sources */,

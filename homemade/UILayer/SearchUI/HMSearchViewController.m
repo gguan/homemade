@@ -8,6 +8,7 @@
 
 #import "HMSearchViewController.h"
 #import "SVPullToRefresh.h"
+#import "HMSearchCell.h"
 
 #define QueryLimit 2
 
@@ -112,26 +113,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SearchTableCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HMSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[HMSearchCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
     PFObject *object = [self.searchResults objectAtIndex:indexPath.row];
     NSString *title = [object objectForKey:kHMRecipeTitleKey];
     NSString *description = [object objectForKey:kHMRecipeOverviewKey];
-//    NSRange stringRange = {0, MIN([description length], 30)};
-    
     
     PFFile *imageFile = [object objectForKey:kHMRecipePhotoKey];
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error) {
-            [cell.imageView setImage:[UIImage imageWithData:data]];
-        }
-    }];
-    [cell.textLabel setText:title];
-    [cell.detailTextLabel setText:description];
+    [cell.photoView setFile:imageFile];
+    [cell.photoView loadInBackground];
+    [cell.nameLabel setText:title];
+    [cell.descriptionLabel setText:description];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 106.0f;
 }
 
 
