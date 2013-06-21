@@ -11,17 +11,25 @@
 #import "HMSettingViewController.h"
 #import "UIImage+ResizeAdditions.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SVPullToRefresh.h"
+#import "HMUserRecipeCell.h"
+#import "TTTTimeIntervalFormatter.h"
 
-#define AvatarSize 80
-#define WindowHeight 220
-#define CoverHeight 320
+const CGFloat AvatarSize = 80.0f;
+const CGFloat WindowHeight = 220.0f;
+const CGFloat CoverHeight = 320.0f;
 
-@interface HMAccountViewController ()
+const NSInteger QueryLimit = 2;
+
+@interface HMAccountViewController () {
+    BOOL isLoading;
+    NSInteger currentPage;
+}
 
 @property (nonatomic, strong) PFImageView *coverView;
 @property (nonatomic, strong) PFImageView *avatar;
 @property (nonatomic, strong) NSMutableArray *objects;
-
+@property (nonatomic, strong) TTTTimeIntervalFormatter *timeIntervalFormatter;
 @end
 
 @implementation HMAccountViewController
@@ -31,6 +39,8 @@
     self = [super init];
     if (self) {
         self.user = user;
+        self.objects = [[NSMutableArray alloc] init];
+        self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
         
         // photo picker
         self.photoPicker = [[HMCameraViewController alloc] init];
@@ -102,6 +112,9 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Setting" style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
     [self.navigationItem setRightBarButtonItem:rightItem];
     
+    isLoading = NO;
+    currentPage = 0;
+    
     // Cover Photo
     [self.coverView setFile: [self.user objectForKey:kHMUserCoverPhotoKey]];
     [self.coverView loadInBackground];
@@ -119,7 +132,19 @@
     [nameLabel setTextColor:[UIColor whiteColor]];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
     [self.tableView.tableHeaderView addSubview:nameLabel];
-
+    
+    // Infinite scroll and pagination
+    __weak HMAccountViewController *weakSelf = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf doQuery];
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        });
+    }];
+    
+    [self doQuery];
 }
 
 - (void)didReceiveMemoryWarning
@@ -176,27 +201,33 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    return self.objects.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 10.0;         
+    return 400;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellReuseIdentifier   = @"RBParallaxTableViewCell";
+    static NSString *cellReuseIdentifier   = @"UserRecipeCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    HMUserRecipeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
     if (!cell) {
-            
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
-           
-//            cell.contentView.backgroundColor = [UIColor clearColor];
-            cell.selectionStyle              = UITableViewCellSelectionStyleNone;
+        cell = [[HMUserRecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
     }
-    cell.textLabel.text = @"asdfasdfsadf";
-    cell.backgroundColor             = [UIColor purpleColor];
-    cell.contentView.backgroundColor = [UIColor purpleColor];
+    PFObject *drink = [self.objects objectAtIndex:indexPath.row];
+    [cell.photo setFile:[drink objectForKey:kHMRecipePhotoKey]];
+    [cell.photo loadInBackground];
+    [cell.avatar setFile:[self.user objectForKey:kHMUserProfilePicSmallKey]];
+    [cell.avatar loadInBackground];
+    
+    NSTimeInterval timeInterval = [[drink createdAt] timeIntervalSinceNow];
+    NSString *timestamp = [self.timeIntervalFormatter stringForTimeInterval:timeInterval];
+    [cell.timestampLabel setText:timestamp];
+    NSString *note = [drink objectForKey:kHMRecipeOverviewKey];
+    [cell.noteLabel setText:note];
+//    cell.backgroundColor             = [UIColor purpleColor];
+//    cell.contentView.backgroundColor = [UIColor purpleColor];
     return cell;
 }
 
@@ -282,7 +313,30 @@
 }
 
 - (void)doQuery {
+    if (isLoading) {
+        return;
+    }
+    isLoading = YES;
     
+    PFUser *user = [PFUser currentUser];
+    PFQuery *drinkQuery = [PFQuery queryWithClassName:kHMRecipeClassKey];
+    [drinkQuery whereKey:kHMRecipeUserKey equalTo:user];
+    drinkQuery.limit = QueryLimit;
+    drinkQuery.skip = QueryLimit * currentPage;
+
+    [drinkQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            @synchronized(self) {
+                NSLog(@"%@", objects);
+                [self.objects addObjectsFromArray:objects];
+            }
+            [self.tableView reloadData];
+        }
+    }];
+    
+    currentPage += 1;
+    isLoading = NO;
+
 }
 
 
