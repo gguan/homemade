@@ -98,12 +98,12 @@
 
     [self.view addSubview:self.commentTextField];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
@@ -208,7 +208,7 @@
     }
 }
 
-- (void)keyboardWillShow:(NSNotification *)note {
+- (void)keyboardDidShow:(NSNotification *)note {
     if (isKeyboardShown) {
         return;
     }
@@ -217,13 +217,17 @@
     double animationDuration = [[note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     isAnimating = YES;
     
+
     [UIView animateWithDuration:animationDuration animations:^{
         // When keyboard popup, the tableview size decrease!
-        CGPoint currentOffset = self.tableView.contentOffset;
         CGRect viewFrame = self.tableView.frame;
         viewFrame.size.height -= keyboardFrameEnd.size.height;
         [self.tableView setFrame:viewFrame];
-        [self.tableView setContentOffset:CGPointMake(0, currentOffset.y+keyboardFrameEnd.size.height) animated:YES];
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height-51-keyboardFrameEnd.size.height) animated:YES];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            
+        }
     }];
     isAnimating = NO;
 }
