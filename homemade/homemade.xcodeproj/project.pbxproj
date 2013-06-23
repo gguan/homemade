@@ -43,7 +43,6 @@
 		46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */; };
 		46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */; };
 		46409D54176B1EAD00E7494E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */; };
-		46409D5A1770248C00E7494E /* HMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D581770205200E7494E /* HMCategoryViewController.m */; };
 		4644DA1E1766CF52006F619D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644DA1D1766CF52006F619D /* StoreKit.framework */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -191,6 +190,7 @@
 		469FBD871716B1A900D8BC84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD861716B1A900D8BC84 /* CFNetwork.framework */; };
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
+		46A0DB381776DF6400B4391E /* HMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0DB371776DF3C00B4391E /* HMCategoryViewController.m */; };
 		46B777AA1769BC5300C162BE /* tabArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A81769BC5300C162BE /* tabArrow.png */; };
 		46B777AB1769BC5300C162BE /* tabArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A91769BC5300C162BE /* tabArrow@2x.png */; };
 		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
@@ -272,8 +272,6 @@
 		46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		46409D52176B1EAD00E7494E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Utility/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Utility/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		46409D571770205200E7494E /* HMCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCategoryViewController.h; path = UILayer/CategoryUI/HMCategoryViewController.h; sourceTree = "<group>"; };
-		46409D581770205200E7494E /* HMCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCategoryViewController.m; path = UILayer/CategoryUI/HMCategoryViewController.m; sourceTree = "<group>"; };
 		46409D5F1771DDE100E7494E /* HMCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCreateViewController.h; path = UILayer/CreateUI/HMCreateViewController.h; sourceTree = "<group>"; };
 		46409D601771DDE100E7494E /* HMCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCreateViewController.m; path = UILayer/CreateUI/HMCreateViewController.m; sourceTree = "<group>"; };
 		4644DA1D1766CF52006F619D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -472,6 +470,8 @@
 		469FBD881716B1C500D8BC84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		46A0DB361776DF3C00B4391E /* HMCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCategoryViewController.h; path = UILayer/CategoryUI/HMCategoryViewController.h; sourceTree = "<group>"; };
+		46A0DB371776DF3C00B4391E /* HMCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCategoryViewController.m; path = UILayer/CategoryUI/HMCategoryViewController.m; sourceTree = "<group>"; };
 		46B777A81769BC5300C162BE /* tabArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabArrow.png; sourceTree = "<group>"; };
 		46B777A91769BC5300C162BE /* tabArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabArrow@2x.png"; sourceTree = "<group>"; };
 		46B777AC1769ECBC00C162BE /* HMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
@@ -625,8 +625,8 @@
 		46409D561770202B00E7494E /* CategoryUI */ = {
 			isa = PBXGroup;
 			children = (
-				46409D571770205200E7494E /* HMCategoryViewController.h */,
-				46409D581770205200E7494E /* HMCategoryViewController.m */,
+				46A0DB361776DF3C00B4391E /* HMCategoryViewController.h */,
+				46A0DB371776DF3C00B4391E /* HMCategoryViewController.m */,
 			);
 			name = CategoryUI;
 			sourceTree = "<group>";
@@ -1299,6 +1299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A0DB381776DF6400B4391E /* HMCategoryViewController.m in Sources */,
 				462BAA1F1775141B0069A615 /* HMSearchCell.m in Sources */,
 				462BAA1C1775051C0069A615 /* HMUserRecipeCell.m in Sources */,
 				4669D2DE17730C1C002D3171 /* HMIngredientEditViewController.m in Sources */,
@@ -1308,7 +1309,6 @@
 				46339B9917726C94009F309E /* HMIngredientInputCell.m in Sources */,
 				46339B9A17726C94009F309E /* HMTipInputCell.m in Sources */,
 				4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */,
-				46409D5A1770248C00E7494E /* HMCategoryViewController.m in Sources */,
 				46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */,
 				46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */,
 				46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */,

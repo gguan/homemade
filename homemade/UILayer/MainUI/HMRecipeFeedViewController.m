@@ -113,7 +113,7 @@
 	menu.endRadius = 60.0f;
 	menu.nearRadius = 58.0f;
     if (DEVICE_VERSION_7) {
-        menu.startPoint = CGPointMake(160.0, self.tableView.frame.size.height + 20.0f);
+        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height + 20);
     } else {
         menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 44);
     }
@@ -378,9 +378,6 @@
     CGRect fixedFrame = self.view.frame;
     
     fixedFrame.origin.y = scrollView.contentOffset.y;
-    if (DEVICE_VERSION_7) {
-        fixedFrame.origin.y += 20;
-    }
     menu.frame = fixedFrame;
 }
 

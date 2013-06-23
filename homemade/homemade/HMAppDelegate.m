@@ -139,14 +139,14 @@
 
 #pragma mark - Customize Style
 - (void)setupAppearance {
-    if (DEVICE_VERSION_7) {
-        
-//        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//    if (DEVICE_VERSION_7) {
+    
+//        [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
 //        [[UINavigationBar appearance] setBarTintColor:[UIColor purpleColor]];
 
 //        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbarMask.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
 //        [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
-            }
+//            }
     
 }
 

@@ -115,7 +115,8 @@
             self.categoryViewController = [[HMCategoryViewController alloc] init];
         }
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.categoryViewController];
-        [self.mm_drawerController setCenterViewController:navigationController];
+        [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
+        }];
         self.currentIndex = 2;
     } else if (indexPath.row == 3) {
         if (!self.saveViewController) {

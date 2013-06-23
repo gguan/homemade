@@ -60,7 +60,7 @@
         [self addSubview:self.noteLabel];
         
         UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(5, 394, 310, 1)];
-        [bottomBorder setBackgroundColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:0.5f]];
+        [bottomBorder setBackgroundColor:[UIColor colorWithRed:124.0f/255.0f green:124.0f/255.0f blue:124.0f/255.0f alpha:0.2f]];
         [self addSubview:bottomBorder];
         
     }

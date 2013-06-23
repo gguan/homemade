@@ -2,7 +2,7 @@
 //  HMCategoryViewController.m
 //  homemade
 //
-//  Created by Guan Guan on 6/17/13.
+//  Created by Guan Guan on 6/23/13.
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
@@ -10,17 +10,15 @@
 #import "UIViewController+MMDrawerController.h"
 
 @interface HMCategoryViewController ()
-
+@property (nonatomic, strong) NSArray *categories;
 @end
 
 @implementation HMCategoryViewController
 
-- (id)init
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super init];
+    self = [super initWithStyle:style];
     if (self) {
-//        [self.view setFrame:[UIScreen mainScreen].bounds];
-        [self.view setBackgroundColor:[UIColor whiteColor]];
         // Custom initialization
     }
     return self;
@@ -29,10 +27,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitle:@"DRINK+"];
+
+    [self.navigationItem setTitle:@"Category"];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(leftDrawerButtonClicked)];
     [self.navigationItem setLeftBarButtonItem:leftItem];
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.categories = @[@"APERITIFS", @"VODKA", @"GIN", @"TEQUILA", @"RUM", @"WHISKEY", @"BRANDY", @"LIQUEURS & FORTIFIED WINES", @"MOCKTAILS", @"PARTY FOOD"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,8 +47,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view data source
 
-#pragma mark -
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return self.categories.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"CategoryCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    // Configure the cell...
+    cell.textLabel.text = [self.categories objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
 - (void)leftDrawerButtonClicked {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
