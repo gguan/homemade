@@ -256,4 +256,8 @@ NSUInteger DeviceSystemMajorVersion() {
     }
 }
 
++ (NSString *) getPreferredLanguage {
+    return [[NSLocale preferredLanguages] objectAtIndex:0];
+}
+
 @end
