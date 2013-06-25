@@ -48,12 +48,12 @@
 #ifdef DEBUG
     [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
                   clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 #else
     [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
                   clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 #endif
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Make sure to update your URL scheme to match this facebook id. It should be "fbFACEBOOK_APP_ID" where FACEBOOK_APP_ID is your Facebook app's id.
     // You may set one up at https://developers.facebook.com/apps
@@ -65,6 +65,11 @@
         application.applicationIconBadgeNumber = 0;
         [[PFInstallation currentInstallation] saveEventually];
     }
+    
+    // Register for remote notifications
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+                                                    UIRemoteNotificationTypeAlert|
+                                                    UIRemoteNotificationTypeSound];
     
     // Enable public read access by default, with any newly created PFObjects belonging to the current user
     PFACL *defaultACL = [PFACL ACL];
@@ -335,6 +340,21 @@
         [weakSelf presentLoginViewControllerAnimated:NO];
     }];
     
+}
+
+// Handling push notification
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 

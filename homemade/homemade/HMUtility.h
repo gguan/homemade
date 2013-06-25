@@ -49,6 +49,8 @@ NSUInteger DeviceSystemMajorVersion();
 
 + (UIFont *)appFontOfSize:(CGFloat)size;
 
-+ (NSString *) getPreferredLanguage;
++ (NSString *)getPreferredLanguage;
+
++ (NSArray *)getCategories;
 
 @end
