@@ -6,8 +6,7 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface HMSaveViewController : UITableViewController
+@interface HMSaveViewController : PFQueryTableViewController
 
 @end

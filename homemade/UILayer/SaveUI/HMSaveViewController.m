@@ -9,6 +9,7 @@
 #import "HMSaveViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "HMSearchCell.h"
 
 @interface HMSaveViewController ()
 
@@ -21,6 +22,18 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
+        // The className to query on
+        self.parseClassName = kHMSaveClassKey;
+        
+        // Whether the built-in pull-to-refresh is enabled, we manuall add it
+        self.pullToRefreshEnabled = NO;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = YES;
+        
+        // The number of objects to show per page
+        self.objectsPerPage = 15;
     }
     return self;
 }
@@ -45,21 +58,60 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return self.objects.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+#pragma mark - PFQueryTableViewController
+
+- (PFQuery *)queryForTable {
     
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    }
+    [query whereKey:kHMSaveFromUserKey equalTo:[PFUser currentUser]];
+    [query includeKey:kHMSaveRecipeKey];
+    [query orderByDescending:@"createdAt"];
+    
+    query.maxCacheAge = 60 * 60 * 24;
+    
+    return query;
+}
+
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < self.objects.count) {
+        return [self.objects objectAtIndex:indexPath.row];
+    }
+    
+    return nil;
+}
+
+- (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)save {
+    
+    static NSString *CellIdentifier = @"SaveCell";
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
+    PFObject *drink = [save objectForKey:kHMSaveRecipeKey];
+    NSString *title = [drink objectForKey:kHMRecipeTitleKey];
+    NSString *description = [drink objectForKey:kHMRecipeOverviewKey];
+    PFFile *image = [drink objectForKey:kHMRecipePhotoKey];
+    cell.textLabel.text = title;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageView.clipsToBounds = YES;
+    [cell.imageView setFile:image];
+    [cell.imageView loadInBackground];
+    cell.detailTextLabel.text = description;
     
     return cell;
 }
@@ -73,7 +125,7 @@
 }
 */
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -85,23 +137,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

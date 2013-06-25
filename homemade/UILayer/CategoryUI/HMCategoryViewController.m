@@ -38,7 +38,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.categories = @[@"APERITIFS", @"VODKA", @"GIN", @"TEQUILA", @"RUM", @"WHISKEY", @"BRANDY", @"LIQUEURS & FORTIFIED WINES", @"MOCKTAILS", @"PARTY FOOD"];
+    self.categories = @[@"APERITIFS", @"VODKA", @"GIN", @"TEQUILA", @"RUM", @"WHISKEY", @"BRANDY", @"LIQUEURS & FORTIFIED WINES", @"MOCKTAILS", @"BEER", @"NON ALCOHOLIC DRINKS"];
 }
 
 - (void)didReceiveMemoryWarning

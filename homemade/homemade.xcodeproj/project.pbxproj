@@ -191,6 +191,8 @@
 		469FBD891716B1C500D8BC84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD881716B1C500D8BC84 /* CoreLocation.framework */; };
 		469FBD8B1716B1D100D8BC84 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */; };
 		46A0DB381776DF6400B4391E /* HMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A0DB371776DF3C00B4391E /* HMCategoryViewController.m */; };
+		46A0DB3A1777A42D00B4391E /* app-icon@120.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A0DB391777A42D00B4391E /* app-icon@120.png */; };
+		46A0DB3C1777A48A00B4391E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A0DB3B1777A48A00B4391E /* Media.xcassets */; };
 		46B777AA1769BC5300C162BE /* tabArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A81769BC5300C162BE /* tabArrow.png */; };
 		46B777AB1769BC5300C162BE /* tabArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B777A91769BC5300C162BE /* tabArrow@2x.png */; };
 		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
@@ -472,6 +474,8 @@
 		469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		46A0DB361776DF3C00B4391E /* HMCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCategoryViewController.h; path = UILayer/CategoryUI/HMCategoryViewController.h; sourceTree = "<group>"; };
 		46A0DB371776DF3C00B4391E /* HMCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCategoryViewController.m; path = UILayer/CategoryUI/HMCategoryViewController.m; sourceTree = "<group>"; };
+		46A0DB391777A42D00B4391E /* app-icon@120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon@120.png"; sourceTree = "<group>"; };
+		46A0DB3B1777A48A00B4391E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = homemade/Media.xcassets; sourceTree = "<group>"; };
 		46B777A81769BC5300C162BE /* tabArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabArrow.png; sourceTree = "<group>"; };
 		46B777A91769BC5300C162BE /* tabArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabArrow@2x.png"; sourceTree = "<group>"; };
 		46B777AC1769ECBC00C162BE /* HMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSearchViewController.h; path = UILayer/SearchUI/HMSearchViewController.h; sourceTree = "<group>"; };
@@ -655,6 +659,7 @@
 		4645D2E716F44D1800C38D39 = {
 			isa = PBXGroup;
 			children = (
+				46A0DB3B1777A48A00B4391E /* Media.xcassets */,
 				4645D2FB16F44D1900C38D39 /* homemade */,
 				4645D38516F5ED9300C38D39 /* BaseLayer */,
 				465F5964174EA90C00E2164B /* Utility */,
@@ -756,6 +761,7 @@
 		4645D32216F44E2400C38D39 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				46A0DB391777A42D00B4391E /* app-icon@120.png */,
 				4692021B175B33A20096F522 /* Assets */,
 				46372466171FBBB1002357E0 /* app-icon.png */,
 				466F4FAD170408310076AB3D /* temp */,
@@ -1209,6 +1215,7 @@
 				466F4FBE170408490076AB3D /* pic_7.jpg in Resources */,
 				4669D2D31772BAE3002D3171 /* StepImagePlaceholder@2x.png in Resources */,
 				466F4FBF170408490076AB3D /* pic_8.jpg in Resources */,
+				46A0DB3C1777A48A00B4391E /* Media.xcassets in Resources */,
 				466F4FC0170408490076AB3D /* pic_9.jpg in Resources */,
 				466F4FC1170408490076AB3D /* pic_10.jpg in Resources */,
 				4606A4D717194AA7009FDFFB /* s14.jpg in Resources */,
@@ -1288,6 +1295,7 @@
 				469202D817607F360096F522 /* buttonCamera@2x.png in Resources */,
 				4669D2D91772DC75002D3171 /* heart@2x.png in Resources */,
 				469202D917607F360096F522 /* buttonCameraSelected.png in Resources */,
+				46A0DB3A1777A42D00B4391E /* app-icon@120.png in Resources */,
 				469202DA17607F360096F522 /* buttonCameraSelected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1463,6 +1471,7 @@
 		4645D31316F44D1900C38D39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1485,6 +1494,7 @@
 		4645D31416F44D1900C38D39 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
