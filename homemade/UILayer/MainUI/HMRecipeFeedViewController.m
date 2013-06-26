@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "HMAppDelegate.h"
 #import "HMRecipeFeedViewController.h"
 #import "HMRecipeViewController.h"
 #import "SVPullToRefresh.h"
@@ -361,7 +360,7 @@
             
         }];
     } else if (idx == 3) {
-        [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
+        
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
