@@ -256,8 +256,12 @@ NSUInteger DeviceSystemMajorVersion() {
     }
 }
 
-+ (NSString *) getPreferredLanguage {
++ (NSString *)getPreferredLanguage {
     return [[NSLocale preferredLanguages] objectAtIndex:0];
+}
+
++ (NSArray *)getCategories {
+    return @[@"APERITIFS", @"VODKA", @"GIN", @"TEQUILA", @"RUM", @"WHISKEY", @"BRANDY", @"LIQUEURS & FORTIFIED WINES", @"MOCKTAILS", @"BEER", @"NON ALCOHOLIC DRINKS"];
 }
 
 @end

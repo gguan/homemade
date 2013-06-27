@@ -20,12 +20,12 @@
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
 		462BAA1C1775051C0069A615 /* HMUserRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462BAA1B1775034C0069A615 /* HMUserRecipeCell.m */; };
 		462BAA1F1775141B0069A615 /* HMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462BAA1E177513E80069A615 /* HMSearchCell.m */; };
+		462BAA22177A268E0069A615 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462BAA20177A256F0069A615 /* FacebookSDK.framework */; };
 		462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA11728AAEB00BDDEB8 /* TMCache.m */; };
 		462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA31728AAEB00BDDEB8 /* TMDiskCache.m */; };
 		462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CA51728AAEB00BDDEB8 /* TMMemoryCache.m */; };
 		462F0CAC1728EBF300BDDEB8 /* HMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */; };
 		462F0CBA172946AF00BDDEB8 /* HMCellLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */; };
-		462F0CBC172D3EB400BDDEB8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */; };
 		46339B9817726C94009F309E /* HMStepInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9317725CAA009F309E /* HMStepInputCell.m */; };
 		46339B9917726C94009F309E /* HMIngredientInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9517725CC2009F309E /* HMIngredientInputCell.m */; };
 		46339B9A17726C94009F309E /* HMTipInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9717725CDC009F309E /* HMTipInputCell.m */; };
@@ -232,6 +232,7 @@
 		462BAA1B1775034C0069A615 /* HMUserRecipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMUserRecipeCell.m; path = UILayer/UserUI/HMUserRecipeCell.m; sourceTree = "<group>"; };
 		462BAA1D177513E80069A615 /* HMSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSearchCell.h; path = UILayer/SearchUI/HMSearchCell.h; sourceTree = "<group>"; };
 		462BAA1E177513E80069A615 /* HMSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMSearchCell.m; path = UILayer/SearchUI/HMSearchCell.m; sourceTree = "<group>"; };
+		462BAA20177A256F0069A615 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Vendor/FacebookSDK.framework; sourceTree = "<group>"; };
 		462F0CA01728AAEB00BDDEB8 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCache.h; sourceTree = "<group>"; };
 		462F0CA11728AAEB00BDDEB8 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCache.m; sourceTree = "<group>"; };
 		462F0CA21728AAEB00BDDEB8 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDiskCache.h; sourceTree = "<group>"; };
@@ -242,7 +243,6 @@
 		462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMLoginViewController.m; path = UILayer/LoginUI/HMLoginViewController.m; sourceTree = "<group>"; };
 		462F0CB8172946AF00BDDEB8 /* HMCellLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCellLeftView.h; path = UILayer/MainUI/HMCellLeftView.h; sourceTree = "<group>"; };
 		462F0CB9172946AF00BDDEB8 /* HMCellLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCellLeftView.m; path = UILayer/MainUI/HMCellLeftView.m; sourceTree = "<group>"; };
-		462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = Vendor/FacebookSDK.framework; sourceTree = "<group>"; };
 		46339B9217725CAA009F309E /* HMStepInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMStepInputCell.h; path = UILayer/CreateUI/HMStepInputCell.h; sourceTree = "<group>"; };
 		46339B9317725CAA009F309E /* HMStepInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepInputCell.m; path = UILayer/CreateUI/HMStepInputCell.m; sourceTree = "<group>"; };
 		46339B9417725CC2009F309E /* HMIngredientInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientInputCell.h; path = UILayer/CreateUI/HMIngredientInputCell.h; sourceTree = "<group>"; };
@@ -519,8 +519,8 @@
 				4645D31F16F44DC200C38D39 /* SystemConfiguration.framework in Frameworks */,
 				4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */,
 				4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */,
+				462BAA22177A268E0069A615 /* FacebookSDK.framework in Frameworks */,
 				4645D2FA16F44D1900C38D39 /* CoreData.framework in Frameworks */,
-				462F0CBC172D3EB400BDDEB8 /* FacebookSDK.framework in Frameworks */,
 				465F5963174BD48300E2164B /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,11 +682,11 @@
 		4645D2F216F44D1900C38D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				462BAA20177A256F0069A615 /* FacebookSDK.framework */,
 				46E08A15176BB065001A2C13 /* Accelerate.framework */,
 				4644DA1D1766CF52006F619D /* StoreKit.framework */,
 				469202CD175F0A600096F522 /* CoreText.framework */,
 				465F5962174BD48300E2164B /* Parse.framework */,
-				462F0CBB172D3EB400BDDEB8 /* FacebookSDK.framework */,
 				469FBD8C1716B1EB00D8BC84 /* StoreKit.framework */,
 				469FBD8A1716B1D100D8BC84 /* libz.1.1.3.dylib */,
 				469FBD881716B1C500D8BC84 /* CoreLocation.framework */,
