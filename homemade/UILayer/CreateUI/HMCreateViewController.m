@@ -411,6 +411,7 @@
         [recipe setObject:self.ingridents forKey:kHMRecipeIngredientsKey];
         [recipe setObject:self.steps forKey:kHMRecipeStepsKey];
         [recipe setObject:self.tips forKey:kHMRecipeTipsKey];
+        [recipe setObject:[HMUtility getPreferredLanguage] forKey:kHMRecipeLanguageKey];
         
         // Photos are public, but may only be modified by the user who uploaded them
         PFACL *recipeACL = [PFACL ACLWithUser:[PFUser currentUser]];
