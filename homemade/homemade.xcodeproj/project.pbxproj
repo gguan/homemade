@@ -75,6 +75,7 @@
 		465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465435E71762685E00B3B33D /* HMIMadeItCell.m */; };
 		465C07AB177D634200F5C5B0 /* background-dark-gray-tex.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */; };
 		465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */; };
+		465C07B0177D749E00F5C5B0 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 465C07AF177D749E00F5C5B0 /* YLProgressBar.m */; };
 		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
 		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
 		4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D601771DDE100E7494E /* HMCreateViewController.m */; };
@@ -325,6 +326,9 @@
 		465435E71762685E00B3B33D /* HMIMadeItCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIMadeItCell.m; path = UILayer/RecipeUI/HMIMadeItCell.m; sourceTree = "<group>"; };
 		465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex.png"; sourceTree = "<group>"; };
 		465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex@2x.png"; sourceTree = "<group>"; };
+		465C07AE177D749E00F5C5B0 /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
+		465C07AF177D749E00F5C5B0 /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
+		465C07B1177D74CB00F5C5B0 /* ARCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCMacro.h; sourceTree = "<group>"; };
 		465F5962174BD48300E2164B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
 		465F5965174EA95F00E2164B /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Utility/UIImageView+Addition.h"; sourceTree = "<group>"; };
 		465F5966174EA95F00E2164B /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Utility/UIImageView+Addition.m"; sourceTree = "<group>"; };
@@ -749,6 +753,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				465C07AD177D749E00F5C5B0 /* YLProgressBar */,
 				46409D45176B1BD000E7494E /* MMDrawerController */,
 				469202CF17607EC50096F522 /* TTTTimeIntervalFormatter */,
 				469202C9175F041D0096F522 /* TTTAttributedLabel */,
@@ -940,6 +945,17 @@
 				469202FE1765EFE40096F522 /* HMCommentCell.m */,
 			);
 			name = CommonUI;
+			sourceTree = "<group>";
+		};
+		465C07AD177D749E00F5C5B0 /* YLProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				465C07B1177D74CB00F5C5B0 /* ARCMacro.h */,
+				465C07AE177D749E00F5C5B0 /* YLProgressBar.h */,
+				465C07AF177D749E00F5C5B0 /* YLProgressBar.m */,
+			);
+			name = YLProgressBar;
+			path = Vendor/YLProgressBar;
 			sourceTree = "<group>";
 		};
 		465F5964174EA90C00E2164B /* Utility */ = {
@@ -1402,6 +1418,7 @@
 				469202F61764B4600096F522 /* HMCommentViewController.m in Sources */,
 				469202FC17657E730096F522 /* HMCommentBar.m in Sources */,
 				46409D4F176B1BD000E7494E /* MMDrawerController.m in Sources */,
+				465C07B0177D749E00F5C5B0 /* YLProgressBar.m in Sources */,
 				469202FF1765EFE50096F522 /* HMCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

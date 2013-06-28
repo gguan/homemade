@@ -28,19 +28,30 @@
         // Initialization code
         
         // Init cell swipe left view
-        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(20.0, 0.0, self.frame.size.width, kFeedCellHeight)];
+//        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(20.0, 0.0, self.frame.size.width, kFeedCellHeight)];
         
-        self.backCover = [[UIView alloc] initWithFrame:CGRectMake(20.0, 10.0, kFeedCellWidth, kFeedCellHeight)];
+        
+        
+        self.backCover = [[UIView alloc] initWithFrame:self.frame];
         self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-
+        [self.contentView addSubview:self.backCover];
         
-        self.photo = [[PFImageView alloc] initWithFrame:self.backCover.frame];
+        self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, kFeedCellWidth, kFeedCellHeight)];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.contentMode = UIViewContentModeScaleAspectFill;
         self.photo.clipsToBounds = YES;
+        self.photo.layer.borderWidth = 2.0f;
+        self.photo.layer.borderColor = [UIColor whiteColor].CGColor;
+//        self.photo.layer.masksToBounds = NO;
+        self.photo.layer.shadowRadius = 1.0f;
+        self.photo.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        self.photo.layer.shadowOpacity = 0.5f;
+
         [self.backCover addSubview:self.photo];
         
-        
+        self.progressBar = [[YLProgressBar alloc] initWithFrame:CGRectMake(80, kFeedCellHeight/2, 160, 10)];
+        self.progressBar.hidden = YES;
+        [self.backCover addSubview:self.progressBar];
         
         UIView *banner = [[UIView alloc] initWithFrame:CGRectMake(20.0, 155.0, kFeedCellWidth, 60.0)];
         banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
@@ -107,8 +118,8 @@
 //        
 //        [self.contentView addSubview:dropshadowView];
         
-        [self.contentView addSubview:self.cellLeft];
-        [self.contentView addSubview:self.backCover];
+//        [self.contentView addSubview:self.cellLeft];
+        
         
         [self.contentView addSubview:self.colorLine];
         

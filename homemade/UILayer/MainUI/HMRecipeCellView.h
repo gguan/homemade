@@ -8,6 +8,7 @@
 
 #import "UIImage+ColorArt.h"
 #import "HMCellLeftView.h"
+#import "YLProgressBar.h"
 
 @protocol HMRecipeCellViewDelegate;
 
@@ -30,6 +31,8 @@
 
 // Left function panel
 @property (strong, nonatomic) HMCellLeftView *cellLeft;
+
+@property (strong, nonatomic) YLProgressBar *progressBar;
 
 // Wheter left panel is visible
 @property (assign, nonatomic) BOOL leftIsVisible;

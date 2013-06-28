@@ -50,7 +50,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"load main view");
     [super viewDidAppear:animated];
 }
 
@@ -162,7 +161,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 225.0f;
+    return 190.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -203,7 +202,7 @@
 
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)recipe {
     
-    static NSString *CellIdentifier = @"RecipeCell";
+    static NSString *CellIdentifier = @"DrinkRecipeCell";
     
     HMRecipeCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -226,20 +225,7 @@
             NSLog(@"%@", attributesForRecipe);
             [cell.saveCount setText:[[[HMCache sharedCache] saveCountForRecipe:recipe] description]];
             [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:recipe]];
-            
-            // although we have cache, we still fetch the latest data
-            PFQuery *query = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
-            [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
-                if (error) {
-                    return;
-                }
-                // update label
-                [cell.saveCount setText:[NSString stringWithFormat:@"%i", count]];
-                // update cache
-                NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:attributesForRecipe];
-                [attributes setObject:[NSNumber numberWithInt:count] forKey:kHMRecipeAttributesSaveCountKey];
-                [[HMCache sharedCache] setAttributesForRecipe:recipe attributes:attributes];
-            }];
+
         } else {
             NSLog(@"Didn't find cache for recipe %@", recipe.objectId);
             @synchronized(self) {
@@ -306,43 +292,30 @@
                 }
             }];
         } else {
-            // Manually download images from parse and set animation
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                
-                NSData *data = [cell.photo.file getData];
-                if(data) {
+            cell.progressBar.hidden = NO;
+            [cell.photo.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (data) {
                     NSString *colorCacheKey = cell.photo.file.name;
+                    cell.progressBar.hidden = YES;
                     UIImage *image = [UIImage imageWithData:data];
-                    UIColor *colorArt = [image colorArtInRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)].primaryColor;
+                    cell.photo.alpha = 0.0f;
+                    [UIView animateWithDuration:0.3
+                                     animations:^{
+                                         [cell.photo setImage: image];
+                                         cell.photo.alpha = 1.0f;
+                                         
+                                     } completion:^(BOOL finished) { }];
                     
+                    UIColor *colorArt = [image colorArtInRect:CGRectMake(image.size.width/2-50, image.size.height/2-50, 100, image.size.height/2+50)].primaryColor;
+                    cell.colorArt = colorArt;
+                    [cell.colorLine setBackgroundColor:colorArt];
+
                     [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
-                    dispatch_async( dispatch_get_main_queue(), ^{
-                                                
-                        // fade in fetched photo
-                        [UIView animateWithDuration:0.0
-                                         animations:^{
-                                             cell.photo.alpha = 0.0f;
-                                         }
-                                         completion:^(BOOL finished) {
-                                             [UIView animateWithDuration:0.3
-                                                              animations:^{
-                                                                  [cell.photo setImage: image];
-                                                                  cell.photo.alpha = 1.0f;
-                                                                  cell.colorArt = colorArt;
-                                                                  [cell.colorLine setBackgroundColor:colorArt];
-                                                              }
-                                                              completion:^(BOOL finished) { }];
-                                         }];
-                        [cell.photo addDetailShow];
-                        
-                    });
-
-
-                } else {
-                    NSLog(@"Error! Failed to download data from parse!");
+                    [cell.photo addDetailShow];     
                 }
-                
-            });
+            } progressBlock:^(int percentDone) {
+                cell.progressBar.progress = percentDone * 0.01f;
+            }];            
         } // if isDataAvailable end
         
     } // if object end
