@@ -58,8 +58,10 @@
 {
     [super viewDidLoad];
     
-    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
     
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+
     // Setup navigation bar
     [self.navigationItem setTitle:@"DRINK+"];
 

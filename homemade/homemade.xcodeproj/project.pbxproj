@@ -73,6 +73,8 @@
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */; };
 		465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465435E71762685E00B3B33D /* HMIMadeItCell.m */; };
+		465C07AB177D634200F5C5B0 /* background-dark-gray-tex.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */; };
+		465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */; };
 		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
 		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
 		4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D601771DDE100E7494E /* HMCreateViewController.m */; };
@@ -321,6 +323,8 @@
 		464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommonUIUtility.m; path = UILayer/CommonUI/HMCommonUIUtility.m; sourceTree = "<group>"; };
 		465435E61762685E00B3B33D /* HMIMadeItCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMIMadeItCell.h; path = UILayer/RecipeUI/HMIMadeItCell.h; sourceTree = "<group>"; };
 		465435E71762685E00B3B33D /* HMIMadeItCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIMadeItCell.m; path = UILayer/RecipeUI/HMIMadeItCell.m; sourceTree = "<group>"; };
+		465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex.png"; sourceTree = "<group>"; };
+		465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex@2x.png"; sourceTree = "<group>"; };
 		465F5962174BD48300E2164B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
 		465F5965174EA95F00E2164B /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Utility/UIImageView+Addition.h"; sourceTree = "<group>"; };
 		465F5966174EA95F00E2164B /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Utility/UIImageView+Addition.m"; sourceTree = "<group>"; };
@@ -1022,6 +1026,8 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */,
+				465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */,
 				462C559C177D0A2800B54D27 /* NavigationBar.png */,
 				462C559D177D0A2800B54D27 /* NavigationBar@2x.png */,
 				4669D2CE1772BAE3002D3171 /* StepImagePlaceholder.png */,
@@ -1244,6 +1250,7 @@
 				46920258175B33A20096F522 /* back.png in Resources */,
 				4669D2D81772DC75002D3171 /* heart.png in Resources */,
 				46920259175B33A20096F522 /* back@2x.png in Resources */,
+				465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */,
 				4692025A175B33A20096F522 /* background.png in Resources */,
 				4692025B175B33A20096F522 /* background@2x.png in Resources */,
 				4692025C175B33A20096F522 /* BackgroundLogin.png in Resources */,
@@ -1286,6 +1293,7 @@
 				46920281175B33A20096F522 /* step@2x.png in Resources */,
 				46920282175B33A20096F522 /* WhatIMade.png in Resources */,
 				46920283175B33A20096F522 /* WhatIMade@2x.png in Resources */,
+				465C07AB177D634200F5C5B0 /* background-dark-gray-tex.png in Resources */,
 				469202AE175DA1A80096F522 /* about.png in Resources */,
 				469202AF175DA1A80096F522 /* about@2x.png in Resources */,
 				469202B2175DA1C10096F522 /* indicator.png in Resources */,

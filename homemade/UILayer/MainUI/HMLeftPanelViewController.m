@@ -32,7 +32,9 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+    self.view.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:34.0f/255.0f blue:36.0f/255.0f alpha:1.0f];
+    [self.tableView setSeparatorColor:[UIColor blackColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
 
     [header setText:@"Drink+"];
@@ -74,6 +76,8 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell.textLabel setFont:[HMUtility appFontOfSize:12.0f]];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
     }
     // Configure the cell...
     if (indexPath.row == 0) {

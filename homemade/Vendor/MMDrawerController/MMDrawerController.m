@@ -34,7 +34,7 @@ CGFloat const MMDrawerDefaultBounceDistance = 50.0f;
 NSTimeInterval const MMDrawerDefaultBounceAnimationDuration = 0.2f;
 CGFloat const MMDrawerDefaultSecondBounceDistancePercentage = .25f;
 
-CGFloat const MMDrawerDefaultShadowRadius = 1.0f;
+CGFloat const MMDrawerDefaultShadowRadius = 10.0f;
 CGFloat const MMDrawerDefaultShadowOpacity = 0.8;
 
 NSTimeInterval const MMDrawerMinimumAnimationDuration = 0.15f;
