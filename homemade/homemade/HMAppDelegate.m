@@ -144,14 +144,26 @@
 
 #pragma mark - Customize Style
 - (void)setupAppearance {
-//    if (DEVICE_VERSION_7) {
     
-//        [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
-//        [[UINavigationBar appearance] setBarTintColor:[UIColor purpleColor]];
-
-//        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbarMask.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
-//        [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
-//            }
+    [self.window.layer setCornerRadius:0.0f];
+    [self.window.layer setMasksToBounds:YES];
+    self.window.layer.opaque = YES;
+    
+    if (DEVICE_VERSION_7) {
+    
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//        [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+//        [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f]];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
+    } else {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                             [UIColor whiteColor],UITextAttributeTextColor,
+                                                             [UIColor colorWithWhite:0.0f alpha:0.750f],UITextAttributeTextShadowColor,
+                                                             [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],UITextAttributeTextShadowOffset,
+                                                             nil]];
+    }
     
 }
 
