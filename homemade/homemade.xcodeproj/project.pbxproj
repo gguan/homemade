@@ -76,6 +76,7 @@
 		465C07AB177D634200F5C5B0 /* background-dark-gray-tex.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */; };
 		465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */; };
 		465C07B0177D749E00F5C5B0 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 465C07AF177D749E00F5C5B0 /* YLProgressBar.m */; };
+		465C07B31780D8B900F5C5B0 /* icon_like@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07B21780D8B900F5C5B0 /* icon_like@2x.png */; };
 		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
 		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
 		4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D601771DDE100E7494E /* HMCreateViewController.m */; };
@@ -329,6 +330,7 @@
 		465C07AE177D749E00F5C5B0 /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		465C07AF177D749E00F5C5B0 /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
 		465C07B1177D74CB00F5C5B0 /* ARCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCMacro.h; sourceTree = "<group>"; };
+		465C07B21780D8B900F5C5B0 /* icon_like@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_like@2x.png"; path = "Resources/temp/icon_like@2x.png"; sourceTree = "<group>"; };
 		465F5962174BD48300E2164B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
 		465F5965174EA95F00E2164B /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Utility/UIImageView+Addition.h"; sourceTree = "<group>"; };
 		465F5966174EA95F00E2164B /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Utility/UIImageView+Addition.m"; sourceTree = "<group>"; };
@@ -994,6 +996,7 @@
 		466F4FAD170408310076AB3D /* temp */ = {
 			isa = PBXGroup;
 			children = (
+				465C07B21780D8B900F5C5B0 /* icon_like@2x.png */,
 				46C075D2173A5E6300BB8823 /* searchFrame.png */,
 				46C075D3173A5E6300BB8823 /* searchFrame@2x.png */,
 				4606A4DB17194F7C009FDFFB /* p1.jpg */,
@@ -1263,6 +1266,7 @@
 				46920255175B33A20096F522 /* addToFavoriteActive@2x.png in Resources */,
 				46920256175B33A20096F522 /* AvatarPlaceholder.png in Resources */,
 				46920257175B33A20096F522 /* AvatarPlaceholder@2x.png in Resources */,
+				465C07B31780D8B900F5C5B0 /* icon_like@2x.png in Resources */,
 				46920258175B33A20096F522 /* back.png in Resources */,
 				4669D2D81772DC75002D3171 /* heart.png in Resources */,
 				46920259175B33A20096F522 /* back@2x.png in Resources */,

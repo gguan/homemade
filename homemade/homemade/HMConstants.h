@@ -26,8 +26,8 @@
 #define CameraButtonWidth 100
 #define CameraButtonHeight 47
 
-#define kFeedCellHeight 175.0f
-#define kFeedCellWidth  310.0f
+#define kFeedCellHeight 170.0f
+#define kFeedCellWidth  300.0f
 
 #pragma mark - NSUserDefaults
 extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;

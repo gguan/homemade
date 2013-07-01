@@ -78,6 +78,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         [cell.textLabel setFont:[HMUtility appFontOfSize:12.0f]];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
+        cell.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:34.0f/255.0f blue:36.0f/255.0f alpha:1.0f];
     }
     // Configure the cell...
     if (indexPath.row == 0) {

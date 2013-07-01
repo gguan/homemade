@@ -57,7 +57,7 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f]];
     
     [self.tableView setSeparatorColor:[UIColor clearColor]];
 
@@ -161,7 +161,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 190.0f;
+    return 250.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -220,6 +220,7 @@
         
         NSDictionary *attributesForRecipe = [[HMCache sharedCache] attributesForRecipe:recipe];
         
+        cell.commentCount.text = @"0";
         if (attributesForRecipe) {
             NSLog(@"Find cache for recipe %@", recipe.objectId);
             NSLog(@"%@", attributesForRecipe);
