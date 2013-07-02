@@ -203,8 +203,8 @@
     // Create the normal state image by converting the image's background to gray
     NSString* subTitle = [delegate titleFor:self atIndex:itemIndex];
     [button setTitle:subTitle forState:UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
-    [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal]; // SET the colour for your wishes
+    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal]; // SET the colour for your wishes
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted]; // SET the colour for your wishes
     //   [button setTitleEdgeInsets:UIEdgeInsetsMake(0.f, 0.f, .f, -10.f)];
     // Set the gray & blue images as the button states

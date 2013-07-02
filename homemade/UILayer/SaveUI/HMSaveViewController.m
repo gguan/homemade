@@ -43,7 +43,7 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"DRINK+"];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(leftDrawerButtonClicked)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     [self.navigationItem setLeftBarButtonItem:leftItem];    
 }
 

@@ -62,13 +62,12 @@
     [self.tableView setSeparatorColor:[UIColor clearColor]];
 
     // Setup navigation bar
-    [self.navigationItem setTitle:@"DRINK+"];
+    [self.navigationItem setTitle:@"Drink+"];
 
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(leftDrawerButtonClicked)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     [self.navigationItem setLeftBarButtonItem:leftItem];
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchButtonClicked)];
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-search.png"] style:UIBarButtonItemStylePlain target:self action:@selector(searchButtonClicked)];
     [self.navigationItem setRightBarButtonItem:searchItem];
-    
     
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
@@ -161,7 +160,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 250.0f;
+    return 280.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -212,7 +211,7 @@
     
     [self resetCell:cell];
     cell.tag = indexPath.row;
-    cell.saveButton.tag = indexPath.row;
+    cell.saveIcon.tag = indexPath.row;
     
     if (recipe) {
         // Configure the cell

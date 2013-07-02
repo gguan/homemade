@@ -29,7 +29,7 @@
     [super viewDidLoad];
 
     [self.navigationItem setTitle:@"Category"];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(leftDrawerButtonClicked)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     [self.navigationItem setLeftBarButtonItem:leftItem];
 
     // Uncomment the following line to preserve selection between presentations.

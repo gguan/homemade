@@ -63,7 +63,10 @@
     [self.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
 
     // Add a share navBarItem
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareButtonClicked)];
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-share.png"] style:UIBarButtonItemStylePlain target:self action:@selector(shareButtonClicked)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
@@ -175,6 +178,9 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (void)leftDrawerButtonClicked {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {

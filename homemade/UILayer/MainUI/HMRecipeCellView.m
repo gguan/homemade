@@ -28,18 +28,18 @@
         // Initialization code
         
         // Init cell swipe left view
-        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(20.0, 0.0, self.frame.size.width, kFeedCellHeight)];
+        self.cellLeft = [[HMCellLeftView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, kFeedCellHeight)];
         [self.contentView addSubview:self.cellLeft];
         
-        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 249.0f, self.frame.size.width, 1.0f)];
-        bottomBorder.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
-        [self.contentView addSubview:bottomBorder];
+//        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, kFeedCellHeight+69.5, self.frame.size.width, 0.5f)];
+//        bottomBorder.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+//        [self.contentView addSubview:bottomBorder];
         
         self.backCover = [[UIView alloc] initWithFrame:self.frame];
         self.backCover.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [self.contentView addSubview:self.backCover];
         
-        self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(10.0f, 10.0f, kFeedCellWidth, kFeedCellHeight)];
+        self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(0.0f, 3.0f, self.frame.size.width, kFeedCellHeight)];
         self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         self.photo.contentMode = UIViewContentModeScaleAspectFill;
         self.photo.clipsToBounds = YES;
@@ -59,55 +59,48 @@
 //        banner.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
         [self.backCover addSubview:banner];
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, kFeedCellHeight + 20.0f, kFeedCellWidth, 20.0)];
-        self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18.0f];
-        self.titleLabel.textColor = [UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, kFeedCellHeight + 6.5f, 200, 50.0)];
+        self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Oblique" size:20.0f];
+        self.titleLabel.numberOfLines = 2;
+        self.titleLabel.textColor = [UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [self.backCover addSubview:self.titleLabel];
         
-        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(310.0, kFeedCellHeight + 10.0f, 10.0, 60.0)];
+        self.colorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, 3.0f)];
         [self.colorLine setBackgroundColor:[UIColor clearColor]];
-        self.colorLine.alpha = 0.95;
+        self.colorLine.alpha = 0.85;
         [self.backCover addSubview:self.colorLine];
         
         // add save button
-        
-        self.saveButton = [[UIButton alloc] initWithFrame:CGRectMake(10.0f, kFeedCellHeight + 45.0f, 25.0f, 25.0f)];
-        [self.saveButton setBackgroundColor:[UIColor clearColor]];
-        [self.saveButton setAdjustsImageWhenHighlighted:NO];
-        [self.saveButton setAdjustsImageWhenDisabled:NO];
-        [self.saveButton setBackgroundImage:[UIImage imageNamed:@"heart.png"] forState:UIControlStateNormal];
-        [self.backCover addSubview:self.saveButton];
-        
-        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 0.0f, 30.0f, 25.0f)];
+        self.saveIcon = [[UIButton alloc] initWithFrame:CGRectMake(265.0f, kFeedCellHeight + 15.0f, 12.0f, 12.0f)];
+        [self.saveIcon setBackgroundColor:[UIColor clearColor]];
+        [self.saveIcon setAdjustsImageWhenHighlighted:NO];
+        [self.saveIcon setAdjustsImageWhenDisabled:NO];
+        [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"heart.png"] forState:UIControlStateNormal];
+        [self.backCover addSubview:self.saveIcon];
+
+        self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
         [self.saveCount setBackgroundColor:[UIColor clearColor]];
         self.saveCount.textColor = [UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
-        self.saveCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
-        [self.saveButton addSubview:self.saveCount];
+        self.saveCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.0];
+        [self.saveIcon addSubview:self.saveCount];
         
-        self.commentButton = [[UIButton alloc] initWithFrame:CGRectMake(70.0f, kFeedCellHeight + 45.0f, 25.0f, 25.0f)];
-        [self.commentButton setBackgroundColor:[UIColor clearColor]];
-        [self.commentButton setAdjustsImageWhenHighlighted:NO];
-        [self.commentButton setAdjustsImageWhenDisabled:NO];
-        [self.commentButton setBackgroundImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
-        [self.backCover addSubview:self.commentButton];
+        self.cameraIcon = [[UIButton alloc] initWithFrame:CGRectMake(265.0f, kFeedCellHeight + 35.0f, 12.0f, 12.0f)];
+        [self.cameraIcon setBackgroundColor:[UIColor clearColor]];
+        [self.cameraIcon setAdjustsImageWhenHighlighted:NO];
+        [self.cameraIcon setAdjustsImageWhenDisabled:NO];
+        [self.cameraIcon setBackgroundImage:[UIImage imageNamed:@"icn-camera.png"] forState:UIControlStateNormal];
+        [self.backCover addSubview:self.cameraIcon];
         
-        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 0.0f, 30.0f, 25.0f)];
+        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
         [self.commentCount setBackgroundColor:[UIColor clearColor]];
         self.commentCount.textColor = [UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
-        self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
-        [self.commentButton addSubview:self.commentCount];
+        self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.0];
+        [self.cameraIcon addSubview:self.commentCount];
 
 
-        self.actionButton = [[UIButton alloc] initWithFrame:CGRectMake(270.0f, kFeedCellHeight + 45.0f, 25.0f, 25.0f)];
-        [self.actionButton setBackgroundColor:[UIColor clearColor]];
-        [self.actionButton setAdjustsImageWhenHighlighted:NO];
-        [self.actionButton setAdjustsImageWhenDisabled:NO];
-        [self.actionButton setBackgroundImage:[UIImage imageNamed:@"shareActive.png"] forState:UIControlStateNormal];
-        [self.backCover addSubview:self.actionButton];
-        
                 
         
         // add shadow view

@@ -21,8 +21,8 @@
 @property (strong, nonatomic) UIButton  *divider;
 @property (strong, nonatomic) UILabel   *titleLabel;
 @property (strong, nonatomic) UIView    *colorLine;
-@property (strong, nonatomic) UIButton  *saveButton;
-@property (strong, nonatomic) UIButton  *commentButton;
+@property (strong, nonatomic) UIButton  *saveIcon;
+@property (strong, nonatomic) UIButton  *cameraIcon;
 @property (strong, nonatomic) UIButton  *actionButton;
 @property (strong, nonatomic) UILabel   *saveCount;
 @property (strong, nonatomic) UILabel   *commentCount;

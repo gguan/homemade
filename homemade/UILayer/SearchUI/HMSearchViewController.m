@@ -10,7 +10,7 @@
 #import "SVPullToRefresh.h"
 #import "HMSearchCell.h"
 
-#define QueryLimit 2
+#define QueryLimit 10
 
 @interface HMSearchViewController ()
 
@@ -27,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
+    self.navigationItem.leftBarButtonItem = leftItem;
     
     isSearching = NO;
     page = 0;
@@ -222,6 +225,10 @@
         
         isSearching = NO;
     }
+}
+
+- (void)leftDrawerButtonClicked {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
