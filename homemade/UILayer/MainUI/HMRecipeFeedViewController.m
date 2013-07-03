@@ -219,45 +219,49 @@
         
         NSDictionary *attributesForRecipe = [[HMCache sharedCache] attributesForRecipe:recipe];
         
-        cell.commentCount.text = @"0";
         if (attributesForRecipe) {
             NSLog(@"Find cache for recipe %@", recipe.objectId);
             NSLog(@"%@", attributesForRecipe);
             [cell.saveCount setText:[[[HMCache sharedCache] saveCountForRecipe:recipe] description]];
             [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:recipe]];
-
+            [cell.photoCount setText:[[[HMCache sharedCache] photoCountForRecipe:recipe] description]];
         } else {
             NSLog(@"Didn't find cache for recipe %@", recipe.objectId);
             @synchronized(self) {
-                // dictionary hold recipe data
-                NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-                
                 // query and cache save data on this recipe
-                PFQuery *query = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
-                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    
-                    if (error) {
-                        return;
-                    }
-                    
-                    BOOL isSavedByCurrentUser = NO;
-                    for (PFObject *save in objects) {
-                        if ([[[save objectForKey:kHMSaveFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
-                            isSavedByCurrentUser = YES;
-                            break;
+                PFQuery *saveQuery = [HMUtility queryForSavesOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
+                [saveQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    @synchronized(self) {
+                        if (error) {
+                            return;
                         }
+                        BOOL isSavedByCurrentUser = NO;
+                        for (PFObject *save in objects) {
+                            if ([[[save objectForKey:kHMSaveFromUserKey] objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+                                isSavedByCurrentUser = YES;
+                                break;
+                            }
+                        }
+                        // cache count
+                        [[HMCache sharedCache] setSaveCountForRecipe:recipe count:[objects count]];
+                        [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:isSavedByCurrentUser];
+                    
+                        [cell.saveCount setText:[[NSNumber numberWithInt:[objects count]] description]];
+                        [cell setSaveStatus:isSavedByCurrentUser];
                     }
-                    NSNumber *saveCount = [NSNumber numberWithInt:[objects count]];
-                    
-                    [attributes setObject:saveCount forKey:kHMRecipeAttributesSaveCountKey];
-                    [attributes setObject:[NSNumber numberWithBool:isSavedByCurrentUser] forKey:kHMRecipeAttributesIsSavedByCurrentUserKey];
-                    
-                    [cell.saveCount setText:[saveCount description]];
-                    [cell setSaveStatus:isSavedByCurrentUser];
                 }];
                 
-                // cache recipe data
-                [[HMCache sharedCache] setAttributesForRecipe:recipe attributes:attributes];
+                PFQuery *photoQuery = [HMUtility queryForPhotosOnRecipe:recipe cachePolicy:kPFCachePolicyNetworkOnly];
+                [photoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+                    @synchronized(self) {
+                        if (error) {
+                            return;
+                        }
+                        // cache photo count
+                        [[HMCache sharedCache] setPhotoCountForRecipe:recipe count:number];
+                        [cell.photoCount setText:[[NSNumber numberWithInt:number] description]];
+                    }
+                }];
             }
         }
         
@@ -292,11 +296,9 @@
                 }
             }];
         } else {
-            cell.progressBar.hidden = NO;
             [cell.photo.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 if (data) {
-                    NSString *colorCacheKey = cell.photo.file.name;
-                    cell.progressBar.hidden = YES;
+                    NSString *colorCacheKey = [NSString stringWithFormat:@"color_%@",cell.photo.file.name];
                     UIImage *image = [UIImage imageWithData:data];
                     cell.photo.alpha = 0.0f;
                     [UIView animateWithDuration:0.3
@@ -310,11 +312,9 @@
                     cell.colorArt = colorArt;
                     [cell.colorLine setBackgroundColor:colorArt];
 
-                    [[TMCache sharedCache] setObject:colorArt forKey:[NSString stringWithFormat: @"%@%@", colorCacheKey, kHMColorSuffixKey]];
+                    [[TMCache sharedCache] setObject:colorArt forKey:colorCacheKey];
                     [cell.photo addDetailShow];     
                 }
-            } progressBlock:^(int percentDone) {
-                cell.progressBar.progress = percentDone * 0.01f;
             }];            
         } // if isDataAvailable end
         
@@ -369,8 +369,8 @@
     // Clear color line
     [cell.colorLine setBackgroundColor:[UIColor clearColor]];
     // Clear text
-    [cell.saveCount setText:@""];
-    [cell.commentCount setText:@""];
+    [cell.saveCount setText:@"0"];
+    [cell.photoCount setText:@"0"];
     
 }
 

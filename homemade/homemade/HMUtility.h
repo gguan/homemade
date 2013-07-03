@@ -39,7 +39,7 @@ NSUInteger DeviceSystemMajorVersion();
 
 + (PFQuery *)queryForSavesOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy;
 + (PFQuery *)queryForCommentsOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy;
-
++ (PFQuery *)queryForPhotosOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy;
 
 + (void)drawSideAndBottomDropShadowForRect:(CGRect)rect inContext:(CGContextRef)context;
 

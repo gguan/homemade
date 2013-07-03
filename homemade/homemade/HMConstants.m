@@ -44,6 +44,7 @@ NSString *const kHMDrinkPhotoNoteKey    = @"note";
 // keys
 NSString *const kHMRecipeAttributesIsSavedByCurrentUserKey  = @"isSavedByCurrentUser";
 NSString *const kHMRecipeAttributesSaveCountKey             = @"saveCount";
+NSString *const kHMRecipeAttributesPhotoCountKey            = @"photoCount";
 NSString *const kHMRecipeAttributesSaversKey                = @"savers";
 NSString *const kHMRecipeAttributesIsMadeByCurrentUserKey   = @"isMadeByCurrentUser";
 NSString *const kHMRecipeAttributesMakeCountKey             = @"madeCount";

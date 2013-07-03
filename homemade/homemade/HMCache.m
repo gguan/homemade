@@ -72,13 +72,27 @@
     return [NSNumber numberWithInt:0];
 }
 
-- (NSNumber *)madeCountForRecipe:(PFObject *)recipe {
+- (NSNumber *)photoCountForRecipe:(PFObject *)recipe {
     NSDictionary *attributes = [self attributesForRecipe:recipe];
-    NSNumber *madeCount = [attributes objectForKey:kHMRecipeAttributesMakeCountKey];
-    if (madeCount) {
-        return madeCount;
+    NSNumber *photoCount = [attributes objectForKey:kHMRecipeAttributesPhotoCountKey];
+    if (photoCount) {
+        return photoCount;
     }
     return [NSNumber numberWithInt:0];
+}
+
+- (void)setSaveCountForRecipe:(PFObject *)recipe count:(NSInteger)count {
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self attributesForRecipe:recipe]];
+    
+    [attributes setObject:[NSNumber numberWithInteger:count] forKey:kHMRecipeAttributesSaveCountKey];
+    [self setAttributes:attributes forRecipe:recipe];
+}
+
+- (void)setPhotoCountForRecipe:(PFObject *)recipe count:(NSInteger)count {
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self attributesForRecipe:recipe]];
+    
+    [attributes setObject:[NSNumber numberWithInteger:count] forKey:kHMRecipeAttributesPhotoCountKey];
+    [self setAttributes:attributes forRecipe:recipe];
 }
 
 - (NSNumber *)commentCountForRecipe:(PFObject *)recipe {
@@ -160,14 +174,14 @@
 }
 
 - (void)incrementMakerCountForRecipe:(PFObject *)recipe {
-    NSNumber *makeCount = [NSNumber numberWithInt:[[self madeCountForRecipe:recipe] intValue] + 1];
+    NSNumber *makeCount = [NSNumber numberWithInt:[[self photoCountForRecipe:recipe] intValue] + 1];
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self attributesForRecipe:recipe]];
     [attributes setObject:makeCount forKey:kHMRecipeAttributesMakeCountKey];
     [self setAttributes:attributes forRecipe:recipe];
 }
 
 - (void)decrementMakerCountForRecipe:(PFObject *)recipe {
-    NSNumber *makeCount = [NSNumber numberWithInt:[[self madeCountForRecipe:recipe] intValue] - 1];
+    NSNumber *makeCount = [NSNumber numberWithInt:[[self photoCountForRecipe:recipe] intValue] - 1];
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self attributesForRecipe:recipe]];
     [attributes setObject:makeCount forKey:kHMRecipeAttributesMakeCountKey];
     [self setAttributes:attributes forRecipe:recipe];

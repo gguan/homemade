@@ -214,6 +214,16 @@ NSUInteger DeviceSystemMajorVersion() {
     return query;
 }
 
++ (PFQuery *)queryForPhotosOnRecipe:(PFObject *)recipe cachePolicy:(PFCachePolicy)cachePolicy {
+    PFQuery *query = [PFQuery queryWithClassName:kHMDrinkPhotoClassKey];
+    [query whereKey:kHMDrinkPhotoRecipeKey equalTo:recipe];
+    [query setCachePolicy:cachePolicy];
+    [query includeKey:kHMDrinkPhotoUserKey];
+    [query includeKey:kHMDrinkPhotoRecipeKey];
+    return query;
+}
+
+
 #pragma mark Shadow Rendering
 
 + (void)drawSideAndBottomDropShadowForRect:(CGRect)rect inContext:(CGContextRef)context {

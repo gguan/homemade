@@ -15,10 +15,16 @@
 - (void)clear;
 - (void)setAttributesForRecipe:(PFObject *)recipe attributes:(NSDictionary *)attributes;
 - (void)setAttributesForRecipe:(PFObject *)recipe saveCount:(int)saveCount makeCount:(int)makeCount commentCount:(int)commentCount savedByCurrentUser:(BOOL)savedByCurrentUser madeByCurrentUser:(BOOL)madeByCurrentUser;
-- (NSDictionary *)attributesForRecipe:(PFObject *)photo;
+- (NSDictionary *)attributesForRecipe:(PFObject *)recipe;
 - (NSNumber *)saveCountForRecipe:(PFObject *)recipe;
-- (NSNumber *)madeCountForRecipe:(PFObject *)recipe;
+- (NSNumber *)photoCountForRecipe:(PFObject *)recipe;
 - (NSNumber *)commentCountForRecipe:(PFObject *)recipe;
+- (UIColor *)colorForRecipe:(PFObject *)recipe;
+
+- (void)setSaveCountForRecipe:(PFObject *)recipe count:(NSInteger)count;
+- (void)setPhotoCountForRecipe:(PFObject *)recipe count:(NSInteger)count;
+- (void)setColorForRecipe:(PFObject *)recipe color:(UIColor *)color;
+
 //- (NSArray *)saversForRecipe:(PFObject *)recipe;
 //- (NSArray *)makersForRecipe:(PFObject *)recipe;
 //- (NSArray *)commentersForRecipe:(PFObject *)recipe;

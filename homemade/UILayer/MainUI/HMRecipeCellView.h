@@ -25,7 +25,7 @@
 @property (strong, nonatomic) UIButton  *cameraIcon;
 @property (strong, nonatomic) UIButton  *actionButton;
 @property (strong, nonatomic) UILabel   *saveCount;
-@property (strong, nonatomic) UILabel   *commentCount;
+@property (strong, nonatomic) UILabel   *photoCount;
 @property (strong, nonatomic) UIColor   *colorArt;
 
 

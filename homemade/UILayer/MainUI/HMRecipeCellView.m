@@ -79,6 +79,7 @@
         [self.saveIcon setAdjustsImageWhenHighlighted:NO];
         [self.saveIcon setAdjustsImageWhenDisabled:NO];
         [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"heart.png"] forState:UIControlStateNormal];
+        [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"heart-active.png"] forState:UIControlStateSelected];
         [self.backCover addSubview:self.saveIcon];
 
         self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
@@ -94,11 +95,11 @@
         [self.cameraIcon setBackgroundImage:[UIImage imageNamed:@"icn-camera.png"] forState:UIControlStateNormal];
         [self.backCover addSubview:self.cameraIcon];
         
-        self.commentCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
-        [self.commentCount setBackgroundColor:[UIColor clearColor]];
-        self.commentCount.textColor = [UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
-        self.commentCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.0];
-        [self.cameraIcon addSubview:self.commentCount];
+        self.photoCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
+        [self.photoCount setBackgroundColor:[UIColor clearColor]];
+        self.photoCount.textColor = [UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
+        self.photoCount.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.0];
+        [self.cameraIcon addSubview:self.photoCount];
 
 
                 
@@ -134,6 +135,7 @@
 }
 
 
+#pragma mark -
 // Override set method
 - (void)setRecipe:(PFObject *)aRecipe {
     _recipe = aRecipe;
@@ -153,12 +155,6 @@
             }
         }
     }];
-    
-    
-//    NSString *authorName = [user objectForKey:kHMUserDisplayNameKey];
-//    [self.userButton setTitle:authorName forState:UIControlStateNormal];
-//    NSLog(authorName);
-    
     
     // Add button listening selectors
     [self.cellLeft.saveButton addTarget:self action:@selector(didTapSaveRecipeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -282,7 +278,7 @@
 
 // Configures save Button to match the give save status
 - (void)setSaveStatus:(BOOL)saved {
-    [self.cellLeft.saveButton setSelected:saved];
+    [self.saveIcon setSelected:saved];
 }
 
 // Enable the save button to start receiving actions

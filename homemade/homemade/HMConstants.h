@@ -66,6 +66,7 @@ extern NSString *const kHMDrinkPhotoNoteKey;
 // keys
 extern NSString *const kHMRecipeAttributesIsSavedByCurrentUserKey;
 extern NSString *const kHMRecipeAttributesSaveCountKey;
+extern NSString *const kHMRecipeAttributesPhotoCountKey;
 extern NSString *const kHMRecipeAttributesSaversKey;
 extern NSString *const kHMRecipeAttributesIsMadeByCurrentUserKey;
 extern NSString *const kHMRecipeAttributesMakeCountKey;
