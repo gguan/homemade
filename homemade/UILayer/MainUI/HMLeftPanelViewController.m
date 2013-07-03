@@ -32,11 +32,17 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    self.view.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:34.0f/255.0f blue:36.0f/255.0f alpha:1.0f];
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:34.0f/255.0f blue:36.0f/255.0f alpha:1.0f];
+    [self.tableView setBackgroundView:backgroundView];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    
     [self.tableView setSeparatorColor:[UIColor blackColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
-
+    
+    
+    
     [header setText:@"Drink+"];
     [header setTextAlignment:NSTextAlignmentCenter];
     if (DEVICE_VERSION_7) {

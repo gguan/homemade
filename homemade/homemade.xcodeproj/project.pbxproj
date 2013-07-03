@@ -219,6 +219,8 @@
 		46D862821782F78A0051CA92 /* icn-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862801782F78A0051CA92 /* icn-camera@2x.png */; };
 		46D862851783E3DC0051CA92 /* heart-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862831783E3DC0051CA92 /* heart-active.png */; };
 		46D862861783E3DC0051CA92 /* heart-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862841783E3DC0051CA92 /* heart-active@2x.png */; };
+		46D8628D1784282A0051CA92 /* icn_ingredient_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D8628B1784282A0051CA92 /* icn_ingredient_list.png */; };
+		46D8628E1784282A0051CA92 /* icn_ingredient_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D8628C1784282A0051CA92 /* icn_ingredient_list@2x.png */; };
 		46E08A16176BB065001A2C13 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E08A15176BB065001A2C13 /* Accelerate.framework */; };
 		46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E08A18176BB74A001A2C13 /* HMLeftPanelViewController.m */; };
 		46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E08A1C176BC7EE001A2C13 /* HMAccountViewController.m */; };
@@ -527,6 +529,8 @@
 		46D862801782F78A0051CA92 /* icn-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn-camera@2x.png"; sourceTree = "<group>"; };
 		46D862831783E3DC0051CA92 /* heart-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-active.png"; sourceTree = "<group>"; };
 		46D862841783E3DC0051CA92 /* heart-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-active@2x.png"; sourceTree = "<group>"; };
+		46D8628B1784282A0051CA92 /* icn_ingredient_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icn_ingredient_list.png; sourceTree = "<group>"; };
+		46D8628C1784282A0051CA92 /* icn_ingredient_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn_ingredient_list@2x.png"; sourceTree = "<group>"; };
 		46E08A15176BB065001A2C13 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		46E08A17176BB74A001A2C13 /* HMLeftPanelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMLeftPanelViewController.h; path = UILayer/MainUI/HMLeftPanelViewController.h; sourceTree = "<group>"; };
 		46E08A18176BB74A001A2C13 /* HMLeftPanelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMLeftPanelViewController.m; path = UILayer/MainUI/HMLeftPanelViewController.m; sourceTree = "<group>"; };
@@ -1073,6 +1077,8 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				46D8628B1784282A0051CA92 /* icn_ingredient_list.png */,
+				46D8628C1784282A0051CA92 /* icn_ingredient_list@2x.png */,
 				46D8627F1782F78A0051CA92 /* icn-camera.png */,
 				46D862801782F78A0051CA92 /* icn-camera@2x.png */,
 				46D862711782D2F30051CA92 /* icn-back.png */,
@@ -1296,6 +1302,7 @@
 				466F4FBD170408490076AB3D /* pic_6.jpg in Resources */,
 				466F4FBE170408490076AB3D /* pic_7.jpg in Resources */,
 				4669D2D31772BAE3002D3171 /* StepImagePlaceholder@2x.png in Resources */,
+				46D8628E1784282A0051CA92 /* icn_ingredient_list@2x.png in Resources */,
 				466F4FBF170408490076AB3D /* pic_8.jpg in Resources */,
 				46A0DB3C1777A48A00B4391E /* Media.xcassets in Resources */,
 				466F4FC0170408490076AB3D /* pic_9.jpg in Resources */,
@@ -1363,6 +1370,7 @@
 				46D862701782D2AE0051CA92 /* icn-setting@2x.png in Resources */,
 				4669D2D21772BAE3002D3171 /* StepImagePlaceholder.png in Resources */,
 				46920277175B33A20096F522 /* shadowProfilePicture-29@2x.png in Resources */,
+				46D8628D1784282A0051CA92 /* icn_ingredient_list.png in Resources */,
 				46920278175B33A20096F522 /* shadowProfilePicture-35.png in Resources */,
 				46920279175B33A20096F522 /* shadowProfilePicture-35@2x.png in Resources */,
 				4692027A175B33A20096F522 /* shadowProfilePicture-43.png in Resources */,

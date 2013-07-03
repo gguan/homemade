@@ -15,11 +15,24 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setBackgroundColor:[UIColor clearColor]];
-        [self.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15]];
-        [self.textLabel setTextColor:[UIColor grayColor]];
-        [self.textLabel setBackgroundColor:[UIColor clearColor]];
-        [self.textLabel setAdjustsFontSizeToFitWidth:YES];
+        [self.contentView setBackgroundColor:[UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f]];
+        
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 5, 250, 20)];
+        
+        [self.nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+        [self.nameLabel setTextColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]];
+        [self.nameLabel setBackgroundColor:[UIColor clearColor]];
+        [self.nameLabel setAdjustsFontSizeToFitWidth:YES];
+        [self.contentView addSubview:self.nameLabel];
+        
+        self.quantityLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 25, 250, 15)];
+        
+        [self.quantityLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
+        [self.quantityLabel setTextColor:[UIColor colorWithRed:174.0f/255.0f green:177.0f/255.0f blue:178.0f/255.0f alpha:1.0f]];
+        [self.quantityLabel setBackgroundColor:[UIColor clearColor]];
+        [self.quantityLabel setAdjustsFontSizeToFitWidth:YES];
+        [self.contentView addSubview:self.quantityLabel];
+
     }
     return self;
 }
@@ -34,7 +47,6 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.textLabel setFrame:CGRectMake(10, 0, 300, 20)];
 }
 
 

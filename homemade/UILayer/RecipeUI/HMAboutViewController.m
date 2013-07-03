@@ -10,7 +10,7 @@
 #import "HMIngredientCell.h"
 #import "UIImageView+Addition.h"
 
-#define RecipeImageViewHeight 200
+#define AboutViewImageHeight 220
 
 @interface HMAboutViewController ()
 @property (nonatomic, strong) PFImageView *recipeImageView;
@@ -33,20 +33,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    CGFloat y = 0.0f;
-    if (DEVICE_VERSION_7) {
-        y = 20.0f;
-    }
-    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + y);
-    self.view.clipsToBounds = YES;
     
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
+    [self.tableView setBackgroundView:backgroundView];
+    self.view.clipsToBounds = YES;
+
     
     // Custom initialization
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     // Init recipe image view
-    self.recipeImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, RecipeImageViewHeight)];
+    self.recipeImageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, AboutViewImageHeight)];
     self.recipeImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     self.recipeImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.recipeImageView.clipsToBounds = YES;
@@ -54,42 +55,43 @@
     [self.recipeImageView loadInBackground];
 
     // Init title label
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 210, 300, 30)];
-    [titleLabel setText:[self.recipeObject objectForKey:kHMRecipeTitleKey]];
-    if (DEVICE_VERSION_7) {
-        [titleLabel setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
-    } else {
-        [titleLabel setFont:[HMUtility appFontOfSize:21.0f]];
-    }
-    [titleLabel setTextColor:[UIColor blackColor]];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, AboutViewImageHeight+20 , 240, 50)];
+    titleLabel.numberOfLines = 2;
+    titleLabel.font = [UIFont fontWithName:@"Helvetica-BoldOblique" size:20.0f];
+    [titleLabel setText:[[self.recipeObject objectForKey:kHMRecipeTitleKey] uppercaseString]];
+    [titleLabel setTextColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-        
+    [titleLabel setTextAlignment:NSTextAlignmentLeft];
+    
+    UIView *divider1 = [[UIView alloc] initWithFrame:CGRectMake(15.0f, AboutViewImageHeight+79, 290, 1.0f)];
+    divider1.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+    
     // Init description label
     UILabel *aboutLabel = [[UILabel alloc] init];
     NSString *aboutString = [self.recipeObject objectForKey:kHMRecipeOverviewKey];
-    CGSize textSize = [aboutString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15] constrainedToSize:CGSizeMake(300, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-    [aboutLabel setFrame:CGRectMake(10, 260, textSize.width, textSize.height)];
+    CGSize textSize = [aboutString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:15] constrainedToSize:CGSizeMake(300, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    [aboutLabel setFrame:CGRectMake(15, AboutViewImageHeight + 90, textSize.width, textSize.height)];
     [aboutLabel setText:aboutString];
-    if (DEVICE_VERSION_7) {
-        [aboutLabel setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleBody"]];
-    } else {
-        [aboutLabel setFont:[HMUtility appFontOfSize:15.0f]];
-    }
-    [aboutLabel setTextColor:[UIColor darkGrayColor]];
+    [aboutLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+    [aboutLabel setTextColor:[UIColor colorWithRed:69.0f/255.0f green:78.0f/255.0f blue:81.0f/255.0f alpha:1.0f]];
     [aboutLabel setBackgroundColor:[UIColor clearColor]];
     [aboutLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [aboutLabel setNumberOfLines:0];
     
-    
+    UIView *divider2 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, AboutViewImageHeight+textSize.height+109.5f, 320, 0.5f)];
+    divider2.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+
     // Init table view header
-    UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40 + RecipeImageViewHeight + textSize.height + 30)];
+    UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  AboutViewImageHeight+110+textSize.height)];
     [headContainerView addSubview:titleLabel];
     [headContainerView addSubview:self.recipeImageView];
+    [headContainerView addSubview:divider1];
+    [headContainerView addSubview:divider2];
     [headContainerView addSubview:aboutLabel];
     self.tableView.tableHeaderView = headContainerView;
     
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5f)];
+    footerView.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
     self.tableView.tableFooterView = footerView;
     
     [self.recipeImageView addDetailShow];
@@ -120,14 +122,17 @@
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 20.0f;
+    return 45.0f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40.0f;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"IngredientCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HMIngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -136,9 +141,28 @@
     NSDictionary *ingredient = [self.ingredients objectAtIndex:indexPath.row];
     NSString *name = [ingredient objectForKey:@"name"];
     NSString *amount = [ingredient objectForKey:@"amount"];
-    [cell.textLabel setText:[NSString stringWithFormat:@"∙ %@ - %@", name, amount]];
-    
+    [cell.nameLabel setText:name];
+    [cell.quantityLabel setText:amount];
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+    header.backgroundColor = [UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f];
+//    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_ingredient_list.png"]];
+//    [icon setFrame:CGRectMake(25, 5, 8, 8)];
+//    [header addSubview:icon];
+    UILabel *ingredientLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 5, 250, 39)];
+    [ingredientLabel setText:@"Ingredients"];
+    [ingredientLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:17]];
+    [ingredientLabel setTextColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]];
+    [ingredientLabel setBackgroundColor:[UIColor clearColor]];
+    [ingredientLabel setAdjustsFontSizeToFitWidth:YES];
+    [header addSubview:ingredientLabel];
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(25, 39, 270, 1)];
+    divider.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+    [header addSubview:divider];
+    return header;
 }
 
 @end

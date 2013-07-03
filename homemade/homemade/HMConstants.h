@@ -20,7 +20,7 @@
 #define kMinimumGestureLength   40
 #define kMaximumGestureLength   100
 #define TabBarHeight 44
-#define TabBarWidth 165
+#define TabBarWidth 180
 #define PageFlowViewWidth 250
 #define PageFlowViewHeight 360
 #define CameraButtonWidth 100
