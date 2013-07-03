@@ -92,6 +92,11 @@
     // Select the first tab
     [self touchDownAtItemAtIndex:0];
     [self.tabBar selectItemAtIndex:0];
+    
+//    UILabel *test = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, 260, 50)];
+//    test.textColor = [UIColor blueColor];
+//    [test setText:@"sadfasdlfkjasldkfjasldf"];
+//    [self.view addSubview:test];
 }
 
 // TODO

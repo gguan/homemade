@@ -42,6 +42,7 @@
     [self.tableView setBackgroundView:backgroundView];
     self.view.clipsToBounds = YES;
 
+//    self.tableView.contentInset = UIEdgeInsetsMake(80.0f, 0, 0, 0);
     
     // Custom initialization
     [self.tableView setBackgroundColor:[UIColor clearColor]];
@@ -144,44 +145,43 @@
     return 45.0f;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40.0f;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"IngredientCell";
     
-    HMIngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if (indexPath.row == 0) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IngredientHeader"];
+        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 45)];
+        header.backgroundColor = [UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f];
+        //    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_ingredient_list.png"]];
+        //    [icon setFrame:CGRectMake(25, 5, 8, 8)];
+        //    [header addSubview:icon];
+        UILabel *ingredientLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 5, 250, 39)];
+        [ingredientLabel setText:@"Ingredients"];
+        [ingredientLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:17]];
+        [ingredientLabel setTextColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]];
+        [ingredientLabel setBackgroundColor:[UIColor clearColor]];
+        [ingredientLabel setAdjustsFontSizeToFitWidth:YES];
+        [header addSubview:ingredientLabel];
+        UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(25, 39, 270, 1)];
+        divider.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+        [header addSubview:divider];
+        [cell addSubview:header];
+        return cell;
+    } else {
+        HMIngredientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[HMIngredientCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        
+        NSDictionary *ingredient = [self.ingredients objectAtIndex:indexPath.row - 1];
+        NSString *name = [ingredient objectForKey:@"name"];
+        NSString *amount = [ingredient objectForKey:@"amount"];
+        [cell.nameLabel setText:name];
+        [cell.quantityLabel setText:amount];
+        return cell;
     }
     
-    NSDictionary *ingredient = [self.ingredients objectAtIndex:indexPath.row];
-    NSString *name = [ingredient objectForKey:@"name"];
-    NSString *amount = [ingredient objectForKey:@"amount"];
-    [cell.nameLabel setText:name];
-    [cell.quantityLabel setText:amount];
-    return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
-    header.backgroundColor = [UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f];
-//    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_ingredient_list.png"]];
-//    [icon setFrame:CGRectMake(25, 5, 8, 8)];
-//    [header addSubview:icon];
-    UILabel *ingredientLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 5, 250, 39)];
-    [ingredientLabel setText:@"Ingredients"];
-    [ingredientLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:17]];
-    [ingredientLabel setTextColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]];
-    [ingredientLabel setBackgroundColor:[UIColor clearColor]];
-    [ingredientLabel setAdjustsFontSizeToFitWidth:YES];
-    [header addSubview:ingredientLabel];
-    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(25, 39, 270, 1)];
-    divider.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
-    [header addSubview:divider];
-    return header;
 }
 
 @end
