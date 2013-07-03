@@ -65,9 +65,11 @@
     [titleLabel setTextAlignment:NSTextAlignmentLeft];
     
     // avatar
-    PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(260, AboutViewImageHeight + 20, 40, 40)];
+    PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(250, AboutViewImageHeight - 25, 50, 50)];
     avatar.clipsToBounds = YES;
-    avatar.layer.cornerRadius = 20.0f;
+    avatar.layer.borderColor = [UIColor whiteColor].CGColor;
+    avatar.layer.borderWidth = 2.0f;
+//    avatar.layer.cornerRadius = 20.0f;
     avatar.layer.masksToBounds = YES;
     PFUser *user = [self.recipeObject objectForKey:kHMRecipeUserKey];
     [user fetchIfNeeded];
@@ -77,7 +79,7 @@
     UIView *divider1 = [[UIView alloc] initWithFrame:CGRectMake(15.0f, AboutViewImageHeight+79, 290, 1.0f)];
     divider1.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
     
-    UIView *verticalLine = [[UIView alloc] initWithFrame:CGRectMake(280.0f, AboutViewImageHeight+30, 1.0f, 50.0f)];
+    UIView *verticalLine = [[UIView alloc] initWithFrame:CGRectMake(275.0f, AboutViewImageHeight+20, 1.0f, 60.0f)];
     verticalLine.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
 
     
@@ -98,9 +100,9 @@
 
     // Init table view header
     UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  AboutViewImageHeight+110+textSize.height)];
+    [headContainerView addSubview:self.recipeImageView];
     [headContainerView addSubview:titleLabel];
     [headContainerView addSubview:avatar];
-    [headContainerView addSubview:self.recipeImageView];
     [headContainerView addSubview:divider1];
     [headContainerView addSubview:divider2];
     [headContainerView insertSubview:verticalLine belowSubview:avatar];
