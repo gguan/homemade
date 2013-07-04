@@ -9,6 +9,7 @@
 #import "HMAboutViewController.h"
 #import "HMIngredientCell.h"
 #import "UIImageView+Addition.h"
+#import "UIImage+ColorImage.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define AboutViewImageHeight 220
@@ -152,10 +153,10 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IngredientHeader"];
         UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 45)];
         header.backgroundColor = [UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f];
-        //    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_ingredient_list.png"]];
-        //    [icon setFrame:CGRectMake(25, 5, 8, 8)];
-        //    [header addSubview:icon];
-        UILabel *ingredientLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 5, 250, 39)];
+        UIImageView *icon = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"icn40-list.png"] changeImageToColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]]];
+        [icon setFrame:CGRectMake(28, 19, 12, 12)];
+        [header addSubview:icon];
+        UILabel *ingredientLabel = [[UILabel alloc] initWithFrame:CGRectMake(48, 5, 250, 39)];
         [ingredientLabel setText:@"Ingredients"];
         [ingredientLabel setFont:[UIFont fontWithName:@"Helvetica-Oblique" size:17]];
         [ingredientLabel setTextColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]];
