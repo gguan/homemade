@@ -13,13 +13,15 @@
 #import "HMAboutViewController.h"
 #import "HMImadeItViewController.h"
 #import "HMEditPhotoViewController.h"
+#import "HMDrinkPhotoViewController.h"
 
 @interface HMRecipeViewController ()
 
 @property (nonatomic, strong) CustomTabBar *tabBar;
 @property (nonatomic, strong) HMAboutViewController *aboutViewController;
 @property (nonatomic, strong) HMStepsViewController *stepsViewController;
-@property (nonatomic, strong) HMImadeItViewController *imadeitViewController;
+//@property (nonatomic, strong) HMImadeItViewController *imadeitViewController;
+@property (nonatomic, strong) HMDrinkPhotoViewController *imadeitViewController;
 @property(nonatomic,strong) NSArray *tabBarItems;
 @property(nonatomic,strong) UIColor *color;
 
@@ -59,9 +61,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+//    [self.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
     
-    [self.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
-
     // Add a share navBarItem
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
@@ -74,7 +76,10 @@
     // Initialize three subViews
     self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:self.recipeObject];
     self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:self.recipeObject];
-    self.imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:self.recipeObject];
+//    self.imadeitViewController = [[HMImadeItViewController alloc] initWithRecipe:self.recipeObject];
+//    self.imadeitViewController.recipeViewController = self;
+    
+    self.imadeitViewController = [[HMDrinkPhotoViewController alloc] initWithRecipe:self.recipeObject];
     self.imadeitViewController.recipeViewController = self;
     
     // Place the tab bar at the top of our view

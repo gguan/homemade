@@ -14,7 +14,7 @@
 -(UIImage*)changeImageToColor:(UIColor*)color {
     
     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-    UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 2);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClipToMask(context, rect, self.CGImage);
     CGContextSetFillColorWithColor(context, [color CGColor]);

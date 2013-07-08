@@ -19,11 +19,9 @@
 - (NSNumber *)saveCountForRecipe:(PFObject *)recipe;
 - (NSNumber *)photoCountForRecipe:(PFObject *)recipe;
 - (NSNumber *)commentCountForRecipe:(PFObject *)recipe;
-- (UIColor *)colorForRecipe:(PFObject *)recipe;
 
 - (void)setSaveCountForRecipe:(PFObject *)recipe count:(NSInteger)count;
 - (void)setPhotoCountForRecipe:(PFObject *)recipe count:(NSInteger)count;
-- (void)setColorForRecipe:(PFObject *)recipe color:(UIColor *)color;
 
 //- (NSArray *)saversForRecipe:(PFObject *)recipe;
 //- (NSArray *)makersForRecipe:(PFObject *)recipe;

@@ -52,11 +52,8 @@
 	// Do any additional setup after loading the view.
     
     // Custom initialization
-    CGFloat y = 0.0f;
-    if (DEVICE_VERSION_7) {
-        y = 44.0f;
-    }
-    [self.view setFrame:CGRectMake(0, y + 20, self.view.frame.size.width, self.view.frame.size.height - y)];
+    
+    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 44)];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setSeparatorColor:[UIColor clearColor]];

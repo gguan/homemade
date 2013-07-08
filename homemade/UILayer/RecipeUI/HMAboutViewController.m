@@ -88,7 +88,7 @@
     // Init description label
     UILabel *aboutLabel = [[UILabel alloc] init];
     NSString *aboutString = [self.recipeObject objectForKey:kHMRecipeOverviewKey];
-    CGSize textSize = [aboutString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:15] constrainedToSize:CGSizeMake(300, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize textSize = [aboutString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:15] constrainedToSize:CGSizeMake(290, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     [aboutLabel setFrame:CGRectMake(15, AboutViewImageHeight + 90, textSize.width, textSize.height)];
     [aboutLabel setText:aboutString];
     [aboutLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
