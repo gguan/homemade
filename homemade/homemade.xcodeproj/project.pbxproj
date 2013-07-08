@@ -32,7 +32,6 @@
 		46339B9917726C94009F309E /* HMIngredientInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9517725CC2009F309E /* HMIngredientInputCell.m */; };
 		46339B9A17726C94009F309E /* HMTipInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9717725CDC009F309E /* HMTipInputCell.m */; };
 		46339B9D17729A72009F309E /* HMStepEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46339B9C17729665009F309E /* HMStepEditViewController.m */; };
-		46372467171FBBB1002357E0 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 46372466171FBBB1002357E0 /* app-icon.png */; };
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
 		4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372569172408A3002357E0 /* UIImage+ColorArt.m */; };
 		4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637256B172408A3002357E0 /* UIImage+Scale.m */; };
@@ -277,7 +276,6 @@
 		46339B9717725CDC009F309E /* HMTipInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMTipInputCell.m; path = UILayer/CreateUI/HMTipInputCell.m; sourceTree = "<group>"; };
 		46339B9B17729665009F309E /* HMStepEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMStepEditViewController.h; path = UILayer/CreateUI/HMStepEditViewController.h; sourceTree = "<group>"; };
 		46339B9C17729665009F309E /* HMStepEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepEditViewController.m; path = UILayer/CreateUI/HMStepEditViewController.m; sourceTree = "<group>"; };
-		46372466171FBBB1002357E0 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		46372566172408A3002357E0 /* SLColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLColorArt.h; sourceTree = "<group>"; };
 		46372567172408A3002357E0 /* SLColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLColorArt.m; sourceTree = "<group>"; };
 		46372568172408A3002357E0 /* UIImage+ColorArt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorArt.h"; sourceTree = "<group>"; };
@@ -823,7 +821,6 @@
 			children = (
 				46A0DB391777A42D00B4391E /* app-icon@120.png */,
 				4692021B175B33A20096F522 /* Assets */,
-				46372466171FBBB1002357E0 /* app-icon.png */,
 				466F4FAD170408310076AB3D /* temp */,
 				4645D32316F44E3B00C38D39 /* FacebookSDKResources.bundle */,
 			);
@@ -1329,7 +1326,6 @@
 				4606A4D917194AA7009FDFFB /* s12.jpg in Resources */,
 				4606A4DA17194AA7009FDFFB /* s11.jpg in Resources */,
 				4606A4DC17194F7C009FDFFB /* p1.jpg in Resources */,
-				46372467171FBBB1002357E0 /* app-icon.png in Resources */,
 				46C075D4173A5E6300BB8823 /* searchFrame.png in Resources */,
 				46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */,
 				46D8627E1782F3F80051CA92 /* navbarMask@2x.png in Resources */,
