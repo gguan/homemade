@@ -25,7 +25,9 @@
 @end
 
 
-@implementation HMRecipeViewController
+@implementation HMRecipeViewController {
+    BOOL isExpanded;
+}
 
 - (id)initWithRecipe:(PFObject*)recipeObject{
    return  [self initWithRecipe:recipeObject andUIColor:[UIColor colorWithRed:162.0/255.0 green:73.0/255.0 blue:43.0/255.0 alpha:1.0]];
@@ -77,11 +79,14 @@
     // Select the first tab
     [self touchDownAtItemAtIndex:0];
     [self.tabBar selectItemAtIndex:0];
+    
+    isExpanded = NO;
 }
 
 // TODO
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    isExpanded = NO;
 }
 
 
@@ -138,7 +143,19 @@
 #pragma UIbutton method
 - (void)shareButtonClicked
 {
-    
+    CGRect frame = self.view.frame;
+    if (isExpanded) {
+        frame.origin.y -= 50;
+        isExpanded = NO;
+    } else {
+        frame.origin.y += 50.0;
+        isExpanded = YES;
+    }
+    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self.view setFrame:frame];
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (void)leftDrawerButtonClicked {
