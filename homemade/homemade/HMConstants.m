@@ -66,6 +66,8 @@ NSString *const kHMUserEmailKey                     = @"email";
 NSString *const kHMUserFacebookIDKey                = @"facebookId";
 NSString *const kHMUserPhotoIDKey                   = @"photoId";
 NSString *const kHMUserCoverPhotoKey                = @"coverPhoto";
+NSString *const kHMUserFirstNameKey                 = @"firstName";
+NSString *const kHMUserLastNameKey                  = @"lastName";
 
 #pragma mark - TMCache keys
 NSString *const kHMColorSuffixKey = @"colorArt";

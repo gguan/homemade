@@ -49,7 +49,6 @@
         
         
         if (DEVICE_VERSION_7) {
-            NSLog(@"v7!!!!");
             self.postButton = [UIButton buttonWithType:UIButtonTypeSystem];
         } else {
             self.postButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -71,7 +71,6 @@
 		4645D39F16F6917400C38D39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D39E16F6917400C38D39 /* MobileCoreServices.framework */; };
 		4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4645D3A416F718DD00C38D39 /* HMSettingViewController.m */; };
 		464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */; };
-		465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465435E71762685E00B3B33D /* HMIMadeItCell.m */; };
 		465C07AB177D634200F5C5B0 /* background-dark-gray-tex.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */; };
 		465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */; };
 		465C07B0177D749E00F5C5B0 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 465C07AF177D749E00F5C5B0 /* YLProgressBar.m */; };
@@ -158,7 +157,6 @@
 		46920283175B33A20096F522 /* WhatIMade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4692024F175B33A20096F522 /* WhatIMade@2x.png */; };
 		46920289175C89150096F522 /* UIColor+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920288175C89150096F522 /* UIColor+String.m */; };
 		46920296175C99730096F522 /* HMStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028F175C98660096F522 /* HMStepsViewController.m */; };
-		46920297175C99730096F522 /* HMImadeItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920291175C98790096F522 /* HMImadeItViewController.m */; };
 		46920298175C99730096F522 /* HMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920293175C98790096F522 /* HMAboutViewController.m */; };
 		46920299175C99B40096F522 /* HMStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028D175C98660096F522 /* HMStepsView.m */; };
 		469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469202A4175C9DDC0096F522 /* HMIngredientCell.m */; };
@@ -339,8 +337,6 @@
 		4645D3A416F718DD00C38D39 /* HMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSettingViewController.m; path = UILayer/SettingUI/HMSettingViewController.m; sourceTree = "<group>"; };
 		464A9C43173497CC005E08E1 /* HMCommonUIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCommonUIUtility.h; path = UILayer/CommonUI/HMCommonUIUtility.h; sourceTree = "<group>"; };
 		464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCommonUIUtility.m; path = UILayer/CommonUI/HMCommonUIUtility.m; sourceTree = "<group>"; };
-		465435E61762685E00B3B33D /* HMIMadeItCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMIMadeItCell.h; path = UILayer/RecipeUI/HMIMadeItCell.h; sourceTree = "<group>"; };
-		465435E71762685E00B3B33D /* HMIMadeItCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIMadeItCell.m; path = UILayer/RecipeUI/HMIMadeItCell.m; sourceTree = "<group>"; };
 		465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex.png"; sourceTree = "<group>"; };
 		465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex@2x.png"; sourceTree = "<group>"; };
 		465C07AE177D749E00F5C5B0 /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
@@ -454,8 +450,6 @@
 		4692028D175C98660096F522 /* HMStepsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepsView.m; path = UILayer/RecipeUI/HMStepsView.m; sourceTree = "<group>"; };
 		4692028E175C98660096F522 /* HMStepsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMStepsViewController.h; path = UILayer/RecipeUI/HMStepsViewController.h; sourceTree = "<group>"; };
 		4692028F175C98660096F522 /* HMStepsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMStepsViewController.m; path = UILayer/RecipeUI/HMStepsViewController.m; sourceTree = "<group>"; };
-		46920290175C98790096F522 /* HMImadeItViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMImadeItViewController.h; path = UILayer/RecipeUI/HMImadeItViewController.h; sourceTree = "<group>"; };
-		46920291175C98790096F522 /* HMImadeItViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMImadeItViewController.m; path = UILayer/RecipeUI/HMImadeItViewController.m; sourceTree = "<group>"; };
 		46920292175C98790096F522 /* HMAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMAboutViewController.h; path = UILayer/RecipeUI/HMAboutViewController.h; sourceTree = "<group>"; };
 		46920293175C98790096F522 /* HMAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMAboutViewController.m; path = UILayer/RecipeUI/HMAboutViewController.m; sourceTree = "<group>"; };
 		469202A3175C9DDB0096F522 /* HMIngredientCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMIngredientCell.h; path = UILayer/RecipeUI/HMIngredientCell.h; sourceTree = "<group>"; };
@@ -601,14 +595,10 @@
 				4692028D175C98660096F522 /* HMStepsView.m */,
 				4692028E175C98660096F522 /* HMStepsViewController.h */,
 				4692028F175C98660096F522 /* HMStepsViewController.m */,
-				46920290175C98790096F522 /* HMImadeItViewController.h */,
-				46920291175C98790096F522 /* HMImadeItViewController.m */,
 				46920292175C98790096F522 /* HMAboutViewController.h */,
 				46920293175C98790096F522 /* HMAboutViewController.m */,
 				469202A3175C9DDB0096F522 /* HMIngredientCell.h */,
 				469202A4175C9DDC0096F522 /* HMIngredientCell.m */,
-				465435E61762685E00B3B33D /* HMIMadeItCell.h */,
-				465435E71762685E00B3B33D /* HMIMadeItCell.m */,
 				46A49546178637CA008B6993 /* HMDrinkPhotoViewController.h */,
 				46A49547178637CA008B6993 /* HMDrinkPhotoViewController.m */,
 				46BFA525178640A50024F61C /* HMDrinkPhotoViewCell.h */,
@@ -1446,7 +1436,6 @@
 				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
 				46920299175C99B40096F522 /* HMStepsView.m in Sources */,
 				46920296175C99730096F522 /* HMStepsViewController.m in Sources */,
-				46920297175C99730096F522 /* HMImadeItViewController.m in Sources */,
 				46920298175C99730096F522 /* HMAboutViewController.m in Sources */,
 				4645D30216F44D1900C38D39 /* main.m in Sources */,
 				4645D30616F44D1900C38D39 /* HMAppDelegate.m in Sources */,
@@ -1503,7 +1492,6 @@
 				46D8627C1782E6BF0051CA92 /* FlipBoardNavigationController.m in Sources */,
 				469202DE17608C600096F522 /* HMEditPhotoViewController.m in Sources */,
 				469202F01760B4EC0096F522 /* HMCameraViewController.m in Sources */,
-				465435E81762685E00B3B33D /* HMIMadeItCell.m in Sources */,
 				469202F61764B4600096F522 /* HMCommentViewController.m in Sources */,
 				469202FC17657E730096F522 /* HMCommentBar.m in Sources */,
 				46409D4F176B1BD000E7494E /* MMDrawerController.m in Sources */,

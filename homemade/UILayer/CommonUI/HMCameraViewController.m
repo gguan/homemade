@@ -26,13 +26,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showPhotoPicker:(NSString *)title {
+- (void)showPhotoPicker:(NSString *)title  inView:(UIView *) view{
     BOOL cameraDeviceAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     BOOL photoLibraryAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
     
     if (cameraDeviceAvailable && photoLibraryAvailable) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Photo", nil];
-        [actionSheet showInView:self.container.view];
+        [actionSheet showInView:view];
     } else {
         // if we don't have at least two options, we automatically show whichever is available (camera or roll)
         [self shouldPresentPhotoCaptureController];
@@ -67,14 +67,7 @@
         [self shouldStartCameraController];
     } else if (buttonIndex == 1) {
         [self shouldStartPhotoLibraryPickerController];
-    } else {
-//        [self.container dismissViewControllerAnimated:NO completion:^{
-//            NSLog(@"Dismiss picker controller");
-//            if (_delegate && [_delegate respondsToSelector:@selector(cameraViewControllerDidCancel:)]) {
-//                [_delegate cameraViewControllerDidCancel:self];
-//            }
-//        }];
-    }
+    } 
 }
 
 
@@ -118,7 +111,7 @@
     cameraUI.allowsEditing = YES;
     cameraUI.showsCameraControls = YES;
     cameraUI.delegate = self;
-    
+
     [self.container presentViewController:cameraUI animated:NO completion:nil];
     
     return YES;

@@ -20,6 +20,6 @@
 @property (nonatomic, assign) id <HMCameraDelegate> delegate;
 @property (nonatomic, weak) UIViewController *container;
 
-- (void)showPhotoPicker:(NSString *)title;
+- (void)showPhotoPicker:(NSString *)title inView:(UIView *)view;
 
 @end

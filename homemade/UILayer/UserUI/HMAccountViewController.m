@@ -241,7 +241,7 @@ const NSInteger QueryLimit = 2;
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
     NSLog(@"run delegate from RecipeViewController");
-    [self.photoPicker showPhotoPicker:@"Change cover"];
+    [self.photoPicker showPhotoPicker:@"Change cover" inView:self.view];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {

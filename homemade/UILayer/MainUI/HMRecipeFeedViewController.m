@@ -16,7 +16,6 @@
 #import "HMSearchViewController.h"
 #import "UIImageView+Addition.h"
 #import "HMCommentViewController.h"
-#import "HMAboutViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "HMCreateViewController.h"
 

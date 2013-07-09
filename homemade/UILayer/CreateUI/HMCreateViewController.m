@@ -316,7 +316,7 @@
 
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
-    [self.photoPicker showPhotoPicker:@"upload drink cover"];
+    [self.photoPicker showPhotoPicker:@"upload drink cover" inView:self.view];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {

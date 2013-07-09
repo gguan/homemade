@@ -93,7 +93,7 @@
 
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
-    [self.photoPicker showPhotoPicker:@"upload a step photo"];
+    [self.photoPicker showPhotoPicker:@"upload a step photo" inView:self.view];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {

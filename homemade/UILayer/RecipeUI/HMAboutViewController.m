@@ -35,9 +35,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (DEVICE_VERSION_7) {
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + 20);
+    } else {
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }
     
-    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
+    NSLog(@"About view frame: %@", NSStringFromCGRect(self.view.frame));
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
     [self.tableView setBackgroundView:backgroundView];

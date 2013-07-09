@@ -8,11 +8,11 @@
 
 #import "HMRecipeViewController.h"
 
-@interface HMDrinkPhotoViewController : UICollectionViewController 
+@interface HMDrinkPhotoViewController : UICollectionViewController <HMCameraDelegate>
 
 @property (nonatomic, weak) HMRecipeViewController *recipeViewController;
+@property (nonatomic, strong) HMCameraViewController *photoPicker;
 
 - (id)initWithRecipe:(PFObject*)recipeObject;
-
 
 @end

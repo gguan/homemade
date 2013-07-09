@@ -11,6 +11,7 @@
 #import "SVPullToRefresh.h"
 #import "UIImage+ColorImage.h"
 #import "HMCommentViewController.h"
+#import "HMEditPhotoViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 static NSString *cellIdentifier = @"DrinkPhotoCollectionCell";
@@ -54,9 +55,13 @@ int numPerPage = 6;
             forCellWithReuseIdentifier:cellIdentifier];
     
     self.collectionView.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
-
-    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-44)];
+    if (DEVICE_VERSION_7) {
+        [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 44)];
+    } else {
+        [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    }
     
+    NSLog(@"Photo view frame: %@", NSStringFromCGRect(self.view.frame));
     isLoading = NO;
     page = 0;
     self.objects = [NSMutableArray array];
@@ -75,6 +80,14 @@ int numPerPage = 6;
     }];
     
     [self loadNextPage];
+    
+    // camera config
+    self.photoPicker = [[HMCameraViewController alloc] init];
+    self.photoPicker.delegate = self;
+    self.photoPicker.container = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidPublishPhoto:) name:HMCameraControllerDidFinishEditingPhotoNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,7 +148,7 @@ int numPerPage = 6;
         UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 49.0f, 320, 1.0f)];
         border.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
         
-        UILabel *header = [[UILabel alloc]initWithFrame:CGRectMake(135, 15, 150, 30)];
+        UILabel *header = [[UILabel alloc]initWithFrame:CGRectMake(135, 10, 150, 30)];
         header.backgroundColor = [UIColor clearColor];
         header.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
         header.textColor = [UIColor colorWithRed:69.0f/255.0f green:78.0f/255.0f blue:81.0f/255.0f alpha:1.0f];
@@ -145,9 +158,10 @@ int numPerPage = 6;
         cameraButton.layer.cornerRadius = 15.0f;
         cameraButton.layer.borderWidth = 1.5f;
         cameraButton.layer.borderColor = [UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f].CGColor;
-        UIImageView *cameraImg = [[UIImageView alloc] initWithFrame:CGRectMake(7, 7, 16, 16)];
+        UIImageView *cameraImg = [[UIImageView alloc] initWithFrame:CGRectMake(7, 6, 16, 16)];
         [cameraImg setImage:[[UIImage imageNamed:@"icn40-camera.png"] changeImageToColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]]];
         [cameraButton addSubview:cameraImg];
+        [cameraButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
         
         [headerView addSubview:border];
         [headerView addSubview:header];
@@ -161,7 +175,7 @@ int numPerPage = 6;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *obj = [self.objects objectAtIndex:indexPath.row];
     HMCommentViewController *commentView = [[HMCommentViewController alloc] initWithPFObject:obj andType:kHMCommentTypePhoto];
-    [[self.recipeViewController navigationController] pushViewController:commentView animated:YES];
+    [self.recipeViewController.navigationController pushViewController:commentView animated:YES];
 }
 
 #pragma mark -
@@ -189,6 +203,46 @@ int numPerPage = 6;
         }
     }];
     isLoading = NO;
+}
+
+#pragma mark - Notification
+- (void)userDidPublishPhoto:(NSNotification *)note {
+    if (self.objects.count > 0) {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    }
+    
+    [self.objects removeAllObjects];
+    isLoading = NO;
+    page = 0;
+    [self loadNextPage];
+    
+    [self.collectionView reloadData];
+}
+
+#pragma mark - HMCameraDelegate
+- (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
+    [picker showPhotoPicker:@"Upload a picture" inView:self.view];
+}
+
+- (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    HMEditPhotoViewController *viewController = [[HMEditPhotoViewController alloc] initWithImage:image withRecipe:self.recipeObject];
+    [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:viewController animated:NO completion:nil];
+}
+
+- (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark -
+- (void)takePicture {
+    if (self.photoPicker.delegate && [self.photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
+        [self.photoPicker.delegate cameraViewControllerShowPicker:self.photoPicker];
+    }
 }
 
 @end

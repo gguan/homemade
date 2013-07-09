@@ -150,7 +150,7 @@
     
     if (DEVICE_VERSION_7) {
     
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                              [UIColor whiteColor],UITextAttributeTextColor,
                                                              [UIColor colorWithWhite:0.0f alpha:0.750f],
@@ -311,13 +311,26 @@
     
     if (user) {
         [SVProgressHUD showWithStatus:@"Creating Profile" maskType: SVProgressHUDMaskTypeBlack];
-        
+
         // display name
         NSString *facebookName = result[@"name"];
         if (facebookName && [facebookName length] != 0) {
             [user setObject:facebookName forKey:kHMUserDisplayNameKey];
         } else {
             [user setObject:@"Someone" forKey:kHMUserDisplayNameKey];
+        }
+        // fist and last name
+        NSString *firstName = result[@"first_name"];
+        if (firstName && [firstName length] != 0) {
+            [user setObject:firstName forKey:kHMUserFirstNameKey];
+        } else {
+            [user setObject:@"Some" forKey:kHMUserFirstNameKey];
+        }
+        NSString *lastName = result[@"last_name"];
+        if (lastName && [lastName length] != 0) {
+            [user setObject:lastName forKey:kHMUserLastNameKey];
+        } else {
+            [user setObject:@"One" forKey:kHMUserLastNameKey];
         }
         
         // facebook id

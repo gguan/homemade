@@ -40,7 +40,8 @@
     // Do any additional setup after loading the view.
     
     [self.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
-
+    NSLog(@"Step view frame: %@", NSStringFromCGRect(self.view.frame));
+    
     CGFloat y = 0.0f;
     if (DEVICE_VERSION_7) {
         y = 64.0f;

@@ -65,6 +65,9 @@
     [super viewDidLoad];
 
     self.navigationController.navigationBarHidden = NO;
+    // Add a left navBarItem
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
+    self.navigationItem.leftBarButtonItem = leftItem;
     
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     // Custom initialization
@@ -344,6 +347,10 @@
 
 - (void) postButtonAction {
     [self doneButtonAction:self.commentTextField.postButton];
+}
+
+- (void)leftDrawerButtonClicked {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
