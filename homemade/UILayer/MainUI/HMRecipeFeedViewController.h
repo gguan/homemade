@@ -9,6 +9,6 @@
 #import "AwesomeMenu.h"
 #import "HMRecipeCellView.h"
 
-@interface HMRecipeFeedViewController : PFQueryTableViewController <AwesomeMenuDelegate, HMRecipeCellViewDelegate, UIGestureRecognizerDelegate>
+@interface HMRecipeFeedViewController : PFQueryTableViewController <AwesomeMenuDelegate>
 
 @end

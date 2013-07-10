@@ -18,6 +18,7 @@
 #import "HMCommentViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "HMCreateViewController.h"
+#import "UIImage+ColorArt.h"
 
 
 @interface HMRecipeFeedViewController ()
@@ -165,12 +166,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HMRecipeCellView *cell = (HMRecipeCellView *)[tableView cellForRowAtIndexPath:indexPath];
-    if (cell.leftIsVisible == YES) {
-        [cell bounceToLeft:0.2];
-    } else {
-        HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
-        [[self navigationController] pushViewController:recipeViewController animated:YES];
-    }
+    
+    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.objects objectAtIndex:indexPath.row] andUIColor:cell.colorArt];
+    [[self navigationController] pushViewController:recipeViewController animated:YES];
+    
 }
 
 
@@ -205,7 +204,6 @@
     HMRecipeCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[HMRecipeCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.delegate = self;
     }
     
     [self resetCell:cell];
@@ -222,7 +220,6 @@
             NSLog(@"Find cache for recipe %@", recipe.objectId);
             NSLog(@"%@", attributesForRecipe);
             [cell.saveCount setText:[[[HMCache sharedCache] saveCountForRecipe:recipe] description]];
-            [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:recipe]];
             [cell.photoCount setText:[[[HMCache sharedCache] photoCountForRecipe:recipe] description]];
         } else {
             NSLog(@"Didn't find cache for recipe %@", recipe.objectId);
@@ -246,7 +243,6 @@
                         [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:isSavedByCurrentUser];
                     
                         [cell.saveCount setText:[[NSNumber numberWithInt:[objects count]] description]];
-                        [cell setSaveStatus:isSavedByCurrentUser];
                     }
                 }];
                 
@@ -364,255 +360,12 @@
     // Placeholder image
     [cell.photo setImage:nil];
     // Move photo back to left
-    [cell bounceToLeft:0];
     // Clear color line
     [cell.colorLine setBackgroundColor:[UIColor clearColor]];
     // Clear text
     [cell.saveCount setText:@"0"];
     [cell.photoCount setText:@"0"];
     
-}
-
-#pragma mark - HMRecipeCellView delegate
-
-- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapSaveButton:(UIButton *)button recipe:(PFObject *)recipe {
-    NSLog(@"Tap save button! %@", recipe.objectId);
-    
-    // When user tap the button, we temperaly disable the button until server and cache are updated.
-    [recipeTableCellView shouldEnableSaveButton:NO];
-    
-    BOOL saved = !button.selected;
-    [recipeTableCellView setSaveStatus:saved];
-    
-    NSString *originalSaveCountTitle = recipeTableCellView.saveCount.text;
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    NSNumber *saveCount = [numberFormatter numberFromString:originalSaveCountTitle];
-    
-    // Update cache
-    // TODO
-    if (saved) {
-        saveCount = [NSNumber numberWithInt:[saveCount intValue] + 1];
-        [[HMCache sharedCache] incrementSaverCountForRecipe:recipe];
-    } else {
-        if ([saveCount intValue] > 0) {
-            saveCount = [NSNumber numberWithInt:[saveCount intValue] - 1];
-        }
-        [[HMCache sharedCache] decrementSaverCountForRecipe:recipe];
-    }
-    [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:saved];
-    
-    // update label
-    [recipeTableCellView.saveCount setText:[numberFormatter stringFromNumber:saveCount]];
-    
-    // update sever
-    if (saved) {
-        [HMUtility saveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
-            [recipeTableCellView shouldEnableSaveButton:YES];
-            [recipeTableCellView setSaveStatus:succeeded];
-            if (!succeeded) {
-                [recipeTableCellView.saveCount setText:originalSaveCountTitle];
-            }
-        }];
-    } else {
-        [HMUtility unSaveRecipeInBackground:recipe block:^(BOOL succeeded, NSError *error) {
-            [recipeTableCellView shouldEnableSaveButton:YES];
-            [recipeTableCellView setSaveStatus:!succeeded];
-            if (!succeeded) {
-                [recipeTableCellView.saveCount setText:originalSaveCountTitle];
-            }
-        }];
-    }
-    
-}
-
-- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapCommentButton:(UIButton *)button recipe:(PFObject *)recipe {
-    HMCommentViewController *commentView = [[HMCommentViewController alloc] initWithPFObject:recipe andType:kHMCommentTypeRecipe];
-    [[self navigationController] pushViewController:commentView animated:YES];
-
-    NSLog(@"Comment button tapped.");
-}
-
-// Sent to the delegate when the share button is tapped
-// @param photo the PFObject for the photo that will be commented on
-- (void)recipeTableCellView:(HMRecipeCellView *)recipeTableCellView didTapShareButton:(UIButton *)button recipe:(PFObject *)recipe {
-    
-    // First attempt: Publish using the Facenook Share dialog
-    FBAppCall *call = [self publishWithShareDialog:recipe];
-    
-    // Second fallback: Publish using the iOS6 OS Integrated Share dialog
-    BOOL displayedNativeDialog = YES;
-    if (!call) {
-        [self publishWithOSIntegratedShareDialog:recipe];
-    }
-
-    // Third fallback: Publish using either the Graph API or the Web Dialog
-    if (!call && !displayedNativeDialog) {
-        [self publishWithWebDialog:recipe];
-    }
-
-    
-}
-
-- (BOOL) publishWithOSIntegratedShareDialog:(PFObject *)recipe {
-    PFFile *imageFile = [recipe objectForKey:kHMRecipePhotoKey];
-    return [FBDialogs
-            presentOSIntegratedShareDialogModallyFrom:self
-            initialText: [recipe objectForKey:kHMRecipeTitleKey]
-            image: [UIImage imageWithData:[imageFile getData]]
-            url:nil
-            handler:^(FBOSIntegratedShareDialogResult result, NSError *error) {
-                // Only show the error if it is not due to the dialog
-                // not being supported, otherwise ignore because our fallback
-                // will show the share view controller.
-                if ([[error userInfo][FBErrorDialogReasonKey]
-                     isEqualToString:FBErrorDialogNotSupported]) {
-                    return;
-                }
-                if (error) {
-                    [self showAlert:[self checkErrorMessage:error]];
-                } else if (result == FBNativeDialogResultSucceeded) {
-                    [self showAlert:@"Posted successfully."];
-                }
-            }];
-}
-
-
-/*
- * Share using the Web Dialog
- */
-- (void) publishWithWebDialog:(PFObject *)recipe {
-    // Put together the dialog parameters
-    
-    NSMutableDictionary *params =
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     [recipe objectForKey:kHMRecipeTitleKey], @"name",
-     [recipe objectForKey:kHMRecipeOverviewKey], @"description",
-     // recipeLink, @"link", ! we should have a website to give a facebook share link
-     [(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url], @"picture",
-     nil];
-
-    
-    // Invoke the dialog
-    [FBWebDialogs presentFeedDialogModallyWithSession:nil
-                                           parameters:params
-                                              handler:
-     ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-         if (error) {
-             // Error launching the dialog or publishing a story.
-             [self showAlert:[self checkErrorMessage:error]];
-         } else {
-             if (result == FBWebDialogResultDialogNotCompleted) {
-                 // User clicked the "x" icon
-                 NSLog(@"User canceled story publishing.");
-             } else {
-                 // Handle the publish feed callback
-                 NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                 if (![urlParams valueForKey:@"post_id"]) {
-                     // User clicked the Cancel button
-                     NSLog(@"User canceled story publishing.");
-                 } else {
-                     // User clicked the Share button
-                     [self showAlert:[self checkPostId:urlParams]];
-                 }
-             }
-         }
-     }];
-}
-
-
-/*
- * Share using the Facebook native Share Dialog
- */
-- (FBAppCall *) publishWithShareDialog:(PFObject *)recipe {
-    // Set up the dialog parameters
-    FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
-    params.link = [NSURL URLWithString:[(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url]];
-    params.picture = [NSURL URLWithString:[(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url]];
-    params.name = [recipe objectForKey:kHMRecipeTitleKey];
-    params.description = [recipe objectForKey:kHMRecipeOverviewKey];
-    // Set this flag on to enable the Share Dialog beta feature
-//    [FBSettings  enableBetaFeature:FBBetaFeaturesShareDialog];
-    return [FBDialogs presentShareDialogWithParams:params
-                                       clientState:nil
-                                           handler:
-            ^(FBAppCall *call, NSDictionary *results, NSError *error) {
-                if(error) {
-                    // If there's an error show the relevant message
-                    [self showAlert:[self checkErrorMessage:error]];
-                } else {
-                    // Check if cancel info is returned and log the event
-                    if (results[@"completionGesture"] &&
-                        [results[@"completionGesture"] isEqualToString:@"cancel"]) {
-                        NSLog(@"User canceled story publishing.");
-                    } else {
-                        // If the post went through show a success message
-                        [self showAlert:[self checkPostId:results]];
-                    }
-                }
-                
-            }];
-}
-
-
-#pragma mark - Helper methods
-/*
- * Helper method to show alert results or errors
- */
-- (NSString *)checkErrorMessage:(NSError *)error {
-    NSString *errorMessage = @"";
-    if (error.fberrorUserMessage) {
-        errorMessage = error.fberrorUserMessage;
-    } else {
-        errorMessage = @"Operation failed due to a connection problem, retry later.";
-    }
-    return errorMessage;
-}
-
-/*
- * Helper method to check for the posted ID
- */
-- (NSString *) checkPostId:(NSDictionary *)results {
-    NSString *message = @"Posted successfully.";
-    // Share Dialog
-    NSString *postId = results[@"postId"];
-    if (!postId) {
-        // Web Dialog
-        postId = results[@"post_id"];
-    }
-    if (postId) {
-        message = [NSString stringWithFormat:@"Posted story, id: %@", postId];
-    }
-    return message;
-}
-
-/*
- * Helper method to parse URL parameters.
- */
-- (NSDictionary*)parseURLParams:(NSString *)query {
-    NSArray *pairs = [query componentsSeparatedByString:@"&"];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    for (NSString *pair in pairs) {
-        NSArray *kv = [pair componentsSeparatedByString:@"="];
-        NSString *val =
-        [[kv objectAtIndex:1]
-         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [params setObject:val forKey:[kv objectAtIndex:0]];
-    }
-    return params;
-}
-
-/*
- * Helper method to show an alert
- */
-- (void)showAlert:(NSString *) alertMsg {
-    if (![alertMsg isEqualToString:@""]) {
-        [[[UIAlertView alloc] initWithTitle:@"Result"
-                                    message:alertMsg
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
-    }
 }
 
 - (void)leftDrawerButtonClicked {
