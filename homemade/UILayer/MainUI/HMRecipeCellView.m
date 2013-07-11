@@ -96,5 +96,10 @@
 
 }
 
+// Configures save Button to match the give save status
+- (void)setSaveStatus:(BOOL)saved {
+    [self.saveIcon setSelected:saved];
+}
+
 
 @end

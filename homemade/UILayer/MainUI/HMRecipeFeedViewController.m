@@ -221,6 +221,7 @@
             NSLog(@"%@", attributesForRecipe);
             [cell.saveCount setText:[[[HMCache sharedCache] saveCountForRecipe:recipe] description]];
             [cell.photoCount setText:[[[HMCache sharedCache] photoCountForRecipe:recipe] description]];
+            [cell setSaveStatus:[[HMCache sharedCache] isSavedByCurrentUser:recipe]];
         } else {
             NSLog(@"Didn't find cache for recipe %@", recipe.objectId);
             @synchronized(self) {
@@ -243,6 +244,7 @@
                         [[HMCache sharedCache] setRecipeIsSavedByCurrentUser:recipe saved:isSavedByCurrentUser];
                     
                         [cell.saveCount setText:[[NSNumber numberWithInt:[objects count]] description]];
+                        [cell setSaveStatus:isSavedByCurrentUser];
                     }
                 }];
                 

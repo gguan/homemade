@@ -20,5 +20,6 @@
 @property (strong, nonatomic) UIColor   *colorArt;
 @property (strong, nonatomic) PFObject  *recipe;
 
+- (void)setSaveStatus:(BOOL)saved;
 
 @end

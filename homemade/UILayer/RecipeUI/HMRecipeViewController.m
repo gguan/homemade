@@ -102,7 +102,6 @@ static int ActionViewHeight = 80.0f;
 // TODO
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    isExpanded = NO;
 }
 
 
@@ -160,32 +159,23 @@ static int ActionViewHeight = 80.0f;
 - (void)actionButtonClicked
 {
     CGRect bounds = self.view.bounds;
-//    bounds.origin.y -= ActionViewHeight;
-//    bounds.size.height += ActionViewHeight;
     [self.view setBounds:bounds];
-//    CGRect frame = self.view.frame;
     if (isExpanded) {
-//        frame.origin.y -= ActionViewHeight;
         bounds.origin.y += ActionViewHeight;
         isExpanded = NO;
     } else {
-//        frame.origin.y += ActionViewHeight;
         bounds.origin.y -= ActionViewHeight;
         isExpanded = YES;
     }
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-//        [self.view setFrame:frame];
         [self.view setBounds:bounds];
-    } completion:^(BOOL finished) {
-        
-    }];
+    } completion:^(BOOL finished) {}];
+    
 }
 
 - (void)leftDrawerButtonClicked {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
-
 
 
 #pragma mark - Button action
