@@ -109,6 +109,9 @@
             self.recipeFeedViewController = [[HMRecipeFeedViewController alloc] init];
         }
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.recipeFeedViewController];
+        if (DEVICE_VERSION_7) {
+            navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        }
         [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
         }];
         self.currentIndex = 0;
@@ -118,6 +121,9 @@
             self.accountViewController = [[HMAccountViewController alloc] initWithUser:[PFUser currentUser]];
         }
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.accountViewController];
+        if (DEVICE_VERSION_7) {
+            navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        }
         [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
         }];
         self.currentIndex = 1;
@@ -126,6 +132,9 @@
             self.categoryViewController = [[HMCategoryViewController alloc] init];
         }
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.categoryViewController];
+        if (DEVICE_VERSION_7) {
+            navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        }
         [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
         }];
         self.currentIndex = 2;
@@ -135,6 +144,9 @@
 
         }
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.saveViewController];
+        if (DEVICE_VERSION_7) {
+            navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        }
         [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL success) {
         }];
         self.currentIndex = 3;
