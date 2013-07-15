@@ -14,6 +14,7 @@
 #import "HMDrinkPhotoViewController.h"
 #import "HMRecipeActionView.h"
 #import "HMCommentViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 static int ActionViewHeight = 80.0f;
 
@@ -26,6 +27,7 @@ static int ActionViewHeight = 80.0f;
 @property (nonatomic, strong) NSArray *tabBarItems;
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) HMRecipeActionView *actionView;
+@property (nonatomic, strong) UIBarButtonItem *shareButton;
 
 @end
 
@@ -59,9 +61,17 @@ static int ActionViewHeight = 80.0f;
     // Add a share navBarItem
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     self.navigationItem.leftBarButtonItem = leftItem;
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-share.png"] style:UIBarButtonItemStylePlain target:self action:@selector(actionButtonClicked)];
-    self.navigationItem.rightBarButtonItem = shareButton;
     
+    self.shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn20-add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(actionButtonClicked)];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setFrame:CGRectMake(0, 0, 40, 40)];
+//    [button setImage:[UIImage imageNamed:@"icn20-add.png"] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(actionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+//    button.backgroundColor = [UIColor whiteColor];
+//    self.shareButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+//NSLog(@"before rotate %@", NSStringFromCGRect(self.shareButton.customView.frame));
+    self.navigationItem.rightBarButtonItem = self.shareButton;
+
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     // Initialize three subViews
@@ -163,13 +173,53 @@ static int ActionViewHeight = 80.0f;
     if (isExpanded) {
         bounds.origin.y += ActionViewHeight;
         isExpanded = NO;
+//        [UIView beginAnimations:@"rotate barbuttonitems" context:NULL];
+//        self.shareButton.customView.center = CGPointMake(self.shareButton.customView.frame.size.width/2, self.shareButton.customView.frame.size.height/2);
+//        self.shareButton.customView.transform = CGAffineTransformMakeRotation(0);
+//        self.shareButton.customView.frame = CGRectMake(0, 0, 40, 40);
+//        NSLog(@"-rotate %@", NSStringFromCGRect(self.shareButton.customView.frame));
+//        [self rotateImage:self.shareButtonImage byDegree:-M_PI_4];
+//        [UIView commitAnimations];
+        
     } else {
         bounds.origin.y -= ActionViewHeight;
         isExpanded = YES;
+//        [UIView beginAnimations:@"rotate barbuttonitems2" context:NULL];
+//        self.shareButton.customView.center = CGPointMake(self.shareButton.customView.frame.size.width/2, self.shareButton.customView.frame.size.height/2);
+//        self.shareButton.customView.transform = CGAffineTransformMakeRotation(35.0*M_PI/180.0);
+//        self.shareButton.customView.frame = CGRectMake(0, 0, 40, 40);
+//        [self rotateImage:self.shareButtonImage byDegree:M_PI_4];
+//        NSLog(@"rotate %@", NSStringFromCGRect(self.shareButton.customView.frame));
+//        [UIView commitAnimations];
     }
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         [self.view setBounds:bounds];
     } completion:^(BOOL finished) {}];
+    
+}
+
+- (UIImage *)rotateImage:(UIImage*)image byDegree:(CGFloat)degrees
+{
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,image.size.width, image.size.height)];
+    CGAffineTransform t = CGAffineTransformMakeRotation(degrees);
+    rotatedViewBox.transform = t;
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+    
+    UIGraphicsBeginImageContext(rotatedSize);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+    
+    
+    CGContextTranslateCTM(bitmap, rotatedSize.width, rotatedSize.height);
+    
+    CGContextRotateCTM(bitmap, degrees);
+    
+    
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-image.size.width, -image.size.height, image.size.width, image.size.height), [image CGImage]);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
     
 }
 

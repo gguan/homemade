@@ -8,9 +8,10 @@
 
 #import "HMStepsView.h"
 #import "UIImageView+Addition.h"
+#import "UIImage+ResizeAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kStepDescriptionTextFontSize 13
+#define kStepDescriptionTextFontSize 15
 
 @implementation HMStepsView
 
@@ -19,12 +20,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-                
+        
+        self.layer.shadowRadius = kShadowRadius;
+        self.layer.shadowOpacity = kShadowOpacity;
+        self.layer.shadowOffset = kShadowOffset;
+        
         [self setBackgroundColor:[UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1.0]];
         
         // Init step image view
         self.stepImageView = [[PFImageView alloc] initWithFrame:CGRectZero];
         self.stepImageView.clipsToBounds = YES;
+        self.stepImageView.contentMode = UIViewContentModeScaleAspectFit;
         self.stepImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin;
         [self.stepImageView addDetailShow];
         [self addSubview:self.stepImageView];
@@ -32,7 +38,7 @@
         // Init step description
         self.stepDescrptionLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
         [self.stepDescrptionLabel setBackgroundColor:[UIColor clearColor]];
-        self.stepDescrptionLabel.font = [UIFont systemFontOfSize:kStepDescriptionTextFontSize];
+        self.stepDescrptionLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
         self.stepDescrptionLabel.textColor = [UIColor darkGrayColor];
         self.stepDescrptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.stepDescrptionLabel.numberOfLines = 0;
@@ -60,15 +66,41 @@
 
 - (CGFloat)heightForStepText:(NSString *)text {
     CGFloat height = 10.0f;
-    height += ceilf([text sizeWithFont:[UIFont systemFontOfSize:kStepDescriptionTextFontSize] constrainedToSize:CGSizeMake(PageFlowViewWidth - 20, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping].height);
+    height += ceilf([text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:15] constrainedToSize:CGSizeMake(PageFlowViewWidth - 40, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping].height);
     return height;
 }
 
 - (void)setLayout {
+    
     CGFloat textHeight = [self heightForStepText:self.description];
-    self.stepDescrptionLabel.frame = CGRectMake(10, PageFlowViewHeight - textHeight - 10, PageFlowViewWidth - 20, textHeight);
-    self.stepImageView.frame = CGRectMake(0, 0, PageFlowViewWidth, PageFlowViewHeight - textHeight - 30);
-    self.stepNumberImage.frame = CGRectMake(0, PageFlowViewHeight - textHeight - 30 - 21, 47, 41);
+    
+    if (self.stepImageView.file) {
+        
+        CGFloat imageScaleHeight = self.stepImageView.image.size.height * PageFlowViewWidth / self.stepImageView.image.size.width;
+        NSLog(@"Image size:%@ SH:%f", NSStringFromCGSize(self.stepImageView.image.size), imageScaleHeight);
+        
+        CGFloat stepDescriptionY = PageFlowViewHeight - textHeight - 20;
+        if (imageScaleHeight < stepDescriptionY) {
+            stepDescriptionY = imageScaleHeight + 20;
+        }
+        CGFloat stepDescriptionHeight = textHeight;
+        if (PageFlowViewHeight - imageScaleHeight - 20 > textHeight) {
+            stepDescriptionHeight = PageFlowViewHeight - imageScaleHeight - 20;
+        }
+        
+        CGFloat stepImageHeight = PageFlowViewHeight - textHeight - 40;
+        if (stepImageHeight > imageScaleHeight) {
+            stepImageHeight = imageScaleHeight;
+        }
+        
+        self.stepImageView.frame = CGRectMake(0, 0, PageFlowViewWidth, stepImageHeight);
+        self.stepDescrptionLabel.frame = CGRectMake(20, stepDescriptionY, PageFlowViewWidth - 40, stepDescriptionHeight);
+        self.stepNumberImage.frame = CGRectMake(0, stepDescriptionY - 41, 47, 41);
+    } else {
+        self.stepDescrptionLabel.frame = CGRectMake(30, 100, PageFlowViewWidth - 60, textHeight + 20);
+        self.stepNumberImage.frame = CGRectMake(20, 50, 47, 41);
+    }
+    
 }
 
 

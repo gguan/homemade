@@ -18,6 +18,8 @@
     if (self) {
         // Initialization code
         self.photoView = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, 140, 140)];
+        self.photoView.contentMode = UIViewContentModeScaleAspectFill;
+        self.photoView.clipsToBounds = YES;
         
         self.label = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, 155, 140, 40)];
         self.label.opaque = NO;

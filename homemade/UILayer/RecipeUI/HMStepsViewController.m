@@ -11,8 +11,7 @@
 #import "HMStepsView.h"
 #import <QuartzCore/QuartzCore.h>
 
-
-#define PageControlHeight 40
+static CGFloat PageControlHeight = 40.0f;
 
 @interface HMStepsViewController ()<PagedFlowViewDelegate,PagedFlowViewDataSource>
 
@@ -111,8 +110,12 @@
     if (stepPhoto) {
         [view.stepImageView setFile:stepPhoto];
         [view.stepImageView setContentMode:UIViewContentModeScaleAspectFill];
-        [view.stepImageView loadInBackground];
+        [view.stepImageView loadInBackground:^(UIImage *image, NSError *error) {
+            [view setLayout];
+        }];
     }
+    
+    
     
     return view;
 }

@@ -8,6 +8,9 @@
 
 #import "TTTAttributedLabel.h"
 
+static CGFloat PageFlowViewWidth = 260.0f;
+static CGFloat PageFlowViewHeight = 420.0f;
+
 @interface HMStepsView : UIView
 
 @property (nonatomic, strong) TTTAttributedLabel* stepNumberLabel;

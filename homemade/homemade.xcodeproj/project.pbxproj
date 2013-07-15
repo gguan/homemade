@@ -17,6 +17,8 @@
 		4606A4E2171AB992009FDFFB /* HMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E1171AB992009FDFFB /* HMCache.m */; };
 		4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */; };
 		4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */; };
+		461D2D5217939F7E0081A37A /* icn20-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5017939F7E0081A37A /* icn20-add.png */; };
+		461D2D5317939F7E0081A37A /* icn20-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5117939F7E0081A37A /* icn20-add@2x.png */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
 		462BAA1C1775051C0069A615 /* HMUserRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462BAA1B1775034C0069A615 /* HMUserRecipeCell.m */; };
 		462BAA1F1775141B0069A615 /* HMSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 462BAA1E177513E80069A615 /* HMSearchCell.m */; };
@@ -213,6 +215,8 @@
 		4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeFeedViewController.m; path = UILayer/MainUI/HMRecipeFeedViewController.m; sourceTree = "<group>"; };
 		4606A4E6171EA3F0009FDFFB /* HMRecipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeCellView.h; path = UILayer/MainUI/HMRecipeCellView.h; sourceTree = "<group>"; };
 		4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeCellView.m; path = UILayer/MainUI/HMRecipeCellView.m; sourceTree = "<group>"; };
+		461D2D5017939F7E0081A37A /* icn20-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add.png"; sourceTree = "<group>"; };
+		461D2D5117939F7E0081A37A /* icn20-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add@2x.png"; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
 		462A770716FC1B2400C3CBF7 /* HMRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipe.m; path = BaseLayer/DataModel/HMRecipe.m; sourceTree = "<group>"; };
 		462BAA1A1775034C0069A615 /* HMUserRecipeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMUserRecipeCell.h; path = UILayer/UserUI/HMUserRecipeCell.h; sourceTree = "<group>"; };
@@ -995,6 +999,8 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				461D2D5017939F7E0081A37A /* icn20-add.png */,
+				461D2D5117939F7E0081A37A /* icn20-add@2x.png */,
 				46BFA536178D6B470024F61C /* icn40-heart.png */,
 				46BFA537178D6B470024F61C /* icn40-heart@2x.png */,
 				46BFA532178D6B2F0024F61C /* icn40-facebook.png */,
@@ -1201,6 +1207,7 @@
 				46D862681782D1080051CA92 /* icn-search@2x.png in Resources */,
 				465C07B31780D8B900F5C5B0 /* icon_like@2x.png in Resources */,
 				465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */,
+				461D2D5217939F7E0081A37A /* icn20-add.png in Resources */,
 				4692025A175B33A20096F522 /* background.png in Resources */,
 				4692025B175B33A20096F522 /* background@2x.png in Resources */,
 				46D8626B1782D1FD0051CA92 /* icn-list.png in Resources */,
@@ -1220,6 +1227,7 @@
 				4692026E175B33A20096F522 /* mainNavActive.png in Resources */,
 				4692026F175B33A20096F522 /* mainNavActive@2x.png in Resources */,
 				46920270175B33A20096F522 /* myFavorite.png in Resources */,
+				461D2D5317939F7E0081A37A /* icn20-add@2x.png in Resources */,
 				46D8626C1782D1FD0051CA92 /* icn-list@2x.png in Resources */,
 				46920271175B33A20096F522 /* myFavorite@2x.png in Resources */,
 				46920272175B33A20096F522 /* notification.png in Resources */,

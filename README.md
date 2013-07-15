@@ -19,10 +19,9 @@ Drinks recipes
 4. [SSKeychain](https://github.com/soffes/sskeychain) - SSKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain
 5. [SVPullToRefresh + SVInfiniteScrolling](https://github.com/samvermette/SVPullToRefresh) - Give pull-to-refresh & infinite scrolling to any UIScrollView with 1 line of code
 6. [SVProgressHUD](https://github.com/samvermette/SVProgressHUD) - A clean and lightweight progress HUD for your iOS app
-7. [FXImageView](https://github.com/nicklockwood/FXImageView) - FXImageView is a class designed to simplify the application of common visual effects such as reflections and drop-shadows to images, and also to help the performance of image loading by handling it on a background thread
-8. [TMCache](https://github.com/tumblr/TMCache) - Fast parallel object cache for iOS and OS X
-9. [TTTAttributedLabel](https://github.com/mattt/TTTAttributedLabel) - A drop-in replacement for UILabel that supports attributes, data detectors, links, and more
-10. [AwesomeMenu](https://github.com/levey/AwesomeMenu) - Path 2.0 menu using CoreAnimation
+7. [TMCache](https://github.com/tumblr/TMCache) - Fast parallel object cache for iOS and OS X
+8. [TTTAttributedLabel](https://github.com/mattt/TTTAttributedLabel) - A drop-in replacement for UILabel that supports attributes, data detectors, links, and more
+9. [AwesomeMenu](https://github.com/levey/AwesomeMenu) - Path 2.0 menu using CoreAnimation
 
 ##### Project folder specs
 1. UILayer - All UIViewControllers shold be put into sub folders of this group

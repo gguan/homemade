@@ -114,11 +114,11 @@ int numPerPage = 6;
     NSString *label = [photoObject objectForKey:kHMDrinkPhotoNoteKey];
     
     PFUser *user = [photoObject objectForKey:kHMDrinkPhotoUserKey];
-    NSString *name = [user objectForKey:kHMUserDisplayNameKey];
+    NSString *name = [user objectForKey:kHMUserFirstNameKey];
     
     NSString *labelText;
-    if (label.length > 30) {
-        labelText = [NSString stringWithFormat:@"%@... - %@", [label substringToIndex:30], name];
+    if (label.length > 35) {
+        labelText = [NSString stringWithFormat:@"%@... - %@", [label substringToIndex:35], name];
     } else {
         labelText = [NSString stringWithFormat:@"%@ - %@", label, name];
     }
@@ -215,8 +215,20 @@ int numPerPage = 6;
     isLoading = NO;
     page = 0;
     [self loadNextPage];
-    
     [self.collectionView reloadData];
+    
+    // refresh photo count cache
+    PFQuery *photoQuery = [HMUtility queryForPhotosOnRecipe:self.recipeObject cachePolicy:kPFCachePolicyNetworkOnly];
+    [photoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        @synchronized(self) {
+            if (error) {
+                return;
+            }
+            // cache photo count
+            [[HMCache sharedCache] setPhotoCountForRecipe:self.recipeObject count:number];
+        }
+    }];
+    
 }
 
 #pragma mark - HMCameraDelegate

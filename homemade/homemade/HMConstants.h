@@ -10,9 +10,9 @@
 
 
 // Global config
-#define kShadowRadius   0.4f
-#define kShadowOpacity  0.4f
-#define kShadowOffset   CGSizeMake(0.0f, 0.4f)
+#define kShadowRadius   1.2f
+#define kShadowOpacity  0.3f
+#define kShadowOffset   CGSizeMake(0.0f, 0.0f)
 
 #define kToolBarHeight  44.0f
 
@@ -21,8 +21,7 @@
 #define kMaximumGestureLength   100
 #define TabBarHeight 44
 #define TabBarWidth 180
-#define PageFlowViewWidth 250
-#define PageFlowViewHeight 360
+
 #define CameraButtonWidth 100
 #define CameraButtonHeight 47
 
