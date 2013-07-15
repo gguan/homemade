@@ -43,7 +43,6 @@ static CGFloat PageControlHeight = 40.0f;
     self.view.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
     NSLog(@"Step view frame: %@", NSStringFromCGRect(self.view.frame));
     
-
     //initialzie the pagedFlowView
     _pagedFlowView = [[PagedFlowView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - PageControlHeight - 10.0f)];
     _pagedFlowView.autoresizingMask= UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -79,7 +78,7 @@ static CGFloat PageControlHeight = 40.0f;
 - (CGSize)sizeForPageInFlowView:(PagedFlowView *)flowView;{
     CGFloat y = 0.0f;
     if ([[UIScreen mainScreen] bounds].size.height < 548.0f) {
-        y = -30.0f;
+        y = -68.0f;
     }
     return CGSizeMake(PageFlowViewWidth, PageFlowViewHeight + y);
 }
@@ -97,7 +96,11 @@ static CGFloat PageControlHeight = 40.0f;
 
 - (UIView *)flowView:(PagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     
-    HMStepsView *view = [[HMStepsView alloc] initWithFrame:CGRectMake(0, 0, PageFlowViewWidth, PageFlowViewHeight)];
+    CGFloat y = 0;
+    if ([[UIScreen mainScreen] bounds].size.height < 548) {
+        y = -68;
+    }
+    HMStepsView *view = [[HMStepsView alloc] initWithFrame:CGRectMake(0, 0, PageFlowViewWidth, PageFlowViewHeight + y)];
     NSDictionary *step = [self.items objectAtIndex:index];
     NSString *description = [step objectForKey:kHMRecipeStepsContentKey];
     PFFile *stepPhoto = [step objectForKey:kHMRecipeStepsPhotoKey];

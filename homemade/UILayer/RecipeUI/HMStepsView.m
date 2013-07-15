@@ -72,6 +72,11 @@
 
 - (void)setLayout {
     
+    CGFloat viewHeight = PageFlowViewHeight;
+    if ([[UIScreen mainScreen] bounds].size.height < 548) {
+        viewHeight -= 68;
+    }
+    
     CGFloat textHeight = [self heightForStepText:self.description];
     
     if (self.stepImageView.file) {
@@ -79,16 +84,16 @@
         CGFloat imageScaleHeight = self.stepImageView.image.size.height * PageFlowViewWidth / self.stepImageView.image.size.width;
         NSLog(@"Image size:%@ SH:%f", NSStringFromCGSize(self.stepImageView.image.size), imageScaleHeight);
         
-        CGFloat stepDescriptionY = PageFlowViewHeight - textHeight - 20;
+        CGFloat stepDescriptionY = viewHeight - textHeight - 20;
         if (imageScaleHeight < stepDescriptionY) {
             stepDescriptionY = imageScaleHeight + 20;
         }
         CGFloat stepDescriptionHeight = textHeight;
-        if (PageFlowViewHeight - imageScaleHeight - 20 > textHeight) {
-            stepDescriptionHeight = PageFlowViewHeight - imageScaleHeight - 20;
+        if (viewHeight - imageScaleHeight - 20 > textHeight) {
+            stepDescriptionHeight = viewHeight - imageScaleHeight - 20;
         }
         
-        CGFloat stepImageHeight = PageFlowViewHeight - textHeight - 40;
+        CGFloat stepImageHeight = viewHeight - textHeight - 40;
         if (stepImageHeight > imageScaleHeight) {
             stepImageHeight = imageScaleHeight;
         }
