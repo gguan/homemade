@@ -6,9 +6,7 @@
 //  Copyright (c) 2013 Guan Guan. All rights reserved.
 //
 
-#import "AwesomeMenu.h"
-#import "HMRecipeCellView.h"
 
-@interface HMRecipeFeedViewController : PFQueryTableViewController <AwesomeMenuDelegate>
+@interface HMRecipeFeedViewController : PFQueryTableViewController
 
 @end

@@ -11,22 +11,18 @@
 #import "HMRecipeViewController.h"
 #import "SVPullToRefresh.h"
 #import <QuartzCore/QuartzCore.h>
-#import "SLColorArt.h"
 #import "TMCache.h"
 #import "HMSearchViewController.h"
 #import "UIImageView+Addition.h"
-#import "HMCommentViewController.h"
 #import "UIViewController+MMDrawerController.h"
-#import "HMCreateViewController.h"
 #import "UIImage+ColorArt.h"
+#import "HMRecipeCellView.h"
 
 
 @interface HMRecipeFeedViewController ()
 @end
 
-@implementation HMRecipeFeedViewController {
-    AwesomeMenu *menu;
-}
+@implementation HMRecipeFeedViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -81,46 +77,6 @@
         }
     }
         
-    // add Path style menu
-    UIImage *itemImg1 = [UIImage imageNamed:@"searchMag.png"];
-    UIImage *itemImg2 = [UIImage imageNamed:@"WhatIMade.png"];
-    UIImage *itemImg3 = [UIImage imageNamed:@"notification.png"];
-    UIImage *itemImg4 = [UIImage imageNamed:@"account.png"];
-    
-    AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:itemImg1
-                                                           highlightedImage:itemImg1
-                                                               ContentImage:nil
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:itemImg2
-                                                           highlightedImage:itemImg2
-                                                               ContentImage:nil
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:itemImg3
-                                                           highlightedImage:itemImg3
-                                                               ContentImage:nil
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:itemImg4
-                                                           highlightedImage:itemImg4
-                                                               ContentImage:nil
-                                                    highlightedContentImage:nil];
-    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
-    menu = [[AwesomeMenu alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [HMUtility screenHeight]) menus:menus];
-    NSLog(@"%f %f %@", [HMUtility screenHeight], self.view.frame.size.height, NSStringFromCGRect(self.tableView.frame));
-	// customize menu
-	menu.rotateAngle = 0;
-	menu.menuWholeAngle = M_PI;
-	menu.timeOffset = 0.1f;
-	menu.farRadius = 61.0f;
-	menu.endRadius = 60.0f;
-	menu.nearRadius = 58.0f;
-    if (DEVICE_VERSION_7) {
-        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height + 20);
-    } else {
-        menu.startPoint = CGPointMake(160.0, self.view.frame.size.height - 44);
-    }
-    menu.delegate = self;
-    [self.view addSubview:menu];
-
     __weak HMRecipeFeedViewController *weakSelf = self;
     // add pull to refresh
     [self.tableView addPullToRefreshWithActionHandler:^{
@@ -318,40 +274,6 @@
     } // if object end
     
     return cell;
-}
-
-
-#pragma mark - AwesomeMenu
-- (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
-{
-    NSLog(@"Select the index : %d",idx);
-    if (idx == 0) {
-        HMCreateViewController *createViewController = [[HMCreateViewController alloc] initWithStyle:UITableViewStylePlain];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:createViewController];
-        
-        
-        [self presentViewController:navigationController animated:YES completion:^{
-            
-        }];
-    } else if (idx == 3) {
-        [(HMAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
-    }
-}
-- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
-    NSLog(@"Menu was closed!");
-}
-- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
-    NSLog(@"Menu is open!");
-}
-
-#pragma mark - Scroll delegate
-
-// Need keep menu button fix position on the view
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGRect fixedFrame = self.view.frame;
-    
-    fixedFrame.origin.y = scrollView.contentOffset.y;
-    menu.frame = fixedFrame;
 }
 
 #pragma mark - ()

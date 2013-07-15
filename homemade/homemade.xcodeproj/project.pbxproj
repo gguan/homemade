@@ -36,8 +36,6 @@
 		4637256C172408A3002357E0 /* SLColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372567172408A3002357E0 /* SLColorArt.m */; };
 		4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */ = {isa = PBXBuildFile; fileRef = 46372569172408A3002357E0 /* UIImage+ColorArt.m */; };
 		4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637256B172408A3002357E0 /* UIImage+Scale.m */; };
-		4637257417241C81002357E0 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257117241C81002357E0 /* AwesomeMenu.m */; };
-		4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4637257317241C81002357E0 /* AwesomeMenuItem.m */; };
 		46383EFF172E26AD0033345F /* HMUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 46383EFE172E26AD0033345F /* HMUtility.m */; };
 		46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A943751728E3F600DA959B /* HMRecipeViewController.m */; };
 		46409D4E176B1BD000E7494E /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D47176B1BD000E7494E /* MMDrawerBarButtonItem.m */; };
@@ -248,10 +246,6 @@
 		46372569172408A3002357E0 /* UIImage+ColorArt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorArt.m"; sourceTree = "<group>"; };
 		4637256A172408A3002357E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		4637256B172408A3002357E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
-		4637257017241C81002357E0 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
-		4637257117241C81002357E0 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
-		4637257217241C81002357E0 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
-		4637257317241C81002357E0 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		46383EFD172E26AD0033345F /* HMUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUtility.h; sourceTree = "<group>"; };
 		46383EFE172E26AD0033345F /* HMUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUtility.m; sourceTree = "<group>"; };
 		46409D46176B1BD000E7494E /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
@@ -579,18 +573,6 @@
 			path = Vendor/ColorArt;
 			sourceTree = "<group>";
 		};
-		4637256F17241C81002357E0 /* AwesomeMenu */ = {
-			isa = PBXGroup;
-			children = (
-				4637257017241C81002357E0 /* AwesomeMenu.h */,
-				4637257117241C81002357E0 /* AwesomeMenu.m */,
-				4637257217241C81002357E0 /* AwesomeMenuItem.h */,
-				4637257317241C81002357E0 /* AwesomeMenuItem.m */,
-			);
-			name = AwesomeMenu;
-			path = Vendor/AwesomeMenu;
-			sourceTree = "<group>";
-		};
 		46409D45176B1BD000E7494E /* MMDrawerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,7 +710,6 @@
 				4692020E175A18BB0096F522 /* UIImageCategories */,
 				468F9BA11739D884009CC05A /* PagedFlowView */,
 				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
-				4637256F17241C81002357E0 /* AwesomeMenu */,
 				46372565172408A3002357E0 /* ColorArt */,
 				4606A4CF1716C039009FDFFB /* Reachability */,
 				466F4F771701A61B0076AB3D /* EDColor */,
@@ -1318,8 +1299,6 @@
 				4637256C172408A3002357E0 /* SLColorArt.m in Sources */,
 				4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */,
 				4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */,
-				4637257417241C81002357E0 /* AwesomeMenu.m in Sources */,
-				4637257517241C81002357E0 /* AwesomeMenuItem.m in Sources */,
 				462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */,
 				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
