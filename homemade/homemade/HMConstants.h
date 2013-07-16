@@ -10,8 +10,8 @@
 
 
 // Global config
-#define kShadowRadius   1.2f
-#define kShadowOpacity  0.3f
+#define kShadowRadius   1.5f
+#define kShadowOpacity  0.5f
 #define kShadowOffset   CGSizeMake(0.0f, 0.0f)
 
 #define kToolBarHeight  44.0f

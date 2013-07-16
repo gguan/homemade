@@ -11,7 +11,7 @@
 #import "TTTTimeIntervalFormatter.h"
 #import "HMCommentCell.h"
 
-#define CommentTextWidth 200
+#define CommentTextWidth 250
 #define CommentTextFontSize 13.0f
 
 @interface HMCommentViewController () {
@@ -69,23 +69,54 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
+    NSString *title;
+    if ([self.type isEqualToString:kHMCommentTypeRecipe]) {
+        title = [NSString stringWithFormat:@"%@", [self.object objectForKey:kHMRecipeTitleKey]];
+    } else {
+        PFUser *user = [self.object objectForKey:kHMDrinkPhotoUserKey];
+        title = [NSString stringWithFormat:@"Drink by %@", [user objectForKey:kHMUserFirstNameKey]];
+    }
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIColor whiteColor],UITextAttributeTextColor,
+                                                          [UIColor colorWithWhite:0.0f alpha:0.750f],
+                                                          UITextAttributeTextShadowColor,
+                                                          [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
+                                                          UITextAttributeTextShadowOffset,
+                                                          [UIFont fontWithName:@"Helvetica-Oblique" size:15.0f], UITextAttributeFont,
+                                                          nil]];
+    [self.navigationItem setTitle:title];
+    
+    
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     // Custom initialization
-    [self.tableView setSeparatorColor:[UIColor clearColor]];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
+//    [self.tableView setSeparatorColor:[UIColor clearColor]];
     
     // photo as table header
-    self.photoView = [[PFImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 326)];
+    
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0, 325, 320, 1)];
+    [divider setBackgroundColor:[UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f]];
+    [headerView addSubview:divider];
+    self.photoView = [[PFImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, 310.0f)];
+    self.photoView.layer.shadowRadius = kShadowRadius;
+    self.photoView.layer.shadowOpacity = kShadowOpacity;
+    self.photoView.layer.shadowOffset = kShadowOffset;
+    self.photoView.layer.cornerRadius = 3.0f;
+    self.photoView.layer.masksToBounds = YES;
+
     if ([self.type isEqualToString:kHMCommentTypeRecipe]) {
         [self.photoView setFile:[self.object objectForKey:kHMRecipePhotoKey]];
     } else {
         [self.photoView setFile:[self.object objectForKey:kHMDrinkPhotoPictureKey]];
     }
     [self.photoView loadInBackground];
-    self.tableView.tableHeaderView = self.photoView;
+    [headerView addSubview:self.photoView];
+    self.tableView.tableHeaderView = headerView;
     
     // empty table footer
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 51.0f)];
+    [self.tableView.tableFooterView setBackgroundColor:[UIColor whiteColor]];
     
     // comment tool bar
     CGRect commentFrame = [HMCommentBar rectForView:self.view.frame navBarHidden:self.navigationController.isNavigationBarHidden];
@@ -101,12 +132,12 @@
 
     [self.view addSubview:self.commentTextField];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
@@ -172,11 +203,11 @@
         [cell.avatar setFile:[user objectForKey:kHMUserProfilePicSmallKey]];
         [cell.avatar loadInBackground];
         
-        NSString *content = [NSString stringWithFormat:@"%@ : %@", [user objectForKey:kHMUserDisplayNameKey], text];
+        NSString *content = [NSString stringWithFormat:@"%@ : %@", [user objectForKey:kHMUserFirstNameKey], text];
         CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
-        [cell.commentLabel setFrame:CGRectMake( 45.0f, 5.0f, CommentTextWidth, height)];
+        [cell.commentLabel setFrame:CGRectMake( 55.0f, 7.0f, CommentTextWidth, height)];
         [cell.commentLabel setText:content afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-            NSRange boldRange = [[mutableAttributedString string] rangeOfString:[user objectForKey:kHMUserDisplayNameKey] options:NSLiteralSearch];
+            NSRange boldRange = [[mutableAttributedString string] rangeOfString:[user objectForKey:kHMUserFirstNameKey] options:NSLiteralSearch];
             // Core Text APIs use C functions without a direct bridge to UIFont. See Apple's "Core Text Programming Guide" to learn how to configure string attributes.
             UIFont *boldSystemFont = [UIFont boldSystemFontOfSize:13.0f];
             CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)boldSystemFont.fontName, boldSystemFont.pointSize, NULL);
@@ -187,7 +218,7 @@
             
             return mutableAttributedString;
         }];
-
+        [cell.commentLabel sizeToFit];
     }];
     
     
@@ -204,14 +235,14 @@
    
     NSString *content = [NSString stringWithFormat:@"%@: %@", [user objectForKey:kHMUserDisplayNameKey], [object objectForKey:kHMCommentContentKey]];
     CGFloat height = [HMUtility textHeight:content fontSize:CommentTextFontSize width:CommentTextWidth];
-    if (height + 10.0f > 40.0f) {
-        return height + 10.0f;
+    if (height + 25.0f > 50.0f) {
+        return height + 25.0f;
     } else {
-        return 40.0f;
+        return 50.0f;
     }
 }
 
-- (void)keyboardDidShow:(NSNotification *)note {
+- (void)keyboardWillShow:(NSNotification *)note {
     if (isKeyboardShown) {
         return;
     }
@@ -224,12 +255,11 @@
     [UIView animateWithDuration:animationDuration animations:^{
         // When keyboard popup, the tableview size decrease!
         CGRect viewFrame = self.tableView.frame;
-        viewFrame.size.height -= keyboardFrameEnd.size.height;
+        viewFrame.origin.y -= keyboardFrameEnd.size.height;
         [self.tableView setFrame:viewFrame];
-        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height-51-keyboardFrameEnd.size.height) animated:YES];
     } completion:^(BOOL finished) {
         if (finished) {
-            
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height-self.tableView.frame.size.height) animated:YES];
         }
     }];
     isAnimating = NO;
@@ -242,14 +272,10 @@
     CGRect keyboardFrameEnd = [[note.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     double animationDuration = [[note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 
-    CGSize scrollViewContentSize = self.tableView.bounds.size;
-    scrollViewContentSize.height -= keyboardFrameEnd.size.height;
     [UIView animateWithDuration:animationDuration animations:^{
-        CGPoint currentOffset = self.tableView.contentOffset;
         CGRect viewFrame = self.tableView.frame;
-        viewFrame.size.height += keyboardFrameEnd.size.height;
+        viewFrame.origin.y += keyboardFrameEnd.size.height;
         [self.tableView setFrame:viewFrame];
-        [self.tableView setContentOffset:CGPointMake(0, currentOffset.y-keyboardFrameEnd.size.height) animated:NO];
     }];
     isKeyboardShown = NO;
 }
@@ -332,7 +358,7 @@
                 [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.objects.count - 1) inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
             }
             [self loadObjects];
-            
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height-self.tableView.frame.size.height) animated:YES];
         } else {
             NSLog(@"Comment failed to save: %@", error);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your comment" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];

@@ -45,8 +45,17 @@
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                     [UIColor whiteColor],UITextAttributeTextColor,
+                                                                     [UIColor colorWithWhite:0.0f alpha:0.750f],
+                                                                     UITextAttributeTextShadowColor,
+                                                                     [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
+                                                                     UITextAttributeTextShadowOffset,
+                                                                     [UIFont fontWithName:@"Helvetica-BoldOblique" size:17.0f], UITextAttributeFont,
+                                                                     nil]];
+
 }
 
 - (void)viewDidLoad
@@ -98,9 +107,6 @@
     }];
 }
 
-- (void) dealloc {
-    NSLog(@"FeedView dealloc");
-}
 
 #pragma mark - UITableViewDataSource
 
