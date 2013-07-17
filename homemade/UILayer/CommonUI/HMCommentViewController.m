@@ -99,6 +99,7 @@
     [divider setBackgroundColor:[UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f]];
     [headerView addSubview:divider];
     self.photoView = [[PFImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, 310.0f)];
+    self.photoView.contentMode = UIViewContentModeScaleAspectFill;
     self.photoView.layer.shadowRadius = kShadowRadius;
     self.photoView.layer.shadowOpacity = kShadowOpacity;
     self.photoView.layer.shadowOffset = kShadowOffset;
@@ -259,7 +260,9 @@
         [self.tableView setFrame:viewFrame];
     } completion:^(BOOL finished) {
         if (finished) {
-            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height-self.tableView.frame.size.height) animated:YES];
+            if (self.tableView.contentSize.height > self.tableView.frame.size.height) {
+                [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height-self.tableView.frame.size.height) animated:YES];
+            }
         }
     }];
     isAnimating = NO;
