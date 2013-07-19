@@ -9,6 +9,7 @@
 #import "HMSearchViewController.h"
 #import "SVPullToRefresh.h"
 #import "HMSearchCell.h"
+#import "HMRecipeViewController.h"
 
 #define QueryLimit 10
 
@@ -27,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationItem setTitle:@"Search Drinks"];
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     self.navigationItem.leftBarButtonItem = leftItem;
@@ -143,13 +146,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:[self.searchResults objectAtIndex:indexPath.row]];
+    [[self navigationController] pushViewController:recipeViewController animated:YES];
 }
 
 - (void)filterResults:(NSString *)searchText {

@@ -7,9 +7,11 @@
 //
 
 #import "HMSaveViewController.h"
+#import "HMSaveViewCell.h"
 #import "UIViewController+MMDrawerController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "HMSearchCell.h"
+#import "HMRecipeViewController.h"
 
 @interface HMSaveViewController ()
 
@@ -42,7 +44,7 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"DRINK+"];
+    [self.navigationItem setTitle:@"Favorites"];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     [self.navigationItem setLeftBarButtonItem:leftItem];    
 }
@@ -96,24 +98,26 @@
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)save {
     
     static NSString *CellIdentifier = @"SaveCell";
-    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HMSaveViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[HMSaveViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
     PFObject *drink = [save objectForKey:kHMSaveRecipeKey];
     NSString *title = [drink objectForKey:kHMRecipeTitleKey];
     NSString *description = [drink objectForKey:kHMRecipeOverviewKey];
     PFFile *image = [drink objectForKey:kHMRecipePhotoKey];
-    cell.textLabel.text = title;
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.imageView.clipsToBounds = YES;
-    [cell.imageView setFile:image];
-    [cell.imageView loadInBackground];
-    cell.detailTextLabel.text = description;
-    
+    cell.nameLabel.text = title;
+    [cell.photoView setFile:image];
+    [cell.photoView loadInBackground];
+    cell.descriptionLabel.text = description;
+
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 106.0f;
 }
 
 /*
@@ -143,13 +147,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    PFObject *drink = [[self.objects objectAtIndex:indexPath.row] objectForKey:kHMSaveRecipeKey];
+    HMRecipeViewController *recipeViewController = [[HMRecipeViewController alloc] initWithRecipe:drink];
+    [[self navigationController] pushViewController:recipeViewController animated:YES];
 }
 
 #pragma mark -

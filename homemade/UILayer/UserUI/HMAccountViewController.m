@@ -91,8 +91,6 @@ const NSInteger QueryLimit = 2;
         _avatar.layer.masksToBounds = YES;
         [self.tableView.tableHeaderView addSubview:_avatar];
         
-        
-        
         [self.view addSubview:_coverScroller];
         [self.view addSubview:_tableView];
     }

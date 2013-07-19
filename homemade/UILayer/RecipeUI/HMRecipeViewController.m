@@ -224,7 +224,7 @@ static int ActionViewHeight = 80.0f;
 }
 
 - (void)leftDrawerButtonClicked {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

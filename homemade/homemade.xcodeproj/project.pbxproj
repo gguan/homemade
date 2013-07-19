@@ -103,6 +103,7 @@
 		466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC61704392B0076AB3D /* HMIngredient.m */; };
 		466F4FCA170448F00076AB3D /* HMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC9170448F00076AB3D /* HMStep.m */; };
 		46783EF2176AD49D0065B5BE /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028B175C98280096F522 /* CustomTabBar.m */; };
+		468D38DF1799294200F8A403 /* HMSaveViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 468D38DE179928DD00F8A403 /* HMSaveViewCell.m */; };
 		468F9BA41739D884009CC05A /* PagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 468F9BA31739D884009CC05A /* PagedFlowView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		469201FA1759E73F0096F522 /* HMProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469201F91759E73F0096F522 /* HMProfileImageView.m */; };
 		469201FD1759E7760096F522 /* HMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469201FC1759E7760096F522 /* HMImageView.m */; };
@@ -345,6 +346,8 @@
 		466F4FC61704392B0076AB3D /* HMIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMIngredient.m; path = BaseLayer/DataModel/HMIngredient.m; sourceTree = "<group>"; };
 		466F4FC8170448EF0076AB3D /* HMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMStep.h; path = BaseLayer/DataModel/HMStep.h; sourceTree = "<group>"; };
 		466F4FC9170448F00076AB3D /* HMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMStep.m; path = BaseLayer/DataModel/HMStep.m; sourceTree = "<group>"; };
+		468D38DD179928DD00F8A403 /* HMSaveViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSaveViewCell.h; path = UILayer/SaveUI/HMSaveViewCell.h; sourceTree = "<group>"; };
+		468D38DE179928DD00F8A403 /* HMSaveViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMSaveViewCell.m; path = UILayer/SaveUI/HMSaveViewCell.m; sourceTree = "<group>"; };
 		468F9BA21739D884009CC05A /* PagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagedFlowView.h; sourceTree = "<group>"; };
 		468F9BA31739D884009CC05A /* PagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagedFlowView.m; sourceTree = "<group>"; };
 		469201F81759E73F0096F522 /* HMProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMProfileImageView.h; path = UILayer/CommonUI/HMProfileImageView.h; sourceTree = "<group>"; };
@@ -868,6 +871,8 @@
 			children = (
 				4645D39816F68F4C00C38D39 /* HMSaveViewController.h */,
 				4645D39916F68F4C00C38D39 /* HMSaveViewController.m */,
+				468D38DD179928DD00F8A403 /* HMSaveViewCell.h */,
+				468D38DE179928DD00F8A403 /* HMSaveViewCell.m */,
 			);
 			name = SaveUI;
 			sourceTree = "<group>";
@@ -1245,6 +1250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468D38DF1799294200F8A403 /* HMSaveViewCell.m in Sources */,
 				46BFA531178D67410024F61C /* HMRecipeActionView.m in Sources */,
 				46BFA527178640E30024F61C /* HMDrinkPhotoViewCell.m in Sources */,
 				46A49548178637FB008B6993 /* HMDrinkPhotoViewController.m in Sources */,
