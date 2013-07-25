@@ -107,8 +107,13 @@ const NSInteger QueryLimit = 2;
     [self.navigationItem setTitle:title];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     [self.navigationItem setLeftBarButtonItem:leftItem];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
-    [self.navigationItem setRightBarButtonItem:rightItem];
+    
+    
+    if ([PFUser currentUser] == self.user) {
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
+        [self.navigationItem setRightBarButtonItem:rightItem];
+    }
+   
     
     isLoading = NO;
     currentPage = 0;

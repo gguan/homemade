@@ -39,20 +39,24 @@
     
     [self.tableView setSeparatorColor:[UIColor blackColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
-    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
-    
-    
-    
-    [header setText:@"Drink+"];
-    [header setTextAlignment:NSTextAlignmentCenter];
+   
+//    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+//    [header setText:@"Drink+"];
+//    [header setTextAlignment:NSTextAlignmentCenter];
+//    if (DEVICE_VERSION_7) {
+//        [header setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
+//    } else {
+//        [header setFont:[UIFont systemFontOfSize:15.0f]];
+//    }
+//    
+//    header.autoresizingMask = UIViewAutoresizingNone;
+//    self.tableView.tableHeaderView = header;
     if (DEVICE_VERSION_7) {
-        [header setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
-    } else {
-        [header setFont:[UIFont systemFontOfSize:15.0f]];
+        UIEdgeInsets insets = UIEdgeInsetsMake(64.0f, 0, 100.0f, 0);
+        self.tableView.contentInset = insets;
     }
-    
-    header.autoresizingMask = UIViewAutoresizingNone;
-    self.tableView.tableHeaderView = header;
+    UIView *footer = [[UIView alloc] init];
+    self.tableView.tableFooterView = footer;
 }
 
 - (void)didReceiveMemoryWarning
