@@ -15,8 +15,8 @@
 #import "HMUserRecipeCell.h"
 #import "TTTTimeIntervalFormatter.h"
 
-const CGFloat AvatarSize = 80.0f;
-const CGFloat WindowHeight = 220.0f;
+const CGFloat AvatarSize = 100.0f;
+const CGFloat WindowHeight = 180.0f;
 const CGFloat CoverHeight = 320.0f;
 
 const NSInteger QueryLimit = 2;
@@ -52,16 +52,40 @@ const NSInteger QueryLimit = 2;
         _coverScroller.showsHorizontalScrollIndicator = NO;
         _coverScroller.showsVerticalScrollIndicator = NO;
         
-        _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
         if (DEVICE_VERSION_7) {
             _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
         } else {
             _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320 - 64)];
         }
         _coverView.clipsToBounds = YES;
-        _coverView.backgroundColor = [UIColor whiteColor];
+        _coverView.contentMode = UIViewContentModeScaleAspectFill;
         [_coverScroller addSubview:_coverView];
-                
+        [self.view addSubview:_coverScroller];
+        
+        
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, WindowHeight)];
+//        [headerView setBackgroundColor:[UIColor clearColor]];
+//        headerView.opaque = NO;
+        UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight-AvatarSize, self.view.frame.size.width, AvatarSize)];
+//        whiteView.backgroundColor = [UIColor redColor];
+        [headerView addSubview:whiteView];
+        // add a upload button
+        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [coverButton setBackgroundColor:[UIColor clearColor]];
+        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
+        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
+//        [headerView addSubview:coverButton];
+        
+        
+        // avatar
+        _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, WindowHeight-AvatarSize/2, AvatarSize, AvatarSize)];
+//        _avatar.layer.cornerRadius = AvatarSize / 2;
+        _avatar.layer.borderWidth = 2.0f;
+        _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
+        _avatar.layer.masksToBounds = YES;
+
+        [headerView addSubview:_avatar];
+        
         // table view
         _tableView = [[UITableView alloc] init];
         _tableView.backgroundColor              = [UIColor clearColor];
@@ -69,29 +93,8 @@ const NSInteger QueryLimit = 2;
         _tableView.delegate                     = self;
         _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.tableHeaderView = headerView;
         
-        
-        // add a upload button
-        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [coverButton setBackgroundColor:[UIColor clearColor]];
-        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
-        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
-        _tableView.tableHeaderView = coverButton;
-        
-        // add a border
-        UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.tableHeaderView.frame.size.height-1, _tableView.bounds.size.width, 1.0f)];
-        [border setBackgroundColor:[UIColor blackColor]];
-        [_tableView.tableHeaderView addSubview:border];
-        
-        // avatar
-        _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, 125.0f, AvatarSize, AvatarSize)];
-        _avatar.layer.cornerRadius = AvatarSize / 2;
-        _avatar.layer.borderWidth = 2.0f;
-        _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
-        _avatar.layer.masksToBounds = YES;
-        [self.tableView.tableHeaderView addSubview:_avatar];
-        
-        [self.view addSubview:_coverScroller];
         [self.view addSubview:_tableView];
     }
     return self;
