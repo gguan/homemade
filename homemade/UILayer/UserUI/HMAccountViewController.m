@@ -19,15 +19,20 @@ const CGFloat AvatarSize = 100.0f;
 const CGFloat WindowHeight = 180.0f;
 const CGFloat CoverHeight = 320.0f;
 
-const NSInteger QueryLimit = 2;
+const NSInteger QueryLimit = 5;
 
 @interface HMAccountViewController () {
     BOOL isLoading;
     NSInteger currentPage;
 }
 
+@property (nonatomic, strong) HMCameraViewController *photoPicker;
+
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) PFImageView *coverView;
 @property (nonatomic, strong) PFImageView *avatar;
+
+@property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSMutableArray *objects;
 @property (nonatomic, strong) TTTTimeIntervalFormatter *timeIntervalFormatter;
 @end
@@ -45,57 +50,7 @@ const NSInteger QueryLimit = 2;
         // photo picker
         self.photoPicker = [[HMCameraViewController alloc] init];
         self.photoPicker.delegate = self;
-        self.photoPicker.container = self;
-        
-        _coverScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
-        _coverScroller.backgroundColor = [UIColor whiteColor];
-        _coverScroller.showsHorizontalScrollIndicator = NO;
-        _coverScroller.showsVerticalScrollIndicator = NO;
-        
-        if (DEVICE_VERSION_7) {
-            _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
-        } else {
-            _coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320 - 64)];
-        }
-        _coverView.clipsToBounds = YES;
-        _coverView.contentMode = UIViewContentModeScaleAspectFill;
-        [_coverScroller addSubview:_coverView];
-        [self.view addSubview:_coverScroller];
-        
-        
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, WindowHeight)];
-//        [headerView setBackgroundColor:[UIColor clearColor]];
-//        headerView.opaque = NO;
-        UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight-AvatarSize, self.view.frame.size.width, AvatarSize)];
-//        whiteView.backgroundColor = [UIColor redColor];
-        [headerView addSubview:whiteView];
-        // add a upload button
-        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [coverButton setBackgroundColor:[UIColor clearColor]];
-        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
-        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
-//        [headerView addSubview:coverButton];
-        
-        
-        // avatar
-        _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(225.0f, WindowHeight-AvatarSize/2, AvatarSize, AvatarSize)];
-//        _avatar.layer.cornerRadius = AvatarSize / 2;
-        _avatar.layer.borderWidth = 2.0f;
-        _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
-        _avatar.layer.masksToBounds = YES;
-
-        [headerView addSubview:_avatar];
-        
-        // table view
-        _tableView = [[UITableView alloc] init];
-        _tableView.backgroundColor              = [UIColor clearColor];
-        _tableView.dataSource                   = self;
-        _tableView.delegate                     = self;
-        _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.tableHeaderView = headerView;
-        
-        [self.view addSubview:_tableView];
+        self.photoPicker.container = self;        
     }
     return self;
 }
@@ -121,23 +76,79 @@ const NSInteger QueryLimit = 2;
     isLoading = NO;
     currentPage = 0;
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    if (DEVICE_VERSION_7) {
+        self.coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, WindowHeight - CoverHeight, 320, CoverHeight)];
+    } else {
+        self.coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, WindowHeight - CoverHeight + 64, 320, CoverHeight - 64)];
+    }
+    [self.view addSubview:self.coverView];
+    self.coverView.backgroundColor = [UIColor whiteColor];
+    self.coverView.clipsToBounds = YES;
+    self.coverView.contentMode = UIViewContentModeScaleAspectFill;
+    
     // Cover Photo
     [self.coverView setFile: [self.user objectForKey:kHMUserCoverPhotoKey]];
     [self.coverView loadInBackground];
     
-    // Avatar
+    
+    // table view
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    _tableView.backgroundColor              = [UIColor clearColor];
+    _tableView.dataSource                   = self;
+    _tableView.delegate                     = self;
+    _tableView.separatorStyle               = UITableViewCellSeparatorStyleNone;
+    _tableView.showsVerticalScrollIndicator = NO;
+
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, WindowHeight + AvatarSize/2)];
+    headerView.backgroundColor = [UIColor clearColor];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight, self.view.frame.size.width, AvatarSize/2)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    // avatar
+    _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(205.0f, WindowHeight-AvatarSize/2, AvatarSize, AvatarSize)];
+    _avatar.layer.borderWidth = 2.0f;
+    _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
+//    _avatar.layer.masksToBounds = YES;
+//    _avatar.layer.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.45f].CGColor;
+//    _avatar.layer.shadowOffset = CGSizeMake(0,0.3);
     [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
     [self.avatar loadInBackground];
-    
-
-    // Name label
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 165, 200, 30)];
+    // name label
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, WindowHeight-30, 200, 30)];
+    nameLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.45f];
+    nameLabel.shadowOffset = CGSizeMake(0,0.3);
     [nameLabel setText:[self.user objectForKey:kHMUserDisplayNameKey]];
-    [nameLabel setFont:[HMUtility appFontOfSize:22.0f]];
+    [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:22.0f]];
     nameLabel.textAlignment = NSTextAlignmentRight;
     [nameLabel setTextColor:[UIColor whiteColor]];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
-    [self.tableView.tableHeaderView addSubview:nameLabel];
+    
+
+    [headerView addSubview:whiteView];
+    [headerView addSubview:_avatar];
+    [headerView addSubview:nameLabel];
+    
+    
+    
+    // add a upload button
+    //        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //        [coverButton setBackgroundColor:[UIColor clearColor]];
+    //        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
+    //        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
+    //        [headerView addSubview:coverButton];
+    
+    
+    
+    self.tableView.tableHeaderView = headerView;
+    
+    [self.view addSubview:self.tableView];
+
+    
+    
+    
+        
     
     // Infinite scroll and pagination
     __weak HMAccountViewController *weakSelf = self;
@@ -163,26 +174,37 @@ const NSInteger QueryLimit = 2;
 
 - (void)updateOffsets {
     CGFloat yOffset   = _tableView.contentOffset.y;
-    CGFloat threshold = CoverHeight - WindowHeight;
+    CGFloat threshold = WindowHeight - CoverHeight;
     
-    if (yOffset > -threshold && yOffset < 0) {
-        _coverScroller.contentOffset = CGPointMake(0.0, floorf(yOffset / 2.0));
-    } else if (yOffset < 0) {
-        _coverScroller.contentOffset = CGPointMake(0.0, yOffset + floorf(threshold / 2.0));
-    } else {
-        _coverScroller.contentOffset = CGPointMake(0.0, yOffset);
+//    if (yOffset > -threshold && yOffset < 0) {
+//        self.coverView.frame = CGRectMake(0, floorf(yOffset / 2.0), 320, 320);
+////        _coverScroller.contentOffset = CGPointMake(0.0, floorf(yOffset / 2.0));
+//    } else if (yOffset < 0) {
+//        self.coverView.frame = CGRectMake(0, yOffset + floorf(threshold / 2.0), 320, 320);
+////        _coverScroller.contentOffset = CGPointMake(0.0, yOffset + floorf(threshold / 2.0));
+//    } else {
+//        self.coverView.frame = CGRectMake(0, yOffset, 320, 320);
+////        _coverScroller.contentOffset = CGPointMake(0.0, yOffset);
+//    }
+    NSLog(@"%f, %f", yOffset, threshold);
+    if (yOffset <= threshold) {
+        [self.tableView setContentOffset:CGPointMake(0, threshold)];
     }
+    if (yOffset <= 0 && yOffset >= threshold) {
+        self.coverView.frame = CGRectMake(0, (threshold - yOffset) / 2, 320, 320);
+    } else if (yOffset >= 0) {
+        self.coverView.frame = CGRectMake(0, threshold / 2 - yOffset, 320, 320);
+    }
+    
 }
 
 #pragma mark - View Layout
 - (void)layoutImage {
-    CGFloat imageWidth   = _coverScroller.frame.size.width;
+    CGFloat imageWidth   = _coverView.frame.size.width;
     CGFloat imageYOffset = floorf((WindowHeight  - CoverHeight) / 2.0);
     CGFloat imageXOffset = 0.0;
     
     _coverView.frame  = CGRectMake(imageXOffset, imageYOffset, imageWidth, CoverHeight);
-    _coverScroller.contentSize   = CGSizeMake(imageWidth, self.view.bounds.size.height);
-    _coverScroller.contentOffset = CGPointMake(0.0, 0.0);
 }
 
 #pragma mark - View lifecycle
@@ -192,7 +214,6 @@ const NSInteger QueryLimit = 2;
     
     CGRect bounds = self.view.bounds;
     
-    _coverScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
     _tableView.backgroundView   = nil;
     _tableView.frame            = bounds;
     

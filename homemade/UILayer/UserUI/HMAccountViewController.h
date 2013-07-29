@@ -11,12 +11,6 @@
 
 @interface HMAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HMCameraDelegate>
 
-@property (nonatomic, strong) HMCameraViewController *photoPicker;
-
-@property (nonatomic, strong) UIScrollView *coverScroller;
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) PFUser *user;
-
 - (id)initWithUser:(PFUser *)user;
 
 @end

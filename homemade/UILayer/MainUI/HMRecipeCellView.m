@@ -55,8 +55,8 @@
         [self.saveIcon setBackgroundColor:[UIColor clearColor]];
         [self.saveIcon setAdjustsImageWhenHighlighted:NO];
         [self.saveIcon setAdjustsImageWhenDisabled:NO];
-        [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"heart.png"] forState:UIControlStateNormal];
-        [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"heart-active.png"] forState:UIControlStateSelected];
+        [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"icn20-heart.png"] forState:UIControlStateNormal];
+        [self.saveIcon setBackgroundImage:[UIImage imageNamed:@"icn20-heart-active.png"] forState:UIControlStateSelected];
         [self.backCover addSubview:self.saveIcon];
 
         self.saveCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
@@ -69,7 +69,7 @@
         [self.cameraIcon setBackgroundColor:[UIColor clearColor]];
         [self.cameraIcon setAdjustsImageWhenHighlighted:NO];
         [self.cameraIcon setAdjustsImageWhenDisabled:NO];
-        [self.cameraIcon setBackgroundImage:[UIImage imageNamed:@"icn-camera.png"] forState:UIControlStateNormal];
+        [self.cameraIcon setBackgroundImage:[UIImage imageNamed:@"icn20-camera.png"] forState:UIControlStateNormal];
         [self.backCover addSubview:self.cameraIcon];
         
         self.photoCount = [[UILabel alloc] initWithFrame:CGRectMake(23.0f, 0.0f, 40.0f, 12.0f)];
