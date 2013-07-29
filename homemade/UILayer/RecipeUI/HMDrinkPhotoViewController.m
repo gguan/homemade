@@ -12,6 +12,7 @@
 #import "UIImage+ColorImage.h"
 #import "HMCommentViewController.h"
 #import "HMEditPhotoViewController.h"
+#import "HMDrinkPhotoViewHeader.h"
 #import <QuartzCore/QuartzCore.h>
 
 static NSString *cellIdentifier = @"DrinkPhotoCollectionCell";
@@ -53,6 +54,9 @@ int numPerPage = 6;
     
     [self.collectionView registerClass:[HMDrinkPhotoViewCell class]
             forCellWithReuseIdentifier:cellIdentifier];
+    [self.collectionView registerClass:[HMDrinkPhotoViewHeader class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:headerViewIdentifier];
     
     self.collectionView.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
     if (DEVICE_VERSION_7) {
@@ -140,32 +144,12 @@ int numPerPage = 6;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if (kind == UICollectionElementKindSectionHeader) {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         
-        UICollectionReusableView *headerView = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        headerView.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
-        
-        UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 49.0f, 320, 1.0f)];
-        border.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
-        
-        UILabel *header = [[UILabel alloc]initWithFrame:CGRectMake(135, 10, 150, 30)];
-        header.backgroundColor = [UIColor clearColor];
-        header.font = [UIFont fontWithName:@"Helvetica-Oblique" size:15];
-        header.textColor = [UIColor colorWithRed:69.0f/255.0f green:78.0f/255.0f blue:81.0f/255.0f alpha:1.0f];
-        header.text = @"Upload a photo";
-        
-        UIButton *cameraButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 10, 30, 30)];
-        cameraButton.layer.cornerRadius = 15.0f;
-        cameraButton.layer.borderWidth = 1.5f;
-        cameraButton.layer.borderColor = [UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f].CGColor;
-        UIImageView *cameraImg = [[UIImageView alloc] initWithFrame:CGRectMake(7, 6, 16, 16)];
-        [cameraImg setImage:[[UIImage imageNamed:@"icn40-camera.png"] changeImageToColor:[UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f]]];
-        [cameraButton addSubview:cameraImg];
-        [cameraButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
-        
-        [headerView addSubview:border];
-        [headerView addSubview:header];
-        [headerView addSubview:cameraButton];
+        HMDrinkPhotoViewHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerViewIdentifier forIndexPath:indexPath];
+        [headerView setFrame:CGRectMake(0, 0, 320, 50)];
+        [headerView.cameraButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
+
         return headerView;
     }
         
