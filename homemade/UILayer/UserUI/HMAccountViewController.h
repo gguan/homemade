@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HMCameraViewController.h"
 
-@interface HMAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HMCameraDelegate>
+@interface HMAccountViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, HMCameraDelegate>
 
 - (id)initWithUser:(PFUser *)user;
 

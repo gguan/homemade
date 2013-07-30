@@ -23,6 +23,7 @@ const NSInteger QueryLimit = 5;
 
 @interface HMAccountViewController () {
     BOOL isLoading;
+    BOOL isFollowing;
     NSInteger currentPage;
 }
 
@@ -67,12 +68,15 @@ const NSInteger QueryLimit = 5;
     [self.navigationItem setLeftBarButtonItem:leftItem];
     
     
-    if ([PFUser currentUser] == self.user) {
+    if ([PFUser currentUser] != self.user) {
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
+        [self.navigationItem setRightBarButtonItem:rightItem];
+    } else {
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
         [self.navigationItem setRightBarButtonItem:rightItem];
     }
    
-    
+    isFollowing = NO;
     isLoading = NO;
     currentPage = 0;
     
@@ -110,9 +114,9 @@ const NSInteger QueryLimit = 5;
     _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(205.0f, WindowHeight-AvatarSize/2, AvatarSize, AvatarSize)];
     _avatar.layer.borderWidth = 2.0f;
     _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
-//    _avatar.layer.masksToBounds = YES;
-//    _avatar.layer.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.45f].CGColor;
-//    _avatar.layer.shadowOffset = CGSizeMake(0,0.3);
+    _avatar.clipsToBounds = NO;
+    _avatar.layer.shadowColor = [UIColor blackColor].CGColor;
+    _avatar.layer.shadowOffset = CGSizeMake(3,3);
     [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
     [self.avatar loadInBackground];
     // name label
@@ -133,11 +137,11 @@ const NSInteger QueryLimit = 5;
     
     
     // add a upload button
-    //        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //        [coverButton setBackgroundColor:[UIColor clearColor]];
-    //        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight)];
-    //        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
-    //        [headerView addSubview:coverButton];
+    UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [coverButton setBackgroundColor:[UIColor clearColor]];
+    [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight-AvatarSize/2)];
+    [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:coverButton];
     
     
     
@@ -169,6 +173,22 @@ const NSInteger QueryLimit = 5;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)showActionSheet {
+    NSString *buttonLabel = [NSString stringWithFormat:@"Follow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]];
+    if (isFollowing) {
+        buttonLabel = [NSString stringWithFormat:@"Unfollow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]];
+    }
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Photo", nil];
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+    }
+}
+
 
 #pragma mark - Parallax effect
 
