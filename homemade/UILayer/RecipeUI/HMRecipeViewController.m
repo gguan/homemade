@@ -109,6 +109,11 @@ static int ActionViewHeight = 80.0f;
     
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self closePanel];
+}
+
 - (void)closePanel {
     if (isExpanded) {
         CGRect bounds = self.view.bounds;
