@@ -15,5 +15,6 @@
 
 - (id)initWithRecipe:(PFObject*)recipeObject andUIColor:(UIColor*)color;
 - (id)initWithRecipe:(PFObject*)recipeObject;
+- (void)closePanel;
 
 @end

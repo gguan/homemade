@@ -88,7 +88,7 @@ int numPerPage = 6;
     // camera config
     self.photoPicker = [[HMCameraViewController alloc] init];
     self.photoPicker.delegate = self;
-    self.photoPicker.container = self;
+    self.photoPicker.container = self.recipeViewController;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidPublishPhoto:) name:HMCameraControllerDidFinishEditingPhotoNotification object:nil];
     
@@ -236,6 +236,7 @@ int numPerPage = 6;
 
 #pragma mark -
 - (void)takePicture {
+    [self.recipeViewController closePanel];
     if (self.photoPicker.delegate && [self.photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
         [self.photoPicker.delegate cameraViewControllerShowPicker:self.photoPicker];
     }

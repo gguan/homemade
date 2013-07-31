@@ -109,9 +109,13 @@ static int ActionViewHeight = 80.0f;
     
 }
 
-// TODO
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)closePanel {
+    if (isExpanded) {
+        CGRect bounds = self.view.bounds;
+        bounds.origin.y += ActionViewHeight;
+        [self.view setBounds:bounds];
+        isExpanded = NO;
+    }
 }
 
 
@@ -169,7 +173,6 @@ static int ActionViewHeight = 80.0f;
 - (void)actionButtonClicked
 {
     CGRect bounds = self.view.bounds;
-    [self.view setBounds:bounds];
     if (isExpanded) {
         bounds.origin.y += ActionViewHeight;
         isExpanded = NO;
