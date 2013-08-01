@@ -75,8 +75,11 @@
     return cell;
 }
 
-- (void)leftDrawerButtonClicked {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *category = [self.categories objectAtIndex:indexPath.row];
+    NSLog(@"%@", category);
+    
 }
+
 
 @end

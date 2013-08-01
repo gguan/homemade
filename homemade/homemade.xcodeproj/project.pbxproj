@@ -177,6 +177,7 @@
 		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
 		46C075D4173A5E6300BB8823 /* searchFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D2173A5E6300BB8823 /* searchFrame.png */; };
 		46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D3173A5E6300BB8823 /* searchFrame@2x.png */; };
+		46D2E3A017A917EF0087430A /* HMCategoryQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2E39F17A917EF0087430A /* HMCategoryQueryViewController.m */; };
 		46D862671782D1080051CA92 /* icn-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862651782D1080051CA92 /* icn-search.png */; };
 		46D862681782D1080051CA92 /* icn-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862661782D1080051CA92 /* icn-search@2x.png */; };
 		46D8626B1782D1FD0051CA92 /* icn-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862691782D1FD0051CA92 /* icn-list.png */; };
@@ -451,6 +452,8 @@
 		46C075D0173A589300BB8823 /* HMSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchBar.m; path = UILayer/SearchUI/HMSearchBar.m; sourceTree = "<group>"; };
 		46C075D2173A5E6300BB8823 /* searchFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchFrame.png; sourceTree = "<group>"; };
 		46C075D3173A5E6300BB8823 /* searchFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchFrame@2x.png"; sourceTree = "<group>"; };
+		46D2E39E17A917EF0087430A /* HMCategoryQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCategoryQueryViewController.h; path = UILayer/CategoryUI/HMCategoryQueryViewController.h; sourceTree = "<group>"; };
+		46D2E39F17A917EF0087430A /* HMCategoryQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCategoryQueryViewController.m; path = UILayer/CategoryUI/HMCategoryQueryViewController.m; sourceTree = "<group>"; };
 		46D862651782D1080051CA92 /* icn-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn-search.png"; sourceTree = "<group>"; };
 		46D862661782D1080051CA92 /* icn-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn-search@2x.png"; sourceTree = "<group>"; };
 		46D862691782D1FD0051CA92 /* icn-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn-list.png"; sourceTree = "<group>"; };
@@ -598,6 +601,8 @@
 			children = (
 				46A0DB361776DF3C00B4391E /* HMCategoryViewController.h */,
 				46A0DB371776DF3C00B4391E /* HMCategoryViewController.m */,
+				46D2E39E17A917EF0087430A /* HMCategoryQueryViewController.h */,
+				46D2E39F17A917EF0087430A /* HMCategoryQueryViewController.m */,
 			);
 			name = CategoryUI;
 			sourceTree = "<group>";
@@ -1279,6 +1284,7 @@
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
+				46D2E3A017A917EF0087430A /* HMCategoryQueryViewController.m in Sources */,
 				4645D3A516F718DD00C38D39 /* HMSettingViewController.m in Sources */,
 				EAA530ED16FAE5CD00916972 /* HMMD5Hash.m in Sources */,
 				462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */,

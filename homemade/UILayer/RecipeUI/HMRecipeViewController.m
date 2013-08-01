@@ -240,7 +240,6 @@ static int ActionViewHeight = 80.0f;
     }
     
     
-    
     // When user tap the button, we temperaly disable the button until server and cache are updated.
     enableSaveButton = NO;
     
