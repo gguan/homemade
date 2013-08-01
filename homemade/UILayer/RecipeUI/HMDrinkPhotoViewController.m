@@ -217,7 +217,7 @@ int numPerPage = 6;
 
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
-    [picker showPhotoPicker:@"Upload a picture" inView:self.view];
+    [picker showPhotoPicker:@"Upload a picture" inView:self.recipeViewController.view];
 }
 
 - (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -236,7 +236,6 @@ int numPerPage = 6;
 
 #pragma mark -
 - (void)takePicture {
-    [self.recipeViewController closePanel];
     if (self.photoPicker.delegate && [self.photoPicker.delegate respondsToSelector:@selector(cameraViewControllerShowPicker:)]) {
         [self.photoPicker.delegate cameraViewControllerShowPicker:self.photoPicker];
     }
