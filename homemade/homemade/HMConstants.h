@@ -46,6 +46,7 @@ extern NSString *const kHMRecipeIngredientsKey;
 extern NSString *const kHMRecipeStepsKey;
 extern NSString *const kHMRecipeTipsKey;
 extern NSString *const kHMRecipeLanguageKey;
+extern NSString *const kHMRecipeCategoryKey;
 // Recipe subkeys
 extern NSString *const kHMRecipeStepsContentKey;
 extern NSString *const kHMRecipeStepsPhotoKey;

@@ -46,6 +46,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:[UIColor colorWithRed:246.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                      [UIColor whiteColor],UITextAttributeTextColor,
@@ -58,6 +62,9 @@
     // Setup navigation bar
     [self.navigationItem setTitle:self.category];
     
+    // Add a share navBarItem
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
+    self.navigationItem.leftBarButtonItem = leftItem;
     
 }
 
@@ -99,7 +106,7 @@
     if ([self.objects count] == 0) {
         query.cachePolicy = kPFCachePolicyNetworkElseCache;
     }
-    
+    [query whereKey:kHMRecipeCategoryKey equalTo:self.category];
     [query orderByDescending:@"createdAt"];
     
     return query;
@@ -250,6 +257,9 @@
     
 }
 
+- (void)backButtonClicked {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

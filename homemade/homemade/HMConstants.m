@@ -27,6 +27,7 @@ NSString *const kHMRecipeIngredientsKey  = @"ingredients";
 NSString *const kHMRecipeStepsKey    = @"steps";
 NSString *const kHMRecipeTipsKey     = @"tips";
 NSString *const kHMRecipeLanguageKey = @"language";
+NSString *const kHMRecipeCategoryKey = @"category";
 // Recipe subkeys
 NSString *const kHMRecipeStepsContentKey = @"content";
 NSString *const kHMRecipeStepsPhotoKey = @"photo";

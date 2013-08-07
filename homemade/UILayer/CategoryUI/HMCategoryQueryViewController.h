@@ -10,4 +10,6 @@
 
 @interface HMCategoryQueryViewController : PFQueryTableViewController
 
+- (id)initWithStyle:(UITableViewStyle)style category:(NSString *)category;
+
 @end

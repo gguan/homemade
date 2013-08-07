@@ -7,6 +7,7 @@
 //
 
 #import "HMCategoryViewController.h"
+#import "HMCategoryQueryViewController.h"
 #import "UIViewController+MMDrawerController.h"
 
 @interface HMCategoryViewController ()
@@ -78,7 +79,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *category = [self.categories objectAtIndex:indexPath.row];
     NSLog(@"%@", category);
-    
+    HMCategoryQueryViewController *categoryQueryViewController = [[HMCategoryQueryViewController alloc] initWithStyle:UITableViewStylePlain category:category];
+    [self.navigationController pushViewController:categoryQueryViewController animated:YES];
+}
+
+- (void)leftDrawerButtonClicked {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 
