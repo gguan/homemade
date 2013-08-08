@@ -71,7 +71,7 @@
     [titleLabel setTextAlignment:NSTextAlignmentLeft];
     
     // avatar
-    PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(250, AboutViewImageHeight - 25, 50, 50)];
+    PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(240, AboutViewImageHeight - 15, 60, 60)];
     avatar.clipsToBounds = YES;
     avatar.layer.borderColor = [UIColor whiteColor].CGColor;
     avatar.layer.borderWidth = 2.0f;
@@ -85,7 +85,7 @@
     UIView *divider1 = [[UIView alloc] initWithFrame:CGRectMake(15.0f, AboutViewImageHeight+79, 290, 1.0f)];
     divider1.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
     
-    UIView *verticalLine = [[UIView alloc] initWithFrame:CGRectMake(275.0f, AboutViewImageHeight+20, 1.0f, 60.0f)];
+    UIView *verticalLine = [[UIView alloc] initWithFrame:CGRectMake(270.0f, AboutViewImageHeight+20, 1.0f, 60.0f)];
     verticalLine.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
 
     

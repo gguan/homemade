@@ -29,6 +29,8 @@ static int ActionViewHeight = 80.0f;
 @property (nonatomic, strong) HMRecipeActionView *actionView;
 @property (nonatomic, strong) UIBarButtonItem *shareButton;
 
+@property (nonatomic, strong) UIImageView *btnImageView;
+
 @end
 
 
@@ -61,15 +63,15 @@ static int ActionViewHeight = 80.0f;
     // Add a share navBarItem
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
     self.navigationItem.leftBarButtonItem = leftItem;
-    
-    self.shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn20-add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(actionButtonClicked)];
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button setFrame:CGRectMake(0, 0, 40, 40)];
-//    [button setImage:[UIImage imageNamed:@"icn20-add.png"] forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector(actionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-//    button.backgroundColor = [UIColor whiteColor];
-//    self.shareButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-//NSLog(@"before rotate %@", NSStringFromCGRect(self.shareButton.customView.frame));
+        
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(0, 0, 40, 40)];
+    [button setImage:nil forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(actionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.shareButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.btnImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20) ];
+    [self.btnImageView setImage:[UIImage imageNamed:@"icn20-add.png"]];
+    [self.shareButton.customView addSubview:self.btnImageView];
     self.navigationItem.rightBarButtonItem = self.shareButton;
 
     [self.view setBackgroundColor:[UIColor whiteColor]];
@@ -181,24 +183,16 @@ static int ActionViewHeight = 80.0f;
     if (isExpanded) {
         bounds.origin.y += ActionViewHeight;
         isExpanded = NO;
-//        [UIView beginAnimations:@"rotate barbuttonitems" context:NULL];
-//        self.shareButton.customView.center = CGPointMake(self.shareButton.customView.frame.size.width/2, self.shareButton.customView.frame.size.height/2);
-//        self.shareButton.customView.transform = CGAffineTransformMakeRotation(0);
-//        self.shareButton.customView.frame = CGRectMake(0, 0, 40, 40);
-//        NSLog(@"-rotate %@", NSStringFromCGRect(self.shareButton.customView.frame));
-//        [self rotateImage:self.shareButtonImage byDegree:-M_PI_4];
-//        [UIView commitAnimations];
+        [UIView beginAnimations:@"rotate barbuttonitems" context:NULL];
+        self.btnImageView.transform = CGAffineTransformMakeRotation(0);
+        [UIView commitAnimations];
         
     } else {
         bounds.origin.y -= ActionViewHeight;
         isExpanded = YES;
-//        [UIView beginAnimations:@"rotate barbuttonitems2" context:NULL];
-//        self.shareButton.customView.center = CGPointMake(self.shareButton.customView.frame.size.width/2, self.shareButton.customView.frame.size.height/2);
-//        self.shareButton.customView.transform = CGAffineTransformMakeRotation(35.0*M_PI/180.0);
-//        self.shareButton.customView.frame = CGRectMake(0, 0, 40, 40);
-//        [self rotateImage:self.shareButtonImage byDegree:M_PI_4];
-//        NSLog(@"rotate %@", NSStringFromCGRect(self.shareButton.customView.frame));
-//        [UIView commitAnimations];
+        [UIView beginAnimations:@"rotate barbuttonitems2" context:NULL];
+        self.btnImageView.transform = CGAffineTransformMakeRotation(M_PI_4);
+        [UIView commitAnimations];
     }
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         [self.view setBounds:bounds];
