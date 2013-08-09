@@ -37,7 +37,7 @@
 
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, kFeedCellHeight + 6.5f, 200, 50.0)];
-        self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Oblique" size:20.0f];
+        self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Oblique" size:19.0f];
         self.titleLabel.numberOfLines = 2;
         self.titleLabel.textColor = [UIColor colorWithRed:63.0f/255.0f green:72.0f/255.0f blue:75.0f/255.0f alpha:1.0f];
         self.titleLabel.backgroundColor = [UIColor clearColor];

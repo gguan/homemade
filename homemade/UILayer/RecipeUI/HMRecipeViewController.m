@@ -191,37 +191,12 @@ static int ActionViewHeight = 80.0f;
         bounds.origin.y -= ActionViewHeight;
         isExpanded = YES;
         [UIView beginAnimations:@"rotate barbuttonitems2" context:NULL];
-        self.btnImageView.transform = CGAffineTransformMakeRotation(M_PI_4);
+        self.btnImageView.transform = CGAffineTransformMakeRotation(M_PI_4 + M_PI_2);
         [UIView commitAnimations];
     }
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         [self.view setBounds:bounds];
     } completion:^(BOOL finished) {}];
-    
-}
-
-- (UIImage *)rotateImage:(UIImage*)image byDegree:(CGFloat)degrees
-{
-    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,image.size.width, image.size.height)];
-    CGAffineTransform t = CGAffineTransformMakeRotation(degrees);
-    rotatedViewBox.transform = t;
-    CGSize rotatedSize = rotatedViewBox.frame.size;
-    
-    UIGraphicsBeginImageContext(rotatedSize);
-    CGContextRef bitmap = UIGraphicsGetCurrentContext();
-    
-    
-    CGContextTranslateCTM(bitmap, rotatedSize.width, rotatedSize.height);
-    
-    CGContextRotateCTM(bitmap, degrees);
-    
-    
-    CGContextScaleCTM(bitmap, 1.0, -1.0);
-    CGContextDrawImage(bitmap, CGRectMake(-image.size.width, -image.size.height, image.size.width, image.size.height), [image CGImage]);
-    
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
     
 }
 
