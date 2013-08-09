@@ -196,17 +196,6 @@ const NSInteger QueryLimit = 5;
     CGFloat yOffset   = _tableView.contentOffset.y;
     CGFloat threshold = WindowHeight - CoverHeight;
     
-//    if (yOffset > -threshold && yOffset < 0) {
-//        self.coverView.frame = CGRectMake(0, floorf(yOffset / 2.0), 320, 320);
-////        _coverScroller.contentOffset = CGPointMake(0.0, floorf(yOffset / 2.0));
-//    } else if (yOffset < 0) {
-//        self.coverView.frame = CGRectMake(0, yOffset + floorf(threshold / 2.0), 320, 320);
-////        _coverScroller.contentOffset = CGPointMake(0.0, yOffset + floorf(threshold / 2.0));
-//    } else {
-//        self.coverView.frame = CGRectMake(0, yOffset, 320, 320);
-////        _coverScroller.contentOffset = CGPointMake(0.0, yOffset);
-//    }
-    NSLog(@"%f, %f", yOffset, threshold);
     if (yOffset <= threshold) {
         [self.tableView setContentOffset:CGPointMake(0, threshold)];
     }

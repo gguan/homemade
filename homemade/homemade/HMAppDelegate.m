@@ -40,7 +40,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
     // ****************************************************************************
@@ -52,6 +51,8 @@
     [Parse setApplicationId:@"pdOSOMPSLbRBWodk6EQMePkVYo3fz9uljrn9FHNH"
                   clientKey:@"W176bVhYGUdEzF1gOaSabqjNujmV30UlIVOXD19n"];
 #endif
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
