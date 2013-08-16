@@ -68,7 +68,7 @@ const NSInteger QueryLimit = 5;
     [self.navigationItem setLeftBarButtonItem:leftItem];
     
     
-    if ([PFUser currentUser] != self.user) {
+    if ([PFUser currentUser] == self.user) {
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
         [self.navigationItem setRightBarButtonItem:rightItem];
     } else {
@@ -179,13 +179,19 @@ const NSInteger QueryLimit = 5;
     if (isFollowing) {
         buttonLabel = [NSString stringWithFormat:@"Unfollow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]];
     }
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Photo", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:buttonLabel, nil];
     [actionSheet showInView:self.view];
 }
 
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
+        if (isFollowing) {
+            // TODO
+            NSLog(@"Unfollow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]);
+        } else {
+            NSLog(@"Follow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]);
+        }
     }
 }
 
