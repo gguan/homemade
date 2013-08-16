@@ -29,27 +29,28 @@
 
 NSString * const kTTTStrikeOutAttributeName = @"TTTStrikeOutAttribute";
 NSString * const kTTTBackgroundFillColorAttributeName = @"TTTBackgroundFillColor";
+NSString * const kTTTBackgroundFillPaddingAttributeName = @"TTTBackgroundFillPadding";
 NSString * const kTTTBackgroundStrokeColorAttributeName = @"TTTBackgroundStrokeColor";
 NSString * const kTTTBackgroundLineWidthAttributeName = @"TTTBackgroundLineWidth";
 NSString * const kTTTBackgroundCornerRadiusAttributeName = @"TTTBackgroundCornerRadius";
 
-static inline CTTextAlignment CTTextAlignmentFromUITextAlignment(NSTextAlignment alignment) {
+static inline CTTextAlignment CTTextAlignmentFromUITextAlignment(UITextAlignment alignment) {
 	switch (alignment) {
-		case NSTextAlignmentLeft: return kCTLeftTextAlignment;
-		case NSTextAlignmentCenter: return kCTCenterTextAlignment;
-		case NSTextAlignmentRight: return kCTRightTextAlignment;
+		case UITextAlignmentLeft: return kCTLeftTextAlignment;
+		case UITextAlignmentCenter: return kCTCenterTextAlignment;
+		case UITextAlignmentRight: return kCTRightTextAlignment;
 		default: return kCTNaturalTextAlignment;
 	}
 }
 
-static inline CTLineBreakMode CTLineBreakModeFromUILineBreakMode(NSLineBreakMode lineBreakMode) {
+static inline CTLineBreakMode CTLineBreakModeFromUILineBreakMode(UILineBreakMode lineBreakMode) {
 	switch (lineBreakMode) {
-		case NSLineBreakByWordWrapping: return kCTLineBreakByWordWrapping;
-		case NSLineBreakByCharWrapping: return kCTLineBreakByCharWrapping;
-		case NSLineBreakByClipping: return kCTLineBreakByClipping;
-		case NSLineBreakByTruncatingHead: return kCTLineBreakByTruncatingHead;
-		case NSLineBreakByTruncatingTail: return kCTLineBreakByTruncatingTail;
-		case NSLineBreakByTruncatingMiddle: return kCTLineBreakByTruncatingMiddle;
+		case UILineBreakModeWordWrap: return kCTLineBreakByWordWrapping;
+		case UILineBreakModeCharacterWrap: return kCTLineBreakByCharWrapping;
+		case UILineBreakModeClip: return kCTLineBreakByClipping;
+		case UILineBreakModeHeadTruncation: return kCTLineBreakByTruncatingHead;
+		case UILineBreakModeTailTruncation: return kCTLineBreakByTruncatingTail;
+		case UILineBreakModeMiddleTruncation: return kCTLineBreakByTruncatingMiddle;
 		default: return 0;
 	}
 }
@@ -97,7 +98,7 @@ static inline NSDictionary * NSAttributedStringAttributesFromLabel(TTTAttributed
 
         CTLineBreakMode lineBreakMode;
         if (label.numberOfLines != 1) {
-            lineBreakMode = CTLineBreakModeFromUILineBreakMode(NSLineBreakByWordWrapping);
+            lineBreakMode = CTLineBreakModeFromUILineBreakMode(UILineBreakModeWordWrap);
         } else {
             lineBreakMode = CTLineBreakModeFromUILineBreakMode(label.lineBreakMode);
         }
@@ -261,14 +262,14 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
         [mutableLinkAttributes setObject:(__bridge id)[[UIColor blueColor] CGColor] forKey:(NSString *)kCTForegroundColorAttributeName];
         [mutableActiveLinkAttributes setObject:(__bridge id)[[UIColor redColor] CGColor] forKey:(NSString *)kCTForegroundColorAttributeName];
 
-        CTLineBreakMode lineBreakMode = CTLineBreakModeFromUILineBreakMode(NSLineBreakByWordWrapping);
+        CTLineBreakMode lineBreakMode = CTLineBreakModeFromUILineBreakMode(UILineBreakModeWordWrap);
         CTParagraphStyleSetting paragraphStyles[1] = {
             {.spec = kCTParagraphStyleSpecifierLineBreakMode, .valueSize = sizeof(CTLineBreakMode), .value = (const void *)&lineBreakMode}
         };
         CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(paragraphStyles, 1);
         
         [mutableLinkAttributes setObject:(__bridge id)paragraphStyle forKey:(NSString *)kCTParagraphStyleAttributeName];
-        [mutableLinkAttributes setObject:(__bridge id)paragraphStyle forKey:(NSString *)kCTParagraphStyleAttributeName];
+        [mutableActiveLinkAttributes setObject:(__bridge id)paragraphStyle forKey:(NSString *)kCTParagraphStyleAttributeName];
         
         CFRelease(paragraphStyle);
     }
@@ -521,11 +522,11 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
                 // Get correct truncationType and attribute position
                 CTLineTruncationType truncationType;
                 NSUInteger truncationAttributePosition = lastLineRange.location;
-                NSLineBreakMode lineBreakMode = self.lineBreakMode;
+                UILineBreakMode lineBreakMode = self.lineBreakMode;
                 
                 // Multiple lines, only use UILineBreakModeTailTruncation
                 if (numberOfLines != 1) {
-                    lineBreakMode = NSLineBreakByTruncatingTail;
+                    lineBreakMode = UILineBreakModeTailTruncation;
                 }
                 
                 switch (lineBreakMode) {
@@ -636,6 +637,7 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
             NSDictionary *attributes = (__bridge NSDictionary *)CTRunGetAttributes((__bridge CTRunRef) glyphRun);
             CGColorRef strokeColor = (__bridge CGColorRef)[attributes objectForKey:kTTTBackgroundStrokeColorAttributeName];
             CGColorRef fillColor = (__bridge CGColorRef)[attributes objectForKey:kTTTBackgroundFillColorAttributeName];
+            UIEdgeInsets fillPadding = [[attributes objectForKey:kTTTBackgroundFillPaddingAttributeName] UIEdgeInsetsValue];
             CGFloat cornerRadius = [[attributes objectForKey:kTTTBackgroundCornerRadiusAttributeName] floatValue];
             CGFloat lineWidth = [[attributes objectForKey:kTTTBackgroundLineWidthAttributeName] floatValue];
 
@@ -644,12 +646,12 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
                 CGFloat runAscent = 0.0f;
                 CGFloat runDescent = 0.0f;
                 
-                runBounds.size.width = CTRunGetTypographicBounds((__bridge CTRunRef)glyphRun, CFRangeMake(0, 0), &runAscent, &runDescent, NULL);
-                runBounds.size.height = runAscent + runDescent;
+                runBounds.size.width = CTRunGetTypographicBounds((__bridge CTRunRef)glyphRun, CFRangeMake(0, 0), &runAscent, &runDescent, NULL) + fillPadding.left + fillPadding.right;
+                runBounds.size.height = runAscent + runDescent + fillPadding.top + fillPadding.bottom;
                 
                 CGFloat xOffset = CTLineGetOffsetForStringIndex((__bridge CTLineRef)line, CTRunGetStringRange((__bridge CTRunRef)glyphRun).location, NULL);
-                runBounds.origin.x = origins[lineIndex].x + rect.origin.x + xOffset;
-                runBounds.origin.y = origins[lineIndex].y + rect.origin.y + yOffset;
+                runBounds.origin.x = origins[lineIndex].x + rect.origin.x + xOffset - fillPadding.left;
+                runBounds.origin.y = origins[lineIndex].y + rect.origin.y + yOffset - fillPadding.bottom;
                 runBounds.origin.y -= runDescent;
                 
                 // Don't draw higlightedLinkBackground too far to the right
@@ -1093,7 +1095,7 @@ afterInheritingLabelAttributesAndConfiguringWithBlock:(NSMutableAttributedString
 - (void)encodeWithCoder:(NSCoder *)coder {
     [super encodeWithCoder:coder];
 
-    [coder encodeInteger:self.dataDetectorTypes forKey:@"dataDetectorTypes"];
+    [coder encodeInteger:(NSInteger)self.dataDetectorTypes forKey:@"dataDetectorTypes"];
     [coder encodeObject:self.links forKey:@"links"];
     if ([NSMutableParagraphStyle class]) {
         [coder encodeObject:self.linkAttributes forKey:@"linkAttributes"];
