@@ -47,6 +47,7 @@
         
         // add photo imageview
         self.photo = [[PFImageView alloc] initWithFrame:CGRectMake(5.0f, 40.0f, 310.0f, 310.0f)];
+        self.photo.contentMode = UIViewContentModeScaleAspectFill;
         self.photo.layer.cornerRadius = 5.0f;
         self.photo.layer.masksToBounds = YES;
         [self addSubview:self.photo];

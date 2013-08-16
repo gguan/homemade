@@ -122,6 +122,7 @@ static int ActionViewHeight = 80.0f;
         bounds.origin.y += ActionViewHeight;
         [self.view setBounds:bounds];
         isExpanded = NO;
+        self.btnImageView.transform = CGAffineTransformMakeRotation(0);
     }
 }
 
