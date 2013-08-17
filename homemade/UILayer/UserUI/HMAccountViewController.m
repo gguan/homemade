@@ -15,8 +15,8 @@
 #import "HMUserRecipeCell.h"
 #import "TTTTimeIntervalFormatter.h"
 
-const CGFloat AvatarSize = 100.0f;
-const CGFloat WindowHeight = 180.0f;
+const CGFloat AvatarSize = 80.0f;
+const CGFloat WindowHeight = 200.0f;
 const CGFloat CoverHeight = 320.0f;
 
 const NSInteger QueryLimit = 5;
@@ -106,25 +106,34 @@ const NSInteger QueryLimit = 5;
     _tableView.showsVerticalScrollIndicator = NO;
 
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, WindowHeight + AvatarSize/2)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, WindowHeight + AvatarSize)];
     headerView.backgroundColor = [UIColor clearColor];
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight, self.view.frame.size.width, AvatarSize/2)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, WindowHeight, self.view.frame.size.width, AvatarSize)];
     whiteView.backgroundColor = [UIColor whiteColor];
     // avatar
-    _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(205.0f, WindowHeight-AvatarSize/2, AvatarSize, AvatarSize)];
+    _avatar = [[PFImageView alloc] initWithFrame:CGRectMake(220.0f, WindowHeight-AvatarSize/3, AvatarSize, AvatarSize)];
     _avatar.layer.borderWidth = 2.0f;
     _avatar.layer.borderColor = [UIColor whiteColor].CGColor;
     _avatar.clipsToBounds = NO;
+    _avatar.layer.shadowOpacity = 0.5f;
     _avatar.layer.shadowColor = [UIColor blackColor].CGColor;
-    _avatar.layer.shadowOffset = CGSizeMake(3,3);
+    _avatar.layer.shadowOffset = CGSizeMake(0.2f,0.2f);
     [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
     [self.avatar loadInBackground];
     // name label
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, WindowHeight-30, 200, 30)];
     nameLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.45f];
     nameLabel.shadowOffset = CGSizeMake(0,0.3);
-    [nameLabel setText:[self.user objectForKey:kHMUserDisplayNameKey]];
-    [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:22.0f]];
+    [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.0f]];
+    NSAttributedString *nameText = [[NSAttributedString alloc] initWithString:[self.user objectForKey:kHMUserDisplayNameKey] attributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIColor whiteColor],UITextAttributeTextColor,
+                                    [UIColor colorWithWhite:0.0f alpha:0.850f],
+                                    UITextAttributeTextShadowColor,
+                                    [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)],
+                                    UITextAttributeTextShadowOffset,
+                                                                                                                                         nil]];
+    [nameLabel setAttributedText:nameText];
+    
     nameLabel.textAlignment = NSTextAlignmentRight;
     [nameLabel setTextColor:[UIColor whiteColor]];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
