@@ -89,7 +89,7 @@
     [drawerController setMaximumLeftDrawerWidth:270.0];
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-
+    [drawerController setShouldStretchDrawer:NO];
     
     self.mainController = leftSidePanelController.recipeFeedViewController;
     self.window.rootViewController = drawerController;
