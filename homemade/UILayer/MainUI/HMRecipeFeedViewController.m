@@ -33,7 +33,7 @@
         self.parseClassName = kHMRecipeClassKey;
         
         // Whether the built-in pull-to-refresh is enabled, we manuall add it
-        self.pullToRefreshEnabled = NO;
+        self.pullToRefreshEnabled = YES;
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = YES;
@@ -85,18 +85,9 @@
             label.shadowOffset = CGSizeMake(0, 0);
         }
     }
-        
-    __weak HMRecipeFeedViewController *weakSelf = self;
-    // add pull to refresh
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        int64_t delayInSeconds = 1.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [weakSelf loadObjects];
-            [weakSelf.tableView.pullToRefreshView stopAnimating];
-        });
-    }];
+    
     // setup infinite scrolling
+    __weak HMRecipeFeedViewController *weakSelf = self;
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         int64_t delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
