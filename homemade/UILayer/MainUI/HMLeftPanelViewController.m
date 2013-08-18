@@ -40,7 +40,7 @@
     [self.tableView setSeparatorColor:[UIColor blackColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
    
-
+    [self.tableView setBounces:NO];
 //    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
 //    [header setText:@"Drink+"];
 //    [header setTextAlignment:NSTextAlignmentCenter];
