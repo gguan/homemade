@@ -61,7 +61,7 @@
     [self.recipeImageView setFile:[self.recipeObject objectForKey:kHMRecipePhotoKey]];
     [self.recipeImageView loadInBackground];
     
-    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320, 0.5f)];
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -0.5f, 320, 0.5f)];
     divider.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
 
     UIView *divider0 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, AboutViewImageHeight, 320, 0.5f)];

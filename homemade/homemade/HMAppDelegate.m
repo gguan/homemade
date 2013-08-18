@@ -86,7 +86,7 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:leftSidePanelController.recipeFeedViewController];
     
     MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:navigationController leftDrawerViewController:leftSidePanelController];
-    [drawerController setMaximumLeftDrawerWidth:270.0];
+    [drawerController setMaximumLeftDrawerWidth:240.0f];
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [drawerController setShouldStretchDrawer:NO];
