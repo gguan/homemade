@@ -60,7 +60,13 @@
     self.recipeImageView.clipsToBounds = YES;
     [self.recipeImageView setFile:[self.recipeObject objectForKey:kHMRecipePhotoKey]];
     [self.recipeImageView loadInBackground];
+    
+    UIView *divider = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320, 0.5f)];
+    divider.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
 
+    UIView *divider0 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, AboutViewImageHeight, 320, 0.5f)];
+    divider0.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
+    
     // Init title label
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, AboutViewImageHeight+20 , 240, 50)];
     titleLabel.numberOfLines = 2;
@@ -75,8 +81,12 @@
     avatar.clipsToBounds = YES;
     avatar.layer.borderColor = [UIColor whiteColor].CGColor;
     avatar.layer.borderWidth = 2.0f;
-//    avatar.layer.cornerRadius = 20.0f;
-    avatar.layer.masksToBounds = YES;
+    avatar.clipsToBounds = NO;
+    avatar.layer.shadowOpacity = 0.4f;
+    avatar.layer.shadowColor = [UIColor blackColor].CGColor;
+    avatar.layer.shadowOffset = CGSizeMake(0.1f,0.1f);
+
+    
     PFUser *user = [self.recipeObject objectForKey:kHMRecipeUserKey];
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {
@@ -110,6 +120,8 @@
     // Init table view header
     UIView *headContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  AboutViewImageHeight+110+textSize.height)];
     [headContainerView addSubview:self.recipeImageView];
+    [headContainerView addSubview:divider];
+    [headContainerView addSubview:divider0];
     [headContainerView addSubview:titleLabel];
     [headContainerView addSubview:avatar];
     [headContainerView addSubview:divider1];
