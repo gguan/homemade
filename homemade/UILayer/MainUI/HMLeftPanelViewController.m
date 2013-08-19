@@ -60,14 +60,19 @@
     UIView *footer = [[UIView alloc] init];
     self.tableView.tableFooterView = footer;
     
-    UIView *toolbarView = [[UIView alloc]initWithFrame:CGRectMake(0, [HMUtility screenHeight] - 49 - 64 + 20, 320, 49)];
-    toolbarView.backgroundColor = [UIColor grayColor];
+    CGFloat offset = 0;
+    if (DEVICE_VERSION_7) {
+        offset += 20;
+    }
+    
+    UIView *toolbarView = [[UIView alloc]initWithFrame:CGRectMake(0, [HMUtility screenHeight] - 49 - 64 + offset, 320, 49)];
+    toolbarView.backgroundColor = [UIColor whiteColor];
     [self.tableView addSubview:toolbarView];
     
     UIButton *postButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [postButton setFrame:CGRectMake(20, 5, 100, 40)];
     [postButton setTitle:@"Post" forState:UIControlStateNormal];
-    [postButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [postButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [toolbarView addSubview:postButton];
     [postButton addTarget:self action:@selector(postButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     

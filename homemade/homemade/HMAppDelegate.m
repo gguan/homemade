@@ -262,7 +262,9 @@
     }];
     
     [SVProgressHUD dismiss];
-    [self.mainController dismissViewControllerAnimated:YES completion:NULL];
+    [self.mainController dismissViewControllerAnimated:YES completion:^{
+        ((HMLeftPanelViewController *)((MMDrawerController *)self.window.rootViewController).leftDrawerViewController).currentIndex = 0;
+    }];
 }
 
 /// Sent to the delegate when the log in attempt fails.
