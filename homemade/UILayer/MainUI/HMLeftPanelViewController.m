@@ -53,10 +53,10 @@
 //    
 //    header.autoresizingMask = UIViewAutoresizingNone;
 //    self.tableView.tableHeaderView = header;
-    if (DEVICE_VERSION_7) {
-        UIEdgeInsets insets = UIEdgeInsetsMake(64.0f, 0, 100.0f, 0);
-        self.tableView.contentInset = insets;
-    }
+
+    UIEdgeInsets insets = UIEdgeInsetsMake(64.0f, 0, 100.0f, 0);
+    self.tableView.contentInset = insets;
+
     UIView *footer = [[UIView alloc] init];
     self.tableView.tableFooterView = footer;
     
