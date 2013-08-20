@@ -13,7 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+ResizeAdditions.h"
 
-#define ButtonHeight 50.0f
+#define ButtonCellHeight 50.0f
 #define StepCellHeight 70.0f
 #define IngredientCellHeight 40.0f
 #define TipCellHeight 40.0f;
@@ -53,7 +53,7 @@
         
         // title text field
         self.titleField = [[UITextField alloc] initWithFrame:CGRectMake(20, 20, 280, 30)];
-        [self.titleField setPlaceholder:@"add a title"];
+        [self.titleField setPlaceholder:@"Drink title"];
         [self.titleField setBorderStyle:UITextBorderStyleRoundedRect];
         [headerView addSubview:self.titleField];
         
@@ -81,6 +81,9 @@
 
         
         self.tableView.tableHeaderView = headerView;
+        
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 30)];
+        self.tableView.tableFooterView = footerView;
         
     }
     return self;
@@ -121,16 +124,21 @@
     
     if (section == 0) {
         UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44.0f)];
-        [header setText:@"Write steps to make this drink"];
+        header.textAlignment = NSTextAlignmentCenter;
+        header.textColor = [UIColor lightGrayColor];
+        [header setText:@"Steps of making this drink"];
         return header;
     } else if (section == 1) {
         UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44.0f)];
-        [header setText:@"Write ingredients of this drink"];
+        header.textAlignment = NSTextAlignmentCenter;
+        header.textColor = [UIColor lightGrayColor];
+        [header setText:@"Ingredients for this drink"];
         return header;
-
     } else if (section == 2) {
         UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44.0f)];
-        [header setText:@"Write some tips to make drink better"];
+        header.textAlignment = NSTextAlignmentCenter;
+        header.textColor = [UIColor lightGrayColor];
+        [header setText:@"Some tips to make drink better"];
         return header;
     } else {
         return nil;
@@ -159,7 +167,7 @@
     } else if (indexPath.section == 2 && indexPath.row < self.tips.count) {
         return TipCellHeight;
     } else {
-        return ButtonHeight;
+        return ButtonCellHeight;
     }
 }
 
@@ -168,34 +176,53 @@
     
     // add button for each section
     if (indexPath.section == 0 && indexPath.row == self.steps.count) {
-        UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [buttonCell setBackgroundColor:[UIColor redColor]];
-        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [buttonLabel setText:@"Add step"];
-        buttonLabel.textAlignment = NSTextAlignmentCenter;
-        buttonLabel.textColor = [UIColor whiteColor];
-        buttonLabel.backgroundColor = [UIColor clearColor];
-        [buttonCell addSubview:buttonLabel];
+        
+        UIImage *buttonImage = [[UIImage imageNamed:@"blackButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blackButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIButton *stepButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [stepButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+        [stepButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+        [stepButton setTitle:@"Add Step" forState:UIControlStateNormal];
+        [stepButton setFrame:CGRectMake(50, 5, 220, ButtonCellHeight-10)];
+        [stepButton addTarget:self action:@selector(stepButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonCellHeight)];
+        [buttonCell addSubview:stepButton];
         return buttonCell;
     } else if (indexPath.section == 1 && indexPath.row == self.ingridents.count) {
-        UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [buttonCell setBackgroundColor:[UIColor redColor]];
-        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [buttonLabel setText:@"Add ingredient"];
-        buttonLabel.textAlignment = NSTextAlignmentCenter;
-        buttonLabel.textColor = [UIColor whiteColor];
-        buttonLabel.backgroundColor = [UIColor clearColor];
-        [buttonCell addSubview:buttonLabel];
+        
+        UIImage *buttonImage = [[UIImage imageNamed:@"blackButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blackButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIButton *ingredientButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [ingredientButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+        [ingredientButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+        [ingredientButton setTitle:@"Add Ingredient" forState:UIControlStateNormal];
+        [ingredientButton setFrame:CGRectMake(50, 5, 220, ButtonCellHeight-10)];
+        [ingredientButton addTarget:self action:@selector(ingredientButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonCellHeight)];
+        [buttonCell addSubview:ingredientButton];
+
         return buttonCell;
     } else if (indexPath.section == 2 && indexPath.row == self.tips.count) {
-        UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [buttonCell setBackgroundColor:[UIColor redColor]];
-        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonHeight)];
-        [buttonLabel setText:@"Add tip"];
-        buttonLabel.textAlignment = NSTextAlignmentCenter;
-        buttonLabel.textColor = [UIColor whiteColor];
-        buttonLabel.backgroundColor = [UIColor clearColor];
-        [buttonCell addSubview:buttonLabel];
+        UIImage *buttonImage = [[UIImage imageNamed:@"blackButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blackButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIButton *tipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [tipButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+        [tipButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+        [tipButton setTitle:@"Add Tip" forState:UIControlStateNormal];
+        [tipButton setFrame:CGRectMake(50, 5, 220, ButtonCellHeight-10)];
+        [tipButton addTarget:self action:@selector(tipButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonCellHeight)];
+        [buttonCell addSubview:tipButton];
+
         return buttonCell;
     }
     
@@ -246,40 +273,37 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        HMStepEditViewController *editViewController;
         if (indexPath.row == self.steps.count) {
-            editViewController = [[HMStepEditViewController alloc] initWithContent:nil photo:nil];
+            return;
         } else {
             NSDictionary *step = [self.steps objectAtIndex:indexPath.row];
             NSString *content = [step objectForKey:kHMRecipeStepsContentKey];
             PFFile *photo = [step objectForKey:kHMRecipeStepsPhotoKey];
-            editViewController = [[HMStepEditViewController alloc] initWithContent:content photo:photo];
+            HMStepEditViewController *editViewController = [[HMStepEditViewController alloc] initWithContent:content photo:photo];
+            editViewController.delegate = self;
+            [self.navigationController pushViewController:editViewController animated:YES];
         }
-        editViewController.delegate = self;
-        [self.navigationController pushViewController:editViewController animated:YES];
-         
     } else if (indexPath.section == 1) {
-        HMIngredientEditViewController *editViewController;
         if (indexPath.row == self.ingridents.count) {
-            editViewController = [[HMIngredientEditViewController alloc] initWithName:nil amount:nil];
+            return;
         } else {
             NSDictionary *ingredient = [self.ingridents objectAtIndex:indexPath.row];
             NSString *name = [ingredient objectForKey:kHMRecipeIngredientNameKey];
             NSString *amount = [ingredient objectForKey:kHMRecipeIngredientAmountKey];
-            editViewController = [[HMIngredientEditViewController alloc] initWithName:name amount:amount];
+            HMIngredientEditViewController *editViewController = [[HMIngredientEditViewController alloc] initWithName:name amount:amount];
+            editViewController.delegate = self;
+            [self.navigationController pushViewController:editViewController animated:YES];
         }
-        editViewController.delegate = self;
-        [self.navigationController pushViewController:editViewController animated:YES];
     } else if (indexPath.section == 2) {
-        HMTipEditViewController *editViewController;
         if (indexPath.row == self.tips.count) {
-            editViewController = [[HMTipEditViewController alloc] initWithTip:nil];
+            return;
         } else {
+            HMTipEditViewController *editViewController;
             NSString *tip = [self.tips objectAtIndex:indexPath.row];
             editViewController = [[HMTipEditViewController alloc] initWithTip:tip];
+            editViewController.delegate = self;
+            [self.navigationController pushViewController:editViewController animated:YES];
         }
-        editViewController.delegate = self;
-        [self.navigationController pushViewController:editViewController animated:YES];
     } 
 }
 
@@ -464,6 +488,25 @@
 - (void)addTipItemViewController:(HMTipEditViewController *)controller didFinishEnteringItem:(NSString *)tipItem {
     [self.tips addObject:tipItem];
     [self.tableView reloadData];
+}
+
+#pragma mark - ()
+- (void)stepButtonClicked {
+    HMStepEditViewController *editViewController = [[HMStepEditViewController alloc] initWithContent:nil photo:nil];
+    editViewController.delegate = self;
+    [self.navigationController pushViewController:editViewController animated:YES];
+}
+
+- (void)ingredientButtonClicked {
+    HMIngredientEditViewController *editViewController = [[HMIngredientEditViewController alloc] initWithName:nil amount:nil];
+    editViewController.delegate = self;
+    [self.navigationController pushViewController:editViewController animated:YES];
+}
+
+- (void)tipButtonClicked {
+    HMTipEditViewController *editViewController = [[HMTipEditViewController alloc] initWithTip:nil];
+    editViewController.delegate = self;
+    [self.navigationController pushViewController:editViewController animated:YES];
 }
 
 @end
