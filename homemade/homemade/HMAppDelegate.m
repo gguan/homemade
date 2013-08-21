@@ -149,54 +149,41 @@
     [self.window.layer setMasksToBounds:YES];
     self.window.layer.opaque = YES;
     
-    if (DEVICE_VERSION_7) {
+
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                         [UIColor whiteColor],UITextAttributeTextColor,
+                                                         [UIColor colorWithWhite:0.0f alpha:0.750f],
+                                                          UITextAttributeTextShadowColor,
+                                                         [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
+                                                          UITextAttributeTextShadowOffset,
+                                                         nil]];
     
-//        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                             [UIColor whiteColor],UITextAttributeTextColor,
-                                                             [UIColor colorWithWhite:0.0f alpha:0.750f],
-                                                             UITextAttributeTextShadowColor,
-                                                             [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
-                                                             UITextAttributeTextShadowOffset,
-                                                             nil]];
-//        [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
-//        [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f]];
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
-    } else {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarMetrics:UIBarMetricsDefault];
-        [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                             [UIColor whiteColor],UITextAttributeTextColor,
-                                                             [UIColor colorWithWhite:0.0f alpha:0.750f],
-                                                              UITextAttributeTextShadowColor,
-                                                             [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
-                                                              UITextAttributeTextShadowOffset,
-                                                             nil]];
-        
-        // navbar button
-        [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateNormal];
-        [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateHighlighted];
-        // navbar back button
-        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[[UIImage alloc] init] 
-                                                          forState:UIControlStateNormal
-                                                        barMetrics:UIBarMetricsDefault];
-        
-        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[[UIImage alloc] init] 
-                                                          forState:UIControlStateSelected
-                                                        barMetrics:UIBarMetricsDefault];
-        
-        [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                                               UITextAttributeTextColor: [UIColor whiteColor],
-                                                               UITextAttributeTextShadowColor: [UIColor colorWithWhite:0.0f alpha:0.750f],
-                                                               UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)]
-                                                               } forState:UIControlStateNormal];
-        
-        [[UISearchBar appearance] setTintColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f]];
-        
+    // navbar button
+    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateNormal];
+    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateHighlighted];
+    // navbar back button
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[[UIImage alloc] init] 
+                                                      forState:UIControlStateNormal
+                                                    barMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[[UIImage alloc] init] 
+                                                      forState:UIControlStateSelected
+                                                    barMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           UITextAttributeTextColor: [UIColor whiteColor],
+                                                           UITextAttributeTextShadowColor: [UIColor colorWithWhite:0.0f alpha:0.750f],
+                                                           UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)]
+                                                           } forState:UIControlStateNormal];
+    
+    [[UISearchBar appearance] setTintColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f]];
+    
         
 
         
-    }
+
     
 }
 

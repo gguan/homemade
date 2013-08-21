@@ -53,10 +53,7 @@
     self.searchController.delegate = self;
     self.searchController.searchResultsTableView.delegate = self;
     
-    if (DEVICE_VERSION_7) {
-        self.searchController.displaysSearchBarInNavigationBar = NO;
-    }
-    
+
     // Infinite scroll and pagination
     __weak HMSearchViewController *weakSelf = self;
     [self.searchController.searchResultsTableView addInfiniteScrollingWithActionHandler:^{
