@@ -22,12 +22,13 @@ NSString *const kHMRecipeOverviewKey = @"overview";
 NSString *const kHMRecipeUserKey     = @"user";
 NSString *const kHMRecipePhotoKey    = @"photo";
 NSString *const kHMRecipeColorKey    = @"color";
-NSString *const kHMRecipeDifficultyKey   = @"difficulty";
-NSString *const kHMRecipeIngredientsKey  = @"ingredients";
+NSString *const kHMRecipeDifficultyKey  = @"difficulty";
+NSString *const kHMRecipeIngredientsKey = @"ingredients";
 NSString *const kHMRecipeStepsKey    = @"steps";
 NSString *const kHMRecipeTipsKey     = @"tips";
 NSString *const kHMRecipeLanguageKey = @"language";
 NSString *const kHMRecipeCategoryKey = @"category";
+NSString *const kHMRecipeRecommandKey   = @"recommand";
 // Recipe subkeys
 NSString *const kHMRecipeStepsContentKey = @"content";
 NSString *const kHMRecipeStepsPhotoKey = @"photo";
