@@ -8,15 +8,6 @@
 	<string>Drink+</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Icon</string>
-		<string>Icon-72</string>
-		<string>Icon-Small</string>
-		<string>Icon-Small-50</string>
-		<string>icon-57.png</string>
-		<string>icon-114.png</string>
-	</array>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
