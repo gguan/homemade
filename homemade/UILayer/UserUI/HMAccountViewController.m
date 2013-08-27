@@ -153,6 +153,10 @@ const NSInteger QueryLimit = 5;
     [headerView addSubview:coverButton];
     
     
+    UIButton *avatarButton = [[UIButton alloc] initWithFrame:self.avatar.frame];
+    [avatarButton setBackgroundColor:[UIColor clearColor]];
+    [avatarButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:avatarButton];
     
     self.tableView.tableHeaderView = headerView;
     
@@ -291,12 +295,10 @@ const NSInteger QueryLimit = 5;
 
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
-    NSLog(@"run delegate from RecipeViewController");
     [self.photoPicker showPhotoPicker:@"Change cover" inView:self.view];
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
-    NSLog(@"dismiss pick controller from RecipeViewController... delegate");
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
@@ -328,6 +330,10 @@ const NSInteger QueryLimit = 5;
 }
 
 - (void)uploadCover {
+    [self cameraViewControllerShowPicker:self.photoPicker];
+}
+
+- (void)uploadAvatar {
     [self cameraViewControllerShowPicker:self.photoPicker];
 }
 
