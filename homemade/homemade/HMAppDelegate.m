@@ -12,6 +12,7 @@
 
 // Import view controllers
 #import "HMLoginViewController.h"
+#import "HMSignUpViewController.h"
 #import "HMRecipeFeedViewController.h"
 #import "HMLeftPanelViewController.h"
 #import "HMRecipeViewController.h"
@@ -220,12 +221,20 @@
 }
 
 - (void)presentLoginViewControllerAnimated:(BOOL)animated {
-    HMLoginViewController *loginViewController = [[HMLoginViewController alloc] init];
-    [loginViewController setDelegate:self];
-    loginViewController.fields = PFLogInFieldsFacebook;
-    loginViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email", @"publish_actions" ];
+    // Customize the Log In View Controller
+    HMLoginViewController *logInViewController = [[HMLoginViewController alloc] init];
+    [logInViewController setDelegate:self];
+    logInViewController.fields = PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ;
+    logInViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email", @"publish_actions" ];
     
-    [self.mainController presentViewController:loginViewController animated:animated completion:nil];
+    // Customize the Sign Up View Controller
+    HMSignUpViewController *signUpViewController = [[HMSignUpViewController alloc] init];
+    signUpViewController.delegate = self;
+    signUpViewController.fields = PFSignUpFieldsDefault;
+    logInViewController.signUpController = signUpViewController;
+
+    
+    [self.mainController presentViewController:logInViewController animated:animated completion:nil];
 }
 
 #pragma mark - NSURLConnectionDataDelegate
@@ -245,6 +254,17 @@
 
 
 #pragma mark - LoginIn delegate
+
+
+// Sent to the delegate to determine whether the log in request should be submitted to the server.
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    if (username && password && username.length && password.length) {
+        return YES;
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    return NO;
+}
 
 /*! @name Responding to Actions */
 /// Sent to the delegate when a PFUser is logged in.
@@ -272,6 +292,44 @@
     [SVProgressHUD showErrorWithStatus:@"Login failed"];
     NSLog(@"Login failed. Error: %@", error);
 }
+
+
+
+#pragma mark - PFSignUpViewControllerDelegate
+
+// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+    BOOL informationComplete = YES;
+    for (id key in info) {
+        NSString *field = [info objectForKey:key];
+        if (!field || field.length == 0) {
+            informationComplete = NO;
+            break;
+        }
+    }
+    
+    if (!informationComplete) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    }
+    
+    return informationComplete;
+}
+
+// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [self.mainController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+// Sent to the delegate when the sign up attempt fails.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    NSLog(@"Failed to sign up...");
+}
+
+// Sent to the delegate when the sign up screen is dismissed.
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+    NSLog(@"User dismissed the signUpViewController");
+}
+
 
 #pragma mark - ()
 - (BOOL)handleActionURL:(NSURL *)url {

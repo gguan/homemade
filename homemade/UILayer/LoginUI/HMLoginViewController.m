@@ -28,23 +28,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     // There is no documentation on how to handle assets with the taller iPhone 5 screen as of 9/13/2012
-    if ([UIScreen mainScreen].bounds.size.height > 480.0f) {
-        // for the iPhone 5
-        // TODO : change image
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLogin.png"]];
-    } else {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLogin.png"]];
-    }
-    
-    [self.logInView setLogo:nil];
 
+    [self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLogin.png"]]];
+    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
+
+    // Set field text color
+    [self.logInView.usernameField setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:35.0f/255.0f blue:35.0f/255.0f alpha:0.5]];
+    [self.logInView.passwordField setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:35.0f/255.0f blue:35.0f/255.0f alpha:0.5]];
     
+
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    [self.logInView.logo setFrame:CGRectMake(120.0f, 70.0f, 80.0f, 15.0f)];
 }
+
 
 @end

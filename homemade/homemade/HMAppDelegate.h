@@ -10,7 +10,7 @@
 
 @class HMRecipeFeedViewController;
 
-@interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, PFLogInViewControllerDelegate>
+@interface HMAppDelegate : UIResponder <UIApplicationDelegate, NSURLConnectionDataDelegate, PFLogInViewControllerDelegate , PFSignUpViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) HMRecipeFeedViewController *mainController;
