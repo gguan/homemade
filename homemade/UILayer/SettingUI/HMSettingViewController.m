@@ -142,7 +142,6 @@
     
     NSNumber *difficulty = [NSNumber numberWithInt:1];
     
-    NSNumber *type = [NSNumber numberWithInt:1];
     
     NSArray *tips = @[@"杯口一定要蘸金巴丽这种甜味的酒，以增加粘度，否则砂糖沾不上去。", @"沾砂糖的时候，不宜过多，多了的话，可以倒过来拍掉一点，否则影响酒的口感。", @"品尝时，要先舔一口砂糖，再喝一口酒。"];
     
@@ -152,7 +151,6 @@
     [recipe setObject:overview forKey:@"overview"];
     [recipe setObject:photoFile forKey:@"photo"];
     [recipe setObject:difficulty forKey:@"difficulty"];
-    [recipe setObject:type forKey:@"type"];
     [recipe setObject:ingredients forKey:@"ingredients"];
     [recipe setObject:steps forKey:@"steps"];
     [recipe setObject:tips forKey:@"tips"];

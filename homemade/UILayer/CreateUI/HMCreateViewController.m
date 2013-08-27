@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSMutableArray *steps; // dict array hold step content and PFFile
 @property (nonatomic, strong) NSMutableArray *ingridents;
 @property (nonatomic, strong) NSMutableArray *tips;
+@property (nonatomic, strong) NSArray *emptyArray;
 
 @end
 
@@ -46,7 +47,7 @@
         self.steps = [[NSMutableArray alloc] init];
         self.ingridents =[[NSMutableArray alloc] init];
         self.tips = [[NSMutableArray alloc] init];
-
+        self.emptyArray = [[NSArray alloc] init];
         
         // Custom initialization
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 290)];
@@ -436,10 +437,13 @@
         [recipe setObject:self.steps forKey:kHMRecipeStepsKey];
         [recipe setObject:self.tips forKey:kHMRecipeTipsKey];
         [recipe setObject:[HMUtility getPreferredLanguage] forKey:kHMRecipeLanguageKey];
+        [recipe setObject:[NSNumber numberWithBool:YES] forKey:kHMRecipeRecommandKey];
+        [recipe setObject:self.emptyArray forKey:kHMRecipeCategoryKey];
         
         // Photos are public, but may only be modified by the user who uploaded them
         PFACL *recipeACL = [PFACL ACLWithUser:[PFUser currentUser]];
         [recipeACL setPublicReadAccess:YES];
+        [recipeACL setWriteAccess:YES forRoleWithName:@"Admin"];    // Admin can edit recipe
         recipe.ACL = recipeACL;
         
         [recipe saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
