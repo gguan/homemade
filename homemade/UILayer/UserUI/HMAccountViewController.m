@@ -21,6 +21,9 @@ const CGFloat CoverHeight = 320.0f;
 
 const NSInteger QueryLimit = 5;
 
+const NSInteger UploadAvatar = 1;
+const NSInteger UploadCover  = 2;
+
 @interface HMAccountViewController () {
     BOOL isLoading;
     BOOL isFollowing;
@@ -36,6 +39,9 @@ const NSInteger QueryLimit = 5;
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSMutableArray *objects;
 @property (nonatomic, strong) TTTTimeIntervalFormatter *timeIntervalFormatter;
+
+@property (nonatomic, assign) NSInteger uploadPhoto;
+
 @end
 
 @implementation HMAccountViewController
@@ -292,7 +298,12 @@ const NSInteger QueryLimit = 5;
 #pragma mark - HMCameraDelegate
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker {
     NSLog(@"run delegate from RecipeViewController");
-    [self.photoPicker showPhotoPicker:@"Change cover" inView:self.view];
+    if (self.uploadPhoto == UploadCover) {
+        [self.photoPicker showPhotoPicker:@"Change cover" inView:self.view];
+    } else {
+        [self.photoPicker showPhotoPicker:@"Change avatar" inView:self.view];
+    }
+    
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
@@ -307,7 +318,12 @@ const NSInteger QueryLimit = 5;
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    [self shouldUploadCoverImage:image];
+    if (self.uploadPhoto == UploadCover) {
+        [self shouldUploadCoverImage:image];
+    } else {
+        [self shouldUploadAvatarImage:image];
+    }
+    
     [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self dismissViewControllerAnimated:YES completion:^{
     }];
@@ -328,6 +344,12 @@ const NSInteger QueryLimit = 5;
 }
 
 - (void)uploadCover {
+    self.uploadPhoto = UploadCover;
+    [self cameraViewControllerShowPicker:self.photoPicker];
+}
+
+- (void)uploadAvatar {
+    self.uploadPhoto = UploadAvatar;
     [self cameraViewControllerShowPicker:self.photoPicker];
 }
 
@@ -362,6 +384,38 @@ const NSInteger QueryLimit = 5;
     
     return YES;
 }
+
+- (BOOL)shouldUploadAvatarImage:(UIImage *)anImage {
+    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640.0f, 640.0f) interpolationQuality:kCGInterpolationHigh];
+    
+    // JPEG to decrease file size and enable faster uploads & downloads
+    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+    
+    if (!imageData) {
+        return NO;
+    }
+    
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self.user setObject:imageFile forKey:kHMUserCoverPhotoKey];
+            [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    NSLog(@"Saved new cover");
+                    [self.coverView setFile:imageFile];
+                    [self.coverView loadInBackground];
+                } else {
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return YES;
+}
+
 
 - (void)doQuery {
     if (isLoading) {

@@ -17,6 +17,9 @@
 		4606A4E2171AB992009FDFFB /* HMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E1171AB992009FDFFB /* HMCache.m */; };
 		4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */; };
 		4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */; };
+		461B146217CD754200124E93 /* HMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B146117CD754200124E93 /* HMSignUpViewController.m */; };
+		461B146517CD758200124E93 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B146317CD758200124E93 /* logo.png */; };
+		461B146617CD758200124E93 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B146417CD758200124E93 /* logo@2x.png */; };
 		461D2D5217939F7E0081A37A /* icn20-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5017939F7E0081A37A /* icn20-add.png */; };
 		461D2D5317939F7E0081A37A /* icn20-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5117939F7E0081A37A /* icn20-add@2x.png */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
@@ -218,6 +221,10 @@
 		4606A4E4171EA3A8009FDFFB /* HMRecipeFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeFeedViewController.m; path = UILayer/MainUI/HMRecipeFeedViewController.m; sourceTree = "<group>"; };
 		4606A4E6171EA3F0009FDFFB /* HMRecipeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipeCellView.h; path = UILayer/MainUI/HMRecipeCellView.h; sourceTree = "<group>"; };
 		4606A4E7171EA3F0009FDFFB /* HMRecipeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMRecipeCellView.m; path = UILayer/MainUI/HMRecipeCellView.m; sourceTree = "<group>"; };
+		461B146017CD754200124E93 /* HMSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSignUpViewController.h; path = UILayer/LoginUI/HMSignUpViewController.h; sourceTree = "<group>"; };
+		461B146117CD754200124E93 /* HMSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSignUpViewController.m; path = UILayer/LoginUI/HMSignUpViewController.m; sourceTree = "<group>"; };
+		461B146317CD758200124E93 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		461B146417CD758200124E93 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		461D2D5017939F7E0081A37A /* icn20-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add.png"; sourceTree = "<group>"; };
 		461D2D5117939F7E0081A37A /* icn20-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add@2x.png"; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
@@ -568,6 +575,8 @@
 		462F0CA91728EBB600BDDEB8 /* LoginUI */ = {
 			isa = PBXGroup;
 			children = (
+				461B146017CD754200124E93 /* HMSignUpViewController.h */,
+				461B146117CD754200124E93 /* HMSignUpViewController.m */,
 				462F0CAA1728EBF300BDDEB8 /* HMLoginViewController.h */,
 				462F0CAB1728EBF300BDDEB8 /* HMLoginViewController.m */,
 			);
@@ -993,6 +1002,8 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				461B146317CD758200124E93 /* logo.png */,
+				461B146417CD758200124E93 /* logo@2x.png */,
 				46AC9B3A17C57B73005683E6 /* menu-post-btn.png */,
 				46AC9B3B17C57B73005683E6 /* menu-post-btn@2x.png */,
 				46AC9B1E17C577BF005683E6 /* menu-account.png */,
@@ -1173,6 +1184,7 @@
 				4645D30016F44D1900C38D39 /* InfoPlist.strings in Resources */,
 				466D361117C23FF3007AA0CC /* blackButtonHighlight@2x.png in Resources */,
 				46AC9B3D17C57B73005683E6 /* menu-post-btn@2x.png in Resources */,
+				461B146517CD758200124E93 /* logo.png in Resources */,
 				46A4953E1786179C008B6993 /* icn20-camera@2x.png in Resources */,
 				46B777AA1769BC5300C162BE /* tabArrow.png in Resources */,
 				4645D35816F4514800C38D39 /* SVProgressHUD.bundle in Resources */,
@@ -1194,6 +1206,7 @@
 				466F4FC0170408490076AB3D /* pic_9.jpg in Resources */,
 				46AC9B3317C577BF005683E6 /* menu-category@2x.png in Resources */,
 				46AC9B3817C577BF005683E6 /* menu-save.png in Resources */,
+				461B146617CD758200124E93 /* logo@2x.png in Resources */,
 				46BFA539178D6B470024F61C /* icn40-heart@2x.png in Resources */,
 				466D360E17C23FF3007AA0CC /* blackButton.png in Resources */,
 				466F4FC1170408490076AB3D /* pic_10.jpg in Resources */,
@@ -1349,6 +1362,7 @@
 				469202F61764B4600096F522 /* HMCommentViewController.m in Sources */,
 				469202FC17657E730096F522 /* HMCommentBar.m in Sources */,
 				46409D4F176B1BD000E7494E /* MMDrawerController.m in Sources */,
+				461B146217CD754200124E93 /* HMSignUpViewController.m in Sources */,
 				469202FF1765EFE50096F522 /* HMCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

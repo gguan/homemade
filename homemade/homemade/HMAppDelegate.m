@@ -223,8 +223,9 @@
 - (void)presentLoginViewControllerAnimated:(BOOL)animated {
     // Customize the Log In View Controller
     HMLoginViewController *logInViewController = [[HMLoginViewController alloc] init];
-    [logInViewController setDelegate:self];
-    logInViewController.fields = PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ;
+    logInViewController.delegate = self;
+//    logInViewController.fields = PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton;
+    logInViewController.fields = PFLogInFieldsFacebook;
     logInViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email", @"publish_actions" ];
     
     // Customize the Sign Up View Controller
@@ -248,14 +249,14 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Process user facebook profile image");
-    [HMUtility processFacebookProfilePictureData:_data];
+    if ([PFUser currentUser] && ![[PFUser currentUser] objectForKey:kHMUserProfilePicMediumKey]) {
+        NSLog(@"Process user facebook profile image");
+        [HMUtility processFacebookProfilePictureData:_data];
+    }
 }
 
 
 #pragma mark - LoginIn delegate
-
-
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
     if (username && password && username.length && password.length) {
@@ -266,12 +267,8 @@
     return NO;
 }
 
-/*! @name Responding to Actions */
-/// Sent to the delegate when a PFUser is logged in.
+// Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-
-    // Retrieve user information from facebook, and store/update in local file system
-    [SVProgressHUD showWithStatus:@"Loading" maskType: SVProgressHUDMaskTypeBlack];
     
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
@@ -281,7 +278,6 @@
         }
     }];
     
-    [SVProgressHUD dismiss];
     [self.mainController dismissViewControllerAnimated:YES completion:^{
         ((HMLeftPanelViewController *)((MMDrawerController *)self.window.rootViewController).leftDrawerViewController).currentIndex = 0;
     }];
