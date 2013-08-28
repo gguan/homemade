@@ -20,6 +20,20 @@
 		461B146217CD754200124E93 /* HMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B146117CD754200124E93 /* HMSignUpViewController.m */; };
 		461B146517CD758200124E93 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B146317CD758200124E93 /* logo.png */; };
 		461B146617CD758200124E93 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B146417CD758200124E93 /* logo@2x.png */; };
+		461B148F17CE730000124E93 /* NSDateFormatter+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B147417CE730000124E93 /* NSDateFormatter+Cached.m */; };
+		461B149017CE730000124E93 /* NSManagedObject+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B147617CE730000124E93 /* NSManagedObject+Map.m */; };
+		461B149117CE730000124E93 /* NSString+KeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B147817CE730000124E93 /* NSString+KeyPath.m */; };
+		461B149217CE730000124E93 /* UIColor+RGB255.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B147A17CE730000124E93 /* UIColor+RGB255.m */; };
+		461B149317CE730000124E93 /* UIColor+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B147C17CE730000124E93 /* UIColor+String.m */; };
+		461B149417CE730000124E93 /* UIDevice+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B147E17CE730000124E93 /* UIDevice+Version.m */; };
+		461B149517CE730000124E93 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148017CE730000124E93 /* UIImage+ColorImage.m */; };
+		461B149617CE730000124E93 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148217CE730000124E93 /* UIImage+ImageEffects.m */; };
+		461B149717CE730000124E93 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148417CE730000124E93 /* UIImageView+Addition.m */; };
+		461B149817CE730000124E93 /* UILabel+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148617CE730000124E93 /* UILabel+Font.m */; };
+		461B149917CE730000124E93 /* UIScreen+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148817CE730000124E93 /* UIScreen+Frame.m */; };
+		461B149A17CE730000124E93 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148A17CE730000124E93 /* UIView+Frame.m */; };
+		461B149B17CE730000124E93 /* UIView+Xib.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148C17CE730000124E93 /* UIView+Xib.m */; };
+		461B149C17CE730000124E93 /* UIViewController+Xib.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148E17CE730000124E93 /* UIViewController+Xib.m */; };
 		461D2D5217939F7E0081A37A /* icn20-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5017939F7E0081A37A /* icn20-add.png */; };
 		461D2D5317939F7E0081A37A /* icn20-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5117939F7E0081A37A /* icn20-add@2x.png */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
@@ -44,7 +58,6 @@
 		46409D4F176B1BD000E7494E /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D49176B1BD000E7494E /* MMDrawerController.m */; };
 		46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */; };
 		46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */; };
-		46409D54176B1EAD00E7494E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */; };
 		4644DA1E1766CF52006F619D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4644DA1D1766CF52006F619D /* StoreKit.framework */; };
 		4645D2F416F44D1900C38D39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F316F44D1900C38D39 /* UIKit.framework */; };
 		4645D2F616F44D1900C38D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4645D2F516F44D1900C38D39 /* Foundation.framework */; };
@@ -71,7 +84,6 @@
 		465C07AB177D634200F5C5B0 /* background-dark-gray-tex.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */; };
 		465C07AC177D634200F5C5B0 /* background-dark-gray-tex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */; };
 		465F5963174BD48300E2164B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465F5962174BD48300E2164B /* Parse.framework */; };
-		465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 465F5966174EA95F00E2164B /* UIImageView+Addition.m */; };
 		4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46409D601771DDE100E7494E /* HMCreateViewController.m */; };
 		4669D2D21772BAE3002D3171 /* StepImagePlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4669D2CE1772BAE3002D3171 /* StepImagePlaceholder.png */; };
 		4669D2D31772BAE3002D3171 /* StepImagePlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4669D2CF1772BAE3002D3171 /* StepImagePlaceholder@2x.png */; };
@@ -121,7 +133,6 @@
 		4692025B175B33A20096F522 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46920227175B33A20096F522 /* background@2x.png */; };
 		4692025C175B33A20096F522 /* BackgroundLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 46920228175B33A20096F522 /* BackgroundLogin.png */; };
 		4692025D175B33A20096F522 /* BackgroundLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46920229175B33A20096F522 /* BackgroundLogin@2x.png */; };
-		46920289175C89150096F522 /* UIColor+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920288175C89150096F522 /* UIColor+String.m */; };
 		46920296175C99730096F522 /* HMStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028F175C98660096F522 /* HMStepsViewController.m */; };
 		46920298175C99730096F522 /* HMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46920293175C98790096F522 /* HMAboutViewController.m */; };
 		46920299175C99B40096F522 /* HMStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692028D175C98660096F522 /* HMStepsView.m */; };
@@ -149,7 +160,6 @@
 		46A4953A178616DD008B6993 /* icn40-comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A49538178616DD008B6993 /* icn40-comments@2x.png */; };
 		46A4953D1786179C008B6993 /* icn20-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A4953B1786179C008B6993 /* icn20-camera.png */; };
 		46A4953E1786179C008B6993 /* icn20-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A4953C1786179C008B6993 /* icn20-camera@2x.png */; };
-		46A4954117861883008B6993 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A4954017861846008B6993 /* UIImage+ColorImage.m */; };
 		46A495441786214A008B6993 /* icn40-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A495421786214A008B6993 /* icn40-list.png */; };
 		46A495451786214A008B6993 /* icn40-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A495431786214A008B6993 /* icn40-list@2x.png */; };
 		46A49548178637FB008B6993 /* HMDrinkPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A49547178637CA008B6993 /* HMDrinkPhotoViewController.m */; };
@@ -225,6 +235,34 @@
 		461B146117CD754200124E93 /* HMSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSignUpViewController.m; path = UILayer/LoginUI/HMSignUpViewController.m; sourceTree = "<group>"; };
 		461B146317CD758200124E93 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		461B146417CD758200124E93 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		461B147317CE730000124E93 /* NSDateFormatter+Cached.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Cached.h"; sourceTree = "<group>"; };
+		461B147417CE730000124E93 /* NSDateFormatter+Cached.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Cached.m"; sourceTree = "<group>"; };
+		461B147517CE730000124E93 /* NSManagedObject+Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Map.h"; sourceTree = "<group>"; };
+		461B147617CE730000124E93 /* NSManagedObject+Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Map.m"; sourceTree = "<group>"; };
+		461B147717CE730000124E93 /* NSString+KeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KeyPath.h"; sourceTree = "<group>"; };
+		461B147817CE730000124E93 /* NSString+KeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KeyPath.m"; sourceTree = "<group>"; };
+		461B147917CE730000124E93 /* UIColor+RGB255.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGB255.h"; sourceTree = "<group>"; };
+		461B147A17CE730000124E93 /* UIColor+RGB255.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGB255.m"; sourceTree = "<group>"; };
+		461B147B17CE730000124E93 /* UIColor+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+String.h"; sourceTree = "<group>"; };
+		461B147C17CE730000124E93 /* UIColor+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+String.m"; sourceTree = "<group>"; };
+		461B147D17CE730000124E93 /* UIDevice+Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Version.h"; sourceTree = "<group>"; };
+		461B147E17CE730000124E93 /* UIDevice+Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Version.m"; sourceTree = "<group>"; };
+		461B147F17CE730000124E93 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImage.h"; sourceTree = "<group>"; };
+		461B148017CE730000124E93 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImage.m"; sourceTree = "<group>"; };
+		461B148117CE730000124E93 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		461B148217CE730000124E93 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		461B148317CE730000124E93 /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Addition.h"; sourceTree = "<group>"; };
+		461B148417CE730000124E93 /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Addition.m"; sourceTree = "<group>"; };
+		461B148517CE730000124E93 /* UILabel+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Font.h"; sourceTree = "<group>"; };
+		461B148617CE730000124E93 /* UILabel+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Font.m"; sourceTree = "<group>"; };
+		461B148717CE730000124E93 /* UIScreen+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+Frame.h"; sourceTree = "<group>"; };
+		461B148817CE730000124E93 /* UIScreen+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Frame.m"; sourceTree = "<group>"; };
+		461B148917CE730000124E93 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		461B148A17CE730000124E93 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		461B148B17CE730000124E93 /* UIView+Xib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Xib.h"; sourceTree = "<group>"; };
+		461B148C17CE730000124E93 /* UIView+Xib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Xib.m"; sourceTree = "<group>"; };
+		461B148D17CE730000124E93 /* UIViewController+Xib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Xib.h"; sourceTree = "<group>"; };
+		461B148E17CE730000124E93 /* UIViewController+Xib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Xib.m"; sourceTree = "<group>"; };
 		461D2D5017939F7E0081A37A /* icn20-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add.png"; sourceTree = "<group>"; };
 		461D2D5117939F7E0081A37A /* icn20-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add@2x.png"; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
@@ -267,8 +305,6 @@
 		46409D4B176B1BD000E7494E /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
 		46409D4C176B1BD000E7494E /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		46409D4D176B1BD000E7494E /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
-		46409D52176B1EAD00E7494E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Utility/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Utility/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		46409D5F1771DDE100E7494E /* HMCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMCreateViewController.h; path = UILayer/CreateUI/HMCreateViewController.h; sourceTree = "<group>"; };
 		46409D601771DDE100E7494E /* HMCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMCreateViewController.m; path = UILayer/CreateUI/HMCreateViewController.m; sourceTree = "<group>"; };
 		4644DA1D1766CF52006F619D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -309,8 +345,6 @@
 		465C07A9177D634200F5C5B0 /* background-dark-gray-tex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex.png"; sourceTree = "<group>"; };
 		465C07AA177D634200F5C5B0 /* background-dark-gray-tex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-dark-gray-tex@2x.png"; sourceTree = "<group>"; };
 		465F5962174BD48300E2164B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse.framework; sourceTree = "<group>"; };
-		465F5965174EA95F00E2164B /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Addition.h"; path = "Utility/UIImageView+Addition.h"; sourceTree = "<group>"; };
-		465F5966174EA95F00E2164B /* UIImageView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Addition.m"; path = "Utility/UIImageView+Addition.m"; sourceTree = "<group>"; };
 		4669D2CE1772BAE3002D3171 /* StepImagePlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StepImagePlaceholder.png; sourceTree = "<group>"; };
 		4669D2CF1772BAE3002D3171 /* StepImagePlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StepImagePlaceholder@2x.png"; sourceTree = "<group>"; };
 		4669D2D01772BAE3002D3171 /* UploadCoverPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UploadCoverPlaceholder.png; sourceTree = "<group>"; };
@@ -380,8 +414,6 @@
 		46920227175B33A20096F522 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		46920228175B33A20096F522 /* BackgroundLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundLogin.png; sourceTree = "<group>"; };
 		46920229175B33A20096F522 /* BackgroundLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundLogin@2x.png"; sourceTree = "<group>"; };
-		46920287175C89150096F522 /* UIColor+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+String.h"; path = "Utility/UIColor+String.h"; sourceTree = "<group>"; };
-		46920288175C89150096F522 /* UIColor+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+String.m"; path = "Utility/UIColor+String.m"; sourceTree = "<group>"; };
 		4692028A175C98280096F522 /* CustomTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomTabBar.h; path = UILayer/RecipeUI/CustomTabBar.h; sourceTree = "<group>"; };
 		4692028B175C98280096F522 /* CustomTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomTabBar.m; path = UILayer/RecipeUI/CustomTabBar.m; sourceTree = "<group>"; };
 		4692028C175C98660096F522 /* HMStepsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMStepsView.h; path = UILayer/RecipeUI/HMStepsView.h; sourceTree = "<group>"; };
@@ -425,8 +457,6 @@
 		46A49538178616DD008B6993 /* icn40-comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn40-comments@2x.png"; sourceTree = "<group>"; };
 		46A4953B1786179C008B6993 /* icn20-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-camera.png"; sourceTree = "<group>"; };
 		46A4953C1786179C008B6993 /* icn20-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-camera@2x.png"; sourceTree = "<group>"; };
-		46A4953F17861846008B6993 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorImage.h"; path = "Utility/UIImage+ColorImage.h"; sourceTree = "<group>"; };
-		46A4954017861846008B6993 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorImage.m"; path = "Utility/UIImage+ColorImage.m"; sourceTree = "<group>"; };
 		46A495421786214A008B6993 /* icn40-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn40-list.png"; sourceTree = "<group>"; };
 		46A495431786214A008B6993 /* icn40-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn40-list@2x.png"; sourceTree = "<group>"; };
 		46A49546178637CA008B6993 /* HMDrinkPhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMDrinkPhotoViewController.h; path = UILayer/RecipeUI/HMDrinkPhotoViewController.h; sourceTree = "<group>"; };
@@ -651,7 +681,7 @@
 				46A0DB3B1777A48A00B4391E /* Media.xcassets */,
 				4645D2FB16F44D1900C38D39 /* homemade */,
 				4645D38516F5ED9300C38D39 /* BaseLayer */,
-				465F5964174EA90C00E2164B /* Utility */,
+				465F5964174EA90C00E2164B /* Categories */,
 				4645D36216F4660800C38D39 /* UILayer */,
 				4645D32216F44E2400C38D39 /* Resources */,
 				4645D31516F44D3F00C38D39 /* Vendor */,
@@ -916,19 +946,39 @@
 			name = CommonUI;
 			sourceTree = "<group>";
 		};
-		465F5964174EA90C00E2164B /* Utility */ = {
+		465F5964174EA90C00E2164B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				46409D52176B1EAD00E7494E /* UIImage+ImageEffects.h */,
-				46409D53176B1EAD00E7494E /* UIImage+ImageEffects.m */,
-				465F5965174EA95F00E2164B /* UIImageView+Addition.h */,
-				465F5966174EA95F00E2164B /* UIImageView+Addition.m */,
-				46920287175C89150096F522 /* UIColor+String.h */,
-				46920288175C89150096F522 /* UIColor+String.m */,
-				46A4953F17861846008B6993 /* UIImage+ColorImage.h */,
-				46A4954017861846008B6993 /* UIImage+ColorImage.m */,
+				461B147317CE730000124E93 /* NSDateFormatter+Cached.h */,
+				461B147417CE730000124E93 /* NSDateFormatter+Cached.m */,
+				461B147517CE730000124E93 /* NSManagedObject+Map.h */,
+				461B147617CE730000124E93 /* NSManagedObject+Map.m */,
+				461B147717CE730000124E93 /* NSString+KeyPath.h */,
+				461B147817CE730000124E93 /* NSString+KeyPath.m */,
+				461B147917CE730000124E93 /* UIColor+RGB255.h */,
+				461B147A17CE730000124E93 /* UIColor+RGB255.m */,
+				461B147B17CE730000124E93 /* UIColor+String.h */,
+				461B147C17CE730000124E93 /* UIColor+String.m */,
+				461B147D17CE730000124E93 /* UIDevice+Version.h */,
+				461B147E17CE730000124E93 /* UIDevice+Version.m */,
+				461B147F17CE730000124E93 /* UIImage+ColorImage.h */,
+				461B148017CE730000124E93 /* UIImage+ColorImage.m */,
+				461B148117CE730000124E93 /* UIImage+ImageEffects.h */,
+				461B148217CE730000124E93 /* UIImage+ImageEffects.m */,
+				461B148317CE730000124E93 /* UIImageView+Addition.h */,
+				461B148417CE730000124E93 /* UIImageView+Addition.m */,
+				461B148517CE730000124E93 /* UILabel+Font.h */,
+				461B148617CE730000124E93 /* UILabel+Font.m */,
+				461B148717CE730000124E93 /* UIScreen+Frame.h */,
+				461B148817CE730000124E93 /* UIScreen+Frame.m */,
+				461B148917CE730000124E93 /* UIView+Frame.h */,
+				461B148A17CE730000124E93 /* UIView+Frame.m */,
+				461B148B17CE730000124E93 /* UIView+Xib.h */,
+				461B148C17CE730000124E93 /* UIView+Xib.m */,
+				461B148D17CE730000124E93 /* UIViewController+Xib.h */,
+				461B148E17CE730000124E93 /* UIViewController+Xib.m */,
 			);
-			name = Utility;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		466F4F771701A61B0076AB3D /* EDColor */ = {
@@ -1285,7 +1335,6 @@
 				46BFA531178D67410024F61C /* HMRecipeActionView.m in Sources */,
 				46BFA527178640E30024F61C /* HMDrinkPhotoViewCell.m in Sources */,
 				46A49548178637FB008B6993 /* HMDrinkPhotoViewController.m in Sources */,
-				46A4954117861883008B6993 /* UIImage+ColorImage.m in Sources */,
 				46A0DB381776DF6400B4391E /* HMCategoryViewController.m in Sources */,
 				462BAA1F1775141B0069A615 /* HMSearchCell.m in Sources */,
 				462BAA1C1775051C0069A615 /* HMUserRecipeCell.m in Sources */,
@@ -1295,11 +1344,15 @@
 				46339B9817726C94009F309E /* HMStepInputCell.m in Sources */,
 				46339B9917726C94009F309E /* HMIngredientInputCell.m in Sources */,
 				46339B9A17726C94009F309E /* HMTipInputCell.m in Sources */,
+				461B149517CE730000124E93 /* UIImage+ColorImage.m in Sources */,
+				461B149617CE730000124E93 /* UIImage+ImageEffects.m in Sources */,
+				461B149017CE730000124E93 /* NSManagedObject+Map.m in Sources */,
 				4669D2CD1771DECC002D3171 /* HMCreateViewController.m in Sources */,
 				46E08A1D176BDA68001A2C13 /* HMAccountViewController.m in Sources */,
 				46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */,
 				46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */,
 				46783EF2176AD49D0065B5BE /* CustomTabBar.m in Sources */,
+				461B149C17CE730000124E93 /* UIViewController+Xib.m in Sources */,
 				46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */,
 				469202F917657CD00096F522 /* HMEditPhotoCommentTextField.m in Sources */,
 				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
@@ -1309,7 +1362,11 @@
 				4645D30216F44D1900C38D39 /* main.m in Sources */,
 				4645D30616F44D1900C38D39 /* HMAppDelegate.m in Sources */,
 				4645D35916F4514800C38D39 /* SVProgressHUD.m in Sources */,
+				461B149117CE730000124E93 /* NSString+KeyPath.m in Sources */,
+				461B149A17CE730000124E93 /* UIView+Frame.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				461B149817CE730000124E93 /* UILabel+Font.m in Sources */,
+				461B149B17CE730000124E93 /* UIView+Xib.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,
@@ -1334,10 +1391,12 @@
 				4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */,
 				46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */,
 				4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */,
+				461B149417CE730000124E93 /* UIDevice+Version.m in Sources */,
 				4637256C172408A3002357E0 /* SLColorArt.m in Sources */,
 				4637256D172408A3002357E0 /* UIImage+ColorArt.m in Sources */,
 				4637256E172408A3002357E0 /* UIImage+Scale.m in Sources */,
 				462F0CA61728AAEB00BDDEB8 /* TMCache.m in Sources */,
+				461B149317CE730000124E93 /* UIColor+String.m in Sources */,
 				462F0CA71728AAEB00BDDEB8 /* TMDiskCache.m in Sources */,
 				462F0CA81728AAEB00BDDEB8 /* TMMemoryCache.m in Sources */,
 				46409D4E176B1BD000E7494E /* MMDrawerBarButtonItem.m in Sources */,
@@ -1346,18 +1405,19 @@
 				464A9C45173497CC005E08E1 /* HMCommonUIUtility.m in Sources */,
 				468F9BA41739D884009CC05A /* PagedFlowView.m in Sources */,
 				46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */,
-				465F5967174EA95F00E2164B /* UIImageView+Addition.m in Sources */,
 				469201FA1759E73F0096F522 /* HMProfileImageView.m in Sources */,
 				469201FD1759E7760096F522 /* HMImageView.m in Sources */,
 				46920217175A18BB0096F522 /* UIImage+Alpha.m in Sources */,
 				46920219175A18BB0096F522 /* UIImage+ResizeAdditions.m in Sources */,
+				461B149917CE730000124E93 /* UIScreen+Frame.m in Sources */,
 				4692021A175A18BB0096F522 /* UIImage+RoundedCornerAdditions.m in Sources */,
-				46920289175C89150096F522 /* UIColor+String.m in Sources */,
-				46409D54176B1EAD00E7494E /* UIImage+ImageEffects.m in Sources */,
 				4687127C17A7311B00E096EB /* HMDrinkPhotoViewHeader.m in Sources */,
+				461B149717CE730000124E93 /* UIImageView+Addition.m in Sources */,
 				469202CC175F041D0096F522 /* TTTAttributedLabel.m in Sources */,
 				469202D217607EC50096F522 /* TTTTimeIntervalFormatter.m in Sources */,
 				469202DE17608C600096F522 /* HMEditPhotoViewController.m in Sources */,
+				461B148F17CE730000124E93 /* NSDateFormatter+Cached.m in Sources */,
+				461B149217CE730000124E93 /* UIColor+RGB255.m in Sources */,
 				469202F01760B4EC0096F522 /* HMCameraViewController.m in Sources */,
 				469202F61764B4600096F522 /* HMCommentViewController.m in Sources */,
 				469202FC17657E730096F522 /* HMCommentBar.m in Sources */,
