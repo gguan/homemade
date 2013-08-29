@@ -8,6 +8,7 @@
 
 #import "HMRecipeCellView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+ColorImage.h"
 
 @interface HMRecipeCellView()
 

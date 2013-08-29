@@ -32,8 +32,8 @@
 		461B149817CE730000124E93 /* UILabel+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148617CE730000124E93 /* UILabel+Font.m */; };
 		461B149917CE730000124E93 /* UIScreen+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148817CE730000124E93 /* UIScreen+Frame.m */; };
 		461B149A17CE730000124E93 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148A17CE730000124E93 /* UIView+Frame.m */; };
-		461B149B17CE730000124E93 /* UIView+Xib.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148C17CE730000124E93 /* UIView+Xib.m */; };
-		461B149C17CE730000124E93 /* UIViewController+Xib.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148E17CE730000124E93 /* UIViewController+Xib.m */; };
+		461B149F17CE9F5300124E93 /* menu-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B149D17CE9F5300124E93 /* menu-logo.png */; };
+		461B14A017CE9F5300124E93 /* menu-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B149E17CE9F5300124E93 /* menu-logo@2x.png */; };
 		461D2D5217939F7E0081A37A /* icn20-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5017939F7E0081A37A /* icn20-add.png */; };
 		461D2D5317939F7E0081A37A /* icn20-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5117939F7E0081A37A /* icn20-add@2x.png */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
@@ -259,10 +259,8 @@
 		461B148817CE730000124E93 /* UIScreen+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Frame.m"; sourceTree = "<group>"; };
 		461B148917CE730000124E93 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		461B148A17CE730000124E93 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
-		461B148B17CE730000124E93 /* UIView+Xib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Xib.h"; sourceTree = "<group>"; };
-		461B148C17CE730000124E93 /* UIView+Xib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Xib.m"; sourceTree = "<group>"; };
-		461B148D17CE730000124E93 /* UIViewController+Xib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Xib.h"; sourceTree = "<group>"; };
-		461B148E17CE730000124E93 /* UIViewController+Xib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Xib.m"; sourceTree = "<group>"; };
+		461B149D17CE9F5300124E93 /* menu-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-logo.png"; sourceTree = "<group>"; };
+		461B149E17CE9F5300124E93 /* menu-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-logo@2x.png"; sourceTree = "<group>"; };
 		461D2D5017939F7E0081A37A /* icn20-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add.png"; sourceTree = "<group>"; };
 		461D2D5117939F7E0081A37A /* icn20-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add@2x.png"; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
@@ -973,10 +971,6 @@
 				461B148817CE730000124E93 /* UIScreen+Frame.m */,
 				461B148917CE730000124E93 /* UIView+Frame.h */,
 				461B148A17CE730000124E93 /* UIView+Frame.m */,
-				461B148B17CE730000124E93 /* UIView+Xib.h */,
-				461B148C17CE730000124E93 /* UIView+Xib.m */,
-				461B148D17CE730000124E93 /* UIViewController+Xib.h */,
-				461B148E17CE730000124E93 /* UIViewController+Xib.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1052,6 +1046,8 @@
 		4692021B175B33A20096F522 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				461B149D17CE9F5300124E93 /* menu-logo.png */,
+				461B149E17CE9F5300124E93 /* menu-logo@2x.png */,
 				461B146317CD758200124E93 /* logo.png */,
 				461B146417CD758200124E93 /* logo@2x.png */,
 				46AC9B3A17C57B73005683E6 /* menu-post-btn.png */,
@@ -1259,6 +1255,7 @@
 				461B146617CD758200124E93 /* logo@2x.png in Resources */,
 				46BFA539178D6B470024F61C /* icn40-heart@2x.png in Resources */,
 				466D360E17C23FF3007AA0CC /* blackButton.png in Resources */,
+				461B14A017CE9F5300124E93 /* menu-logo@2x.png in Resources */,
 				466F4FC1170408490076AB3D /* pic_10.jpg in Resources */,
 				46A4953A178616DD008B6993 /* icn40-comments@2x.png in Resources */,
 				4606A4D717194AA7009FDFFB /* s14.jpg in Resources */,
@@ -1272,6 +1269,7 @@
 				46AC9B2D17C577BF005683E6 /* menu-account@2x.png in Resources */,
 				46AC9B3017C577BF005683E6 /* menu-arrow.png in Resources */,
 				4669D2D41772BAE3002D3171 /* UploadCoverPlaceholder.png in Resources */,
+				461B149F17CE9F5300124E93 /* menu-logo.png in Resources */,
 				46BFA540178D88040024F61C /* icn20-heart.png in Resources */,
 				46BFA52D178AC5440024F61C /* icn40-camera.png in Resources */,
 				46D862681782D1080051CA92 /* icn-search@2x.png in Resources */,
@@ -1352,7 +1350,6 @@
 				46E08A19176BBA46001A2C13 /* HMLeftPanelViewController.m in Sources */,
 				46409D40176ADADF00E7494E /* HMRecipeViewController.m in Sources */,
 				46783EF2176AD49D0065B5BE /* CustomTabBar.m in Sources */,
-				461B149C17CE730000124E93 /* UIViewController+Xib.m in Sources */,
 				46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */,
 				469202F917657CD00096F522 /* HMEditPhotoCommentTextField.m in Sources */,
 				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
@@ -1366,7 +1363,6 @@
 				461B149A17CE730000124E93 /* UIView+Frame.m in Sources */,
 				4645D36016F4514F00C38D39 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				461B149817CE730000124E93 /* UILabel+Font.m in Sources */,
-				461B149B17CE730000124E93 /* UIView+Xib.m in Sources */,
 				4645D36116F4514F00C38D39 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				4645D39216F5F1BB00C38D39 /* HMFeedItem.m in Sources */,
 				4645D39A16F68F4C00C38D39 /* HMSaveViewController.m in Sources */,

@@ -41,19 +41,13 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
    
     [self.tableView setBounces:NO];
-//    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
-//    [header setText:@"Drink+"];
-//    [header setTextAlignment:NSTextAlignmentCenter];
-//    if (DEVICE_VERSION_7) {
-//        [header setFont:[UIFont preferredFontForTextStyle:@"UIFontTextStyleHeadline1"]];
-//    } else {
-//        [header setFont:[UIFont systemFontOfSize:15.0f]];
-//    }
-//    
-//    header.autoresizingMask = UIViewAutoresizingNone;
-//    self.tableView.tableHeaderView = header;
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    
+    UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-logo.png"]];
+    [header addSubview:logo];
+    self.tableView.tableHeaderView = header;
 
-    UIEdgeInsets insets = UIEdgeInsetsMake(64.0f, 0, 100.0f, 0);
+    UIEdgeInsets insets = UIEdgeInsetsMake(65.0f, 0, 100.0f, 0);
     self.tableView.contentInset = insets;
 
     UIView *footer = [[UIView alloc] init];
