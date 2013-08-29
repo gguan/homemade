@@ -156,21 +156,6 @@ const NSInteger UploadCover  = 2;
     [headerView addSubview:nameLabel];
     
     
-<<<<<<< HEAD
-    
-    // add upload cover button
-    UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [coverButton setBackgroundColor:[UIColor clearColor]];
-    [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight-AvatarSize/2)];
-    [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:coverButton];
-    
-    // add upload avatar
-    UIButton *avatarButton = [[UIButton alloc] initWithFrame:self.avatar.frame];
-    [avatarButton setBackgroundColor:[UIColor clearColor]];
-    [avatarButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:avatarButton];
-=======
     if ([[[PFUser currentUser] objectId] isEqualToString:[self.user objectId]]) {
         // add upload cover button
         UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -186,7 +171,6 @@ const NSInteger UploadCover  = 2;
         [avatarButton addTarget:self action:@selector(uploadAvatar) forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:avatarButton];
     }
->>>>>>> master
     
     self.tableView.tableHeaderView = headerView;
     
