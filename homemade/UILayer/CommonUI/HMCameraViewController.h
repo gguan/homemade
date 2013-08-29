@@ -13,6 +13,7 @@
 - (void)cameraViewControllerShowPicker:(HMCameraViewController *)picker;
 - (void)cameraViewController:(HMCameraViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker;
+
 @end
 
 @interface HMCameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>

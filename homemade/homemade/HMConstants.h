@@ -28,6 +28,9 @@
 #define kFeedCellHeight 220.0f
 #define kFeedCellWidth  320.0f
 
+#define kAvatarSizeMedium   320.0f
+#define kAvatarSizeSmall    150.0f
+
 #pragma mark - NSUserDefaults
 extern NSString *const kHMUserDefaultsActivityFeedViewControllerLastRefreshKey;
 extern NSString *const kHMUserDefaultsCacheFacebookFriendsKey;
@@ -122,3 +125,5 @@ extern NSString *const kHMEditPhotoViewControllerUserInfoCommentKey;
 #pragma mark - NSNotification
 extern NSString *const HMCameraControllerDidFinishEditingPhotoNotification;
 extern NSString *const HMCommentControllerDidFinishEditingCommentNotification;
+
+extern NSString *const HMUploadAvatarDidFinishedNotification;
