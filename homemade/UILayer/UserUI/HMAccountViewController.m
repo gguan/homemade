@@ -122,7 +122,7 @@ const NSInteger UploadCover  = 2;
     _avatar.clipsToBounds = NO;
     _avatar.layer.shadowOpacity = 0.5f;
     _avatar.layer.shadowColor = [UIColor blackColor].CGColor;
-    _avatar.layer.shadowOffset = CGSizeMake(0.2f,0.2f);
+    _avatar.layer.shadowOffset = CGSizeMake(0.0f,0.0f);
     [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
     [self.avatar loadInBackground];
     // name label

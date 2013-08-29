@@ -63,7 +63,7 @@
     UILabel *comment = [[UILabel alloc] initWithFrame:CGRectMake(0, [HMUtility screenHeight] - 90, 240, 10)];
     [comment setText:@"Share your drink recipe"];
     [comment setBackgroundColor:[UIColor clearColor]];
-    [comment setFont:[UIFont systemFontOfSize:10.0f]];
+    [comment setFont:[UIFont systemFontOfSize:11.0f]];
     [comment setTextColor:[UIColor colorWithRed:19.0f/255.0f green:24.0f/255.0f blue:26.0f/255.0f alpha:1.0f]];
     [comment setTextAlignment:NSTextAlignmentCenter];
     [self.tableView addSubview:comment];
