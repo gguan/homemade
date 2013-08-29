@@ -106,6 +106,12 @@ extern NSString *const kHMSaveFromUserKey;
 extern NSString *const kHMSaveToUserKey;
 extern NSString *const kHMSaveRecipeKey;
 
+#pragma mark - Follow Class
+extern NSString *const kHMFollowClassKey;
+// Field keys
+extern NSString *const kHMFollowFromUserKey;
+extern NSString *const kHMFollowToUserKey;
+
 #pragma mark - Comment Class
 extern NSString *const kHMCommentClassKey;
 // Field keys

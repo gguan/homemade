@@ -80,7 +80,7 @@ const NSInteger UploadCover  = 2;
     }
     
     
-    if ([PFUser currentUser] == self.user) {
+    if ([[[PFUser currentUser] objectId] isEqualToString:[self.user objectId]]) {
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
         [self.navigationItem setRightBarButtonItem:rightItem];
     } else {
@@ -156,20 +156,21 @@ const NSInteger UploadCover  = 2;
     [headerView addSubview:nameLabel];
     
     
-    
-    // add upload cover button
-    UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [coverButton setBackgroundColor:[UIColor clearColor]];
-    [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight-AvatarSize/2)];
-    [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:coverButton];
-    
-    // add upload avatar
-    UIButton *avatarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [avatarButton setBackgroundColor:[UIColor clearColor]];
-    [avatarButton setFrame:self.avatar.frame];
-    [avatarButton addTarget:self action:@selector(uploadAvatar) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:avatarButton];
+    if ([[[PFUser currentUser] objectId] isEqualToString:[self.user objectId]]) {
+        // add upload cover button
+        UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [coverButton setBackgroundColor:[UIColor clearColor]];
+        [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight-AvatarSize/2)];
+        [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:coverButton];
+        
+        // add upload avatar
+        UIButton *avatarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [avatarButton setBackgroundColor:[UIColor clearColor]];
+        [avatarButton setFrame:self.avatar.frame];
+        [avatarButton addTarget:self action:@selector(uploadAvatar) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:avatarButton];
+    }
     
     
     self.tableView.tableHeaderView = headerView;
@@ -191,6 +192,20 @@ const NSInteger UploadCover  = 2;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatarDidFinished:) name:HMUploadAvatarDidFinishedNotification object:nil];
     
+    
+    // Check if current user following target user
+    PFQuery *queryFollows = [PFQuery queryWithClassName:kHMFollowClassKey];
+    [queryFollows whereKey:kHMFollowFromUserKey equalTo:[PFUser currentUser]];
+    [queryFollows whereKey:kHMFollowToUserKey equalTo:self.user];
+    [queryFollows setCachePolicy:kPFCachePolicyNetworkOnly];
+    [queryFollows countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (!error) {
+            if (number > 0) {
+                isFollowing = YES;
+            }
+        }
+    }];
+    
     [self doQuery];
 }
 
@@ -201,9 +216,9 @@ const NSInteger UploadCover  = 2;
 }
 
 - (void)showActionSheet {
-    NSString *buttonLabel = [NSString stringWithFormat:@"Follow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]];
+    NSString *buttonLabel = [NSString stringWithFormat:@"Follow %@", [self.user objectForKey:kHMUserDisplayNameKey]];
     if (isFollowing) {
-        buttonLabel = [NSString stringWithFormat:@"Unfollow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]];
+        buttonLabel = [NSString stringWithFormat:@"Unfollow %@", [self.user objectForKey:kHMUserDisplayNameKey]];
     }
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:buttonLabel, nil];
     [actionSheet showInView:self.view];
@@ -212,12 +227,7 @@ const NSInteger UploadCover  = 2;
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        if (isFollowing) {
-            // TODO
-            NSLog(@"Unfollow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]);
-        } else {
-            NSLog(@"Follow %@", [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey]);
-        }
+        [self didTabFollowButton];
     }
 }
 
@@ -298,8 +308,7 @@ const NSInteger UploadCover  = 2;
     [cell.timestampLabel setText:timestamp];
     NSString *note = [drink objectForKey:kHMRecipeOverviewKey];
     [cell.noteLabel setText:note];
-//    cell.backgroundColor             = [UIColor purpleColor];
-//    cell.contentView.backgroundColor = [UIColor purpleColor];
+
     return cell;
 }
 
@@ -345,23 +354,7 @@ const NSInteger UploadCover  = 2;
 }
 
 
-
-#pragma mark -
-- (void)leftDrawerButtonClicked {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
-
-- (void)backButtonClicked {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)rightDrawerButtonClicked {
-    HMSettingViewController *settingViewController = [[HMSettingViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
-    [self presentViewController:navigationController animated:YES completion:^{
-    }];
-}
-
+#pragma mark - Camera methods
 - (void)uploadCover {
     self.uploadPhoto = UploadCover;
     [self cameraViewControllerShowPicker:self.photoPicker];
@@ -441,6 +434,47 @@ const NSInteger UploadCover  = 2;
 }
 
 
+
+#pragma mark - Notification methods
+- (void)uploadAvatarDidFinished:(NSNotification *)note {
+    [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
+    [self.avatar loadInBackground];
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - Follow methods
+- (void)didTabFollowButton {
+   
+    if (!isFollowing) {
+        [HMUtility followUserInBackground:self.user block:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+               isFollowing = YES;
+            }
+        }];
+    } else {
+        [HMUtility unfollowUserEventually:self.user];
+        isFollowing = NO;
+    }
+}
+
+
+#pragma mark -
+- (void)leftDrawerButtonClicked {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void)backButtonClicked {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)rightDrawerButtonClicked {
+    HMSettingViewController *settingViewController = [[HMSettingViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
+    [self presentViewController:navigationController animated:YES completion:^{
+    }];
+}
+
 - (void)doQuery {
     if (isLoading) {
         return;
@@ -452,7 +486,7 @@ const NSInteger UploadCover  = 2;
     [drinkQuery whereKey:kHMRecipeUserKey equalTo:user];
     drinkQuery.limit = QueryLimit;
     drinkQuery.skip = QueryLimit * currentPage;
-
+    
     [drinkQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             @synchronized(self) {
@@ -465,13 +499,6 @@ const NSInteger UploadCover  = 2;
     
     currentPage += 1;
     isLoading = NO;
-
-}
-
-- (void)uploadAvatarDidFinished:(NSNotification *)note {
-    [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
-    [self.avatar loadInBackground];
-    [self.tableView reloadData];
 }
 
 

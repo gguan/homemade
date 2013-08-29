@@ -29,6 +29,10 @@ NSUInteger DeviceSystemMajorVersion();
 + (void)saveRecipeInBackground:(id)recipe block:(void (^)(BOOL succeeded, NSError *error))completionBlock;
 + (void)unSaveRecipeInBackground:(id)recipe block:(void (^)(BOOL succeeded, NSError *error))completionBlock;
 
++ (void)unfollowUserEventually:(PFUser *)user;
++ (void)followUserInBackground:(PFUser *)user block:(void (^)(BOOL succeeded, NSError *error))completionBlock;
+
+
 + (void)processFacebookProfilePictureData:(NSData *)data;
 
 + (BOOL)userHasValidFacebookData:(PFUser *)user;

@@ -115,6 +115,44 @@ NSUInteger DeviceSystemMajorVersion() {
 }
 
 
+#pragma mark User Following
+
++ (void)followUserInBackground:(PFUser *)user block:(void (^)(BOOL succeeded, NSError *error))completionBlock {
+    if ([[user objectId] isEqualToString:[[PFUser currentUser] objectId]]) {
+        return;
+    }
+    
+    PFObject *followActivity = [PFObject objectWithClassName:kHMFollowClassKey];
+    [followActivity setObject:[PFUser currentUser] forKey:kHMFollowFromUserKey];
+    [followActivity setObject:user forKey:kHMFollowToUserKey];
+
+    
+    PFACL *followACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [followACL setPublicReadAccess:YES];
+    followActivity.ACL = followACL;
+    
+    [followActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (completionBlock) {
+            completionBlock(succeeded, error);
+        }
+    }];
+}
+
++ (void)unfollowUserEventually:(PFUser *)user {
+    PFQuery *query = [PFQuery queryWithClassName:kHMFollowClassKey];
+    [query whereKey:kHMFollowFromUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kHMFollowToUserKey equalTo:user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *followActivities, NSError *error) {
+        // While normally there should only be one follow activity returned, we can't guarantee that.
+        if (!error) {
+            for (PFObject *followActivity in followActivities) {
+                [followActivity deleteEventually];
+            }
+        }
+    }];
+}
+
+
 + (void)processFacebookProfilePictureData:(NSData *)newProfilePictureData {
     if (newProfilePictureData.length == 0) {
         return;
