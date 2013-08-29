@@ -213,6 +213,7 @@
 - (void)avatarDidClicked {
     HMAccountViewController *accountViewController = [[HMAccountViewController alloc] initWithUser:[self.recipeObject objectForKey:kHMRecipeUserKey]];
     [[self.recipeViewController navigationController] pushViewController:accountViewController animated:YES];
+    // Add a left navBarItem
     
 }
 

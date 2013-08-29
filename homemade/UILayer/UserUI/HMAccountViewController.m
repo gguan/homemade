@@ -67,10 +67,17 @@ const NSInteger UploadCover  = 2;
     [super viewDidLoad];
 
 	// Do any additional setup after loading the view.
-    NSString *title = [[PFUser currentUser] objectForKey:kHMUserDisplayNameKey];
+    NSString *title = [self.user objectForKey:kHMUserDisplayNameKey];
     [self.navigationItem setTitle:title];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
-    [self.navigationItem setLeftBarButtonItem:leftItem];
+    
+    int n = [self.navigationController.viewControllers count] - 2;
+    if ( n >= 0 ) {
+        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
+        [self.navigationItem setLeftBarButtonItem:leftItem];
+    } else {
+        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftDrawerButtonClicked)];
+        [self.navigationItem setLeftBarButtonItem:leftItem];
+    }
     
     
     if ([PFUser currentUser] == self.user) {
@@ -342,6 +349,10 @@ const NSInteger UploadCover  = 2;
 #pragma mark -
 - (void)leftDrawerButtonClicked {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void)backButtonClicked {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)rightDrawerButtonClicked {
