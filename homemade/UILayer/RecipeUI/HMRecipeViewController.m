@@ -80,6 +80,7 @@ static int ActionViewHeight = 80.0f;
     self.aboutViewController = [[HMAboutViewController alloc] initWithRecipe:self.recipeObject];
     self.stepsViewController = [[HMStepsViewController alloc] initWithRecipe:self.recipeObject];
     self.photoViewController = [[HMDrinkPhotoViewController alloc] initWithRecipe:self.recipeObject];
+    self.aboutViewController.recipeViewController = self;
     self.photoViewController.recipeViewController = self;
     
     // Place the tab bar at the top of our view

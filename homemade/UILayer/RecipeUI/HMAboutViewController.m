@@ -7,6 +7,7 @@
 //
 
 #import "HMAboutViewController.h"
+#import "HMAccountViewController.h"
 #import "HMIngredientCell.h"
 #import "UIImageView+Addition.h"
 #import "UIImage+ColorImage.h"
@@ -35,19 +36,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    if (DEVICE_VERSION_7) {
-        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + 20);
-    } else {
+    if ([UIDevice isBelowiOS7]) {
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    } else {
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + 20);
     }
     
-    NSLog(@"About view frame: %@", NSStringFromCGRect(self.view.frame));
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:238.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
     [self.tableView setBackgroundView:backgroundView];
     self.view.clipsToBounds = YES;
-
-//    self.tableView.contentInset = UIEdgeInsetsMake(80.0f, 0, 0, 0);
     
     // Custom initialization
     [self.tableView setBackgroundColor:[UIColor clearColor]];
@@ -76,7 +74,7 @@
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setTextAlignment:NSTextAlignmentLeft];
     
-    // avatar
+    // Avatar
     PFImageView *avatar = [[PFImageView alloc] initWithFrame:CGRectMake(240, AboutViewImageHeight - 15, 60, 60)];
     avatar.clipsToBounds = YES;
     avatar.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -94,6 +92,13 @@
             [avatar loadInBackground];
         }
     }];
+    
+    // Add a button to jump to user page when click
+    UIButton *avatarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [avatarButton setBackgroundColor:[UIColor clearColor]];
+    [avatarButton setFrame:avatar.frame];
+    [avatarButton addTarget:self action:@selector(avatarDidClicked) forControlEvents:UIControlEventTouchUpInside];
+
     
     UIView *divider1 = [[UIView alloc] initWithFrame:CGRectMake(15.0f, AboutViewImageHeight+79, 290, 1.0f)];
     divider1.backgroundColor = [UIColor colorWithRed:205.0f/255.0f green:213.0f/255.0f blue:216.0f/255.0f alpha:1.0f];
@@ -124,6 +129,7 @@
     [headContainerView addSubview:divider0];
     [headContainerView addSubview:titleLabel];
     [headContainerView addSubview:avatar];
+    [headContainerView addSubview:avatarButton];
     [headContainerView addSubview:divider1];
     [headContainerView addSubview:divider2];
     [headContainerView insertSubview:verticalLine belowSubview:avatar];
@@ -201,6 +207,12 @@
         [cell.quantityLabel setText:amount];
         return cell;
     }
+    
+}
+
+- (void)avatarDidClicked {
+    HMAccountViewController *accountViewController = [[HMAccountViewController alloc] initWithUser:[self.recipeObject objectForKey:kHMRecipeUserKey]];
+    [[self.recipeViewController navigationController] pushViewController:accountViewController animated:YES];
     
 }
 

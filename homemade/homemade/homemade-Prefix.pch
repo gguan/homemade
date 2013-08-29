@@ -18,4 +18,5 @@
     #import "HMConstants.h"
     #import "HMCache.h"
     #import "HMUtility.h"
+    #import "UIDevice+Version.h"
 #endif

@@ -77,7 +77,7 @@ const NSInteger UploadCover  = 2;
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(rightDrawerButtonClicked)];
         [self.navigationItem setRightBarButtonItem:rightItem];
     } else {
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-setting.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn20-add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
         [self.navigationItem setRightBarButtonItem:rightItem];
     }
    
@@ -87,10 +87,10 @@ const NSInteger UploadCover  = 2;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    if (DEVICE_VERSION_7) {
-        self.coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, WindowHeight - CoverHeight, 320, CoverHeight)];
-    } else {
+    if ([UIDevice isBelowiOS7]) {
         self.coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, WindowHeight - CoverHeight + 64, 320, CoverHeight - 64)];
+    } else {
+        self.coverView = [[PFImageView alloc] initWithFrame:CGRectMake(0, WindowHeight - CoverHeight, 320, CoverHeight)];
     }
     [self.view addSubview:self.coverView];
     self.coverView.backgroundColor = [UIColor whiteColor];
