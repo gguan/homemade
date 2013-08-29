@@ -62,7 +62,6 @@ const NSInteger UploadCover  = 2;
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -151,21 +150,24 @@ const NSInteger UploadCover  = 2;
     
     
     
-    // add a upload button
+    // add upload cover button
     UIButton *coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [coverButton setBackgroundColor:[UIColor clearColor]];
     [coverButton setFrame:CGRectMake(0, 0, _tableView.bounds.size.width, WindowHeight-AvatarSize/2)];
     [coverButton addTarget:self action:@selector(uploadCover) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:coverButton];
     
+    // add upload avatar
+    UIButton *avatarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [avatarButton setBackgroundColor:[UIColor clearColor]];
+    [avatarButton setFrame:self.avatar.frame];
+    [avatarButton addTarget:self action:@selector(uploadAvatar) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:avatarButton];
     
     
     self.tableView.tableHeaderView = headerView;
     
     [self.view addSubview:self.tableView];
-
-    
-    
     
         
     
@@ -179,6 +181,8 @@ const NSInteger UploadCover  = 2;
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
         });
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatarDidFinished:) name:HMUploadAvatarDidFinishedNotification object:nil];
     
     [self doQuery];
 }
@@ -249,6 +253,10 @@ const NSInteger UploadCover  = 2;
     
     [self layoutImage];
     [self updateOffsets];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HMUploadAvatarDidFinishedNotification object:nil];
 }
 
 #pragma mark - Table View Datasource
@@ -386,32 +394,37 @@ const NSInteger UploadCover  = 2;
 }
 
 - (BOOL)shouldUploadAvatarImage:(UIImage *)anImage {
-    UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640.0f, 640.0f) interpolationQuality:kCGInterpolationHigh];
     
-    // JPEG to decrease file size and enable faster uploads & downloads
-    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+    UIImage *mediumImage = [anImage thumbnailImage:kAvatarSizeMedium transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
+    UIImage *smallRoundedImage = [anImage thumbnailImage:kAvatarSizeSmall transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationLow];
     
-    if (!imageData) {
-        return NO;
+    NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 0.5); // using JPEG for larger pictures
+    NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);
+    
+    if (mediumImageData.length > 0) {
+        PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
+        [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [[PFUser currentUser] setObject:fileMediumImage forKey:kHMUserProfilePicMediumKey];
+                [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        // Notify to update photo
+                        [[NSNotificationCenter defaultCenter] postNotificationName:HMUploadAvatarDidFinishedNotification object:nil];
+                    }
+                }];
+            }
+        }];
     }
     
-    PFFile *imageFile = [PFFile fileWithData:imageData];
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            [self.user setObject:imageFile forKey:kHMUserCoverPhotoKey];
-            [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    NSLog(@"Saved new cover");
-                    [self.coverView setFile:imageFile];
-                    [self.coverView loadInBackground];
-                } else {
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
-            }];
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    if (smallRoundedImageData.length > 0) {
+        PFFile *fileSmallRoundedImage = [PFFile fileWithData:smallRoundedImageData];
+        [fileSmallRoundedImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [[PFUser currentUser] setObject:fileSmallRoundedImage forKey:kHMUserProfilePicSmallKey];
+                [[PFUser currentUser] saveEventually];
+            }
+        }];
+    }
     
     return YES;
 }
@@ -442,6 +455,12 @@ const NSInteger UploadCover  = 2;
     currentPage += 1;
     isLoading = NO;
 
+}
+
+- (void)uploadAvatarDidFinished:(NSNotification *)note {
+    [self.avatar setFile:[self.user objectForKey:kHMUserProfilePicMediumKey]];
+    [self.avatar loadInBackground];
+    [self.tableView reloadData];
 }
 
 

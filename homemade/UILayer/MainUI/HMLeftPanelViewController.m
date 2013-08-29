@@ -98,11 +98,15 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        UIView *bgColorView = [[UIView alloc] init];
+        bgColorView.backgroundColor = [UIColor colorWithRed:20.0/255 green:23.0/255 blue:24.0/255 alpha:0.9];
+        [cell setSelectedBackgroundView:bgColorView];
+        
         menuItem = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 39)];
         UIImageView *arrow = [[UIImageView alloc] initWithFrame:CGRectMake(200, 2, 9, 36)];
         [arrow setImage:[UIImage imageNamed:@"menu-arrow.png"]];
-        UIImageView *divider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 38, 320, 2)];
+        UIImageView *divider = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39, 320, 2)];
         [divider setImage:[UIImage imageNamed:@"menu-divider.png"]];
         [cell addSubview:menuItem];
         [cell addSubview:arrow];

@@ -103,3 +103,5 @@ NSString *const kHMEditPhotoViewControllerUserInfoCommentKey = @"comment";
 NSString *const HMCameraControllerDidFinishEditingPhotoNotification = @"com.gguan.drink.tabBarController.didFinishEditingPhoto";
 NSString *const HMCommentControllerDidFinishEditingCommentNotification = @"com.gguan.drink.navController.didFinishEditingComment";
 
+
+NSString *const HMUploadAvatarDidFinishedNotification = @"com.gguan.drink.accountController.didFinishedUploadAvatar";
