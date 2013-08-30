@@ -34,6 +34,7 @@
 		461B149A17CE730000124E93 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B148A17CE730000124E93 /* UIView+Frame.m */; };
 		461B149F17CE9F5300124E93 /* menu-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B149D17CE9F5300124E93 /* menu-logo.png */; };
 		461B14A017CE9F5300124E93 /* menu-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461B149E17CE9F5300124E93 /* menu-logo@2x.png */; };
+		461B14A317D004A900124E93 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 461B14A217D004A900124E93 /* SZTextView.m */; };
 		461D2D5217939F7E0081A37A /* icn20-add.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5017939F7E0081A37A /* icn20-add.png */; };
 		461D2D5317939F7E0081A37A /* icn20-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461D2D5117939F7E0081A37A /* icn20-add@2x.png */; };
 		462A770816FC1B2400C3CBF7 /* HMRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 462A770716FC1B2400C3CBF7 /* HMRecipe.m */; };
@@ -266,6 +267,8 @@
 		461B148A17CE730000124E93 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		461B149D17CE9F5300124E93 /* menu-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-logo.png"; sourceTree = "<group>"; };
 		461B149E17CE9F5300124E93 /* menu-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-logo@2x.png"; sourceTree = "<group>"; };
+		461B14A117D004A900124E93 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZTextView.h; path = UILayer/CommonUI/SZTextView.h; sourceTree = "<group>"; };
+		461B14A217D004A900124E93 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = UILayer/CommonUI/SZTextView.m; sourceTree = "<group>"; };
 		461D2D5017939F7E0081A37A /* icn20-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add.png"; sourceTree = "<group>"; };
 		461D2D5117939F7E0081A37A /* icn20-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn20-add@2x.png"; sourceTree = "<group>"; };
 		462A770616FC1B2400C3CBF7 /* HMRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMRecipe.h; path = BaseLayer/DataModel/HMRecipe.h; sourceTree = "<group>"; };
@@ -941,6 +944,8 @@
 		4645D3F616FB52BC00C38D39 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				461B14A117D004A900124E93 /* SZTextView.h */,
+				461B14A217D004A900124E93 /* SZTextView.m */,
 				464A9C43173497CC005E08E1 /* HMCommonUIUtility.h */,
 				464A9C44173497CC005E08E1 /* HMCommonUIUtility.m */,
 				469201F81759E73F0096F522 /* HMProfileImageView.h */,
@@ -1373,6 +1378,7 @@
 				46EE16FB1769F15100BBF247 /* HMSearchViewController.m in Sources */,
 				469202F917657CD00096F522 /* HMEditPhotoCommentTextField.m in Sources */,
 				469202A9175C9E040096F522 /* HMIngredientCell.m in Sources */,
+				461B14A317D004A900124E93 /* SZTextView.m in Sources */,
 				46920299175C99B40096F522 /* HMStepsView.m in Sources */,
 				46920296175C99730096F522 /* HMStepsViewController.m in Sources */,
 				46920298175C99730096F522 /* HMAboutViewController.m in Sources */,

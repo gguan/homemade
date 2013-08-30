@@ -76,9 +76,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // Add a back navBarItem
+    self.navigationItem.title = @"Step";
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightDrawerButtonClicked)];
     [self.navigationItem setRightBarButtonItem:rightItem];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,6 +135,10 @@
     return YES;
 }
 
+#pragma mark -
+- (void)backButtonClicked {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)rightDrawerButtonClicked {
     NSLog(@"Add a step item");

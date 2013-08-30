@@ -12,6 +12,7 @@
 #import "HMTipInputCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+ResizeAdditions.h"
+#import "SZTextView.h"
 
 #define ButtonCellHeight 50.0f
 #define StepCellHeight 70.0f
@@ -24,7 +25,7 @@
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) PFImageView *coverView;
 @property (nonatomic, strong) PFFile *coverImage;
-@property (nonatomic, strong) UITextView *descriptionField;
+@property (nonatomic, strong) SZTextView *descriptionField;
 
 @property (nonatomic, strong) NSMutableArray *steps; // dict array hold step content and PFFile
 @property (nonatomic, strong) NSMutableArray *ingridents;
@@ -40,6 +41,9 @@
     self = [super initWithStyle:style];
     if (self) {
         
+        [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-dark-gray-tex.png"]]];
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        
         self.photoPicker = [[HMCameraViewController alloc] init];
         self.photoPicker.delegate = self;
         self.photoPicker.container = self;
@@ -53,9 +57,14 @@
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 290)];
         
         // title text field
-        self.titleField = [[UITextField alloc] initWithFrame:CGRectMake(20, 20, 280, 30)];
+        self.titleField = [[UITextField alloc] initWithFrame:CGRectMake(20, 15, 280, 35)];
         [self.titleField setPlaceholder:@"Drink title"];
-        [self.titleField setBorderStyle:UITextBorderStyleRoundedRect];
+        [self.titleField setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:35.0f/255.0f blue:35.0f/255.0f alpha:0.5]];
+        UIView *leftMargin = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
+        self.titleField.textColor = [UIColor lightGrayColor];
+        self.titleField.leftView = leftMargin;
+        self.titleField.leftViewMode = UITextFieldViewModeAlways;
+        self.titleField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         [headerView addSubview:self.titleField];
         
         // cover imageView
@@ -72,12 +81,16 @@
         [headerView addSubview:self.coverView];
         [headerView insertSubview:coverButton aboveSubview:self.coverView];
         
-        self.descriptionField = [[UITextView alloc] initWithFrame:CGRectMake( 20.0f, 190.0f, 280.0f, 90.0f)];
-        self.descriptionField.font = [UIFont systemFontOfSize:14.0f];
+        self.descriptionField = [[SZTextView alloc] initWithFrame:CGRectMake( 20.0f, 190.0f, 280.0f, 90.0f)];
+        self.descriptionField.font = [UIFont systemFontOfSize:15.0f];
         self.descriptionField.returnKeyType = UIReturnKeyDefault;
-        self.descriptionField.layer.borderWidth = 1.0f;
-        self.descriptionField.layer.borderColor = [UIColor colorWithWhite:0.7f alpha:0.5f].CGColor;
-        self.descriptionField.layer.cornerRadius = 4.0f;
+        [self.descriptionField setTextColor:[UIColor lightGrayColor]];
+        [self.descriptionField setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:35.0f/255.0f blue:35.0f/255.0f alpha:0.5]];
+        self.descriptionField.placeholder = @"Drink decription";
+        self.descriptionField.placeholderTextColor = [UIColor lightGrayColor];
+//        self.descriptionField.layer.borderWidth = 1.0f;
+//        self.descriptionField.layer.borderColor = [UIColor colorWithWhite:0.7f alpha:0.5f].CGColor;
+//        self.descriptionField.layer.cornerRadius = 4.0f;
         [headerView addSubview:self.descriptionField];
 
         
@@ -127,18 +140,21 @@
         UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44.0f)];
         header.textAlignment = NSTextAlignmentCenter;
         header.textColor = [UIColor lightGrayColor];
+        header.backgroundColor = [UIColor clearColor];
         [header setText:@"Steps of making this drink"];
         return header;
     } else if (section == 1) {
         UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44.0f)];
         header.textAlignment = NSTextAlignmentCenter;
         header.textColor = [UIColor lightGrayColor];
+        header.backgroundColor = [UIColor clearColor];
         [header setText:@"Ingredients for this drink"];
         return header;
     } else if (section == 2) {
         UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44.0f)];
         header.textAlignment = NSTextAlignmentCenter;
         header.textColor = [UIColor lightGrayColor];
+        header.backgroundColor = [UIColor clearColor];
         [header setText:@"Some tips to make drink better"];
         return header;
     } else {
@@ -190,6 +206,7 @@
         [stepButton addTarget:self action:@selector(stepButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         
         UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonCellHeight)];
+        [buttonCell setBackgroundColor:[UIColor clearColor]];
         [buttonCell addSubview:stepButton];
         return buttonCell;
     } else if (indexPath.section == 1 && indexPath.row == self.ingridents.count) {
@@ -206,6 +223,7 @@
         [ingredientButton addTarget:self action:@selector(ingredientButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         
         UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonCellHeight)];
+        [buttonCell setBackgroundColor:[UIColor clearColor]];
         [buttonCell addSubview:ingredientButton];
 
         return buttonCell;
@@ -222,6 +240,7 @@
         [tipButton addTarget:self action:@selector(tipButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         
         UITableViewCell *buttonCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ButtonCellHeight)];
+        [buttonCell setBackgroundColor:[UIColor clearColor]];
         [buttonCell addSubview:tipButton];
 
         return buttonCell;

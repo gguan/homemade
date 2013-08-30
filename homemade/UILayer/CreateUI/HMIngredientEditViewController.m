@@ -46,6 +46,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.navigationItem.title = @"Ingredient";
+    
+    // Add a back navBarItem
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightDrawerButtonClicked)];
     [self.navigationItem setRightBarButtonItem:rightItem];
 
@@ -55,6 +61,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+- (void)backButtonClicked {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)rightDrawerButtonClicked {

@@ -478,7 +478,7 @@ const NSInteger UploadCover  = 2;
     }
     isLoading = YES;
     
-    PFUser *user = [PFUser currentUser];
+    PFUser *user = self.user;
     PFQuery *drinkQuery = [PFQuery queryWithClassName:kHMRecipeClassKey];
     [drinkQuery whereKey:kHMRecipeUserKey equalTo:user];
     drinkQuery.limit = QueryLimit;
