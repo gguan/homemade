@@ -487,7 +487,6 @@ const NSInteger UploadCover  = 2;
     [drinkQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             @synchronized(self) {
-                NSLog(@"%@", objects);
                 [self.objects addObjectsFromArray:objects];
             }
             [self.tableView reloadData];
