@@ -8,6 +8,7 @@
 
 #import "HMStepEditViewController.h"
 #import "UIImage+ResizeAdditions.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface HMStepEditViewController ()
 @property (nonatomic, strong) PFImageView *photoView;

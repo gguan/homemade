@@ -172,7 +172,6 @@ const NSInteger UploadCover  = 2;
         [headerView addSubview:avatarButton];
     }
     
-    
     self.tableView.tableHeaderView = headerView;
     
     [self.view addSubview:self.tableView];
@@ -331,7 +330,6 @@ const NSInteger UploadCover  = 2;
 }
 
 - (void)cameraViewControllerDidCancel:(HMCameraViewController *)picker {
-    NSLog(@"dismiss pick controller from RecipeViewController... delegate");
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
@@ -364,7 +362,6 @@ const NSInteger UploadCover  = 2;
     self.uploadPhoto = UploadAvatar;
     [self cameraViewControllerShowPicker:self.photoPicker];
 }
-
 
 - (BOOL)shouldUploadCoverImage:(UIImage *)anImage {
     UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640.0f, 640.0f) interpolationQuality:kCGInterpolationHigh];
@@ -490,7 +487,6 @@ const NSInteger UploadCover  = 2;
     [drinkQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             @synchronized(self) {
-                NSLog(@"%@", objects);
                 [self.objects addObjectsFromArray:objects];
             }
             [self.tableView reloadData];

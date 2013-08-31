@@ -61,6 +61,7 @@
     
     
     UILabel *comment = [[UILabel alloc] initWithFrame:CGRectMake(0, [HMUtility screenHeight] - 90, 240, 10)];
+    [comment setBackgroundColor:[UIColor clearColor]];
     [comment setText:@"Share your drink recipe"];
     [comment setBackgroundColor:[UIColor clearColor]];
     [comment setFont:[UIFont systemFontOfSize:11.0f]];

@@ -8,6 +8,7 @@
 
 #import "HMDrinkPhotoViewHeader.h"
 #import "UIImage+ColorImage.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation HMDrinkPhotoViewHeader
 

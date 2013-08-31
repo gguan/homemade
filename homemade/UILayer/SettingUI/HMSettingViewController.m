@@ -110,40 +110,60 @@
 
 - (void)uploadtestingdata {
     // test recipe data structure
-    NSString *title = @"丰盈科斯塔Busty Crusta";
-    NSString *overview = @"来自黄涛的大厨食谱：沾着金巴丽和砂糖的杯口，充满了甜蜜的味道，加上抹茶力娇酒和君度力娇酒的混合，更增加了甜味，朗姆酒的浓重的酒精油然而生，酸酸的柠檬汁又带来第三种美妙的口感。3款甜酒的搭配，各显风姿，甜中带苦。砂糖的装饰，犹如晶莹剔透的钻石，在光照下透着红光，清新的绿色像一袭晚礼服，光泽诱人。";
-    UIImage *photo = [UIImage imageNamed:@"p1.jpg"];
+    NSString *title = @"B52轰炸机";
+    NSString *overview = @"来自上海西藏大厦万怡酒店MOMO CAFE张俊的大厨食谱：烈焰般刺激的伏加特在欧美国家是最受男士欢迎的烈酒之一。伏加特作为最纯净的烈酒，由于酒中所含杂质极少，口感纯净，并且可以以任何浓度与其它饮料混合饮用，所以经常用于做鸡尾酒的基酒。这款层次分明的shot适合口味厚重的人士。将鸡尾酒一口闷下，酒精一路从咽喉灼烧到胃部，如轰炸机般猛烈。但回味后，胃部暖暖的，奶油和巧克力的香甜在口腔中回味，很特别。";
+    UIImage *photo = [UIImage imageNamed:@"0.jpg"];
     NSData *photoData = UIImageJPEGRepresentation(photo, 1.0f);
     PFFile *photoFile = [PFFile fileWithData:photoData];
     
-    NSArray *ingredients = @[@{@"name": @"朗姆酒", @"amount": @"45ml"}, @{@"name": @"金巴丽", @"amount": @"适量"}, @{@"name": @"抹茶力娇酒", @"amount": @"15ml"}, @{@"name": @"法国君度力娇酒", @"amount": @"10-15ml"}, @{@"name": @"柠檬汁", @"amount": @"10ml"}, @{@"name": @"砂糖", @"amount": @"适量"}];
+    NSArray *ingredients = @[@{@"name": @"甘露咖啡力娇酒", @"amount": @"45ml"}, @{@"name": @"百利甜酒", @"amount": @"45ml"}, @{@"name": @"苏联红牌伏特加酒", @"amount": @"45ml"}, @{@"name": @"惯奶油", @"amount": @"适量"}, @{@"name": @"肉桂粉", @"amount": @"适量"}
+                             ];
     
     
-    UIImage *img1 = [UIImage imageNamed:@"s11.jpg"];
+    UIImage *img1 = [UIImage imageNamed:@"1.jpg"];
     NSData *imgData1 = UIImageJPEGRepresentation(img1, 1.0f);
     PFFile *imgFile1 = [PFFile fileWithData:imgData1];
-    UIImage *img2 = [UIImage imageNamed:@"s12.jpg"];
+    UIImage *img2 = [UIImage imageNamed:@"2.jpg"];
     NSData *imgData2 = UIImageJPEGRepresentation(img2, 1.0f);
     PFFile *imgFile2 = [PFFile fileWithData:imgData2];
-    UIImage *img3 = [UIImage imageNamed:@"s13.jpg"];
+    UIImage *img3 = [UIImage imageNamed:@"3.jpg"];
     NSData *imgData3 = UIImageJPEGRepresentation(img3, 1.0f);
     PFFile *imgFile3 = [PFFile fileWithData:imgData3];
-    UIImage *img4 = [UIImage imageNamed:@"s14.jpg"];
+    UIImage *img4 = [UIImage imageNamed:@"4.jpg"];
     NSData *imgData4 = UIImageJPEGRepresentation(img4, 1.0f);
     PFFile *imgFile4 = [PFFile fileWithData:imgData4];
+    UIImage *img5 = [UIImage imageNamed:@"5.jpg"];
+    NSData *imgData5 = UIImageJPEGRepresentation(img5, 1.0f);
+    PFFile *imgFile5 = [PFFile fileWithData:imgData5];
+//    UIImage *img6 = [UIImage imageNamed:@"6.jpg"];
+//    NSData *imgData6 = UIImageJPEGRepresentation(img6, 1.0f);
+//    PFFile *imgFile6 = [PFFile fileWithData:imgData6];
+//    UIImage *img7 = [UIImage imageNamed:@"7.jpg"];
+//    NSData *imgData7 = UIImageJPEGRepresentation(img7, 1.0f);
+//    PFFile *imgFile7 = [PFFile fileWithData:imgData7];
+//  
+    
     
     
     NSArray *steps = @[
-                       @[@"取一酒杯，杯口浸没在金巴丽酒内，再放入砂糖的碗中，使杯口沾满砂糖。", imgFile1],
-                       @[@"另取一酒杯，加入45ml朗姆酒，15ml抹茶力娇酒，10-15ml法国君度力娇酒，10ml柠檬汁,放入冰块。", imgFile2],
-                       @[@"取杯罩盖住杯子，上下左右充分摇晃均匀。", imgFile3],
-                       @[@"将酒倒入沾着砂糖的杯中即可。", imgFile4]
+                       @{@"content":@"用冰块洗玻璃杯。", @"photo":imgFile1},
+                       @{@"content":@"玻璃杯里加入45ml甘露咖啡力娇酒，45ml百利甜酒，45ml苏联红牌伏特加酒。", @"photo":imgFile2},
+                       @{@"content":@"慢慢的浇上惯奶油，撒上肉桂粉即可。", @"photo":imgFile3}
+//                       @{@"content":@"然后把芒果肉淋在冰沙上即可。", @"photo":imgFile4},
+//                       @{@"content":@"赶紧来一杯吧。", @"photo":imgFile5}
+//                       @{@"content":@"取柠檬片，挤去柠檬皮上的油脂，放入酒中即可。", @"photo":imgFile6}
+//                       @{@"content":@"最后装饰薄荷叶和新鲜的西柚片，华丽丽的夏日冰爽粉红比基尼就做好了！好诱惑捏！", @"photo":imgFile7}
                        ];
     
     NSNumber *difficulty = [NSNumber numberWithInt:1];
     
     
-    NSArray *tips = @[@"杯口一定要蘸金巴丽这种甜味的酒，以增加粘度，否则砂糖沾不上去。", @"沾砂糖的时候，不宜过多，多了的话，可以倒过来拍掉一点，否则影响酒的口感。", @"品尝时，要先舔一口砂糖，再喝一口酒。"];
+    NSArray *tips = @[
+                      @"加酒的时候不能快，要用一把勺子引导，慢慢加，否则层次会混乱。",
+                      @"如果口味重的可以不加惯奶油和肉桂粉。"
+//                      @"冰块和天气的温度不同，都会使伏特加马天尼有不同的口感。"
+//                      @"喜欢的话还可用橄榄做为装饰。"
+                      ];
     
     PFObject *recipe = [PFObject objectWithClassName:@"Recipe"];
     [recipe setObject:[PFUser currentUser] forKey:@"user"];
@@ -154,13 +174,20 @@
     [recipe setObject:ingredients forKey:@"ingredients"];
     [recipe setObject:steps forKey:@"steps"];
     [recipe setObject:tips forKey:@"tips"];
+    [recipe setObject:[HMUtility getPreferredLanguage] forKey:kHMRecipeLanguageKey];
+    [recipe setObject:[NSNumber numberWithBool:NO] forKey:kHMRecipeRecommandKey];
+    [recipe setObject:@[@"APERITIFS",@"BAILEYS"] forKey:kHMRecipeCategoryKey];
     
     // Photos are public, but may only be modified by the user who uploaded them
     PFACL *recipeACL = [PFACL ACLWithUser:[PFUser currentUser]];
     [recipeACL setPublicReadAccess:YES];
+    [recipeACL setWriteAccess:YES forRoleWithName:@"Admin"];    // Admin can edit recipe
     recipe.ACL = recipeACL;
     
-    [recipe save];
+    
+    [recipe saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"Saved!");
+    }];
 }
 
 - (void)logout {

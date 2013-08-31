@@ -48,12 +48,7 @@
         [self addSubview:self.commentField];
         
         
-        if (DEVICE_VERSION_7) {
-            self.postButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        } else {
-            self.postButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        }
-        
+        self.postButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.postButton setTitle:@"Post" forState:UIControlStateNormal];
         [self.postButton setFrame:CGRectMake(10.0f + TextFieldWidth, 8.0f, 50.0f, 35.0f)];
         [self.postButton addTarget:self action:@selector(postButtonAction) forControlEvents:UIControlEventTouchUpInside];
