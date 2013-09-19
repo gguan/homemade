@@ -24,6 +24,7 @@
 #import "Reachability.h"
 #import "SVProgressHUD.h"
 
+
 @interface HMAppDelegate() {
     NSMutableData *_data;
     BOOL firstLaunch;
@@ -160,9 +161,10 @@
                                                               [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
                                                               UITextAttributeTextShadowOffset,
                                                               nil]];
-        //  [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:0.9f]];
+//        [[UINavigationBar appearance] setbar];
         //  [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f]];
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
+//        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
     } else {
         
         

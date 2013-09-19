@@ -55,7 +55,7 @@
                                                                      UITextAttributeTextShadowOffset,
                                                                      [UIFont fontWithName:@"Helvetica-BoldOblique" size:17.0f], UITextAttributeFont,
                                                                      nil]];
-
+    [self.navigationController.navigationBar setTranslucent:NO];
 }
 
 - (void)viewDidLoad
