@@ -487,6 +487,7 @@
 		46E08A18176BB74A001A2C13 /* HMLeftPanelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMLeftPanelViewController.m; path = UILayer/MainUI/HMLeftPanelViewController.m; sourceTree = "<group>"; };
 		46E08A1B176BC7EE001A2C13 /* HMAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMAccountViewController.h; path = UILayer/UserUI/HMAccountViewController.h; sourceTree = "<group>"; };
 		46E08A1C176BC7EE001A2C13 /* HMAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMAccountViewController.m; path = UILayer/UserUI/HMAccountViewController.m; sourceTree = "<group>"; };
+		46E3919E17EB8DD30089ECC4 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		EA0C4445170D685000DFE846 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EAA530EB16FAE5CD00916972 /* HMMD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMMD5Hash.h; path = BaseLayer/DataModel/HMMD5Hash.h; sourceTree = "<group>"; };
 		EAA530EC16FAE5CD00916972 /* HMMD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMMD5Hash.m; path = BaseLayer/DataModel/HMMD5Hash.m; sourceTree = "<group>"; };
@@ -770,6 +771,7 @@
 		4645D35416F4514800C38D39 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				46E3919E17EB8DD30089ECC4 /* SVProgressHUD-Prefix.pch */,
 				4645D35516F4514800C38D39 /* SVProgressHUD.bundle */,
 				4645D35616F4514800C38D39 /* SVProgressHUD.h */,
 				4645D35716F4514800C38D39 /* SVProgressHUD.m */,
