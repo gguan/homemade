@@ -57,6 +57,10 @@ static int ActionViewHeight = 80.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
 	// Do any additional setup after loading the view.
     NSLog(@"Recipe view frame: %@", NSStringFromCGRect(self.view.frame));
     

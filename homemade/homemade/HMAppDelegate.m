@@ -152,7 +152,7 @@
     self.window.layer.opaque = YES;
     
     if (DEVICE_VERSION_7) {
-        
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarMetrics:UIBarMetricsDefault];
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                               [UIColor whiteColor],UITextAttributeTextColor,
@@ -161,8 +161,7 @@
                                                               [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
                                                               UITextAttributeTextShadowOffset,
                                                               nil]];
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:0.9f]];
-//        [[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];
+//        [[UINavigationBar appearance] setBarTintColor:[UIColor purpleColor]];
 //        [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
         //  [[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:39.0f/255.0f green:44.0f/255.0f blue:46.0f/255.0f alpha:1.0f]];
 //        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavigationBar.png"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];

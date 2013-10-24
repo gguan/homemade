@@ -47,14 +47,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                     [UIColor whiteColor],UITextAttributeTextColor,
-                                                                     [UIColor colorWithWhite:0.0f alpha:0.750f],
-                                                                     UITextAttributeTextShadowColor,
-                                                                     [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
-                                                                     UITextAttributeTextShadowOffset,
-                                                                     [UIFont fontWithName:@"Helvetica-BoldOblique" size:17.0f], UITextAttributeFont,
-                                                                     nil]];
+//    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                                     [UIColor whiteColor],UITextAttributeTextColor,
+//                                                                     [UIColor colorWithWhite:0.0f alpha:0.750f],
+//                                                                     UITextAttributeTextShadowColor,
+//                                                                     [NSValue valueWithCGSize:CGSizeMake(0.0f, 1.0f)],
+//                                                                     UITextAttributeTextShadowOffset,
+//                                                                     [UIFont fontWithName:@"Helvetica-BoldOblique" size:17.0f], UITextAttributeFont,
+//                                                                     nil]];
 //    [self.navigationController.navigationBar setOpaque:YES];
 }
 
@@ -74,13 +74,13 @@
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-search.png"] style:UIBarButtonItemStylePlain target:self action:@selector(searchButtonClicked)];
     [self.navigationItem setRightBarButtonItem:searchItem];
     
-    UIColor *barColour = [UIColor colorWithRed:0.13f green:0.14f blue:0.15f alpha:1.00f];
-    UIView *colourView = [[UIView alloc] initWithFrame:CGRectMake(0.f, -20.f, 320.f, 64.f)];
-    colourView.opaque = NO;
-    colourView.alpha = .7f;
-    colourView.backgroundColor = barColour;
-    self.navigationController.navigationBar.barTintColor = barColour;
-    [self.navigationController.navigationBar.layer insertSublayer:colourView.layer atIndex:1];
+//    UIColor *barColour = [UIColor colorWithRed:0.13f green:0.14f blue:0.15f alpha:1.00f];
+//    UIView *colourView = [[UIView alloc] initWithFrame:CGRectMake(0.f, -20.f, 320.f, 64.f)];
+//    colourView.opaque = NO;
+//    colourView.alpha = .7f;
+//    colourView.backgroundColor = barColour;
+//    self.navigationController.navigationBar.barTintColor = barColour;
+//    [self.navigationController.navigationBar.layer insertSublayer:colourView.layer atIndex:1];
     
     // Customize loading view
     UIView *loadingView = (UIView *)[self.view.subviews objectAtIndex:0];
