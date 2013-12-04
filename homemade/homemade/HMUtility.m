@@ -28,6 +28,9 @@ NSUInteger DeviceSystemMajorVersion() {
     [queryExistingSaves setCachePolicy:kPFCachePolicyNetworkOnly];
     [queryExistingSaves findObjectsInBackgroundWithBlock:^(NSArray *saves, NSError *error) {
         if (!error) {
+            if (completionBlock) {
+                completionBlock(YES, nil);
+            }
             if ([saves count] > 0) {
                 NSLog(@"The recipe has already been saved by user.");
             } else {

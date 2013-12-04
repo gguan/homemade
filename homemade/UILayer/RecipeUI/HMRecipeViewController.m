@@ -279,10 +279,6 @@ static int ActionViewHeight = 80.0f;
         [self publishWithOSIntegratedShareDialog:self.recipeObject];
     }
     
-    // Third fallback: Publish using either the Graph API or the Web Dialog
-    if (!call && !displayedNativeDialog) {
-        [self publishWithWebDialog:self.recipeObject];
-    }
 }
 
 - (BOOL) publishWithOSIntegratedShareDialog:(PFObject *)recipe {
@@ -308,47 +304,6 @@ static int ActionViewHeight = 80.0f;
             }];
 }
 
-/*
- * Share using the Web Dialog
- */
-- (void) publishWithWebDialog:(PFObject *)recipe {
-    // Put together the dialog parameters
-    
-    NSMutableDictionary *params =
-    [NSMutableDictionary dictionaryWithObjectsAndKeys:
-     [recipe objectForKey:kHMRecipeTitleKey], @"name",
-     [recipe objectForKey:kHMRecipeOverviewKey], @"description",
-     // recipeLink, @"link", ! we should have a website to give a facebook share link
-     [(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url], @"picture",
-     nil];
-    
-    
-    // Invoke the dialog
-    [FBWebDialogs presentFeedDialogModallyWithSession:nil
-                                           parameters:params
-                                              handler:
-     ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-         if (error) {
-             // Error launching the dialog or publishing a story.
-             [self showAlert:[self checkErrorMessage:error]];
-         } else {
-             if (result == FBWebDialogResultDialogNotCompleted) {
-                 // User clicked the "x" icon
-                 NSLog(@"User canceled story publishing.");
-             } else {
-                 // Handle the publish feed callback
-                 NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                 if (![urlParams valueForKey:@"post_id"]) {
-                     // User clicked the Cancel button
-                     NSLog(@"User canceled story publishing.");
-                 } else {
-                     // User clicked the Share button
-                     [self showAlert:[self checkPostId:urlParams]];
-                 }
-             }
-         }
-     }];
-}
 
 /*
  * Share using the Facebook native Share Dialog
@@ -390,6 +345,7 @@ static int ActionViewHeight = 80.0f;
  */
 - (NSString *)checkErrorMessage:(NSError *)error {
     NSString *errorMessage = @"";
+    NSLog(@"%@", error);
     if (error.fberrorUserMessage) {
         errorMessage = error.fberrorUserMessage;
     } else {
