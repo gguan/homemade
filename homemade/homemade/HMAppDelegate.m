@@ -111,7 +111,8 @@
     if ([self handleActionURL:url]) {
         return YES;
     }
-    return [PFFacebookUtils handleOpenURL:url];
+    
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

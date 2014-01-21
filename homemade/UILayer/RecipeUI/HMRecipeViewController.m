@@ -274,7 +274,6 @@ static int ActionViewHeight = 80.0f;
     FBAppCall *call = [self publishWithShareDialog:self.recipeObject];
     
     // Second fallback: Publish using the iOS6 OS Integrated Share dialog
-    BOOL displayedNativeDialog = YES;
     if (!call) {
         [self publishWithOSIntegratedShareDialog:self.recipeObject];
     }
@@ -309,33 +308,41 @@ static int ActionViewHeight = 80.0f;
  * Share using the Facebook native Share Dialog
  */
 - (FBAppCall *) publishWithShareDialog:(PFObject *)recipe {
+    
     // Set up the dialog parameters
     FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
     params.link = [NSURL URLWithString:[(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url]];
     params.picture = [NSURL URLWithString:[(PFFile *)[recipe objectForKey:kHMRecipePhotoKey] url]];
     params.name = [recipe objectForKey:kHMRecipeTitleKey];
     params.description = [recipe objectForKey:kHMRecipeOverviewKey];
-    // Set this flag on to enable the Share Dialog beta feature
-    //    [FBSettings  enableBetaFeature:FBBetaFeaturesShareDialog];
-    return [FBDialogs presentShareDialogWithParams:params
-                                       clientState:nil
-                                           handler:
-            ^(FBAppCall *call, NSDictionary *results, NSError *error) {
-                if(error) {
-                    // If there's an error show the relevant message
-                    [self showAlert:[self checkErrorMessage:error]];
-                } else {
-                    // Check if cancel info is returned and log the event
-                    if (results[@"completionGesture"] &&
-                        [results[@"completionGesture"] isEqualToString:@"cancel"]) {
-                        NSLog(@"User canceled story publishing.");
-                    } else {
-                        // If the post went through show a success message
-                        [self showAlert:[self checkPostId:results]];
-                    }
-                }
-                
-            }];
+
+    
+    if ([FBDialogs canPresentShareDialogWithParams:params]) {
+        
+        return [FBDialogs presentShareDialogWithParams:params
+                                           clientState:nil
+                                               handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                                   if(error) {
+                                                       // If there's an error show the relevant message
+                                                       [self showAlert:[self checkErrorMessage:error]];
+                                                   } else {
+                                                       // Check if cancel info is returned and log the event
+                                                       if (results[@"completionGesture"] &&
+                                                           [results[@"completionGesture"] isEqualToString:@"cancel"]) {
+                                                           NSLog(@"User canceled story publishing.");
+                                                       } else {
+                                                           // If the post went through show a success message
+                                                           [self showAlert:[self checkPostId:results]];
+                                                       }
+                                                   }
+                                                   
+                                               }];
+    } else {
+        return nil;
+    }
+    
+    
+    
 }
 
 
