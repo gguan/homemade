@@ -26,11 +26,11 @@
 /**
  Vertical alignment for text in a label whose bounds are larger than its text bounds
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, TTTAttributedLabelVerticalAlignment) {
     TTTAttributedLabelVerticalAlignmentCenter   = 0,
     TTTAttributedLabelVerticalAlignmentTop      = 1,
     TTTAttributedLabelVerticalAlignmentBottom   = 2,
-} TTTAttributedLabelVerticalAlignment;
+};
 
 /**
  Determines whether the text to which this attribute applies has a strikeout drawn through itself.
@@ -87,6 +87,8 @@ extern NSString * const kTTTBackgroundCornerRadiusAttributeName;
  `TTTAttributedLabel`, like `UILabel`, conforms to `NSCoding`. However, if the build target is set to less than iOS 6.0, `linkAttributes` and `activeLinkAttributes` will not be encoded or decoded. This is due to an runtime exception thrown when attempting to copy non-object CoreText values in dictionaries.
  
  @warning Any properties changed on the label after setting the text will not be reflected until a subsequent call to `setText:` or `setText:afterInheritingLabelAttributesAndConfiguringWithBlock:`. This is to say, order of operations matters in this case. For example, if the label text color is originally black when the text is set, changing the text color to red will have no effect on the display of the label until the text is set once again.
+ 
+ @bug Setting `attributedText` directly is not recommended, as it may cause a crash when attempting to access any links previously set. Instead, call `setText:`, passing an `NSAttributedString`.
  */
 @interface TTTAttributedLabel : UILabel <TTTAttributedLabel, UIGestureRecognizerDelegate>
 
@@ -161,6 +163,11 @@ extern NSString * const kTTTBackgroundCornerRadiusAttributeName;
  */
 @property (nonatomic, strong) UIColor *highlightedShadowColor;
 
+/**
+ The amount to kern the next character. Default is standard kerning. If this attribute is set to 0.0, no kerning is done at all.
+ */
+@property (nonatomic, assign) CGFloat kern;
+
 ///--------------------------------------------
 /// @name Acccessing Paragraph Style Attributes
 ///--------------------------------------------
@@ -174,6 +181,16 @@ extern NSString * const kTTTBackgroundCornerRadiusAttributeName;
  The space in points added between lines within the paragraph. This value is always nonnegative and is 0.0 by default. 
  */
 @property (nonatomic, assign) CGFloat leading;
+
+/**
+ The minimum line height within the paragraph. If the value is 0.0, the minimum line height is set to the line height of the `font`. 0.0 by default.
+ */
+@property (nonatomic, assign) CGFloat minimumLineHeight;
+
+/**
+ The maximum line height within the paragraph. If the value is 0.0, the maximum line height is set to the line height of the `font`. 0.0 by default.
+ */
+@property (nonatomic, assign) CGFloat maximumLineHeight;
 
 /**
  The line height multiple. This value is 1.0 by default.

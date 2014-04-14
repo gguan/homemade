@@ -97,7 +97,7 @@
     switch (orientation) {
         case PagedFlowViewOrientationHorizontal:{
             CGFloat offset = _scrollView.contentOffset.x;
-            for (int i = _visibleRange.location; i < _visibleRange.location + _visibleRange.length; i++) {
+            for (NSInteger i = _visibleRange.location; i < _visibleRange.location + _visibleRange.length; i++) {
                 UIView *cell = [_cells objectAtIndex:i];
                 CGFloat origin = cell.frame.origin.x;
                 CGFloat delta = fabs(origin - offset);
@@ -122,7 +122,7 @@
         case PagedFlowViewOrientationVertical:{
             CGFloat offset = _scrollView.contentOffset.y;
             
-            for (int i = _visibleRange.location; i < _visibleRange.location + _visibleRange.length; i++) {
+            for (NSInteger i = _visibleRange.location; i < _visibleRange.location + _visibleRange.length; i++) {
                 UIView *cell = [_cells objectAtIndex:i];
                 CGFloat origin = cell.frame.origin.y;
                 CGFloat delta = fabs(origin - offset);
@@ -195,7 +195,7 @@
             }
             
             NSInteger endIndex = startIndex;
-            for (int i = startIndex; i < [_cells count]; i++) {
+            for (NSInteger i = startIndex; i < [_cells count]; i++) {
                 //如果都不超过则取最后一个
                 if ((_pageSize.width * (i + 1) < endPoint.x && _pageSize.width * (i + 2) >= endPoint.x) || i+ 2 == [_cells count]) {
                     endIndex = i + 1;//i+2 是以个数，所以其index需要减去1
@@ -210,7 +210,7 @@
             _visibleRange.location = startIndex;
             _visibleRange.length = endIndex - startIndex + 1;
             
-            for (int i = startIndex; i <= endIndex; i++) {
+            for (NSInteger i = startIndex; i <= endIndex; i++) {
                 [self setPageAtIndex:i];
             }
             
@@ -218,7 +218,7 @@
                 [self removeCellAtIndex:i];
             }
             
-            for (int i = endIndex + 1; i < [_cells count]; i ++) {
+            for (NSInteger i = endIndex + 1; i < [_cells count]; i ++) {
                 [self removeCellAtIndex:i];
             }
             break;
@@ -233,7 +233,7 @@
             }
             
             NSInteger endIndex = startIndex;
-            for (int i = startIndex; i < [_cells count]; i++) {
+            for (NSInteger i = startIndex; i < [_cells count]; i++) {
                 //如果都不超过则取最后一个
                 if ((_pageSize.height * (i + 1) < endPoint.y && _pageSize.height * (i + 2) >= endPoint.y) || i+ 2 == [_cells count]) {
                     endIndex = i + 1;//i+2 是以个数，所以其index需要减去1
@@ -248,7 +248,7 @@
             _visibleRange.location = startIndex;
             _visibleRange.length = endIndex - startIndex + 1;
             
-            for (int i = startIndex; i <= endIndex; i++) {
+            for (NSInteger i = startIndex; i <= endIndex; i++) {
                 [self setPageAtIndex:i];
             }
             
@@ -256,7 +256,7 @@
                 [self removeCellAtIndex:i];
             }
             
-            for (int i = endIndex + 1; i < [_cells count]; i ++) {
+            for (NSInteger i = endIndex + 1; i < [_cells count]; i ++) {
                 [self removeCellAtIndex:i];
             }
             break;

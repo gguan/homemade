@@ -63,7 +63,7 @@ NSUInteger DeviceSystemMajorVersion() {
                                 }
                             }
                             NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                        [NSNumber numberWithInt:[objects count]],
+                                                        [NSNumber numberWithInteger:[objects count]],
                                                         kHMRecipeAttributesSaveCountKey,
                                                         [NSNumber numberWithBool:isSavedByCurrentUser],
                                                         kHMRecipeAttributesIsSavedByCurrentUserKey,
@@ -105,7 +105,7 @@ NSUInteger DeviceSystemMajorVersion() {
                         }
                     }
                     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                [NSNumber numberWithInt:[objects count]],
+                                                [NSNumber numberWithInteger:[objects count]],
                                                 kHMRecipeAttributesSaveCountKey,
                                                 [NSNumber numberWithBool:isSavedByCurrentUser],
                                                 kHMRecipeAttributesIsSavedByCurrentUserKey,

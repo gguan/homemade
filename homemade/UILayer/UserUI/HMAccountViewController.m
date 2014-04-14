@@ -70,7 +70,7 @@ const NSInteger UploadCover  = 2;
     NSString *title = [self.user objectForKey:kHMUserDisplayNameKey];
     [self.navigationItem setTitle:title];
     
-    int n = [self.navigationController.viewControllers count] - 2;
+    long n = [self.navigationController.viewControllers count] - 2;
     if ( n >= 0 ) {
         UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icn-back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
         [self.navigationItem setLeftBarButtonItem:leftItem];
@@ -138,11 +138,11 @@ const NSInteger UploadCover  = 2;
     nameLabel.shadowOffset = CGSizeMake(0,0.3);
     [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.0f]];
     NSAttributedString *nameText = [[NSAttributedString alloc] initWithString:[self.user objectForKey:kHMUserDisplayNameKey] attributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIColor whiteColor],UITextAttributeTextColor,
+                                    [UIColor whiteColor],NSForegroundColorAttributeName,
                                     [UIColor colorWithWhite:0.0f alpha:0.850f],
-                                    UITextAttributeTextShadowColor,
+                                    NSShadowAttributeName,
                                     [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)],
-                                    UITextAttributeTextShadowOffset,
+                                    NSShadowAttributeName,
                                                                                                                                          nil]];
     [nameLabel setAttributedText:nameText];
     

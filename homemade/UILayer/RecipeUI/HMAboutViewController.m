@@ -109,10 +109,16 @@
     
     // Init description label
     UILabel *aboutLabel = [[UILabel alloc] init];
-    NSString *aboutString = [self.recipeObject objectForKey:kHMRecipeOverviewKey];
-    CGSize textSize = [aboutString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:15] constrainedToSize:CGSizeMake(290, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    NSAttributedString *aboutString = [[NSAttributedString alloc] initWithString:[self.recipeObject objectForKey:kHMRecipeOverviewKey]
+                                       attributes:@{
+                                                    NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15]
+                                                    }];
+
+    CGRect rect = [aboutString boundingRectWithSize:CGSizeMake(290, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGSize textSize = rect.size;
+    
     [aboutLabel setFrame:CGRectMake(15, AboutViewImageHeight + 90, textSize.width, textSize.height)];
-    [aboutLabel setText:aboutString];
+    [aboutLabel setAttributedText:aboutString];
     [aboutLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
     [aboutLabel setTextColor:[UIColor colorWithRed:69.0f/255.0f green:78.0f/255.0f blue:81.0f/255.0f alpha:1.0f]];
     [aboutLabel setBackgroundColor:[UIColor clearColor]];

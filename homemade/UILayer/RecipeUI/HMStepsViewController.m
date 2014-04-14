@@ -85,7 +85,7 @@ static CGFloat PageControlHeight = 40.0f;
 }
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(PagedFlowView *)flowView {
-    NSLog(@"Scrolled to page # %d", pageNumber);
+    NSLog(@"Scrolled to page # %ld", (long)pageNumber);
 }
 
 
@@ -108,7 +108,7 @@ static CGFloat PageControlHeight = 40.0f;
     
     view.stepDescriptionText = description;
     [view.stepDescrptionLabel setText:description];
-    [view.stepNumberLabel setText:[NSString stringWithFormat:@"%i", index + 1]];
+    [view.stepNumberLabel setText:[NSString stringWithFormat:@"%li", index + 1]];
     [view setLayout];
     
     if (stepPhoto) {
