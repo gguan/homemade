@@ -97,11 +97,6 @@
 		466D361117C23FF3007AA0CC /* blackButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 466D360D17C23FF3007AA0CC /* blackButtonHighlight@2x.png */; };
 		466F4F75170154860076AB3D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F72170154860076AB3D /* SSKeychain.m */; };
 		466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F74170154860076AB3D /* SSKeychainQuery.m */; };
-		466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */; };
-		466F4F851701A61B0076AB3D /* UIColor+Crayola.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7D1701A61B0076AB3D /* UIColor+Crayola.m */; };
-		466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */; };
-		466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F811701A61B0076AB3D /* UIColor+HSB.m */; };
-		466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4F831701A61B0076AB3D /* UIColor+HSL.m */; };
 		466F4FC1170408490076AB3D /* pic_10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 466F4FB7170408490076AB3D /* pic_10.jpg */; };
 		466F4FC417042A880076AB3D /* HMPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC317042A880076AB3D /* HMPerson.m */; };
 		466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 466F4FC61704392B0076AB3D /* HMIngredient.m */; };
@@ -181,6 +176,7 @@
 		46C075D1173A589300BB8823 /* HMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C075D0173A589300BB8823 /* HMSearchBar.m */; };
 		46C075D4173A5E6300BB8823 /* searchFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D2173A5E6300BB8823 /* searchFrame.png */; };
 		46C075D5173A5E6300BB8823 /* searchFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C075D3173A5E6300BB8823 /* searchFrame@2x.png */; };
+		46C4A32718FBBD4900F5D7B7 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C4A32618FBBD4900F5D7B7 /* Colours.m */; };
 		46D2E3A017A917EF0087430A /* HMCategoryQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D2E39F17A917EF0087430A /* HMCategoryQueryViewController.m */; };
 		46D862671782D1080051CA92 /* icn-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862651782D1080051CA92 /* icn-search.png */; };
 		46D862681782D1080051CA92 /* icn-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D862661782D1080051CA92 /* icn-search@2x.png */; };
@@ -347,18 +343,6 @@
 		466F4F72170154860076AB3D /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		466F4F73170154860076AB3D /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		466F4F74170154860076AB3D /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
-		466F4F781701A61B0076AB3D /* Crayola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crayola.h; sourceTree = "<group>"; };
-		466F4F791701A61B0076AB3D /* EDColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDColor.h; sourceTree = "<group>"; };
-		466F4F7A1701A61B0076AB3D /* UIColor+CIELAB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CIELAB.h"; sourceTree = "<group>"; };
-		466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIELAB.m"; sourceTree = "<group>"; };
-		466F4F7C1701A61B0076AB3D /* UIColor+Crayola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Crayola.h"; sourceTree = "<group>"; };
-		466F4F7D1701A61B0076AB3D /* UIColor+Crayola.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Crayola.m"; sourceTree = "<group>"; };
-		466F4F7E1701A61B0076AB3D /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
-		466F4F801701A61B0076AB3D /* UIColor+HSB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HSB.h"; sourceTree = "<group>"; };
-		466F4F811701A61B0076AB3D /* UIColor+HSB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HSB.m"; sourceTree = "<group>"; };
-		466F4F821701A61B0076AB3D /* UIColor+HSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HSL.h"; sourceTree = "<group>"; };
-		466F4F831701A61B0076AB3D /* UIColor+HSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HSL.m"; sourceTree = "<group>"; };
 		466F4FB7170408490076AB3D /* pic_10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pic_10.jpg; path = Resources/temp/pic_10.jpg; sourceTree = "<group>"; };
 		466F4FC217042A880076AB3D /* HMPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMPerson.h; path = BaseLayer/DataModel/HMPerson.h; sourceTree = "<group>"; };
 		466F4FC317042A880076AB3D /* HMPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMPerson.m; path = BaseLayer/DataModel/HMPerson.m; sourceTree = "<group>"; };
@@ -470,6 +454,8 @@
 		46C075D0173A589300BB8823 /* HMSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSearchBar.m; path = UILayer/SearchUI/HMSearchBar.m; sourceTree = "<group>"; };
 		46C075D2173A5E6300BB8823 /* searchFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchFrame.png; sourceTree = "<group>"; };
 		46C075D3173A5E6300BB8823 /* searchFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchFrame@2x.png"; sourceTree = "<group>"; };
+		46C4A32518FBBD4900F5D7B7 /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
+		46C4A32618FBBD4900F5D7B7 /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
 		46D2E39E17A917EF0087430A /* HMCategoryQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMCategoryQueryViewController.h; path = UILayer/CategoryUI/HMCategoryQueryViewController.h; sourceTree = "<group>"; };
 		46D2E39F17A917EF0087430A /* HMCategoryQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMCategoryQueryViewController.m; path = UILayer/CategoryUI/HMCategoryQueryViewController.m; sourceTree = "<group>"; };
 		46D862651782D1080051CA92 /* icn-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icn-search.png"; sourceTree = "<group>"; };
@@ -731,6 +717,7 @@
 		4645D31516F44D3F00C38D39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				46C4A32418FBBD4900F5D7B7 /* Colours */,
 				46409D45176B1BD000E7494E /* MMDrawerController */,
 				469202CF17607EC50096F522 /* TTTTimeIntervalFormatter */,
 				469202C9175F041D0096F522 /* TTTAttributedLabel */,
@@ -739,7 +726,6 @@
 				462F0C9F1728AAEB00BDDEB8 /* TMCache */,
 				46372565172408A3002357E0 /* ColorArt */,
 				4606A4CF1716C039009FDFFB /* Reachability */,
-				466F4F771701A61B0076AB3D /* EDColor */,
 				4645D35A16F4514F00C38D39 /* SVPullToRefresh */,
 				4645D35416F4514800C38D39 /* SVProgressHUD */,
 				4645D35016F4514200C38D39 /* SSKeychain */,
@@ -954,26 +940,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		466F4F771701A61B0076AB3D /* EDColor */ = {
-			isa = PBXGroup;
-			children = (
-				466F4F781701A61B0076AB3D /* Crayola.h */,
-				466F4F791701A61B0076AB3D /* EDColor.h */,
-				466F4F7A1701A61B0076AB3D /* UIColor+CIELAB.h */,
-				466F4F7B1701A61B0076AB3D /* UIColor+CIELAB.m */,
-				466F4F7C1701A61B0076AB3D /* UIColor+Crayola.h */,
-				466F4F7D1701A61B0076AB3D /* UIColor+Crayola.m */,
-				466F4F7E1701A61B0076AB3D /* UIColor+Hex.h */,
-				466F4F7F1701A61B0076AB3D /* UIColor+Hex.m */,
-				466F4F801701A61B0076AB3D /* UIColor+HSB.h */,
-				466F4F811701A61B0076AB3D /* UIColor+HSB.m */,
-				466F4F821701A61B0076AB3D /* UIColor+HSL.h */,
-				466F4F831701A61B0076AB3D /* UIColor+HSL.m */,
-			);
-			name = EDColor;
-			path = Vendor/EDColor;
-			sourceTree = "<group>";
-		};
 		466F4FAD170408310076AB3D /* temp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1117,6 +1083,16 @@
 				469202F817657C970096F522 /* HMEditPhotoCommentTextField.m */,
 			);
 			name = CameraUI;
+			sourceTree = "<group>";
+		};
+		46C4A32418FBBD4900F5D7B7 /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				46C4A32518FBBD4900F5D7B7 /* Colours.h */,
+				46C4A32618FBBD4900F5D7B7 /* Colours.m */,
+			);
+			name = Colours;
+			path = Vendor/Colours;
 			sourceTree = "<group>";
 		};
 		46E08A1A176BC7C0001A2C13 /* UserUI */ = {
@@ -1325,17 +1301,13 @@
 				466F4F75170154860076AB3D /* SSKeychain.m in Sources */,
 				46409D51176B1BD000E7494E /* UIViewController+MMDrawerController.m in Sources */,
 				466F4F76170154860076AB3D /* SSKeychainQuery.m in Sources */,
-				466F4F841701A61B0076AB3D /* UIColor+CIELAB.m in Sources */,
-				466F4F851701A61B0076AB3D /* UIColor+Crayola.m in Sources */,
-				466F4F861701A61B0076AB3D /* UIColor+Hex.m in Sources */,
-				466F4F871701A61B0076AB3D /* UIColor+HSB.m in Sources */,
-				466F4F881701A61B0076AB3D /* UIColor+HSL.m in Sources */,
 				466F4FC417042A880076AB3D /* HMPerson.m in Sources */,
 				466F4FC71704392B0076AB3D /* HMIngredient.m in Sources */,
 				466F4FCA170448F00076AB3D /* HMStep.m in Sources */,
 				4606A4D21716C039009FDFFB /* Reachability.m in Sources */,
 				4606A4DF17195750009FDFFB /* HMConstants.m in Sources */,
 				4606A4E2171AB992009FDFFB /* HMCache.m in Sources */,
+				46C4A32718FBBD4900F5D7B7 /* Colours.m in Sources */,
 				4606A4E5171EA3A8009FDFFB /* HMRecipeFeedViewController.m in Sources */,
 				46409D50176B1BD000E7494E /* MMDrawerVisualState.m in Sources */,
 				4606A4E8171EA3F0009FDFFB /* HMRecipeCellView.m in Sources */,
