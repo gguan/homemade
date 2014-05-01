@@ -232,7 +232,7 @@
     logInViewController.delegate = self;
 //    logInViewController.fields = PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton;
     logInViewController.fields = PFLogInFieldsFacebook;
-    logInViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email", @"publish_actions", @"custom_events" ];
+    logInViewController.facebookPermissions = @[ @"user_about_me", @"user_relationships", @"public_profile", @"user_location", @"email", @"publish_actions" ];
     
     // Customize the Sign Up View Controller
     HMSignUpViewController *signUpViewController = [[HMSignUpViewController alloc] init];
